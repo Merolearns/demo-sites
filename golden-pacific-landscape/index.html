@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Golden Pacific Landscape — Landscape Company in Santa Ana</title>
+<meta name="description" content="Golden Pacific Landscape — Landscape Company in Santa Ana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
+line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--accent-ink)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+section{position:relative}
+.font-display{font-family:var(--font-display);font-weight:600;line-height:1.02;
+letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
+transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
+transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;filter:none;transition:none}}
+
+.marquee{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line)}
+.marquee-track{display:inline-flex;align-items:center;gap:3rem;width:max-content;
+padding:1.1rem 1.5rem;animation:mq 26s linear infinite}
+.marquee-track span{font-family:var(--font-display);font-size:1.35rem;
+letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.marquee-track span b{color:var(--accent);font-weight:600}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px var(--accent)}
+.btn svg{width:1.15rem;height:1.15rem}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);
+box-shadow:none}
+.btn-ghost:hover{border-color:var(--accent);box-shadow:none}
+
+:root{
+--bg:#0C1B2E;--bg2:#0A1626;--ink:#F4F1E9;--muted:#9DB0C6;
+--accent:#FF6B1A;--accent-ink:#0C1B2E;
+--card:#12253D;--line:#1F3A5C;
+--font-display:"Space Grotesk",sans-serif;
+--font-body:"Inter",sans-serif;
+--radius:4px;
+}
+body{background:var(--bg)}
+/* ---- header ---- */
+.site-head{position:fixed;inset-inline:0;top:0;z-index:60;
+background:rgba(12,27,46,.88);backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+padding-block:1rem}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem;
+text-decoration:none;letter-spacing:-.01em}
+.brand em{font-style:normal;color:var(--accent)}
+.head-cta{display:inline-flex;align-items:center;gap:.6rem;
+background:var(--accent);color:var(--accent-ink);font-weight:700;
+text-decoration:none;padding:.75rem 1.4rem;border-radius:var(--radius);
+font-size:.95rem}
+.head-cta svg{width:1.05rem;height:1.05rem}
+/* ---- hero ---- */
+.hero{min-height:96vh;display:flex;align-items:center;padding:9rem 0 7rem;
+background:radial-gradient(1100px 600px at 85% 10%,#14325a 0%,transparent 60%),
+radial-gradient(900px 500px at 10% 90%,#123252 0%,transparent 55%),var(--bg)}
+.hero-grid{position:absolute;inset:0;opacity:.14;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),
+linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:56px 56px;
+mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hero-beacon{position:absolute;right:-8rem;top:-8rem;width:34rem;height:34rem;
+border-radius:50%;border:1.5rem solid rgba(255,107,26,.10)}
+.hero-inner{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;
+line-height:.98;letter-spacing:-.015em;margin:1.4rem 0 1.2rem}
+.hero h1 .hl{color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
+max-width:36rem;margin-bottom:2.4rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.btn-outline{background:transparent;color:var(--ink);
+border:2px solid var(--accent);box-shadow:none}
+.btn-outline:hover{border-color:var(--ink);box-shadow:none}
+.rating-chip{display:inline-flex;align-items:center;gap:.7rem;
+border:1px solid var(--line);background:var(--card);
+padding:.7rem 1.1rem;border-radius:var(--radius);font-size:.92rem;
+color:var(--muted)}
+.rating-chip .stars{display:inline-flex;gap:.15rem;color:var(--accent)}
+.rating-chip .stars svg{width:.95rem;height:.95rem}
+.rating-chip strong{color:var(--ink)}
+/* ---- marquee band ---- */
+.band{background:var(--accent);color:var(--accent-ink)}
+.band .marquee{border:0}
+.band .marquee-track span{color:var(--accent-ink);font-weight:700}
+.band .marquee-track span b{color:var(--bg)}
+/* ---- angled dividers ---- */
+.slash{clip-path:polygon(0 3.2rem,100% 0,100% 100%,0 100%);margin-top:-3.2rem;
+padding-top:7rem!important}
+/* ---- stats ---- */
+.stats{background:var(--bg2);padding:6rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.stat{border:2px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:2.2rem 1.6rem;text-align:center;
+position:relative;transition:border-color .3s ease}
+.stat:hover{border-color:var(--accent)}
+.stat::before{content:"";position:absolute;top:0;left:0;width:3.4rem;height:.4rem;
+background:var(--accent)}
+.stat .num{font-family:var(--font-display);font-weight:700;
+font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--accent);line-height:1}
+.stat .lbl{margin-top:.6rem;font-size:.85rem;letter-spacing:.14em;
+text-transform:uppercase;color:var(--muted)}
+.mini-star{display:inline-block;width:1.6rem;vertical-align:-.2rem;
+color:var(--accent);margin-left:.3rem}
+.mini-star svg{width:100%;height:auto}
+/* ---- sections ---- */
+.sect{padding:6.5rem 0}
+.sect-num{font-family:var(--font-display);font-weight:700;
+font-size:clamp(3.4rem,8vw,6.5rem);color:transparent;
+-webkit-text-stroke:1.5px var(--line);line-height:1;user-select:none}
+.sect-head{display:flex;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.sect-head h2{font-size:clamp(2rem,4.4vw,3.4rem);text-transform:uppercase;
+letter-spacing:-.01em;line-height:1.02}
+.sect-head .sub{color:var(--muted);max-width:30rem}
+/* ---- services ---- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.svc{border:1px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:1.8rem;position:relative;
+transition:transform .3s ease,border-color .3s ease}
+.svc:hover{border-color:var(--accent)}
+.svc .ico{width:2.6rem;height:2.6rem;display:grid;place-items:center;
+background:var(--accent);color:var(--accent-ink);border-radius:var(--radius);
+margin-bottom:1.1rem}
+.svc .ico svg{width:1.3rem;height:1.3rem}
+.svc h3{font-family:var(--font-display);font-size:1.18rem;margin-bottom:.4rem}
+.svc p{font-size:.93rem;color:var(--muted)}
+.svc .n{position:absolute;top:1.2rem;right:1.4rem;
+font-family:var(--font-display);font-weight:700;color:var(--line);
+font-size:1.1rem}
+/* ---- about ---- */
+.about{background:var(--bg2);padding:6.5rem 0}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;align-items:start}
+.about-copy p{color:var(--muted);margin:1.2rem 0;max-width:34rem}
+.checks{list-style:none;margin:1.6rem 0;display:grid;gap:.8rem}
+.checks li{display:flex;gap:.8rem;align-items:flex-start;font-weight:600}
+.checks svg{width:1.25rem;height:1.25rem;color:var(--accent);flex:none;margin-top:.15rem}
+.quote{border-left:.35rem solid var(--accent);background:var(--card);
+padding:2rem 1.8rem;border-radius:0 var(--radius) var(--radius) 0}
+.quote svg{width:2rem;height:2rem;color:var(--accent);margin-bottom:1rem}
+.quote p{font-family:var(--font-display);font-size:1.35rem;line-height:1.35}
+.quote cite{display:block;margin-top:1rem;font-style:normal;color:var(--muted);
+font-size:.9rem}
+/* ---- visit ---- */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
+.map-frame{border:2px solid var(--line);border-radius:var(--radius);
+overflow:hidden;min-height:380px;background:var(--card)}
+.map-frame iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.35) contrast(1.05)}
+.visit-card{border:1px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:2.2rem;display:flex;flex-direction:column;gap:1.4rem}
+.visit-row{display:flex;gap:1rem;align-items:flex-start}
+.visit-row svg{width:1.35rem;height:1.35rem;color:var(--accent);flex:none;margin-top:.2rem}
+.visit-row strong{display:block;font-family:var(--font-display);margin-bottom:.15rem}
+.visit-row a{color:var(--accent);font-weight:600}
+.hours{width:100%;border-collapse:collapse;font-size:.95rem}
+.hours td{padding:.5rem 0;border-bottom:1px dashed var(--line)}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours-var{color:var(--muted)}
+.hours-var a{color:var(--accent);font-weight:600}
+.visit-cta{margin-top:auto}
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);padding:2.4rem 0;background:var(--bg2)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;
+gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+/* ---- responsive ---- */
+@media (max-width:960px){
+.stats-grid{grid-template-columns:1fr 1fr}
+.svc-grid{grid-template-columns:1fr 1fr}
+.about-grid,.visit-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+.stats-grid,.svc-grid{grid-template-columns:1fr}
+.sect-head{flex-direction:column;align-items:flex-start;gap:.8rem}
+.hero{padding:8rem 0 5.5rem}
+}
+
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
+opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">Golden Pacific <em>Landscape</em></a>
+    <a class="head-cta" href="tel:+17149723908"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 714-972-3908</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-grid" data-plx="0.08"></div>
+  <div class="hero-beacon" data-plx="-0.12"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal">Landscape Company · Santa Ana</p>
+    <h1 class="font-display reveal">Golden Pacific Landscape<br><span class="hl">Landscape Company in Santa Ana</span></h1>
+    <p class="hero-sub reveal">Outdoor spaces people notice. Golden Pacific Landscape handles
+    design, maintenance and cleanups across
+    Santa Ana — on time, on price, on the books.</p>
+    <div class="hero-ctas reveal">
+      <a class="btn tilt" href="tel:+17149723908"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call +1 714-972-3908</a>
+      <a class="btn btn-outline tilt" href="#services">Our services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <p class="rating-chip reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p>
+  </div>
+</section>
+
+<div class="band marquee" aria-hidden="true">
+  <div class="marquee-track"><span><b>//</b> Outdoor spaces people notice</span><span><b>//</b> Landscape design &amp; install</span><span><b>//</b> Lawn care programs</span><span><b>//</b> Tree trimming &amp; removal</span><span><b>//</b> Irrigation systems</span><span><b>//</b> Mulch, sod &amp; planting</span><span><b>//</b> Outdoor spaces people notice</span><span><b>//</b> Landscape design &amp; install</span><span><b>//</b> Lawn care programs</span><span><b>//</b> Tree trimming &amp; removal</span><span><b>//</b> Irrigation systems</span><span><b>//</b> Mulch, sod &amp; planting</span></div>
+</div>
+
+<section class="stats slash">
+  <div class="wrap">
+    <div class="stats-grid" data-stagger>
+      <div class="stat reveal">
+        <div class="num"><span data-count="1200" data-suffix="+">0</span></div>
+        <div class="lbl">Jobs completed</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num"><span data-count="5" data-decimals="2">0</span><span class="mini-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <div class="lbl">Google rating</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num"><span data-count="60" data-suffix=" min">0</span></div>
+        <div class="lbl">Avg. response time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="services">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">01</div>
+      <div>
+        <p class="eyebrow reveal">What we do</p>
+        <h2 class="font-display reveal">Landscape Company services<br>in Santa Ana</h2>
+      </div>
+      <p class="sub reveal">Every service below is priced upfront and backed by our
+      workmanship guarantee. No surprises — just trade work done right.</p>
+    </div>
+    <div class="svc-grid" data-stagger><div class="svc reveal"><span class="n">01</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Landscape design &amp; install</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Lawn care programs</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">03</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Tree trimming &amp; removal</h3><p>Booked fast, done right, backed in writing.</p></div><div class="svc reveal"><span class="n">04</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Irrigation systems</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">05</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Mulch, sod &amp; planting</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">06</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Seasonal cleanups</h3><p>Booked fast, done right, backed in writing.</p></div></div>
+  </div>
+</section>
+
+<section class="about slash" id="about">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">02</div>
+      <div>
+        <p class="eyebrow reveal">Why us</p>
+        <h2 class="font-display reveal">Why Santa Ana calls<br>Golden Pacific Landscape</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="reveal">Golden Pacific Landscape is Santa Ana's landscape company team built for one thing: work that holds up. From the first call to the final walkthrough, we show up on time, price the job straight, and leave the place better than we found it.</p>
+        <p class="reveal">Every job in Santa Ana gets a licensed pro, clean tools, and a written guarantee. That's why your neighbors keep our number on the fridge.</p>
+        <ul class="checks">
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Licensed, insured landscape company pros</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Upfront flat-rate pricing — no hourly creep</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Same-day and emergency appointments</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Written workmanship guarantee on every job</li>
+        </ul>
+        <div class="hero-ctas reveal">
+          <a class="btn tilt" href="tel:+17149723908"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Get a free quote</a>
+        </div>
+      </div>
+      <aside class="quote reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
+        <p>"Showed up on time, fixed it fast, and the price was exactly what
+        they quoted. Best landscape company service we've used in Santa Ana."</p>
+        <cite>— A happy customer in Santa Ana</cite>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sect slash" id="visit">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">03</div>
+      <div>
+        <p class="eyebrow reveal">Find us</p>
+        <h2 class="font-display reveal">Book Golden Pacific Landscape<br>in Santa Ana</h2>
+      </div>
+      <p class="sub reveal">Call for same-day service or swing by. We serve
+      Santa Ana and the surrounding neighborhoods.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="map-frame reveal">
+        <iframe title="Map — Golden Pacific Landscape" src="https://www.google.com/maps?q=33.70555129,-117.85976373&z=16&output=embed" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="visit-card reveal">
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Address</strong><span>3113 Halladay St, Santa Ana, CA 92705-5626</span></div>
+        </div>
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>Hours</strong><table class="hours"><tbody><tr data-dow="1"><td>Monday</td><td>8:00 AM – 6:00 PM</td></tr><tr data-dow="2"><td>Tuesday</td><td>8:00 AM – 6:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>8:00 AM – 6:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>8:00 AM – 6:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>8:00 AM – 6:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>8:00 AM – 6:00 PM</td></tr></tbody></table></div>
+        </div>
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><strong>Call us</strong>
+          <a href="tel:+17149723908">+1 714-972-3908</a></div>
+        </div>
+        <div class="visit-cta">
+          <a class="btn tilt" href="tel:+17149723908"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call now</a>
+          &nbsp;&nbsp;
+          <a class="btn btn-ghost tilt" href="https://www.google.com/maps/dir/?api=1&destination=33.70555129,-117.85976373">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Golden Pacific Landscape — Landscape Company in Santa Ana.</span>
+    <span>Site concept preview. Not affiliated.</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Golden Pacific Landscape",
+  "telephone": "+17149723908",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3113 Halladay St",
+    "addressLocality": "Santa Ana",
+    "addressRegion": "CA",
+    "postalCode": "92705-5626"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.70555129,
+    "longitude": -117.85976373
+  }
+}
+</script>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');
+function show(el){el.classList.add('in')}
+if(!('IntersectionObserver' in window)){els.forEach(show);return}
+document.querySelectorAll('[data-stagger]').forEach(function(box){
+box.querySelectorAll('.reveal').forEach(function(el,i){
+el.style.setProperty('--d',(i*0.09).toFixed(2)+'s')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(el){io.observe(el)});
+var tick=false;
+function sweep(){tick=false;els.forEach(function(el){
+if(el.classList.contains('in'))return;
+var r=el.getBoundingClientRect();
+if(r.bottom>0&&r.top<innerHeight*.92||r.bottom<=0)show(el)})}
+addEventListener('scroll',function(){if(!tick){tick=true;
+requestAnimationFrame(sweep)}},{passive:true});
+setTimeout(function(){els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.top<innerHeight&&r.bottom>0)show(el)})},2600)})();
+
+
+(function(){var els=document.querySelectorAll('[data-count]');
+if(!els.length)return;
+function run(el){var target=parseFloat(el.dataset.count),suf=el.dataset.suffix||'',
+dec=parseInt(el.dataset.decimals||'0',10),
+t0=null;function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1300,1),
+e=1-Math.pow(1-p,3);el.textContent=(dec? (target*e).toFixed(dec) : Math.round(target*e))+suf;
+if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+if(!('IntersectionObserver' in window)){els.forEach(run);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:.4});
+els.forEach(function(el){io.observe(el);});
+})();
+
+
+(function(){
+if(!matchMedia('(pointer:fine)').matches)return;
+var cards=document.querySelectorAll('.tilt');
+for(var i=0;i<cards.length;i++)(function(el){
+el.style.transformStyle='preserve-3d';
+el.addEventListener('mousemove',function(ev){
+var r=el.getBoundingClientRect();
+var x=(ev.clientX-r.left)/r.width-0.5;
+var y=(ev.clientY-r.top)/r.height-0.5;
+el.style.transform='perspective(900px) rotateX('+(-y*9).toFixed(2)+'deg) rotateY('+(x*11).toFixed(2)+'deg) translateY(-3px)';
+});
+el.addEventListener('mouseleave',function(){
+el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+el.style.transform='';
+setTimeout(function(){el.style.transition=''},600);
+});
+})(cards[i]);
+})();
+
+
+(function(){var els=document.querySelectorAll('[data-plx]');
+if(!els.length||!('requestAnimationFrame' in window))return;
+var ticking=false;
+function upd(){ticking=false;var vh=innerHeight;
+els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.bottom<0||r.top>vh)return;
+var sp=parseFloat(el.dataset.plx||'0.15'),
+off=(r.top+r.height/2-vh/2)*sp;
+el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
+addEventListener('scroll',function(){if(!ticking){ticking=true;
+requestAnimationFrame(upd)}},{passive:true});upd()})();
+</script>
+</body>
+</html>

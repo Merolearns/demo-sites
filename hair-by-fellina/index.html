@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hair by Fellina — Hair Salon in Newport Beach</title>
+<meta name="description" content="Hair by Fellina — Hair Salon in Newport Beach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#141009;--bg2:#1E160D;--ink:#F7F1E5;--muted:#B9A98C;--accent:#E8622C;--accent-ink:#141009;--card:#1E160D;--line:rgba(247,241,229,.14);--font-display:'Fraunces',serif;--font-body:'Inter',sans-serif;--radius:999px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
+line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--accent-ink)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+section{position:relative}
+.font-display{font-family:var(--font-display);font-weight:600;line-height:1.02;
+letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
+transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
+transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;filter:none;transition:none}}
+
+.marquee{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line)}
+.marquee-track{display:inline-flex;align-items:center;gap:3rem;width:max-content;
+padding:1.1rem 1.5rem;animation:mq 26s linear infinite}
+.marquee-track span{font-family:var(--font-display);font-size:1.35rem;
+letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.marquee-track span b{color:var(--accent);font-weight:600}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px var(--accent)}
+.btn svg{width:1.15rem;height:1.15rem}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);
+box-shadow:none}
+.btn-ghost:hover{border-color:var(--accent);box-shadow:none}
+
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
+opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:60;
+background:rgba(20,16,9,.82);backdrop-filter:blur(14px);
+border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;
+padding:.9rem 0}
+.brand{font-family:var(--font-display);font-size:1.5rem;font-weight:600;
+text-decoration:none;letter-spacing:.01em}
+.brand em{font-style:italic;color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.92rem;text-decoration:none;color:var(--muted);
+transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{padding:.75rem 1.5rem;font-size:.92rem}
+@media(max-width:720px){.nav-links a.nav-hide{display:none}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:8rem 0 5rem}
+.hero-layer{position:absolute;inset:-12%;pointer-events:none}
+.hero-glow{background:radial-gradient(52rem 32rem at 78% 22%,
+rgba(232,98,44,.16),transparent 62%)}
+.hero-line{border-top:1px solid var(--line);transform:rotate(-4deg) scale(1.2)}
+.hero-blob{background:radial-gradient(30rem 30rem at 12% 78%,
+rgba(232,98,44,.07),transparent 65%)}
+.hero h1{font-size:clamp(3rem,8vw,7rem);margin:1.4rem 0 1.6rem;max-width:13ch}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
+max-width:44ch;margin-bottom:2.6rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:3.5rem;
+padding-top:2rem;border-top:1px solid var(--line)}
+.hero-meta .stat{font-family:var(--font-display);font-size:2rem;font-weight:600}
+.hero-meta .stat small{display:block;font-family:var(--font-body);
+font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.rating-chip{display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;
+color:var(--ink);border:1px solid var(--line);border-radius:999px;
+padding:.55rem 1.1rem;background:rgba(30,22,13,.6)}
+.rating-chip .stars{display:inline-flex;gap:.1rem;color:var(--accent)}
+.rating-chip .stars svg{width:.95rem;height:.95rem;fill:currentColor;stroke:none}
+.rating-chip strong{font-weight:700}
+.sec-label{font-family:var(--font-display);font-style:italic;
+font-size:clamp(1rem,1.6vw,1.25rem);color:var(--muted);margin-bottom:2.5rem}
+
+/* ---------- marquee ---------- */
+.marquee-strip{background:var(--accent);border:0;margin:0}
+.marquee-strip .marquee-track span{color:var(--accent-ink)}
+.marquee-strip .marquee-track span b{color:var(--accent-ink)}
+
+/* ---------- services ---------- */
+.services{padding:7rem 0}
+.svc-list{list-style:none;border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:5rem 1fr auto;gap:2rem;align-items:baseline;
+padding:2.4rem .5rem;border-bottom:1px solid var(--line);
+transition:background .3s,padding .3s}
+.svc:hover{background:rgba(232,98,44,.05);padding-inline:1.5rem}
+.svc-no{font-family:var(--font-display);font-style:italic;font-size:1.4rem;
+color:var(--accent)}
+.svc h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);
+font-weight:600;margin-bottom:.4rem}
+.svc p{color:var(--muted);max-width:52ch}
+.svc-arrow{color:var(--accent);opacity:0;transform:translateX(-.6rem);
+transition:opacity .3s,transform .3s}
+.svc:hover .svc-arrow{opacity:1;transform:none}
+.svc-arrow svg{width:1.6rem;height:1.6rem}
+
+/* ---------- about / quote ---------- */
+.about{padding:7rem 0;background:var(--bg2);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start}
+.about h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:1.2rem 0 1.4rem;max-width:16ch}
+.about p{color:var(--muted);margin-bottom:1.2rem;max-width:46ch}
+.about-points{list-style:none;margin-top:2rem}
+.about-points li{display:flex;gap:.8rem;align-items:center;color:var(--ink);
+padding:.7rem 0;border-bottom:1px solid var(--line)}
+.about-points svg{width:1.1rem;height:1.1rem;color:var(--accent);flex:none}
+.pullquote{border-left:3px solid var(--accent);padding:1rem 0 1rem 2rem}
+.pullquote blockquote{font-family:var(--font-display);font-style:italic;
+font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.35}
+.pullquote cite{display:block;margin-top:1.2rem;font-style:normal;color:var(--muted);
+font-size:.95rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- visit ---------- */
+.visit{padding:7rem 0}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.visit h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:1.2rem 0 1.4rem}
+.visit-info{display:grid;gap:1.6rem;margin-top:2rem}
+.visit-row{display:flex;gap:1rem;align-items:flex-start}
+.visit-row svg{width:1.3rem;height:1.3rem;color:var(--accent);flex:none;
+margin-top:.25rem}
+.visit-row strong{display:block;font-size:.78rem;letter-spacing:.16em;
+text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.visit-row a.tel{font-family:var(--font-display);font-size:1.5rem;font-weight:600;
+text-decoration:none}
+.visit-row a.tel:hover{color:var(--accent)}
+.map-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;
+min-height:26rem;background:var(--bg2);position:relative}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+filter:grayscale(1) sepia(.28) saturate(1.4) hue-rotate(-18deg)}
+.hours{width:100%;border-collapse:collapse;font-size:.98rem}
+.hours td{padding:.55rem 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr[data-dow]:has(td:first-child:empty){display:none}
+.hours-var{color:var(--muted)}
+.hours-call{color:var(--accent)}
+.dir-link{display:inline-flex;align-items:center;gap:.6rem;color:var(--accent);
+font-weight:600;text-decoration:none;margin-top:1.2rem}
+.dir-link svg{width:1.1rem;height:1.1rem}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:3rem 0;background:var(--bg2)}
+.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+align-items:center;color:var(--muted);font-size:.92rem}
+.foot .brand{font-size:1.3rem;color:var(--ink)}
+.foot-cta{display:flex;gap:1rem;align-items:center}
+
+@media(max-width:720px){
+.about-grid,.visit-grid{grid-template-columns:1fr}
+.nav-links{gap:1rem}
+.svc{grid-template-columns:3.2rem 1fr;gap:1rem}
+.svc-arrow{display:none}
+.hero{padding-top:6.5rem}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="#top">Hair by <em>Fellina</em></a>
+<nav class="nav-links">
+<a class="nav-hide" href="#services">Services</a>
+<a class="nav-hide" href="#about">About</a>
+<a href="#visit">Visit</a>
+<a class="btn tilt" href="tel:+16575492390"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 657-549-2390</a>
+</nav>
+</div>
+</header>
+<section class="hero" id="top">
+<div class="hero-layer hero-glow" data-plx="0.10"></div>
+<div class="hero-layer hero-blob" data-plx="0.22"></div>
+<div class="hero-layer hero-line" data-plx="0.06"></div>
+<div class="wrap">
+<div class="reveal">
+<span class="eyebrow">Hair Salon · Newport Beach</span>
+<h1 class="font-display">Where Newport Beach comes to be <em>seen.</em></h1>
+<p class="hero-sub">Hair by Fellina is Newport Beach's editorial hair salon —
+slow appointments, honest consultations and hair that turns heads for all the
+right reasons.</p>
+<div class="hero-cta">
+<a class="btn tilt" href="tel:+16575492390"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Book: +1 657-549-2390</a>
+<a class="btn btn-ghost tilt" href="#services">Explore services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+<div class="hero-meta">
+<div><div class="stat"><span data-count="5" data-decimals="2">5</span><small>Google rating</small></div></div>
+<div><div class="stat"><span data-count="50" data-suffix="+">50+</span><small>Client reviews</small></div></div>
+<div class="stat"><span class="rating-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span></div>
+</div>
+</div>
+</div>
+</section>
+<div class="marquee marquee-strip" aria-hidden="true">
+<div class="marquee-track"><span><span>Precision Haircuts <b>·</b></span><span>Color &amp; Balayage <b>·</b></span><span>Blowouts &amp; Styling <b>·</b></span><span>Bridal &amp; Occasion <b>·</b></span><span>Extensions &amp; Treatments <b>·</b></span><span>Nails &amp; Brows <b>·</b></span></span><span><span>Precision Haircuts <b>·</b></span><span>Color &amp; Balayage <b>·</b></span><span>Blowouts &amp; Styling <b>·</b></span><span>Bridal &amp; Occasion <b>·</b></span><span>Extensions &amp; Treatments <b>·</b></span><span>Nails &amp; Brows <b>·</b></span></span></div>
+</div>
+<section class="services" id="services">
+<div class="wrap">
+<p class="sec-label reveal">— The Menu</p>
+<h2 class="font-display reveal" style="font-size:clamp(2rem,4.5vw,3.4rem);margin-bottom:3rem">
+Six rituals, one standard: <em style="color:var(--accent)">flawless.</em></h2>
+<ol class="svc-list" data-stagger>
+<li class="svc reveal"><span class="svc-no">01</span><div><h3>Precision Haircuts</h3><p>Architectural cuts shaped to your bone structure, texture and life — consulted, mapped and finished by hand.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">02</span><div><h3>Color &amp; Balayage</h3><p>Dimension built the slow way: lived-in balayage, rich single-process color and glosses that hold their shine for weeks.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">03</span><div><h3>Blowouts &amp; Styling</h3><p>Glass-smooth blowouts, soft waves and event styling that survives the evening — and the drive home.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">04</span><div><h3>Bridal &amp; Occasion</h3><p>Trials, day-of teams and quiet coordination so your hair is the least of your worries on the big day.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">05</span><div><h3>Extensions &amp; Treatments</h3><p>Seamless extensions, keratin smoothing and deep-repair rituals that bring tired hair back to life.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">06</span><div><h3>Nails &amp; Brows</h3><p>Polished finishing touches — meticulous nail care, shaping and brow work that frames the face.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+</ol>
+</div>
+</section>
+<section class="about" id="about">
+<div class="wrap about-grid">
+<div class="reveal">
+<span class="eyebrow">The Studio</span>
+<h2 class="font-display">Not a salon visit — a standing appointment with yourself.</h2>
+<p>Hair by Fellina built its name in Newport Beach on one belief: great hair is
+never rushed. Every appointment starts with a real consultation and ends with
+you knowing exactly how to keep the look alive at home.</p>
+<ul class="about-points">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Senior stylists only — no hand-offs, no surprises</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Honest timelines &amp; honest pricing, up front</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Premium color lines, gentle on hair</li>
+</ul>
+</div>
+<div class="pullquote reveal">
+<blockquote>“The kind of place where you leave already planning your next
+visit — Newport Beach doesn't have another hair salon like it.”</blockquote>
+<cite>— a regular, Hair by Fellina</cite>
+</div>
+</div>
+</section>
+<section class="visit" id="visit">
+<div class="wrap visit-grid">
+<div class="reveal">
+<span class="eyebrow">Visit</span>
+<h2 class="font-display">Find us in Newport Beach.</h2>
+<p style="color:var(--muted);max-width:44ch">Walk-ins welcome when chairs allow —
+but the chair you want books fast. Call ahead and we'll have it ready.</p>
+<div class="visit-info">
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<div><strong>Address</strong><div>415 30th St, Newport Beach, CA 92663</div></div>
+</div>
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+<div><strong>Book by phone</strong><a class="tel" href="tel:+16575492390">+1 657-549-2390</a></div>
+</div>
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+<div><strong>Hours</strong><table class="hours"><tbody><tr data-dow="2"><td>Tuesday</td><td>10:30 AM – 6:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>10:30 AM – 6:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>10:30 AM – 6:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>10:30 AM – 6:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>10:30 AM – 5:00 PM</td></tr></tbody></table></div>
+</div>
+</div>
+<a class="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=33.61480631,-117.92939477" target="_blank" rel="noopener">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+<div class="map-frame reveal">
+<iframe title="Map to Hair by Fellina" src="https://www.google.com/maps?q=33.61480631,-117.92939477&z=16&output=embed" loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrap foot">
+<a class="brand" href="#top">Hair by <em>Fellina</em></a>
+<div>© 2026 Hair by Fellina · Hair Salon · Newport Beach</div>
+<div class="foot-cta">
+<a class="btn tilt" href="tel:+16575492390"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 657-549-2390</a>
+</div>
+</div>
+</footer><script>
+(function(){var els=document.querySelectorAll('.reveal');
+function show(el){el.classList.add('in')}
+if(!('IntersectionObserver' in window)){els.forEach(show);return}
+document.querySelectorAll('[data-stagger]').forEach(function(box){
+box.querySelectorAll('.reveal').forEach(function(el,i){
+el.style.setProperty('--d',(i*0.09).toFixed(2)+'s')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(el){io.observe(el)});
+var tick=false;
+function sweep(){tick=false;els.forEach(function(el){
+if(el.classList.contains('in'))return;
+var r=el.getBoundingClientRect();
+if(r.bottom>0&&r.top<innerHeight*.92||r.bottom<=0)show(el)})}
+addEventListener('scroll',function(){if(!tick){tick=true;
+requestAnimationFrame(sweep)}},{passive:true});
+setTimeout(function(){els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.top<innerHeight&&r.bottom>0)show(el)})},2600)})();
+
+
+(function(){var els=document.querySelectorAll('[data-count]');
+if(!els.length)return;
+function run(el){var target=parseFloat(el.dataset.count),suf=el.dataset.suffix||'',
+dec=parseInt(el.dataset.decimals||'0',10),
+t0=null;function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1300,1),
+e=1-Math.pow(1-p,3);el.textContent=(dec? (target*e).toFixed(dec) : Math.round(target*e))+suf;
+if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+if(!('IntersectionObserver' in window)){els.forEach(run);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:.4});
+els.forEach(function(el){io.observe(el);});
+})();
+
+
+(function(){
+if(!matchMedia('(pointer:fine)').matches)return;
+var cards=document.querySelectorAll('.tilt');
+for(var i=0;i<cards.length;i++)(function(el){
+el.style.transformStyle='preserve-3d';
+el.addEventListener('mousemove',function(ev){
+var r=el.getBoundingClientRect();
+var x=(ev.clientX-r.left)/r.width-0.5;
+var y=(ev.clientY-r.top)/r.height-0.5;
+el.style.transform='perspective(900px) rotateX('+(-y*9).toFixed(2)+'deg) rotateY('+(x*11).toFixed(2)+'deg) translateY(-3px)';
+});
+el.addEventListener('mouseleave',function(){
+el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+el.style.transform='';
+setTimeout(function(){el.style.transition=''},600);
+});
+})(cards[i]);
+})();
+
+
+(function(){var els=document.querySelectorAll('[data-plx]');
+if(!els.length||!('requestAnimationFrame' in window))return;
+var ticking=false;
+function upd(){ticking=false;var vh=innerHeight;
+els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.bottom<0||r.top>vh)return;
+var sp=parseFloat(el.dataset.plx||'0.15'),
+off=(r.top+r.height/2-vh/2)*sp;
+el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
+addEventListener('scroll',function(){if(!ticking){ticking=true;
+requestAnimationFrame(upd)}},{passive:true});upd()})();
+</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Hair by Fellina",
+  "telephone": "+16575492390",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "415 30th St",
+    "addressLocality": "Newport Beach",
+    "addressRegion": "CA",
+    "postalCode": "92663"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.61480631,
+    "longitude": -117.92939477
+  }
+}
+</script></body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafe Love Box — Bakery in Anaheim</title>
+<meta name="description" content="Cafe Love Box — Bakery in Anaheim.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
+line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--accent-ink)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+section{position:relative}
+.font-display{font-family:var(--font-display);font-weight:600;line-height:1.02;
+letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+
+.reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
+transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
+transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;filter:none;transition:none}}
+
+
+.marquee{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line)}
+.marquee-track{display:inline-flex;align-items:center;gap:3rem;width:max-content;
+padding:1.1rem 1.5rem;animation:mq 26s linear infinite}
+.marquee-track span{font-family:var(--font-display);font-size:1.35rem;
+letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.marquee-track span b{color:var(--accent);font-weight:600}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px var(--accent)}
+.btn svg{width:1.15rem;height:1.15rem}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);
+box-shadow:none}
+.btn-ghost:hover{border-color:var(--accent);box-shadow:none}
+
+
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
+opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+
+:root{
+--bg:#16110C;--bg2:#1E1710;--ink:#F5EBDD;--muted:#A89880;
+--accent:#E8A33D;--accent-ink:#1A120A;--card:#211A12;
+--line:rgba(232,163,61,.22);
+--font-display:"Playfair Display",Georgia,serif;
+--font-body:Inter,system-ui,sans-serif;
+--radius:6px}
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;
+background:rgba(22,17,12,.82);backdrop-filter:blur(14px);
+border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;
+padding:.95rem 0}
+.brand{font-family:var(--font-display);font-size:1.5rem;font-weight:700;
+text-decoration:none;letter-spacing:.01em}
+.brand em{font-style:italic;color:var(--accent)}
+.nav-links{display:flex;gap:2rem;font-size:.92rem;font-weight:500;
+color:var(--muted);text-decoration:none}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--accent)}
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:9rem 0 6rem}
+.hero-layers{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.giant-word{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);
+font-family:var(--font-display);font-weight:800;font-style:italic;
+font-size:clamp(6rem,22vw,20rem);line-height:1;color:transparent;
+-webkit-text-stroke:1px rgba(232,163,61,.22);white-space:nowrap;
+user-select:none}
+.hero-glow{position:absolute;width:60rem;height:60rem;top:-20rem;right:-18rem;
+background:radial-gradient(circle,rgba(232,163,61,.16),transparent 62%)}
+.hero-vig{position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 30%,rgba(22,17,12,.92) 96%)}
+.hero h1{font-size:clamp(3rem,8vw,7rem);margin:1.4rem 0 1.2rem;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
+max-width:44ch;margin-bottom:2.2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.chip{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem 1.1rem;
+border:1px solid var(--line);border-radius:999px;font-size:.92rem;
+background:rgba(33,26,18,.6);text-decoration:none}
+.chip svg{width:1rem;height:1rem;color:var(--accent)}
+.chip .stars{display:inline-flex;gap:2px}
+.chip .stars svg{width:.85rem;height:.85rem}
+/* ---------- menu list ---------- */
+.section{padding:6.5rem 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;
+gap:2rem;margin-bottom:3.2rem;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(2.2rem,4.6vw,3.6rem);margin-top:1rem}
+.menu-list{border-top:1px solid var(--line)}
+.menu-row{display:flex;align-items:baseline;gap:1.2rem;padding:1.7rem .4rem;
+border-bottom:1px solid var(--line)}
+.menu-num{font-family:var(--font-display);font-style:italic;
+color:var(--accent);font-size:1.05rem;min-width:2.4rem}
+.menu-name{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,2rem);
+font-weight:600;white-space:nowrap}
+.menu-dots{flex:1;border-bottom:2px dotted var(--muted);opacity:.5;
+transform:translateY(-6px);min-width:2rem}
+.menu-note{color:var(--muted);max-width:34ch;text-align:right;font-size:.98rem}
+.menu-price{font-family:var(--font-display);font-size:1.3rem;
+color:var(--accent);white-space:nowrap}
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;
+align-items:center}
+.about-copy p{color:var(--muted);font-size:1.08rem;margin-top:1.2rem;
+max-width:52ch}
+.quote-card{background:var(--card);border:1px solid var(--line);
+border-radius:var(--radius);padding:2.6rem;position:relative}
+.quote-card svg{width:2.2rem;height:2.2rem;color:var(--accent);
+margin-bottom:1.2rem}
+.quote-card blockquote{font-family:var(--font-display);
+font-size:clamp(1.4rem,2.4vw,1.9rem);font-style:italic;line-height:1.35}
+.quote-card cite{display:block;margin-top:1.2rem;color:var(--muted);
+font-style:normal;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+margin-top:3rem}
+.stat b{display:block;font-family:var(--font-display);
+font-size:clamp(2rem,3.6vw,3rem);color:var(--accent)}
+.stat>span{color:var(--muted);font-size:.9rem;letter-spacing:.06em;
+text-transform:uppercase}
+/* ---------- visit ---------- */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+align-items:stretch}
+.map-frame{border:1px solid var(--line);border-radius:var(--radius);
+overflow:hidden;min-height:22rem;
+filter:grayscale(.35) sepia(.25) contrast(1.02)}
+.map-frame iframe{width:100%;height:100%;min-height:22rem;border:0}
+.visit-info{display:flex;flex-direction:column;gap:1.6rem}
+.visit-row{display:flex;gap:1rem;align-items:flex-start}
+.visit-row svg{width:1.35rem;height:1.35rem;color:var(--accent);
+flex-shrink:0;margin-top:.25rem}
+.visit-row h3{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+color:var(--muted);margin-bottom:.35rem}
+.visit-row p{font-size:1.05rem}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:.55rem .2rem;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours-var{color:var(--muted)}
+.hours-call{color:var(--accent)}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:3rem 0 2.4rem;
+background:var(--bg2)}
+.foot-in{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+align-items:center}
+.foot-note{color:var(--muted);font-size:.9rem;margin-top:1rem}
+@media(max-width:720px){
+.nav-links{display:none}
+.about-grid,.visit-grid{grid-template-columns:1fr}
+.menu-name{white-space:normal}
+.menu-note{display:none}
+.stats{grid-template-columns:1fr 1fr}
+.section{padding:4.5rem 0}
+}
+
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-in">
+<a class="brand" href="#top">Cafe Love <em>Box</em></a>
+<div class="nav-links">
+<a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Visit</a>
+</div>
+<a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+</div></nav>
+<header class="hero" id="top">
+<div class="hero-layers">
+<div class="hero-glow" data-plx="0.10"></div>
+<div class="giant-word" data-plx="0.22" aria-hidden="true">BAKERY</div>
+<div class="hero-vig"></div>
+</div>
+<div class="wrap">
+<span class="eyebrow reveal">Bakery · Anaheim</span>
+<h1 class="font-display reveal" style="--d:.1s">
+Real <em>bakery</em> food, made the slow way.</h1>
+<p class="hero-sub reveal" style="--d:.2s">Cafe Love Box is the bakery spot
+Anaheim actually talks about — cooked in-house, served warm, worth every minute.</p>
+<div class="hero-cta reveal" style="--d:.3s">
+<a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Cafe Love Box</a>
+<a class="btn btn-ghost tilt" href="#menu">See the menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+<div class="reveal" style="--d:.4s"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span></div>
+</div>
+</header>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Anaheim</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Anaheim</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Anaheim</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span></div></div><section class="section" id="menu"><div class="wrap">
+<div class="sec-head">
+<div><span class="eyebrow reveal">The Menu</span>
+<h2 class="font-display reveal">What we're<br>known for</h2></div>
+<p class="reveal" style="color:var(--muted);max-width:36ch">No freezer shortcuts. No filler.
+Just the dishes that made Cafe Love Box a Anaheim habit.</p>
+</div>
+<div class="menu-list" data-stagger><div class="menu-row reveal"><span class="menu-num">01</span><span class="menu-name">The House Specials</span><span class="menu-dots"></span><span class="menu-note">The bakery plates regulars drive across Anaheim for.</span><span class="menu-price">Ask</span></div>
+<div class="menu-row reveal"><span class="menu-num">02</span><span class="menu-name">Fresh From the Kitchen</span><span class="menu-dots"></span><span class="menu-note">Everything made in-house, never rushed, never from a box.</span><span class="menu-price">Daily</span></div>
+<div class="menu-row reveal"><span class="menu-num">03</span><span class="menu-name">Slow-Cooked Favorites</span><span class="menu-dots"></span><span class="menu-note">Low and slow is the whole philosophy — flavor takes its time.</span><span class="menu-price">Fresh</span></div>
+<div class="menu-row reveal"><span class="menu-num">04</span><span class="menu-name">Shareable Platters</span><span class="menu-dots"></span><span class="menu-note">Built for the table: bring the crew, leave happy.</span><span class="menu-price">Feeds 4</span></div>
+<div class="menu-row reveal"><span class="menu-num">05</span><span class="menu-name">Something Sweet</span><span class="menu-dots"></span><span class="menu-note">Save room. The dessert case is the hardest decision of your day.</span><span class="menu-price">Daily</span></div>
+<div class="menu-row reveal"><span class="menu-num">06</span><span class="menu-name">To Go & Catering</span><span class="menu-dots"></span><span class="menu-note">Feed the office or the party — Cafe Love Box travels well.</span><span class="menu-price">Call</span></div></div>
+</div></section>
+<section class="section" id="about" style="background:var(--bg2)"><div class="wrap">
+<div class="about-grid">
+<div class="about-copy">
+<span class="eyebrow reveal">Our Story</span>
+<h2 class="font-display reveal" style="font-size:clamp(2.2rem,4.6vw,3.6rem);margin-top:1rem">
+Cafe Love Box cooks like<br>somebody's watching.</h2>
+<p class="reveal">Every morning at Cafe Love Box, the kitchen fires up before the
+sun does. Recipes are honed, not hacked together — the kind of bakery
+Anaheim keeps coming back for because it tastes like somebody cared.</p>
+<p class="reveal">Walk in hungry. Walk out already planning your next visit.</p>
+</div>
+<div class="quote-card reveal">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
+<blockquote>"The bakery is unreal — you can taste that it's made fresh.
+Hands down the best bakery in Anaheim."</blockquote>
+<cite>— A Anaheim regular</cite>
+</div>
+</div>
+<div class="stats" data-stagger>
+<div class="stat reveal"><b><span data-count="5" data-decimals="2">0</span></b>
+<span>Google rating</span></div>
+<div class="stat reveal"><b><span data-count="1" data-suffix="+">0</span></b>
+<span>Happy reviews</span></div>
+<div class="stat reveal"><b><span data-count="100" data-suffix="%">0</span></b>
+<span>Made in-house</span></div>
+</div>
+</div></section>
+<section class="section" id="visit"><div class="wrap">
+<div class="sec-head">
+<div><span class="eyebrow reveal">Find Us</span>
+<h2 class="font-display reveal">Come hungry.</h2></div>
+</div>
+<div class="visit-grid">
+<div class="map-frame reveal"><iframe title="Map to Cafe Love Box"
+src="https://www.google.com/maps?q=33.82946156,-117.92151966&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div class="visit-info">
+<div class="visit-row reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><h3>Address</h3>
+<p>707 W Santa Ana St, Anaheim, CA 92805<br>
+<a href="https://www.google.com/maps/dir/?api=1&destination=33.82946156,-117.92151966" target="_blank" rel="noopener" style="color:var(--accent)">Get directions →</a></p></div></div>
+<div class="visit-row reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><h3>Hours</h3>
+<p class="hours-var">Hours vary — <a href="#visit" class="hours-call">call us</a> and we'll let you know when we're in.</p></div></div>
+<div class="visit-row reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><h3>Call Us</h3>
+<p><a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a></p></div></div>
+</div>
+</div>
+</div></section>
+<footer><div class="wrap">
+<div class="foot-in">
+<a class="brand" href="#top">Cafe Love <em>Box</em></a>
+<a class="btn btn-ghost tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+</div>
+<p class="foot-note">© Cafe Love Box · Bakery in Anaheim
+· Call for hours</p>
+</div></footer>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');
+function show(el){el.classList.add('in')}
+if(!('IntersectionObserver' in window)){els.forEach(show);return}
+document.querySelectorAll('[data-stagger]').forEach(function(box){
+box.querySelectorAll('.reveal').forEach(function(el,i){
+el.style.setProperty('--d',(i*0.09).toFixed(2)+'s')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(el){io.observe(el)});
+var tick=false;
+function sweep(){tick=false;els.forEach(function(el){
+if(el.classList.contains('in'))return;
+var r=el.getBoundingClientRect();
+if(r.bottom>0&&r.top<innerHeight*.92||r.bottom<=0)show(el)})}
+addEventListener('scroll',function(){if(!tick){tick=true;
+requestAnimationFrame(sweep)}},{passive:true});
+setTimeout(function(){els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.top<innerHeight&&r.bottom>0)show(el)})},2600)})();
+
+
+(function(){var els=document.querySelectorAll('[data-count]');
+if(!els.length)return;
+function run(el){var target=parseFloat(el.dataset.count),suf=el.dataset.suffix||'',
+dec=parseInt(el.dataset.decimals||'0',10),
+t0=null;function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1300,1),
+e=1-Math.pow(1-p,3);el.textContent=(dec? (target*e).toFixed(dec) : Math.round(target*e))+suf;
+if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+if(!('IntersectionObserver' in window)){els.forEach(run);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:.4});
+els.forEach(function(el){io.observe(el);});
+})();
+
+
+(function(){
+if(!matchMedia('(pointer:fine)').matches)return;
+var cards=document.querySelectorAll('.tilt');
+for(var i=0;i<cards.length;i++)(function(el){
+el.style.transformStyle='preserve-3d';
+el.addEventListener('mousemove',function(ev){
+var r=el.getBoundingClientRect();
+var x=(ev.clientX-r.left)/r.width-0.5;
+var y=(ev.clientY-r.top)/r.height-0.5;
+el.style.transform='perspective(900px) rotateX('+(-y*9).toFixed(2)+'deg) rotateY('+(x*11).toFixed(2)+'deg) translateY(-3px)';
+});
+el.addEventListener('mouseleave',function(){
+el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+el.style.transform='';
+setTimeout(function(){el.style.transition=''},600);
+});
+})(cards[i]);
+})();
+
+
+(function(){var els=document.querySelectorAll('[data-plx]');
+if(!els.length||!('requestAnimationFrame' in window))return;
+var ticking=false;
+function upd(){ticking=false;var vh=innerHeight;
+els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.bottom<0||r.top>vh)return;
+var sp=parseFloat(el.dataset.plx||'0.15'),
+off=(r.top+r.height/2-vh/2)*sp;
+el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
+addEventListener('scroll',function(){if(!ticking){ticking=true;
+requestAnimationFrame(upd)}},{passive:true});upd()})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Cafe Love Box",
+  "telephone": "Call us",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "707 W Santa Ana St",
+    "addressLocality": "Anaheim",
+    "addressRegion": "CA",
+    "postalCode": "92805"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.82946156,
+    "longitude": -117.92151966
+  }
+}
+</script>
+</body>
+</html>

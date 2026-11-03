@@ -100,9 +100,9 @@
   "phone_e164": "+13052565544"
  },
  "handyman": {
-  "name": "Handyman",
+  "name": "handyman",
   "demo_url": "https://merolearns.github.io/demo-sites/handyman/",
-  "phone_e164": "+19185086200"
+  "phone_e164": "+17144995266"
  },
  "maplehaven-peak-pest-control": {
   "name": "MapleHaven Peak Pest Control",
@@ -282,6 +282,256 @@
  "panaderia": {
   "name": "Panaderia",
   "demo_url": "https://merolearns.github.io/demo-sites/panaderia/",
+  "phone_e164": ""
+ },
+ "munoz-barbershop-and-hairsalon": {
+  "name": "Munoz Barbershop and Hairsalon",
+  "demo_url": "https://merolearns.github.io/demo-sites/munoz-barbershop-and-hairsalon/",
+  "phone_e164": "+17148443976"
+ },
+ "panaderia-la-pequena": {
+  "name": "Panaderia La Pequena",
+  "demo_url": "https://merolearns.github.io/demo-sites/panaderia-la-pequena/",
+  "phone_e164": "+17148178254"
+ },
+ "newport-carpet": {
+  "name": "Newport Carpet",
+  "demo_url": "https://merolearns.github.io/demo-sites/newport-carpet/",
+  "phone_e164": "+19494007253"
+ },
+ "the-fade-lab-barbershop": {
+  "name": "The Fade Lab barbershop",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-fade-lab-barbershop/",
+  "phone_e164": "+17147879789"
+ },
+ "ocs-home-repair": {
+  "name": "OCS Home Repair",
+  "demo_url": "https://merolearns.github.io/demo-sites/ocs-home-repair/",
+  "phone_e164": "+19495247571"
+ },
+ "care-west-insurance-risk-management": {
+  "name": "Care West Insurance Risk Management",
+  "demo_url": "https://merolearns.github.io/demo-sites/care-west-insurance-risk-management/",
+  "phone_e164": "+14088374686"
+ },
+ "orange-county-stone": {
+  "name": "Orange County Stone",
+  "demo_url": "https://merolearns.github.io/demo-sites/orange-county-stone/",
+  "phone_e164": "+17142419809"
+ },
+ "roofing-contractor": {
+  "name": "Roofing contractor",
+  "demo_url": "https://merolearns.github.io/demo-sites/roofing-contractor/",
+  "phone_e164": "+15623376695"
+ },
+ "pureblue-uv": {
+  "name": "PureBlue UV",
+  "demo_url": "https://merolearns.github.io/demo-sites/pureblue-uv/",
+  "phone_e164": "+19493120342"
+ },
+ "ircelectric": {
+  "name": "IRCElectric",
+  "demo_url": "https://merolearns.github.io/demo-sites/ircelectric/",
+  "phone_e164": "+17145125939"
+ },
+ "toro-landscaping-supply": {
+  "name": "Toro Landscaping Supply",
+  "demo_url": "https://merolearns.github.io/demo-sites/toro-landscaping-supply/",
+  "phone_e164": "+19492509200"
+ },
+ "costa-mesa-handyman-and-house-painter": {
+  "name": "Costa Mesa Handyman and House Painter",
+  "demo_url": "https://merolearns.github.io/demo-sites/costa-mesa-handyman-and-house-painter/",
+  "phone_e164": "+19496474086"
+ },
+ "sheep-on-nails": {
+  "name": "sheep-on nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/sheep-on-nails/",
+  "phone_e164": "+19493006627"
+ },
+ "ca-preferred-services-inc": {
+  "name": "CA Preferred Services Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/ca-preferred-services-inc/",
+  "phone_e164": "+15105799825"
+ },
+ "handypair-handyman": {
+  "name": "Handypair Handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/handypair-handyman/",
+  "phone_e164": "+17142130683"
+ },
+ "irvine-plumbing-and-drain": {
+  "name": "Irvine Plumbing and Drain",
+  "demo_url": "https://merolearns.github.io/demo-sites/irvine-plumbing-and-drain/",
+  "phone_e164": "+19498504471"
+ },
+ "safeoak-pest-control": {
+  "name": "SafeOak Pest Control",
+  "demo_url": "https://merolearns.github.io/demo-sites/safeoak-pest-control/",
+  "phone_e164": "+12139029455"
+ },
+ "a-1-handyman-service": {
+  "name": "A 1 Handyman Service",
+  "demo_url": "https://merolearns.github.io/demo-sites/a-1-handyman-service/",
+  "phone_e164": "+19498878642"
+ },
+ "hb-heating-and-cooling-solution": {
+  "name": "HB Heating and Cooling Solution",
+  "demo_url": "https://merolearns.github.io/demo-sites/hb-heating-and-cooling-solution/",
+  "phone_e164": "+16576950010"
+ },
+ "arrow-roofing-services-costa-mesa": {
+  "name": "ARROW ROOFING SERVICES Costa-Mesa",
+  "demo_url": "https://merolearns.github.io/demo-sites/arrow-roofing-services-costa-mesa/",
+  "phone_e164": "+19497493088"
+ },
+ "psalm-23-cafe": {
+  "name": "Psalm 23 Cafe",
+  "demo_url": "https://merolearns.github.io/demo-sites/psalm-23-cafe/",
+  "phone_e164": "+16574681196"
+ },
+ "hvac-repair": {
+  "name": "HVAC Repair",
+  "demo_url": "https://merolearns.github.io/demo-sites/hvac-repair/",
+  "phone_e164": "+17472092108"
+ },
+ "c-d-electric": {
+  "name": "C & D Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/c-d-electric/",
+  "phone_e164": "+17146359995"
+ },
+ "up-landscape-maintenance": {
+  "name": "UP Landscape Maintenance",
+  "demo_url": "https://merolearns.github.io/demo-sites/up-landscape-maintenance/",
+  "phone_e164": "+19495511323"
+ },
+ "rumorz-kutz": {
+  "name": "Rumorz Kutz",
+  "demo_url": "https://merolearns.github.io/demo-sites/rumorz-kutz/",
+  "phone_e164": "+17146169266"
+ },
+ "squeaky-clean": {
+  "name": "Squeaky Clean",
+  "demo_url": "https://merolearns.github.io/demo-sites/squeaky-clean/",
+  "phone_e164": "+19496947122"
+ },
+ "mayte-s-beauty-salon": {
+  "name": "Mayte's Beauty Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/mayte-s-beauty-salon/",
+  "phone_e164": "+19498368703"
+ },
+ "jo-mer-salon": {
+  "name": "Jo Mer Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/jo-mer-salon/",
+  "phone_e164": "+19495243232"
+ },
+ "hair-by-fellina": {
+  "name": "Hair by Fellina",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-by-fellina/",
+  "phone_e164": "+16575492390"
+ },
+ "tyler-lighting": {
+  "name": "Tyler Lighting",
+  "demo_url": "https://merolearns.github.io/demo-sites/tyler-lighting/",
+  "phone_e164": "+17145242220"
+ },
+ "j-adore-hair-lash-bar": {
+  "name": "J'Adore Hair & Lash Bar",
+  "demo_url": "https://merolearns.github.io/demo-sites/j-adore-hair-lash-bar/",
+  "phone_e164": "+19493940097"
+ },
+ "saint-city-barbers": {
+  "name": "Saint City Barbers",
+  "demo_url": "https://merolearns.github.io/demo-sites/saint-city-barbers/",
+  "phone_e164": "+16614460180"
+ },
+ "golden-pacific-landscape": {
+  "name": "Golden Pacific Landscape",
+  "demo_url": "https://merolearns.github.io/demo-sites/golden-pacific-landscape/",
+  "phone_e164": "+17149723908"
+ },
+ "melchor-bakery": {
+  "name": "Melchor Bakery",
+  "demo_url": "https://merolearns.github.io/demo-sites/melchor-bakery/",
+  "phone_e164": "+17148170646"
+ },
+ "serratos-electric": {
+  "name": "Serratos Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/serratos-electric/",
+  "phone_e164": "+17144711924"
+ },
+ "tangiers-barbershop": {
+  "name": "Tangiers Barbershop",
+  "demo_url": "https://merolearns.github.io/demo-sites/tangiers-barbershop/",
+  "phone_e164": "+19496314929"
+ },
+ "devan-s-chair": {
+  "name": "Devan's Chair",
+  "demo_url": "https://merolearns.github.io/demo-sites/devan-s-chair/",
+  "phone_e164": "+15626075657"
+ },
+ "seashore-window-cleaning": {
+  "name": "Seashore Window Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/seashore-window-cleaning/",
+  "phone_e164": "+19494022139"
+ },
+ "all-done-handyman": {
+  "name": "All Done Handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/all-done-handyman/",
+  "phone_e164": "+17148850041"
+ },
+ "714-hair-salon": {
+  "name": "714 Hair Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/714-hair-salon/",
+  "phone_e164": "+17145586899"
+ },
+ "catherine-garcia-hair-studio": {
+  "name": "Catherine Garcia Hair Studio",
+  "demo_url": "https://merolearns.github.io/demo-sites/catherine-garcia-hair-studio/",
+  "phone_e164": "+17143575787"
+ },
+ "loveluxlab": {
+  "name": "Loveluxlab",
+  "demo_url": "https://merolearns.github.io/demo-sites/loveluxlab/",
+  "phone_e164": "+17609007777"
+ },
+ "repairtastic": {
+  "name": "Repairtastic",
+  "demo_url": "https://merolearns.github.io/demo-sites/repairtastic/",
+  "phone_e164": "+17149105263"
+ },
+ "aus-agency": {
+  "name": "AUS Agency",
+  "demo_url": "https://merolearns.github.io/demo-sites/aus-agency/",
+  "phone_e164": "+16572957679"
+ },
+ "the-joseph": {
+  "name": "The Joseph",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-joseph/",
+  "phone_e164": "+16194981022"
+ },
+ "top-tier-cleaning-services": {
+  "name": "Top Tier Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/top-tier-cleaning-services/",
+  "phone_e164": "+16266583308"
+ },
+ "tonyyycutz": {
+  "name": "Tonyyycutz",
+  "demo_url": "https://merolearns.github.io/demo-sites/tonyyycutz/",
+  "phone_e164": "+17148511607"
+ },
+ "the-glucklich-bread": {
+  "name": "The Glucklich Bread",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-glucklich-bread/",
+  "phone_e164": "+19098055171"
+ },
+ "the-olive-bakery": {
+  "name": "The Olive Bakery",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-olive-bakery/",
+  "phone_e164": ""
+ },
+ "cafe-love-box": {
+  "name": "Cafe Love Box",
+  "demo_url": "https://merolearns.github.io/demo-sites/cafe-love-box/",
   "phone_e164": ""
  }
 }
