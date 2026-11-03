@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doral Carpet Cleaning Service — Cleaning Service in Doral</title>
+<meta name="description" content="Doral Carpet Cleaning Service is Doral&#x27;s trusted cleaning service — upfront pricing, clean work, and done when promised.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1B2C; --bg2:#132639; --ink:#F4F7FB; --muted:#A9BCD2; --accent:#F97316;
+  --accent-ink:#0E1B2C; --card:#152A42; --line:rgba(244,247,251,.12); --glow:rgba(249,115,22,.14);
+  --display:'Archivo',serif; --body:'Inter',system-ui,sans-serif;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:clamp(4rem,8vw,7rem) 0}
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 72%,transparent);
+  border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;
+  height:68px;max-width:1140px;margin:0 auto;padding:0 24px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.3rem;
+  letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.brand em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--accent);
+  color:var(--accent-ink);font-weight:600;font-size:1rem;text-decoration:none;
+  padding:.85rem 1.7rem;border-radius:999px;border:0;cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px var(--glow)}
+.btn svg{width:18px;height:18px}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--accent)}
+.btn-sm{padding:.6rem 1.2rem;font-size:.9rem}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:calc(clamp(4rem,8vw,7rem) + 68px) 0 clamp(4rem,8vw,6rem)}
+.hero::before{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(640px 420px at 82% 18%,var(--glow),transparent 65%),
+    radial-gradient(520px 380px at 12% 78%,var(--glow),transparent 60%)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{position:relative;z-index:1;max-width:820px}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--line);border-radius:999px;padding:.45rem 1rem;margin-bottom:1.6rem;
+  background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-family:var(--display);font-weight:600;
+  font-size:clamp(2.9rem,7.2vw,5.2rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:1.4rem}
+.lede{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:620px;margin-bottom:2.4rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.hero-meta{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.95rem}
+.hero-meta .stars{color:var(--accent);display:inline-flex;gap:2px;vertical-align:-3px}
+.hero-meta .stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
+.hero-meta span{display:inline-flex;align-items:center;gap:.5rem}
+.hero-meta svg{width:17px;height:17px}
+/* ---------- trust bar ---------- */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg2);padding:1.6rem 0}
+.trust-row{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.trust-item{display:flex;align-items:center;gap:.8rem;color:var(--muted);font-size:.95rem}
+.trust-item svg{width:22px;height:22px;color:var(--accent)}
+.trust-item strong{color:var(--ink);font-weight:600}
+/* ---------- sections ---------- */
+.kicker{font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.9rem}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.4vw,3rem);
+  letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem}
+.section-sub{color:var(--muted);max-width:640px;margin-bottom:3rem;font-size:1.08rem}
+/* ---------- services ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.9rem 1.7rem;transition:transform .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.card .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;
+  justify-content:center;background:color-mix(in srgb,var(--accent) 14%,transparent);
+  color:var(--accent);margin-bottom:1.2rem}
+.card .ic svg{width:23px;height:23px}
+.card h3{font-size:1.12rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:.96rem}
+/* ---------- about ---------- */
+.about{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about p{color:var(--muted);font-size:1.08rem;margin-bottom:1.2rem}
+.about p strong{color:var(--ink)}
+.quote-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:2.2rem;position:relative}
+.quote-card::before{content:"\201C";font-family:var(--display);font-size:4.5rem;
+  color:var(--accent);position:absolute;top:.4rem;left:1.4rem;line-height:1}
+.quote-card p{font-family:var(--display);font-size:1.35rem;line-height:1.45;color:var(--ink);
+  margin:1.2rem 0 .8rem}
+.quote-card cite{color:var(--muted);font-style:normal;font-size:.92rem}
+/* ---------- visit ---------- */
+.visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.hours{width:100%;border-collapse:collapse;margin:1.4rem 0}
+.hours td{padding:.75rem .2rem;border-bottom:1px solid var(--line);font-size:1rem}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{color:var(--accent);font-weight:600}
+.addr{display:flex;gap:.7rem;align-items:flex-start;color:var(--muted);margin-bottom:1rem}
+.addr svg{width:19px;height:19px;color:var(--accent);flex-shrink:0;margin-top:4px}
+.addr strong{color:var(--ink);font-weight:600}
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:380px}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;
+  filter:grayscale(.35) contrast(1.02)}
+/* ---------- cta band ---------- */
+.cta-band{background:linear-gradient(135deg,
+  color-mix(in srgb,var(--accent) 22%,var(--bg2)),
+  var(--bg2) 60%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-align:center}
+.cta-band h2{margin-bottom:.8rem}
+.cta-band p{color:var(--muted);margin-bottom:2rem;font-size:1.1rem}
+.cta-band .row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{padding:3.2rem 0 2.4rem;color:var(--muted);font-size:.92rem}
+.foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  padding-bottom:2rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem}
+.foot-grid .brand{font-size:1.15rem}
+.foot-note{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.82rem;opacity:.75}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr 1fr}
+  .about-grid,.visit-grid{grid-template-columns:1fr}
+  .nav-links a{display:none}
+}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Doral Carpet Cleaning Service",
+  "telephone": "+17867669313",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8350 NW 52nd Terrace Ste 311",
+    "addressLocality": "Doral",
+    "addressRegion": "FL",
+    "postalCode": "33166"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 25.81946245,
+    "longitude": -80.33284063
+  }
+}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Doral Carpet Cleaning <em>Service</em></a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a class="btn btn-sm" href="tel:+17867669313"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><span class="dot"></span>Licensed &amp; local</span>
+    <h1>Fixed right.<br>The first time.</h1>
+    <p class="lede">Doral Carpet Cleaning Service is Doral&#x27;s trusted cleaning service — upfront pricing, clean work, and done when promised.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="tel:+17867669313"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-766-9313</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=25.81946245,-80.33284063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Get Directions</a>
+    </div>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 8350 NW 52nd Terrace Ste 311, Doral</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Sun 12:00 AM–</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Proudly serving <strong>Doral</strong></span></div><div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Walk-ins <strong>welcome</strong></span></div><div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call us: <strong>+1 786-766-9313</strong></span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="kicker reveal">What we do</p>
+    <h2 class="reveal">Everything you need,<br>under one roof.</h2>
+    <p class="section-sub reveal">From first visit to regular — here&#x27;s what Doral Carpet Cleaning Service does best.</p>
+    <div class="grid">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Upfront Pricing</h3><p>You approve the price before any work starts.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Same-Day Service</h3><p>Fast response when it can&#x27;t wait.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Done Right Guarantee</h3><p>We stand behind every job, in writing.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Free Estimates</h3><p>Honest quotes with zero pressure.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8 5.8 1.9-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9z"/><path d="M19 3l.9 2.6 2.6.9-2.6.9L19 10l-.9-2.6-2.6-.9 2.6-.9z"/></svg></div><h3>Clean Work Area</h3><p>Shoe covers, drop cloths — we leave it spotless.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Serving Doral</h3><p>Local techs who know the area.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <p class="kicker">Our story</p>
+      <h2>A Doral staple,<br>not a chain.</h2>
+      <p>Hiring a cleaning service shouldn&#x27;t feel like a gamble. Doral Carpet Cleaning Service was built on the basics most companies skip: show up on time, quote honestly, and treat your home like it&#x27;s ours.</p>
+      <p>Stop by 8350 NW 52nd Terrace Ste 311 — you&#x27;ll see what we mean.</p>
+    </div>
+    <div class="quote-card reveal">
+      <p>We treat your home like it&#x27;s our own mother&#x27;s house.</p>
+      <cite>— The Doral Carpet Cleaning Service team</cite>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <p class="kicker reveal">Visit us</p>
+    <h2 class="reveal">Hours &amp; location</h2>
+    <p class="section-sub reveal">Find us at 8350 NW 52nd Terrace Ste 311, Doral — or just call +1 786-766-9313.</p>
+    <div class="visit-grid">
+      <div class="reveal">
+        <table class="hours"><tbody><tr data-dow="0"><td>Sunday</td><td>12:00 AM – </td></tr></tbody></table>
+        <div class="addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Doral Carpet Cleaning Service</strong><br>8350 NW 52nd Terrace Ste 311, Doral, FL 33166</div></div>
+        <div class="addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><strong>+1 786-766-9313</strong><br><a href="tel:+17867669313" style="color:var(--accent)">Tap to call</a></div></div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Map to Doral Carpet Cleaning Service" loading="lazy" src="https://www.google.com/maps?q=25.81946245,-80.33284063&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="reveal">Need it handled today?</h2>
+    <p class="reveal">One call. Upfront price. Done right.</p>
+    <div class="row reveal">
+      <a class="btn" href="tel:+17867669313"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-766-9313</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=25.81946245,-80.33284063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">Doral Carpet Cleaning <em>Service</em></a>
+        <p style="margin-top:.7rem;max-width:340px">Doral Carpet Cleaning Service — Cleaning Service in Doral. Doral Carpet Cleaning Service is Doral&#x27;s trusted cleaning service — upfront pricing, clean work,</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--ink)">Visit</strong></p>
+        <p>8350 NW 52nd Terrace Ste 311, Doral, FL 33166</p>
+        <p style="margin-top:.6rem"><strong style="color:var(--ink)">Call</strong></p>
+        <p><a href="tel:+17867669313" style="color:var(--accent)">+1 786-766-9313</a></p>
+      </div>
+      <div>
+        <p><strong style="color:var(--ink)">Hours</strong></p>
+        <p>Sun 12:00 AM–</p>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 Doral Carpet Cleaning Service. All rights reserved.</span>
+      <span>Demo concept prepared for Doral Carpet Cleaning Service · Built by Merolearns Studio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+if (!('IntersectionObserver' in window)) {
+  revealEls.forEach(el => el.classList.add('in'));
+} else {
+  const io = new IntersectionObserver(es =>
+    es.forEach(e => e.isIntersecting && e.target.classList.add('in')),
+    {threshold: .12});
+  revealEls.forEach(el => io.observe(el));
+  // safety net: never leave content invisible (e.g. print, odd viewports)
+  setTimeout(() => revealEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+  }), 2500);
+}
+// highlight today's row in the hours table
+const today = new Date().getDay(); // 0 = Sunday
+document.querySelectorAll('.hours tr[data-dow]').forEach(tr => {
+  if (+tr.dataset.dow === today) tr.classList.add('today');
+});
+</script>
+</body>
+</html>
