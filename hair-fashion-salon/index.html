@@ -2,145 +2,360 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hair Fashion Salon — Hair Salon in Miami Springs</title>
-<meta name="description" content="Hair Fashion Salon is Miami Springs&#x27;s neighborhood hair salon — walk in, sit down, and walk out looking your best.">
+<meta name="description" content="Hair Fashion Salon — Hair Salon in Miami Springs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#131110; --bg2:#1C1917; --ink:#FAF6EF; --muted:#B8AE9E; --accent:#C9A227;
-  --accent-ink:#131110; --card:#1E1A17; --line:rgba(250,246,239,.12); --glow:rgba(201,162,39,.16);
-  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
-  --radius:18px;
-}
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#141009;--bg2:#1E160D;--ink:#F7F1E5;--muted:#B9A98C;--accent:#E8622C;--accent-ink:#141009;--card:#1E160D;--line:rgba(247,241,229,.14);--font-display:'Fraunces',serif;--font-body:'Inter',sans-serif;--radius:999px}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);
-  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
+line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--accent);color:var(--accent-ink)}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-section{padding:clamp(4rem,8vw,7rem) 0}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+section{position:relative}
+.font-display{font-family:var(--font-display);font-weight:600;line-height:1.02;
+letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
+transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
+transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;filter:none;transition:none}}
+
+.marquee{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line)}
+.marquee-track{display:inline-flex;align-items:center;gap:3rem;width:max-content;
+padding:1.1rem 1.5rem;animation:mq 26s linear infinite}
+.marquee-track span{font-family:var(--font-display);font-size:1.35rem;
+letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.marquee-track span b{color:var(--accent);font-weight:600}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px var(--accent)}
+.btn svg{width:1.15rem;height:1.15rem}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);
+box-shadow:none}
+.btn-ghost:hover{border-color:var(--accent);box-shadow:none}
+
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
+opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+
+
 /* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  background:color-mix(in srgb,var(--bg) 72%,transparent);
-  border-bottom:1px solid var(--line)}
+.nav{position:fixed;inset:0 0 auto;z-index:60;
+background:rgba(20,16,9,.82);backdrop-filter:blur(14px);
+border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;
-  height:68px;max-width:1140px;margin:0 auto;padding:0 24px}
-.brand{font-family:var(--display);font-weight:700;font-size:1.3rem;
-  letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
-.brand em{font-style:normal;color:var(--accent)}
+padding:.9rem 0}
+.brand{font-family:var(--font-display);font-size:1.5rem;font-weight:600;
+text-decoration:none;letter-spacing:.01em}
+.brand em{font-style:italic;color:var(--accent)}
 .nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav-links a{font-size:.92rem;text-decoration:none;color:var(--muted);
+transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--accent);
-  color:var(--accent-ink);font-weight:600;font-size:1rem;text-decoration:none;
-  padding:.85rem 1.7rem;border-radius:999px;border:0;cursor:pointer;
-  transition:transform .18s ease,box-shadow .18s ease}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px var(--glow)}
-.btn svg{width:18px;height:18px}
-.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn-ghost:hover{box-shadow:none;border-color:var(--accent)}
-.btn-sm{padding:.6rem 1.2rem;font-size:.9rem}
+.nav .btn{padding:.75rem 1.5rem;font-size:.92rem}
+@media(max-width:720px){.nav-links a.nav-hide{display:none}}
+
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:calc(clamp(4rem,8vw,7rem) + 68px) 0 clamp(4rem,8vw,6rem)}
-.hero::before{content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(640px 420px at 82% 18%,var(--glow),transparent 65%),
-    radial-gradient(520px 380px at 12% 78%,var(--glow),transparent 60%)}
-.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero-inner{position:relative;z-index:1;max-width:820px}
-.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;
-  font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
-  border:1px solid var(--line);border-radius:999px;padding:.45rem 1rem;margin-bottom:1.6rem;
-  background:color-mix(in srgb,var(--accent) 8%,transparent)}
-.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-h1{font-family:var(--display);font-weight:600;
-  font-size:clamp(2.9rem,7.2vw,5.2rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:1.4rem}
-.lede{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:620px;margin-bottom:2.4rem}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem}
-.hero-meta{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.95rem}
-.hero-meta .stars{color:var(--accent);display:inline-flex;gap:2px;vertical-align:-3px}
-.hero-meta .stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
-.hero-meta span{display:inline-flex;align-items:center;gap:.5rem}
-.hero-meta svg{width:17px;height:17px}
-/* ---------- trust bar ---------- */
-.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--bg2);padding:1.6rem 0}
-.trust-row{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
-.trust-item{display:flex;align-items:center;gap:.8rem;color:var(--muted);font-size:.95rem}
-.trust-item svg{width:22px;height:22px;color:var(--accent)}
-.trust-item strong{color:var(--ink);font-weight:600}
-/* ---------- sections ---------- */
-.kicker{font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.9rem}
-h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.4vw,3rem);
-  letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem}
-.section-sub{color:var(--muted);max-width:640px;margin-bottom:3rem;font-size:1.08rem}
+.hero{min-height:100svh;display:flex;align-items:center;padding:8rem 0 5rem}
+.hero-layer{position:absolute;inset:-12%;pointer-events:none}
+.hero-glow{background:radial-gradient(52rem 32rem at 78% 22%,
+rgba(232,98,44,.16),transparent 62%)}
+.hero-line{border-top:1px solid var(--line);transform:rotate(-4deg) scale(1.2)}
+.hero-blob{background:radial-gradient(30rem 30rem at 12% 78%,
+rgba(232,98,44,.07),transparent 65%)}
+.hero h1{font-size:clamp(3rem,8vw,7rem);margin:1.4rem 0 1.6rem;max-width:13ch}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
+max-width:44ch;margin-bottom:2.6rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:3.5rem;
+padding-top:2rem;border-top:1px solid var(--line)}
+.hero-meta .stat{font-family:var(--font-display);font-size:2rem;font-weight:600}
+.hero-meta .stat small{display:block;font-family:var(--font-body);
+font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.rating-chip{display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;
+color:var(--ink);border:1px solid var(--line);border-radius:999px;
+padding:.55rem 1.1rem;background:rgba(30,22,13,.6)}
+.rating-chip .stars{display:inline-flex;gap:.1rem;color:var(--accent)}
+.rating-chip .stars svg{width:.95rem;height:.95rem;fill:currentColor;stroke:none}
+.rating-chip strong{font-weight:700}
+.sec-label{font-family:var(--font-display);font-style:italic;
+font-size:clamp(1rem,1.6vw,1.25rem);color:var(--muted);margin-bottom:2.5rem}
+
+/* ---------- marquee ---------- */
+.marquee-strip{background:var(--accent);border:0;margin:0}
+.marquee-strip .marquee-track span{color:var(--accent-ink)}
+.marquee-strip .marquee-track span b{color:var(--accent-ink)}
+
 /* ---------- services ---------- */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.9rem 1.7rem;transition:transform .2s ease,border-color .2s ease}
-.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
-.card .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;
-  justify-content:center;background:color-mix(in srgb,var(--accent) 14%,transparent);
-  color:var(--accent);margin-bottom:1.2rem}
-.card .ic svg{width:23px;height:23px}
-.card h3{font-size:1.12rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
-.card p{color:var(--muted);font-size:.96rem}
-/* ---------- about ---------- */
-.about{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-.about p{color:var(--muted);font-size:1.08rem;margin-bottom:1.2rem}
-.about p strong{color:var(--ink)}
-.quote-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:2.2rem;position:relative}
-.quote-card::before{content:"\201C";font-family:var(--display);font-size:4.5rem;
-  color:var(--accent);position:absolute;top:.4rem;left:1.4rem;line-height:1}
-.quote-card p{font-family:var(--display);font-size:1.35rem;line-height:1.45;color:var(--ink);
-  margin:1.2rem 0 .8rem}
-.quote-card cite{color:var(--muted);font-style:normal;font-size:.92rem}
+.services{padding:7rem 0}
+.svc-list{list-style:none;border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:5rem 1fr auto;gap:2rem;align-items:baseline;
+padding:2.4rem .5rem;border-bottom:1px solid var(--line);
+transition:background .3s,padding .3s}
+.svc:hover{background:rgba(232,98,44,.05);padding-inline:1.5rem}
+.svc-no{font-family:var(--font-display);font-style:italic;font-size:1.4rem;
+color:var(--accent)}
+.svc h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);
+font-weight:600;margin-bottom:.4rem}
+.svc p{color:var(--muted);max-width:52ch}
+.svc-arrow{color:var(--accent);opacity:0;transform:translateX(-.6rem);
+transition:opacity .3s,transform .3s}
+.svc:hover .svc-arrow{opacity:1;transform:none}
+.svc-arrow svg{width:1.6rem;height:1.6rem}
+
+/* ---------- about / quote ---------- */
+.about{padding:7rem 0;background:var(--bg2);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start}
+.about h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:1.2rem 0 1.4rem;max-width:16ch}
+.about p{color:var(--muted);margin-bottom:1.2rem;max-width:46ch}
+.about-points{list-style:none;margin-top:2rem}
+.about-points li{display:flex;gap:.8rem;align-items:center;color:var(--ink);
+padding:.7rem 0;border-bottom:1px solid var(--line)}
+.about-points svg{width:1.1rem;height:1.1rem;color:var(--accent);flex:none}
+.pullquote{border-left:3px solid var(--accent);padding:1rem 0 1rem 2rem}
+.pullquote blockquote{font-family:var(--font-display);font-style:italic;
+font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.35}
+.pullquote cite{display:block;margin-top:1.2rem;font-style:normal;color:var(--muted);
+font-size:.95rem;letter-spacing:.06em;text-transform:uppercase}
+
 /* ---------- visit ---------- */
-.visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
-.hours{width:100%;border-collapse:collapse;margin:1.4rem 0}
-.hours td{padding:.75rem .2rem;border-bottom:1px solid var(--line);font-size:1rem}
+.visit{padding:7rem 0}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.visit h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:1.2rem 0 1.4rem}
+.visit-info{display:grid;gap:1.6rem;margin-top:2rem}
+.visit-row{display:flex;gap:1rem;align-items:flex-start}
+.visit-row svg{width:1.3rem;height:1.3rem;color:var(--accent);flex:none;
+margin-top:.25rem}
+.visit-row strong{display:block;font-size:.78rem;letter-spacing:.16em;
+text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.visit-row a.tel{font-family:var(--font-display);font-size:1.5rem;font-weight:600;
+text-decoration:none}
+.visit-row a.tel:hover{color:var(--accent)}
+.map-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;
+min-height:26rem;background:var(--bg2);position:relative}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+filter:grayscale(1) sepia(.28) saturate(1.4) hue-rotate(-18deg)}
+.hours{width:100%;border-collapse:collapse;font-size:.98rem}
+.hours td{padding:.55rem 0;border-bottom:1px solid var(--line)}
 .hours td:last-child{text-align:right;color:var(--muted)}
-.hours tr.today td{color:var(--accent);font-weight:600}
-.addr{display:flex;gap:.7rem;align-items:flex-start;color:var(--muted);margin-bottom:1rem}
-.addr svg{width:19px;height:19px;color:var(--accent);flex-shrink:0;margin-top:4px}
-.addr strong{color:var(--ink);font-weight:600}
-.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:380px}
-.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;
-  filter:grayscale(.35) contrast(1.02)}
-/* ---------- cta band ---------- */
-.cta-band{background:linear-gradient(135deg,
-  color-mix(in srgb,var(--accent) 22%,var(--bg2)),
-  var(--bg2) 60%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  text-align:center}
-.cta-band h2{margin-bottom:.8rem}
-.cta-band p{color:var(--muted);margin-bottom:2rem;font-size:1.1rem}
-.cta-band .row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hours tr[data-dow]:has(td:first-child:empty){display:none}
+.hours-var{color:var(--muted)}
+.hours-call{color:var(--accent)}
+.dir-link{display:inline-flex;align-items:center;gap:.6rem;color:var(--accent);
+font-weight:600;text-decoration:none;margin-top:1.2rem}
+.dir-link svg{width:1.1rem;height:1.1rem}
+
 /* ---------- footer ---------- */
-footer{padding:3.2rem 0 2.4rem;color:var(--muted);font-size:.92rem}
-.foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;
-  padding-bottom:2rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem}
-.foot-grid .brand{font-size:1.15rem}
-.foot-note{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  font-size:.82rem;opacity:.75}
-/* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-@media (max-width:860px){
-  .grid{grid-template-columns:1fr 1fr}
-  .about-grid,.visit-grid{grid-template-columns:1fr}
-  .nav-links a{display:none}
+footer{border-top:1px solid var(--line);padding:3rem 0;background:var(--bg2)}
+.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+align-items:center;color:var(--muted);font-size:.92rem}
+.foot .brand{font-size:1.3rem;color:var(--ink)}
+.foot-cta{display:flex;gap:1rem;align-items:center}
+
+@media(max-width:720px){
+.about-grid,.visit-grid{grid-template-columns:1fr}
+.nav-links{gap:1rem}
+.svc{grid-template-columns:3.2rem 1fr;gap:1rem}
+.svc-arrow{display:none}
+.hero{padding-top:6.5rem}
 }
-@media (max-width:560px){.grid{grid-template-columns:1fr}}
 </style>
-<script type="application/ld+json">{
+</head>
+<body>
+<header class="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="#top">Hair Fashion <em>Salon</em></a>
+<nav class="nav-links">
+<a class="nav-hide" href="#services">Services</a>
+<a class="nav-hide" href="#about">About</a>
+<a href="#visit">Visit</a>
+<a class="btn tilt" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-230-6537</a>
+</nav>
+</div>
+</header>
+<section class="hero" id="top">
+<div class="hero-layer hero-glow" data-plx="0.10"></div>
+<div class="hero-layer hero-blob" data-plx="0.22"></div>
+<div class="hero-layer hero-line" data-plx="0.06"></div>
+<div class="wrap">
+<div class="reveal">
+<span class="eyebrow">Hair Salon · Miami Springs</span>
+<h1 class="font-display">Where Miami Springs comes to be <em>seen.</em></h1>
+<p class="hero-sub">Hair Fashion Salon is Miami Springs's editorial hair salon —
+slow appointments, honest consultations and hair that turns heads for all the
+right reasons.</p>
+<div class="hero-cta">
+<a class="btn tilt" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Book: +1 786-230-6537</a>
+<a class="btn btn-ghost tilt" href="#services">Explore services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+<div class="hero-meta">
+<div><div class="stat"><span data-count="5" data-decimals="2">5</span><small>Google rating</small></div></div>
+<div><div class="stat"><span data-count="50" data-suffix="+">50+</span><small>Client reviews</small></div></div>
+<div class="stat"><span class="rating-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span></div>
+</div>
+</div>
+</div>
+</section>
+<div class="marquee marquee-strip" aria-hidden="true">
+<div class="marquee-track"><span><span>Precision Haircuts <b>·</b></span><span>Color &amp; Balayage <b>·</b></span><span>Blowouts &amp; Styling <b>·</b></span><span>Bridal &amp; Occasion <b>·</b></span><span>Extensions &amp; Treatments <b>·</b></span><span>Nails &amp; Brows <b>·</b></span></span><span><span>Precision Haircuts <b>·</b></span><span>Color &amp; Balayage <b>·</b></span><span>Blowouts &amp; Styling <b>·</b></span><span>Bridal &amp; Occasion <b>·</b></span><span>Extensions &amp; Treatments <b>·</b></span><span>Nails &amp; Brows <b>·</b></span></span></div>
+</div>
+<section class="services" id="services">
+<div class="wrap">
+<p class="sec-label reveal">— The Menu</p>
+<h2 class="font-display reveal" style="font-size:clamp(2rem,4.5vw,3.4rem);margin-bottom:3rem">
+Six rituals, one standard: <em style="color:var(--accent)">flawless.</em></h2>
+<ol class="svc-list" data-stagger>
+<li class="svc reveal"><span class="svc-no">01</span><div><h3>Precision Haircuts</h3><p>Architectural cuts shaped to your bone structure, texture and life — consulted, mapped and finished by hand.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">02</span><div><h3>Color &amp; Balayage</h3><p>Dimension built the slow way: lived-in balayage, rich single-process color and glosses that hold their shine for weeks.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">03</span><div><h3>Blowouts &amp; Styling</h3><p>Glass-smooth blowouts, soft waves and event styling that survives the evening — and the drive home.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">04</span><div><h3>Bridal &amp; Occasion</h3><p>Trials, day-of teams and quiet coordination so your hair is the least of your worries on the big day.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">05</span><div><h3>Extensions &amp; Treatments</h3><p>Seamless extensions, keratin smoothing and deep-repair rituals that bring tired hair back to life.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+<li class="svc reveal"><span class="svc-no">06</span><div><h3>Nails &amp; Brows</h3><p>Polished finishing touches — meticulous nail care, shaping and brow work that frames the face.</p></div><span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></li>
+</ol>
+</div>
+</section>
+<section class="about" id="about">
+<div class="wrap about-grid">
+<div class="reveal">
+<span class="eyebrow">The Studio</span>
+<h2 class="font-display">Not a salon visit — a standing appointment with yourself.</h2>
+<p>Hair Fashion Salon built its name in Miami Springs on one belief: great hair is
+never rushed. Every appointment starts with a real consultation and ends with
+you knowing exactly how to keep the look alive at home.</p>
+<ul class="about-points">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Senior stylists only — no hand-offs, no surprises</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Honest timelines &amp; honest pricing, up front</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Premium color lines, gentle on hair</li>
+</ul>
+</div>
+<div class="pullquote reveal">
+<blockquote>“The kind of place where you leave already planning your next
+visit — Miami Springs doesn't have another hair salon like it.”</blockquote>
+<cite>— a regular, Hair Fashion Salon</cite>
+</div>
+</div>
+</section>
+<section class="visit" id="visit">
+<div class="wrap visit-grid">
+<div class="reveal">
+<span class="eyebrow">Visit</span>
+<h2 class="font-display">Find us in Miami Springs.</h2>
+<p style="color:var(--muted);max-width:44ch">Walk-ins welcome when chairs allow —
+but the chair you want books fast. Call ahead and we'll have it ready.</p>
+<div class="visit-info">
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<div><strong>Address</strong><div>375 N Royal Poinciana Blvd, Miami Springs, FL 33166</div></div>
+</div>
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+<div><strong>Book by phone</strong><a class="tel" href="tel:+17862306537">+1 786-230-6537</a></div>
+</div>
+<div class="visit-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+<div><strong>Hours</strong><table class="hours"><tbody><tr data-dow="2"><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>9:00 AM – 7:00 PM</td></tr></tbody></table></div>
+</div>
+</div>
+<a class="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=25.82608843,-80.2870632" target="_blank" rel="noopener">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+<div class="map-frame reveal">
+<iframe title="Map to Hair Fashion Salon" src="https://www.google.com/maps?q=25.82608843,-80.2870632&z=16&output=embed" loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrap foot">
+<a class="brand" href="#top">Hair Fashion <em>Salon</em></a>
+<div>© 2026 Hair Fashion Salon · Hair Salon · Miami Springs</div>
+<div class="foot-cta">
+<a class="btn tilt" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-230-6537</a>
+</div>
+</div>
+</footer><script>
+(function(){var els=document.querySelectorAll('.reveal');
+function show(el){el.classList.add('in')}
+if(!('IntersectionObserver' in window)){els.forEach(show);return}
+document.querySelectorAll('[data-stagger]').forEach(function(box){
+box.querySelectorAll('.reveal').forEach(function(el,i){
+el.style.setProperty('--d',(i*0.09).toFixed(2)+'s')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(el){io.observe(el)});
+var tick=false;
+function sweep(){tick=false;els.forEach(function(el){
+if(el.classList.contains('in'))return;
+var r=el.getBoundingClientRect();
+if(r.bottom>0&&r.top<innerHeight*.92||r.bottom<=0)show(el)})}
+addEventListener('scroll',function(){if(!tick){tick=true;
+requestAnimationFrame(sweep)}},{passive:true});
+setTimeout(function(){els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.top<innerHeight&&r.bottom>0)show(el)})},2600)})();
+
+
+(function(){var els=document.querySelectorAll('[data-count]');
+if(!els.length)return;
+function run(el){var target=parseFloat(el.dataset.count),suf=el.dataset.suffix||'',
+dec=parseInt(el.dataset.decimals||'0',10),
+t0=null;function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1300,1),
+e=1-Math.pow(1-p,3);el.textContent=(dec? (target*e).toFixed(dec) : Math.round(target*e))+suf;
+if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+if(!('IntersectionObserver' in window)){els.forEach(run);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:.4});
+els.forEach(function(el){io.observe(el);});
+})();
+
+
+(function(){
+if(!matchMedia('(pointer:fine)').matches)return;
+var cards=document.querySelectorAll('.tilt');
+for(var i=0;i<cards.length;i++)(function(el){
+el.style.transformStyle='preserve-3d';
+el.addEventListener('mousemove',function(ev){
+var r=el.getBoundingClientRect();
+var x=(ev.clientX-r.left)/r.width-0.5;
+var y=(ev.clientY-r.top)/r.height-0.5;
+el.style.transform='perspective(900px) rotateX('+(-y*9).toFixed(2)+'deg) rotateY('+(x*11).toFixed(2)+'deg) translateY(-3px)';
+});
+el.addEventListener('mouseleave',function(){
+el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+el.style.transform='';
+setTimeout(function(){el.style.transition=''},600);
+});
+})(cards[i]);
+})();
+
+
+(function(){var els=document.querySelectorAll('[data-plx]');
+if(!els.length||!('requestAnimationFrame' in window))return;
+var ticking=false;
+function upd(){ticking=false;var vh=innerHeight;
+els.forEach(function(el){var r=el.getBoundingClientRect();
+if(r.bottom<0||r.top>vh)return;
+var sp=parseFloat(el.dataset.plx||'0.15'),
+off=(r.top+r.height/2-vh/2)*sp;
+el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
+addEventListener('scroll',function(){if(!ticking){ticking=true;
+requestAnimationFrame(upd)}},{passive:true});upd()})();
+</script><script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "Hair Fashion Salon",
@@ -157,145 +372,5 @@ footer{padding:3.2rem 0 2.4rem;color:var(--muted);font-size:.92rem}
     "latitude": 25.82608843,
     "longitude": -80.2870632
   }
-}</script>
-</head>
-<body>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="#top">Hair Fashion <em>Salon</em></a>
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#visit">Hours &amp; Location</a>
-      <a class="btn btn-sm" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero" id="top">
-  <div class="wrap hero-inner">
-    <span class="eyebrow"><span class="dot"></span>Neighborhood grooming</span>
-    <h1>Look sharp.<br>Feel sharper.</h1>
-    <p class="lede">Hair Fashion Salon is Miami Springs&#x27;s neighborhood hair salon — walk in, sit down, and walk out looking your best.</p>
-    <div class="hero-ctas">
-      <a class="btn" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-230-6537</a>
-      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=25.82608843,-80.2870632" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Get Directions</a>
-    </div>
-    <div class="hero-meta">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 375 N Royal Poinciana Blvd, Miami Springs</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Tue–Sat 9:00 AM–7:00 PM</span>
-    </div>
-  </div>
-</section>
-
-<div class="trust">
-  <div class="wrap trust-row">
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Proudly serving <strong>Miami Springs</strong></span></div><div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Walk-ins <strong>welcome</strong></span></div><div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call us: <strong>+1 786-230-6537</strong></span></div>
-  </div>
-</div>
-
-<section id="services">
-  <div class="wrap">
-    <p class="kicker reveal">What we do</p>
-    <h2 class="reveal">Everything you need,<br>under one roof.</h2>
-    <p class="section-sub reveal">From first visit to regular — here&#x27;s what Hair Fashion Salon does best.</p>
-    <div class="grid">
-      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div><h3>Precision Haircuts</h3><p>Clean fades, classic cuts, and styles tailored to you.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8 5.8 1.9-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9z"/><path d="M19 3l.9 2.6 2.6.9-2.6.9L19 10l-.9-2.6-2.6-.9 2.6-.9z"/></svg></div><h3>Beard Sculpting</h3><p>Sharp lineups and beard shaping with a finished look.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Hot Towel Shaves</h3><p>Old-school straight-razor comfort, modern precision.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Skin Fades &amp; Tapers</h3><p>Crisp gradients, blended to perfection.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8 5.8 1.9-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9z"/><path d="M19 3l.9 2.6 2.6.9-2.6.9L19 10l-.9-2.6-2.6-.9 2.6-.9z"/></svg></div><h3>Color &amp; Gray Blending</h3><p>Natural-looking color — subtle and sharp.</p></div><div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Walk-ins Welcome</h3><p>No appointment? No problem. Come on in.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
-      <p class="kicker">Our story</p>
-      <h2>A Miami Springs staple,<br>not a chain.</h2>
-      <p>A neighborhood shop built on one simple idea: a great cut shouldn&#x27;t be complicated. Hair Fashion Salon keeps it honest — skilled hands, fair prices, and a chair that always feels like yours.</p>
-      <p>Stop by 375 N Royal Poinciana Blvd — you&#x27;ll see what we mean.</p>
-    </div>
-    <div class="quote-card reveal">
-      <p>You don&#x27;t just leave with a better haircut. You leave feeling like yourself again.</p>
-      <cite>— The Hair Fashion Salon team</cite>
-    </div>
-  </div>
-</section>
-
-<section id="visit">
-  <div class="wrap">
-    <p class="kicker reveal">Visit us</p>
-    <h2 class="reveal">Hours &amp; location</h2>
-    <p class="section-sub reveal">Find us at 375 N Royal Poinciana Blvd, Miami Springs — or just call +1 786-230-6537.</p>
-    <div class="visit-grid">
-      <div class="reveal">
-        <table class="hours"><tbody><tr data-dow="2"><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>9:00 AM – 7:00 PM</td></tr></tbody></table>
-        <div class="addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Hair Fashion Salon</strong><br>375 N Royal Poinciana Blvd, Miami Springs, FL 33166</div></div>
-        <div class="addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><strong>+1 786-230-6537</strong><br><a href="tel:+17862306537" style="color:var(--accent)">Tap to call</a></div></div>
-      </div>
-      <div class="map reveal">
-        <iframe title="Map to Hair Fashion Salon" loading="lazy" src="https://www.google.com/maps?q=25.82608843,-80.2870632&z=16&output=embed"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="wrap">
-    <h2 class="reveal">Ready for a fresh cut?</h2>
-    <p class="reveal">Call now or just walk in — the chair is waiting.</p>
-    <div class="row reveal">
-      <a class="btn" href="tel:+17862306537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 786-230-6537</a>
-      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=25.82608843,-80.2870632" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="#top">Hair Fashion <em>Salon</em></a>
-        <p style="margin-top:.7rem;max-width:340px">Hair Fashion Salon — Hair Salon in Miami Springs. Hair Fashion Salon is Miami Springs&#x27;s neighborhood hair salon — walk in, sit down, and walk out looking y</p>
-      </div>
-      <div>
-        <p><strong style="color:var(--ink)">Visit</strong></p>
-        <p>375 N Royal Poinciana Blvd, Miami Springs, FL 33166</p>
-        <p style="margin-top:.6rem"><strong style="color:var(--ink)">Call</strong></p>
-        <p><a href="tel:+17862306537" style="color:var(--accent)">+1 786-230-6537</a></p>
-      </div>
-      <div>
-        <p><strong style="color:var(--ink)">Hours</strong></p>
-        <p>Tue–Sat 9:00 AM–7:00 PM</p>
-      </div>
-    </div>
-    <div class="foot-note">
-      <span>© 2026 Hair Fashion Salon. All rights reserved.</span>
-      <span>Demo concept prepared for Hair Fashion Salon · Built by Merolearns Studio</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-const revealEls = document.querySelectorAll('.reveal');
-if (!('IntersectionObserver' in window)) {
-  revealEls.forEach(el => el.classList.add('in'));
-} else {
-  const io = new IntersectionObserver(es =>
-    es.forEach(e => e.isIntersecting && e.target.classList.add('in')),
-    {threshold: .12});
-  revealEls.forEach(el => io.observe(el));
-  // safety net: never leave content invisible (e.g. print, odd viewports)
-  setTimeout(() => revealEls.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < innerHeight && r.bottom > 0) el.classList.add('in');
-  }), 2500);
 }
-// highlight today's row in the hours table
-const today = new Date().getDay(); // 0 = Sunday
-document.querySelectorAll('.hours tr[data-dow]').forEach(tr => {
-  if (+tr.dataset.dow === today) tr.classList.add('today');
-});
-</script>
-</body>
-</html>
+</script></body></html>
