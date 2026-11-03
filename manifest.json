@@ -100,9 +100,9 @@
   "phone_e164": "+13052565544"
  },
  "handyman": {
-  "name": "handyman",
+  "name": "Handyman",
   "demo_url": "https://merolearns.github.io/demo-sites/handyman/",
-  "phone_e164": "+17144995266"
+  "phone_e164": "+13053039775"
  },
  "maplehaven-peak-pest-control": {
   "name": "MapleHaven Peak Pest Control",
@@ -243,6 +243,11 @@
   "name": "Junie's Sweets",
   "demo_url": "https://merolearns.github.io/demo-sites/junie-s-sweets/",
   "phone_e164": "+13054791835"
+ },
+ "handyman-miami": {
+  "name": "Handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-miami/",
+  "phone_e164": "+19185086200"
  },
  "generator-power-electric": {
   "name": "Generator Power Electric",
@@ -448,6 +453,11 @@
   "name": "Golden Pacific Landscape",
   "demo_url": "https://merolearns.github.io/demo-sites/golden-pacific-landscape/",
   "phone_e164": "+17149723908"
+ },
+ "handyman-fullerton": {
+  "name": "handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-fullerton/",
+  "phone_e164": "+17144995266"
  },
  "melchor-bakery": {
   "name": "Melchor Bakery",
