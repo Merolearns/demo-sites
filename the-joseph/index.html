@@ -1,22 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Joseph — Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach</title>
 <meta name="description" content="The Joseph — Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#FAF7F0; --bg2:#F3ECDF; --ink:#141310; --muted:#6E675C;
-  --accent:#E4572E; --accent-ink:#FFFFFF;
-  --card:#FFFFFF; --line:#E4D9C6;
-  --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif;
-}
-
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
@@ -58,224 +50,528 @@ transition:transform .25s ease,box-shadow .25s ease}
 box-shadow:none}
 .btn-ghost:hover{border-color:var(--accent);box-shadow:none}
 
-body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
-opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.quote-sect{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.qf-panel{background:var(--card);border:1px solid var(--line);
+border-radius:var(--radius,1.25rem);padding:clamp(1.5rem,4vw,3rem)}
+.qf-head{margin-bottom:1.5rem}
+.qf-head h2,.qf-head h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.25rem);
+letter-spacing:-.01em;line-height:1.15;margin-bottom:.5rem}
+.qf-sub{color:var(--muted);font-size:1rem;max-width:46ch}
+.qf-form{max-width:38rem}
+.qf-field{display:block;margin-bottom:1.1rem}
+.qf-field>span{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+.qf-field em{font-style:normal;font-weight:400;color:var(--muted)}
+.qf-field input,.qf-field select,.qf-field textarea{width:100%;padding:.85rem 1rem;
+font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);
+border-radius:calc(var(--radius,1.25rem)*.5)}
+.qf-field input:focus,.qf-field select:focus,.qf-field textarea:focus{
+outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.qf-field textarea{min-height:6rem;resize:vertical}
+.qf-field[data-bad] input,.qf-field[data-bad] select,.qf-field[data-bad] textarea{
+border-color:#c0392b}
+.qf-radios{display:flex;gap:1.25rem;flex-wrap:wrap}
+.qf-radios label{display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;
+cursor:pointer}
+.qf-radios input,.qf-check input{accent-color:var(--accent)}
+.qf-check{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;
+color:var(--muted);margin-bottom:1.25rem;cursor:pointer}
+.qf-check input{margin-top:.25rem}
+.form-err{color:#c0392b;font-size:.9rem;font-weight:600;margin-top:.75rem}
+.form-confirm{text-align:center;padding:2rem 1rem}
+.form-confirm-icon{width:3.5rem;height:3.5rem;margin:0 auto 1rem;border-radius:50%;
+background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;
+justify-content:center}
+.form-confirm-icon svg{width:1.75rem;height:1.75rem}
+.form-confirm h3{font-family:var(--font-display);font-size:1.6rem;margin-bottom:.5rem}
+.form-confirm p{color:var(--muted);max-width:40ch;margin-inline:auto}
+.qf-refline{margin-top:.75rem}
+.qf-refline strong{color:var(--ink);letter-spacing:.08em}
+.qf-name{margin-top:.5rem;color:var(--ink)!important}
 
-/* ---------- header ---------- */
-.site-head{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 88%,transparent);
-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.site-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:1rem}
-.brand{font-family:var(--font-display);font-size:1.35rem;font-weight:700;letter-spacing:-.01em;text-decoration:none}
+.booking .wrap{padding-block:clamp(3rem,8vw,6rem)}
+.booking h2{font-family:var(--font-display);font-size:clamp(1.75rem,3.5vw,2.6rem);
+letter-spacing:-.01em;margin-bottom:.5rem}
+.bk-sub{color:var(--muted);margin-bottom:2rem;max-width:52ch}
+.bk-card{background:var(--card);border:1px solid var(--line);
+border-radius:var(--radius,1.25rem);padding:clamp(1.25rem,3.5vw,2.5rem);
+box-shadow:0 24px 60px -30px rgba(0,0,0,.35)}
+.bk-steps{list-style:none;display:flex;gap:.35rem;overflow-x:auto;margin-bottom:2rem;
+padding-bottom:.25rem;counter-reset:bk}
+.bk-steps li{flex:1 0 auto;display:flex;align-items:center;gap:.55rem;font-size:.82rem;
+font-weight:600;color:var(--muted);white-space:nowrap;padding:.35rem .2rem}
+.bk-steps li::before{counter-increment:bk;content:counter(bk);width:1.7rem;height:1.7rem;
+flex:0 0 auto;border-radius:50%;border:1px solid var(--line);display:flex;
+align-items:center;justify-content:center;font-size:.75rem}
+.bk-steps li.done{color:var(--ink)}
+.bk-steps li.done::before{background:var(--accent);border-color:var(--accent);
+color:var(--accent-ink)}
+.bk-steps li.now{color:var(--ink)}
+.bk-steps li.now::before{border-color:var(--accent);color:var(--accent)}
+.bk-svc-grid{display:grid;gap:.75rem}
+@media(min-width:640px){.bk-svc-grid{grid-template-columns:1fr 1fr}}
+.bk-svc{text-align:left;background:var(--bg);border:1px solid var(--line);
+border-radius:calc(var(--radius,1.25rem)*.6);padding:1rem 1.1rem;cursor:pointer;
+font:inherit;color:var(--ink);display:flex;flex-direction:column;gap:.15rem;
+transition:border-color .2s ease,transform .2s ease}
+.bk-svc:hover{border-color:var(--accent)}
+.bk-svc.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.bk-svc-name{font-weight:700}
+.bk-svc-meta{font-size:.85rem;color:var(--accent);font-weight:600}
+.bk-svc-blurb{font-size:.85rem;color:var(--muted)}
+.bk-date-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(4.4rem,1fr);
+gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:1.25rem}
+.bk-date{background:var(--bg);border:1px solid var(--line);
+border-radius:calc(var(--radius,1.25rem)*.5);padding:.6rem .25rem;cursor:pointer;
+font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;
+gap:.1rem;transition:border-color .2s ease}
+.bk-date:hover:not(:disabled){border-color:var(--accent)}
+.bk-date:disabled{opacity:.32;cursor:not-allowed}
+.bk-date.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.bk-date b{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;
+color:var(--muted)}
+.bk-date span{font-family:var(--font-display);font-size:1.25rem;font-weight:700}
+.bk-date small{font-size:.7rem;color:var(--muted)}
+.bk-time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(5.2rem,1fr));
+gap:.5rem}
+.bk-time{background:var(--bg);border:1px solid var(--line);
+border-radius:calc(var(--radius,1.25rem)*.5);padding:.65rem .25rem;cursor:pointer;
+font:inherit;font-size:.9rem;font-weight:600;color:var(--ink)}
+.bk-time:hover:not(:disabled){border-color:var(--accent)}
+.bk-time:disabled{opacity:.32;cursor:not-allowed;text-decoration:line-through}
+.bk-time.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.bk-field{display:block;margin-bottom:1.1rem;max-width:30rem}
+.bk-field>span{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+.bk-field em{font-style:normal;font-weight:400;color:var(--muted)}
+.bk-field input,.bk-field select,.bk-field textarea{width:100%;padding:.85rem 1rem;
+font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);
+border-radius:calc(var(--radius,1.25rem)*.5)}
+.bk-field input:focus,.bk-field select:focus,.bk-field textarea:focus{
+outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.bk-field textarea{min-height:5rem;resize:vertical}
+.bk-err{color:#c0392b;font-size:.9rem;font-weight:600;margin:.75rem 0;min-height:1.4em}
+.bk-nav{display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap}
+.bk-done-icon{width:3.5rem;height:3.5rem;margin:0 auto 1rem;border-radius:50%;
+background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;
+justify-content:center}
+.bk-done-icon svg{width:1.75rem;height:1.75rem}
+.bk-panel[data-panel="5"]{text-align:center}
+.bk-panel[data-panel="5"] h3{font-family:var(--font-display);font-size:1.75rem;
+margin-bottom:.5rem}
+.bk-ref{margin-top:1rem;font-size:.95rem;color:var(--muted)}
+.bk-ref strong{color:var(--ink);letter-spacing:.08em}
+.bk-summary{color:var(--ink);font-weight:600;margin-top:.5rem}
+.bk-note{color:var(--muted);font-size:.9rem;margin-top:.5rem}
+
+@media(max-width:520px){
+.bk-steps{gap:.15rem}
+.bk-steps li{font-size:.62rem;gap:.3rem;padding:.35rem .05rem}
+.bk-steps li::before{width:1.25rem;height:1.25rem;font-size:.6rem}
+}
+
+.demo-badge{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;
+align-items:center;gap:.75rem;max-width:min(24rem,calc(100vw - 2rem));
+background:var(--card);border:1px solid var(--line);color:var(--ink);
+border-radius:999px;padding:.55rem .6rem .55rem 1.1rem;font-size:.78rem;
+box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+.demo-badge button{flex:0 0 auto;width:1.5rem;height:1.5rem;border-radius:50%;
+border:1px solid var(--line);background:transparent;color:var(--muted);
+cursor:pointer;display:flex;align-items:center;justify-content:center}
+.demo-badge button:hover{color:var(--ink);border-color:var(--ink)}
+.demo-badge button svg{width:.8rem;height:.8rem}
+.sticky-cta{display:none}
+@media(max-width:767px){
+body{padding-bottom:4.5rem}
+.demo-badge{bottom:5.25rem}
+.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;
+background:var(--card);border-top:1px solid var(--line);padding:.6rem .8rem;
+gap:.6rem;box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
+.sticky-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;
+gap:.5rem;padding:.85rem 1rem;border-radius:var(--radius,999px);font-weight:700;
+text-decoration:none;font-size:.95rem}
+.sticky-cta a svg{width:1.05rem;height:1.05rem}
+.sc-call{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.sc-book{background:var(--accent);color:var(--accent-ink)}
+}
+.emergency-banner{display:flex;align-items:center;justify-content:center;gap:.9rem;
+flex-wrap:wrap;background:var(--accent);color:var(--accent-ink);
+padding:.9rem 1rem;font-weight:700;text-align:center}
+.emergency-banner svg{width:1.3rem;height:1.3rem}
+.emergency-banner a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.how-it-works{padding-block:clamp(3rem,8vw,5rem)}
+.how-it-works h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);
+margin-bottom:2rem;letter-spacing:-.01em}
+.hiw-grid{list-style:none;display:grid;gap:1rem;counter-reset:hiw}
+@media(min-width:768px){.hiw-grid{grid-template-columns:repeat(3,1fr)}}
+.hiw-grid li{background:var(--card);border:1px solid var(--line);
+border-radius:var(--radius,1.25rem);padding:1.6rem;counter-increment:hiw}
+.hiw-grid li::before{content:counter(hiw,decimal-leading-zero);display:block;
+font-family:var(--font-display);font-size:2rem;color:var(--accent);margin-bottom:.75rem}
+.hiw-grid h3{font-size:1.1rem;margin-bottom:.4rem}
+.hiw-grid p{color:var(--muted);font-size:.95rem}
+.service-areas{display:flex;align-items:center;justify-content:center;gap:.6rem;
+padding:2rem 1rem;color:var(--muted);text-align:center}
+.service-areas svg{width:1.2rem;height:1.2rem;color:var(--accent);flex:0 0 auto}
+.service-menu{padding-block:clamp(3rem,8vw,5rem)}
+.service-menu h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);
+margin-bottom:1.75rem;letter-spacing:-.01em}
+.smenu-row{display:flex;align-items:baseline;gap:1rem;padding:1.1rem .25rem;
+border-bottom:1px solid var(--line)}
+.smenu-row:last-of-type{border-bottom:0}
+.smenu-info{flex:1;min-width:0}
+.smenu-info h3{font-size:1.05rem}
+.smenu-info p{color:var(--muted);font-size:.9rem}
+.smenu-dur{font-size:.85rem;color:var(--muted);white-space:nowrap}
+.smenu-price{font-family:var(--font-display);font-weight:700;font-size:1.1rem;
+color:var(--accent);white-space:nowrap}
+.smenu-note{margin-top:1.5rem;font-size:.82rem;color:var(--muted)}
+.reviews{padding-block:clamp(3rem,8vw,5rem);text-align:center}
+.reviews .stars{display:inline-flex;gap:.25rem;color:var(--accent);margin-bottom:1rem}
+.reviews .stars svg{width:1.4rem;height:1.4rem;fill:currentColor;stroke:none}
+.rev-big{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4rem);font-weight:700}
+.rev-src{color:var(--muted);margin-bottom:1.75rem}
+.rev-src strong{color:var(--ink)}
+.wdg-est .wrap{padding-block:clamp(3rem,8vw,5rem)}
+.wdg-est h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);
+margin-bottom:1.75rem;letter-spacing:-.01em}
+.wdg-est-grid{display:grid;gap:1rem}
+@media(min-width:768px){.wdg-est-grid{grid-template-columns:1fr 1fr 1fr}}
+.wdg-est .bk-card{text-align:center}
+.wdg-range{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);
+font-weight:700;color:var(--accent);margin:.5rem 0 1.25rem}
+.followup .wrap{padding-block:clamp(2.5rem,6vw,4rem)}
+.followup .qf-panel{text-align:center}
+.followup .qf-form{margin-inline:auto}
+.followup h3{font-family:var(--font-display);font-size:clamp(1.5rem,3.5vw,2.25rem);
+margin-bottom:.5rem;letter-spacing:-.01em}
+.followup .qf-sub{margin:0 auto 1.5rem}
+@media (prefers-reduced-motion:reduce){
+.bk-svc,.bk-date,.bk-time,.sticky-cta a{transition:none}}
+
+:root{
+--bg:#0C1B2E;--bg2:#0A1626;--ink:#F4F1E9;--muted:#9DB0C6;
+--accent:#FF6B1A;--accent-ink:#0C1B2E;
+--card:#12253D;--line:#1F3A5C;
+--font-display:"Space Grotesk",sans-serif;
+--font-body:"Inter",sans-serif;
+--radius:4px;
+}
+body{background:var(--bg)}
+/* ---- header ---- */
+.site-head{position:fixed;inset-inline:0;top:0;z-index:60;
+background:rgba(12,27,46,.88);backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+padding-block:1rem;gap:1.5rem}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem;
+text-decoration:none;letter-spacing:-.01em}
 .brand em{font-style:normal;color:var(--accent)}
-.nav-cta .btn{padding:.7rem 1.4rem;font-size:.92rem}
-
-/* ---------- hero ---------- */
-.hero{padding:7.5rem 0 6rem;position:relative}
-#orb{position:absolute;width:42rem;height:42rem;border-radius:50%;pointer-events:none;
-background:radial-gradient(circle,color-mix(in srgb,var(--accent) 26%,transparent) 0%,transparent 65%);
-top:-8rem;left:50%;transform:translate(-50%,0);filter:blur(10px);will-change:transform;z-index:0}
-.hero .wrap{position:relative;z-index:1}
-.h1{font-size:clamp(2.6rem,6.4vw,5.2rem);margin:1.4rem 0 1.2rem;max-width:16ch}
-.h1 .ch{display:inline-block;opacity:0;transform:translateY(.55em) rotate(4deg);
-transition:opacity .5s ease,transform .7s cubic-bezier(.16,1,.3,1)}
-.h1 .w{display:inline-block;white-space:nowrap}
-.h1.done .ch{opacity:1;transform:none}
-.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);max-width:44ch;margin-bottom:2.2rem}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
-.rating{display:inline-flex;align-items:center;gap:.7rem;font-size:.98rem}
-.stars{display:inline-flex;gap:.15rem;color:var(--accent)}
-.stars svg{width:1.05rem;height:1.05rem;fill:currentColor}
-.rule{width:min(1200px,92vw);margin:0 auto;border:0;border-top:1px solid var(--line)}
-
-/* ---------- marquee ---------- */
-.marquee{background:var(--ink);border:0}
-.marquee-track span{color:var(--bg)}
-.marquee-track span b{color:var(--accent)}
-
-/* ---------- sections ---------- */
-.section{padding:6rem 0}
-.sec-head{max-width:44rem;margin-bottom:3rem}
-.sec-title{font-size:clamp(2rem,4vw,3.1rem);margin:1rem 0 .9rem}
-.sec-sub{color:var(--muted);font-size:1.08rem}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem 1.8rem;
-transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
-.svc:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 24px 48px -24px rgba(20,19,16,.25)}
-.svc svg{width:1.7rem;height:1.7rem;color:var(--accent);margin-bottom:1.1rem}
-.svc h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.5rem}
-.svc p{color:var(--muted);font-size:.98rem}
-
-/* ---------- about ---------- */
-.about{background:var(--bg2)}
-.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.about-copy p{color:var(--muted);margin-bottom:1.1rem;font-size:1.05rem}
-.pull{background:var(--ink);color:var(--bg);border-radius:20px;padding:2.6rem 2.4rem;position:relative}
-.pull svg{width:2.4rem;height:2.4rem;color:var(--accent);margin-bottom:1rem;fill:currentColor;stroke:none}
-.pull p{font-family:var(--font-display);font-size:1.5rem;line-height:1.35;margin-bottom:1.2rem}
-.pull cite{font-style:normal;color:var(--accent);font-weight:600;font-size:.95rem;letter-spacing:.04em}
-
-/* ---------- visit ---------- */
-.visit-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:1.25rem;margin-top:3rem}
-.map-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.map-card iframe{width:100%;height:100%;min-height:26rem;border:0;display:block}
-.info-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2.4rem}
-.info-row{display:flex;gap:1rem;margin-bottom:1.6rem}
-.info-row svg{width:1.3rem;height:1.3rem;color:var(--accent);flex-shrink:0;margin-top:.25rem}
-.info-row h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:.3rem}
-.info-row p,.info-row a{font-size:1.05rem;text-decoration:none}
-.info-row a.phone{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--ink)}
-table.hours{width:100%;border-collapse:collapse;font-size:.98rem}
-table.hours td{padding:.45rem 0;border-bottom:1px dashed var(--line)}
-table.hours td:last-child{text-align:right;color:var(--muted)}
+.site-nav{display:flex;gap:1.5rem;align-items:center}
+.site-nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.9rem}
+.site-nav a:hover{color:var(--accent)}
+.head-cta{display:inline-flex;align-items:center;gap:.6rem;
+background:var(--accent);color:var(--accent-ink);font-weight:700;
+text-decoration:none;padding:.75rem 1.4rem;border-radius:var(--radius);
+font-size:.95rem;white-space:nowrap}
+.head-cta svg{width:1.05rem;height:1.05rem}
+/* ---- hero ---- */
+.hero{min-height:96vh;display:flex;align-items:center;padding:9rem 0 7rem;overflow:hidden;
+background:radial-gradient(1100px 600px at 85% 10%,#14325a 0%,transparent 60%),
+radial-gradient(900px 500px at 10% 90%,#123252 0%,transparent 55%),var(--bg)}
+.hero-grid{position:absolute;inset:0;opacity:.14;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),
+linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:56px 56px;
+mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hero-beacon{position:absolute;right:-8rem;top:-8rem;width:34rem;height:34rem;
+border-radius:50%;border:1.5rem solid rgba(255,107,26,.10)}
+.hero-inner{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;
+line-height:.98;letter-spacing:-.015em;margin:1.4rem 0 1.2rem}
+.hero h1 .hl{color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
+max-width:36rem;margin-bottom:2.4rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.btn-outline{background:transparent;color:var(--ink);
+border:2px solid var(--accent);box-shadow:none}
+.btn-outline:hover{border-color:var(--ink);box-shadow:none}
+.rating-chip{display:inline-flex;align-items:center;gap:.7rem;
+border:1px solid var(--line);background:var(--card);
+padding:.7rem 1.1rem;border-radius:var(--radius);font-size:.92rem;
+color:var(--muted)}
+.rating-chip .stars{display:inline-flex;gap:.15rem;color:var(--accent)}
+.rating-chip .stars svg{width:.95rem;height:.95rem}
+.rating-chip strong{color:var(--ink)}
+.emg-slot{margin-bottom:1.6rem;max-width:36rem}
+/* ---- marquee band ---- */
+.band{background:var(--accent);color:var(--accent-ink)}
+.band .marquee{border:0}
+.band .marquee-track span{color:var(--accent-ink);font-weight:700}
+.band .marquee-track span b{color:var(--bg)}
+/* ---- angled dividers ---- */
+.slash{clip-path:polygon(0 3.2rem,100% 0,100% 100%,0 100%);margin-top:-3.2rem;
+padding-top:7rem!important}
+/* ---- stats ---- */
+.stats{background:var(--bg2);padding:6rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.stat{border:2px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:2.2rem 1.6rem;text-align:center;
+position:relative;transition:border-color .3s ease}
+.stat:hover{border-color:var(--accent)}
+.stat::before{content:"";position:absolute;top:0;left:0;width:3.4rem;height:.4rem;
+background:var(--accent)}
+.stat .num{font-family:var(--font-display);font-weight:700;
+font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--accent);line-height:1}
+.stat .lbl{margin-top:.6rem;font-size:.85rem;letter-spacing:.14em;
+text-transform:uppercase;color:var(--muted)}
+.mini-star{display:inline-block;width:1.6rem;vertical-align:-.2rem;
+color:var(--accent);margin-left:.3rem}
+.mini-star svg{width:100%;height:auto}
+/* ---- sections ---- */
+.sect{padding:6.5rem 0}
+section[id]{scroll-margin-top:4.5rem}
+.sect-num{font-family:var(--font-display);font-weight:700;
+font-size:clamp(3.4rem,8vw,6.5rem);color:transparent;
+-webkit-text-stroke:1.5px var(--line);line-height:1;user-select:none}
+.sect-head{display:flex;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.sect-head h2{font-size:clamp(2rem,4.4vw,3.4rem);text-transform:uppercase;
+letter-spacing:-.01em;line-height:1.02}
+.sect-head .sub{color:var(--muted);max-width:30rem}
+/* ---- services ---- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.svc{border:1px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:1.8rem;position:relative;
+transition:transform .3s ease,border-color .3s ease}
+.svc:hover{border-color:var(--accent)}
+.svc .ico{width:2.6rem;height:2.6rem;display:grid;place-items:center;
+background:var(--accent);color:var(--accent-ink);border-radius:var(--radius);
+margin-bottom:1.1rem}
+.svc .ico svg{width:1.3rem;height:1.3rem}
+.svc h3{font-family:var(--font-display);font-size:1.18rem;margin-bottom:.4rem}
+.svc p{font-size:.93rem;color:var(--muted)}
+.svc .n{position:absolute;top:1.2rem;right:1.4rem;
+font-family:var(--font-display);font-weight:700;color:var(--line);
+font-size:1.1rem}
+/* ---- financing strip (hvac) ---- */
+.fin-strip{background:var(--accent);color:var(--accent-ink);padding:2.4rem 0}
+.fin-strip .wrap{display:flex;align-items:center;justify-content:space-between;
+gap:1.5rem;flex-wrap:wrap}
+.fin-strip h3{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.8rem);
+text-transform:uppercase;letter-spacing:-.01em}
+.fin-strip p{font-weight:600;opacity:.85;margin-top:.3rem}
+.fin-strip .btn{background:var(--accent-ink);color:var(--ink)}
+/* ---- recurring note (cleaning) ---- */
+.plan-note{margin-top:1.6rem;border:1px dashed var(--accent);
+border-radius:var(--radius);padding:1.2rem 1.4rem;color:var(--muted);
+font-size:.95rem;max-width:44rem}
+.plan-note strong{color:var(--accent)}
+/* ---- about ---- */
+.about{background:var(--bg2);padding:6.5rem 0}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;align-items:start}
+.about-copy p{color:var(--muted);margin:1.2rem 0;max-width:34rem}
+.checks{list-style:none;margin:1.6rem 0;display:grid;gap:.8rem}
+.checks li{display:flex;gap:.8rem;align-items:flex-start;font-weight:600}
+.checks svg{width:1.25rem;height:1.25rem;color:var(--accent);flex:none;margin-top:.15rem}
+.quote{border-left:.35rem solid var(--accent);background:var(--card);
+padding:2rem 1.8rem;border-radius:0 var(--radius) var(--radius) 0}
+.quote svg{width:2rem;height:2rem;color:var(--accent);margin-bottom:1rem}
+.quote p{font-family:var(--font-display);font-size:1.35rem;line-height:1.35}
+.quote cite{display:block;margin-top:1rem;font-style:normal;color:var(--muted);
+font-size:.9rem}
+/* ---- visit ---- */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
+.map-frame{border:2px solid var(--line);border-radius:var(--radius);
+overflow:hidden;min-height:380px;background:var(--card)}
+.map-frame iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.35) contrast(1.05)}
+.visit-card{border:1px solid var(--line);background:var(--card);
+border-radius:var(--radius);padding:2.2rem;display:flex;flex-direction:column;gap:1.4rem}
+.visit-row{display:flex;gap:1rem;align-items:flex-start}
+.visit-row svg{width:1.35rem;height:1.35rem;color:var(--accent);flex:none;margin-top:.2rem}
+.visit-row strong{display:block;font-family:var(--font-display);margin-bottom:.15rem}
+.visit-row a{color:var(--accent);font-weight:600}
+.hours{width:100%;border-collapse:collapse;font-size:.95rem}
+.hours td{padding:.5rem 0;border-bottom:1px dashed var(--line)}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right;color:var(--muted)}
 .hours-var{color:var(--muted)}
-.hours-call{color:var(--accent);font-weight:600}
-
-/* ---------- cta band ---------- */
-.band{background:var(--accent);color:var(--accent-ink);text-align:center;border-radius:24px;
-padding:4.5rem 2rem;margin-bottom:6rem;position:relative;overflow:hidden}
-.band h2{font-size:clamp(2rem,4.4vw,3.4rem);margin-bottom:1rem}
-.band p{opacity:.9;margin-bottom:2.2rem;font-size:1.1rem}
-.band .btn{background:var(--ink);color:var(--bg);box-shadow:0 14px 34px -12px rgba(0,0,0,.5)}
-.band .btn-ghost{background:transparent;color:var(--accent-ink);border:1px solid rgba(255,255,255,.55);box-shadow:none}
-
-/* ---------- footer ---------- */
-.site-foot{border-top:1px solid var(--line);padding:2.6rem 0}
-.site-foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.site-foot p{color:var(--muted);font-size:.92rem}
-
-@media (max-width:900px){
-.svc-grid{grid-template-columns:repeat(2,1fr)}
-.about .wrap{grid-template-columns:1fr;gap:2.5rem}
-.visit-grid{grid-template-columns:1fr}
+.hours-var a{color:var(--accent);font-weight:600}
+.visit-cta{margin-top:auto}
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);padding:2.4rem 0;background:var(--bg2)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;
+gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+/* ---- responsive ---- */
+@media (max-width:960px){
+.site-nav{display:none}
+.stats-grid{grid-template-columns:1fr 1fr}
+.svc-grid{grid-template-columns:1fr 1fr}
+.about-grid,.visit-grid{grid-template-columns:1fr}
 }
 @media (max-width:720px){
-.hero{padding:5rem 0 4rem}
-.svc-grid{grid-template-columns:1fr}
-.section{padding:4.2rem 0}
-.hero-ctas .btn{width:100%;justify-content:center}
-#orb{width:26rem;height:26rem}
-}
-@media (prefers-reduced-motion:reduce){
-#orb{display:none}.h1 .ch{opacity:1;transform:none}
+.stats-grid,.svc-grid{grid-template-columns:1fr}
+.sect-head{flex-direction:column;align-items:flex-start;gap:.8rem}
+.hero{padding:8rem 0 5.5rem}
 }
 
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
+opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 </style>
+<script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
 </head>
 <body>
-
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top">The <em>Joseph</em></a>
-    <div class="nav-cta">
-      <a class="btn tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+1 619-498-1022</a>
-    </div>
+    <nav class="site-nav"><a href="#services">Services</a><a href="#quote">Quote</a><a href="#booking">Book</a><a href="#visit">Visit</a></nav>
+    <a class="head-cta" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +1 619-498-1022</a>
   </div>
 </header>
 
 <main id="top">
-
-<section class="hero" id="hero">
-  <div id="orb" aria-hidden="true"></div>
-  <div class="wrap">
-    <span class="eyebrow">Heating, Ventilating &amp; Air Conditioning Service · Huntington Beach</span>
-    <h1 class="font-display h1" data-split>The Joseph — trusted Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach</h1>
-    <p class="hero-sub reveal">The Joseph is Huntington Beach's go-to heating, ventilating & air conditioning service —
-    honest work, fair prices, and service from people who live here too.</p>
+<section class="hero">
+  <div class="hero-grid" data-plx="0.08"></div>
+  <div class="hero-beacon" data-plx="-0.12"></div>
+  <div class="wrap hero-inner">
+    
+    <p class="eyebrow reveal">Heating, Ventilating &amp; Air Conditioning Service · Huntington Beach</p>
+    <h1 class="font-display reveal">The Joseph<br><span class="hl">Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach</span></h1>
+    <p class="hero-sub reveal">Reliable trade work, done right. The Joseph handles
+    repairs, installs and service calls across
+    Huntington Beach — on time, on price, on the books.</p>
     <div class="hero-ctas reveal">
-      <a class="btn tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 619-498-1022</a>
-      <a class="btn btn-ghost tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Visit us</a>
+      <a class="btn tilt" href="#quote">Get a free quote</a>
+      <a class="btn btn-outline tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call us</a>
     </div>
-    <div class="rating reveal"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span></div>
+    <p class="rating-chip reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p>
   </div>
 </section>
 
-<hr class="rule">
-
-<div class="marquee reveal" aria-hidden="true">
-  <div class="marquee-track"><span><b>·</b> The Joseph</span><span><b>·</b> Heating, Ventilating &amp; Air Conditioning Service</span><span><b>·</b> Huntington Beach</span><span><b>·</b> Locally Owned</span><span><b>·</b> +1 619-498-1022</span><span><b>·</b> The Joseph</span><span><b>·</b> Heating, Ventilating &amp; Air Conditioning Service</span><span><b>·</b> Huntington Beach</span><span><b>·</b> Locally Owned</span><span><b>·</b> +1 619-498-1022</span><span><b>·</b> The Joseph</span><span><b>·</b> Heating, Ventilating &amp; Air Conditioning Service</span><span><b>·</b> Huntington Beach</span><span><b>·</b> Locally Owned</span><span><b>·</b> +1 619-498-1022</span></div>
+<div class="band marquee" aria-hidden="true">
+  <div class="marquee-track"><span><b>//</b> Reliable trade work, done right</span><span><b>//</b> Free on-site estimates</span><span><b>//</b> Upfront flat-rate pricing</span><span><b>//</b> Licensed &amp; insured pros</span><span><b>//</b> Same-day appointments</span><span><b>//</b> Workmanship guarantee</span><span><b>//</b> Reliable trade work, done right</span><span><b>//</b> Free on-site estimates</span><span><b>//</b> Upfront flat-rate pricing</span><span><b>//</b> Licensed &amp; insured pros</span><span><b>//</b> Same-day appointments</span><span><b>//</b> Workmanship guarantee</span></div>
 </div>
 
-<section class="section">
+<section class="stats slash">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">What we do</span>
-      <h2 class="font-display sec-title">The Joseph services in Huntington Beach</h2>
-      <p class="sec-sub">Straightforward heating, ventilating & air conditioning service help for Huntington Beach homes and businesses — booked in one call.</p>
-    </div>
-    <div class="svc-grid" data-stagger><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Expert heating, ventilating &amp; air conditioning service work</h3><p>From quick fixes to full projects, The Joseph delivers careful, dependable heating, ventilating &amp; air conditioning service in Huntington Beach — done right the first time.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Honest, upfront pricing</h3><p>You approve the price before any work begins. No surprises, no upsells — just fair heating, ventilating &amp; air conditioning service service in Huntington Beach.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><h3>Licensed &amp; insured</h3><p>Work with confidence. The Joseph stands behind every job with proper coverage and a satisfaction guarantee.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>On-time, every time</h3><p>Respect for your schedule: punctual arrivals, clear communication, and efficient heating, ventilating &amp; air conditioning service service across Huntington Beach.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Local reputation</h3><p>Your neighbors keep The Joseph busy. Repeat customers and word-of-mouth referrals are the business&#x27;s best reviews.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Easy to reach</h3><p>Call The Joseph and talk to a real local — not a call center. Fast answers, friendly scheduling, zero hassle.</p></article></div>
-  </div>
-</section>
-
-<section class="section about">
-  <div class="wrap">
-    <div class="about-copy reveal">
-      <span class="eyebrow">About</span>
-      <h2 class="font-display sec-title">A local heating, ventilating & air conditioning service you can trust</h2>
-      <p>The Joseph serves Huntington Beach with hands-on experience and a simple promise:
-      treat every job like it's for our own neighbors — because it is.</p>
-      <p>No runaround, no fine print. Just quality heating, ventilating & air conditioning service work, clear pricing,
-      and follow-through you can count on long after the job is done.</p>
-    </div>
-    <aside class="pull reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
-      <p>They showed up on time, did exactly what they said, and the price was fair.
-      Easiest heating, ventilating & air conditioning service experience I've had in Huntington Beach.</p>
-      <cite>— A Huntington Beach neighbor</cite>
-    </aside>
-  </div>
-</section>
-
-<section class="section" id="visit">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Find us</span>
-      <h2 class="font-display sec-title">Visit The Joseph</h2>
-      <p class="sec-sub">Stop by, call ahead, or find directions below.</p>
-    </div>
-    <div class="visit-grid" data-stagger>
-      <div class="map-card reveal">
-        <iframe title="Map to The Joseph" src="https://www.google.com/maps?q=33.67967197,-118.00197593&z=16&output=embed" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="stats-grid" data-stagger>
+      <div class="stat reveal">
+        <div class="num"><span data-count="1200" data-suffix="+">0</span></div>
+        <div class="lbl">Jobs completed</div>
       </div>
-      <div class="info-card reveal">
-        <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><h4>Address</h4>
-        <p>19451 Main St, Huntington Beach, CA 92648</p></div></div>
-        <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><h4>Call us</h4>
-        <a class="phone" href="tel:+16194981022">+1 619-498-1022</a></div></div>
-        <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><h4>Hours</h4>
-        <p class="hours-var">Hours vary — <a href="tel:+16194981022" class="hours-call">call us</a> and we'll let you know when we're in.</p></div></div>
-        <a class="btn tilt" href="https://www.google.com/maps/dir/?api=1&destination=33.67967197,-118.00197593" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Get directions</a>
+      <div class="stat reveal">
+        <div class="num"><span data-count="5" data-decimals="2">0</span><span class="mini-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <div class="lbl">Google rating</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num"><span data-count="60" data-suffix=" min">0</span></div>
+        <div class="lbl">Avg. response time</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="sect" id="services">
   <div class="wrap">
-    <div class="band reveal">
-      <h2 class="font-display">Need a heating, ventilating & air conditioning service in Huntington Beach?</h2>
-      <p>The Joseph is one call away — fast quotes, friendly service.</p>
-      <div class="hero-ctas" style="justify-content:center;margin-bottom:0">
-        <a class="btn tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 619-498-1022</a>
-        <a class="btn btn-ghost tilt" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Back to top</a>
+    <div class="sect-head">
+      <div class="sect-num">01</div>
+      <div>
+        <p class="eyebrow reveal">What we do</p>
+        <h2 class="font-display reveal">Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach</h2>
       </div>
+      <p class="sub reveal">Every service below is priced upfront and backed by our
+      workmanship guarantee. No surprises — just trade work done right.</p>
+    </div>
+    <div class="svc-grid" data-stagger><div class="svc reveal"><span class="n">01</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Free on-site estimates</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Upfront flat-rate pricing</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">03</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Licensed &amp; insured pros</h3><p>Booked fast, done right, backed in writing.</p></div><div class="svc reveal"><span class="n">04</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Same-day appointments</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">05</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Workmanship guarantee</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">06</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Emergency callouts</h3><p>Booked fast, done right, backed in writing.</p></div></div>
+  </div>
+</section>
+
+<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">02</div><div><p class="eyebrow reveal">Free quote</p><h2 class="font-display reveal">Get a fixed quote</h2></div><p class="sub reveal">Tell us about the job and we'll confirm a fixed quote.</p></div><section class="quote-sect" id="quote"><div class="wrap"><div class="qf-panel"><div class="qf-head"><h2>Request a quote</h2><p class="qf-sub">A few details is all it takes — photos help us quote accurately.</p></div><form class="qf-form" data-form data-ref="Q" novalidate><div class="form-fields"><label class="qf-field"><span>Service needed</span><select name="service"><option value="">Select a service…</option><option>General service</option><option>Repair</option><option>Installation</option><option>Inspection / estimate</option><option>Something else</option></select></label><label class="qf-field"><span>Your name *</span><input type="text" name="name" placeholder="Full name" required autocomplete="name"></label><label class="qf-field"><span>Phone *</span><input type="tel" name="phone" placeholder="(555) 123-4567" required autocomplete="tel"></label><label class="qf-field"><span>Service address</span><input type="text" name="address" placeholder="Street address in Huntington Beach" required></label><button type="submit" class="btn">Request quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Quote requested</h3><p class="qf-name"></p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p>Thanks — we&#x27;ll get back to you within one business day.</p></div></form></div></div></section></div></section>
+<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">03</div><div><p class="eyebrow reveal">Scheduling</p><h2 class="font-display reveal">Book a service visit</h2></div><p class="sub reveal">Pick a service and a time that works — confirmed by text.</p></div><section class="booking" id="booking"><div class="wrap"><h2>Book a service visit</h2><p class="bk-sub">Pick a service and a time — confirmation by text.</p><div class="bk-card"><ol class="bk-steps"><li>Service</li><li>Date</li><li>Time</li><li>Details</li><li>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><button type="button" class="bk-svc" data-name="On-site estimate visit" data-dur="30 min"><span class="bk-svc-name">On-site estimate visit</span><span class="bk-svc-meta">30 min · from $0</span><span class="bk-svc-blurb">We look, measure and quote — free and no pressure.</span></button><button type="button" class="bk-svc" data-name="Standard service call" data-dur="60 min"><span class="bk-svc-name">Standard service call</span><span class="bk-svc-meta">60 min · from $79</span><span class="bk-svc-blurb">Diagnostics plus a fixed quote before any work.</span></button></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><label class="bk-field"><span>Your name *</span><input type="text" id="booking-name" placeholder="Full name" autocomplete="name"></label><label class="bk-field"><span>Phone *</span><input type="tel" id="booking-phone" placeholder="(555) 123-4567" autocomplete="tel"></label><label class="bk-field"><span>Notes <em>(optional)</em></span><textarea id="booking-notes" placeholder="Anything we should know?"></textarea></label><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're booked!</h3><p class="bk-summary"></p><p class="bk-ref">Reference <strong class="bk-refcode"></strong></p><p class="bk-note">We'll call or text to confirm shortly.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking", {"closedDays": [], "hoursByDay": {}})</script></div></section>
+<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">04</div><div><p class="eyebrow reveal">Stay ahead</p><h2 class="font-display reveal">Seasonal maintenance reminders</h2></div><p class="sub reveal">Join the list for priority scheduling and seasonal reminders.</p></div><section class="followup" id="reminders"><div class="wrap"><div class="qf-panel"><h3>Seasonal maintenance reminders</h3><p class="qf-sub">Priority scheduling and seasonal maintenance reminders. No spam, ever.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Claim offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your seasonal maintenance reminders.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section></div></section>
+<section class="sect slash" id="process"><div class="wrap"><div class="sect-head"><div class="sect-num">05</div><div><p class="eyebrow reveal">Process</p><h2 class="font-display reveal">How it works</h2></div><p class="sub reveal">Three steps from first call to done.</p></div><section class="how-it-works"><div class="wrap"><h2>How it works</h2><ol class="hiw-grid"><li><h3>Tell us about the job</h3><p>Send the form with a few details — photos help us quote accurately.</p></li><li><h3>Get a fixed quote</h3><p>Clear upfront pricing, confirmed before any work begins.</p></li><li><h3>We get it done</h3><p>On time, tidy, and backed by our workmanship guarantee.</p></li></ol></div></section></div></section>
+<section class="sect slash" id="reviews"><div class="wrap"><div class="sect-head"><div class="sect-num">06</div><div><p class="eyebrow reveal">Reviews</p><h2 class="font-display reveal">What neighbors say</h2></div><p class="sub reveal">Rated 5 stars by Huntington Beach customers.</p></div><section class="reviews"><div class="wrap"><span class="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:1.75rem">Find us on Google</h2><p class="rev-src">Check our hours, photos, and customer reviews.</p><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Joseph%20Huntington%20Beach" target="_blank" rel="noopener">View on Google Maps</a></div></section></div></section>
+<section class="sect slash" id="areas"><div class="wrap"><div class="sect-head"><div class="sect-num">07</div><div><p class="eyebrow reveal">Coverage</p><h2 class="font-display reveal">Service areas</h2></div><p class="sub reveal">Proudly serving Huntington Beach and the surrounding neighborhoods.</p></div><div class="service-areas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Proudly serving Huntington Beach and surrounding areas.</span></div></div></section>
+
+<section class="about slash" id="about">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">08</div>
+      <div>
+        <p class="eyebrow reveal">Why us</p>
+        <h2 class="font-display reveal">Why Huntington Beach calls<br>The Joseph</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="reveal">The Joseph is Huntington Beach's heating, ventilating & air conditioning service team built for one thing: work that holds up. From the first call to the final walkthrough, we show up on time, price the job straight, and leave the place better than we found it.</p>
+        <p class="reveal">Every job in Huntington Beach gets a licensed pro, clean tools, and a written guarantee. That's why your neighbors keep our number on the fridge.</p>
+        <ul class="checks">
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Licensed, insured heating, ventilating & air conditioning service pros</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Upfront flat-rate pricing — no hourly creep</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Same-day and emergency appointments</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Written workmanship guarantee on every job</li>
+        </ul>
+        <div class="hero-ctas reveal">
+          <a class="btn tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Get a free quote</a>
+        </div>
+      </div>
+      <aside class="quote reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
+        <p>"Showed up on time, fixed it fast, and the price was exactly what
+        they quoted. Best heating, ventilating & air conditioning service service we've used in Huntington Beach."</p>
+        <cite>— A happy customer in Huntington Beach</cite>
+      </aside>
     </div>
   </div>
 </section>
 
+<section class="sect slash" id="visit">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">09</div>
+      <div>
+        <p class="eyebrow reveal">Find us</p>
+        <h2 class="font-display reveal">Book The Joseph<br>in Huntington Beach</h2>
+      </div>
+      <p class="sub reveal">Call for same-day service or swing by. We serve
+      Huntington Beach and the surrounding neighborhoods.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="map-frame reveal">
+        <iframe title="Map — The Joseph" src="https://www.google.com/maps?q=33.67967197,-118.00197593&z=16&output=embed" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="visit-card reveal">
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Address</strong><span>19451 Main St, Huntington Beach, CA 92648</span></div>
+        </div>
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>Hours</strong><p class="hours-var">Hours vary — <a href="tel:+16194981022" class="hours-call">call us</a> and we'll let you know when we're in.</p></div>
+        </div>
+        <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><strong>Call us</strong>
+          <a href="tel:+16194981022">+1 619-498-1022</a></div>
+        </div>
+        <div class="visit-cta">
+          <a class="btn tilt" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call now</a>
+          &nbsp;&nbsp;
+          <a class="btn btn-ghost tilt" href="https://www.google.com/maps/dir/?api=1&destination=33.67967197,-118.00197593">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer class="site-foot">
+<footer>
   <div class="wrap">
-    <a class="brand" href="#top">The <em>Joseph</em></a>
-    <p>© The Joseph · Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach · 19451 Main St, Huntington Beach</p>
+    <span>© 2026 The Joseph — Heating, Ventilating &amp; Air Conditioning Service in Huntington Beach.</span>
+    <span>Site concept preview. Not affiliated.</span>
   </div>
 </footer>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "HomeAndConstructionBusiness",
   "name": "The Joseph",
   "telephone": "+16194981022",
   "address": {
@@ -292,8 +588,9 @@ padding:4.5rem 2rem;margin-bottom:6rem;position:relative;overflow:hidden}
   }
 }
 </script>
+<div class="sticky-cta"><a class="sc-call" href="tel:+16194981022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a><a class="sc-book" href="#booking">Book Now</a></div>
+<div class="demo-badge" role="note">Demo concept — not affiliated with The Joseph<button type="button" aria-label="Dismiss demo notice" onclick="this.parentElement.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
 <script>
-
 (function(){var els=document.querySelectorAll('.reveal');
 function show(el){el.classList.add('in')}
 if(!('IntersectionObserver' in window)){els.forEach(show);return}
@@ -360,46 +657,216 @@ el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
 addEventListener('scroll',function(){if(!ticking){ticking=true;
 requestAnimationFrame(upd)}},{passive:true});upd()})();
 
-</script>
-<script>
+function initBooking(wid, cfg){
+  var root=document.getElementById(wid);
+  if(!root)return;
+  cfg=cfg||{};
+  var closedDays=cfg.closedDays||[];
+  var hoursByDay=cfg.hoursByDay||{};
+  var st={step:1,svc:null,date:null,time:null};
+  var panels=root.querySelectorAll('.bk-panel');
+  var stepLis=root.querySelectorAll('.bk-steps li');
+  var dateStrip=root.querySelector('.bk-date-strip');
+  var timeGrid=root.querySelector('.bk-time-grid');
 
-(function(){
-var orb=document.getElementById('orb');
-var hero=document.getElementById('hero');
-if(!orb||!hero||!matchMedia('(pointer:fine)').matches)return;
-var tx=0,ty=0,cx=0,cy=0,raf=null;
-function loop(){
-cx+=(tx-cx)*0.08;cy+=(ty-cy)*0.08;
-orb.style.transform='translate(calc(-50% + '+cx.toFixed(1)+'px),'+cy.toFixed(1)+'px)';
-if(Math.abs(tx-cx)>0.4||Math.abs(ty-cy)>0.4){raf=requestAnimationFrame(loop)}else{raf=null}
+  function hsh(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}return Math.abs(h)}
+  function fmtH(h){var hh=Math.floor(h),m=Math.round((h-hh)*60),ap=hh>=12?'PM':'AM',
+    h12=hh%12===0?12:hh%12;return h12+':'+(m<10?'0':'')+m+' '+ap}
+  function refCode(p){var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',s='';
+    for(var i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return p+'-'+s}
+
+  function go(n){
+    st.step=n;
+    panels.forEach(function(p){p.hidden=String(p.dataset.panel)!==String(n)});
+    stepLis.forEach(function(li,i){
+      li.classList.toggle('now',i===n-1);
+      li.classList.toggle('done',i<n-1)});
+    if(n===2)buildDates();
+    if(n===3&&!timeGrid.children.length&&st.date)buildTimes();
+  }
+  function err(msg){
+    var box=root.querySelector('.bk-panel[data-panel="'+st.step+'"] .bk-err');
+    if(box)box.textContent=msg||'';
+  }
+
+  root.querySelectorAll('.bk-svc').forEach(function(b){
+    b.addEventListener('click',function(){
+      root.querySelectorAll('.bk-svc').forEach(function(x){x.classList.remove('sel')});
+      b.classList.add('sel');st.svc={name:b.dataset.name,dur:b.dataset.dur};err('');
+    });
+  });
+
+  function buildDates(){
+    if(!dateStrip)return;
+    dateStrip.innerHTML='';
+    var today=new Date();today.setHours(0,0,0,0);
+    var days=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    for(var i=0;i<14;i++){
+      var d=new Date(today);d.setDate(d.getDate()+i);
+      var dow=d.getDay();
+      let b=document.createElement('button');
+      b.type='button';b.className='bk-date';
+      b.innerHTML='<b>'+days[dow]+'</b><span>'+d.getDate()+'</span><small>'+months[d.getMonth()]+'</small>';
+      if(closedDays.indexOf(dow)>-1){b.disabled=true;b.title='Closed'}
+      else{(function(dt){
+        b.addEventListener('click',function(){
+          dateStrip.querySelectorAll('.bk-date').forEach(function(x){x.classList.remove('sel')});
+          b.classList.add('sel');st.date=dt;st.time=null;err('');buildTimes();
+        });
+      })(d)}
+      dateStrip.appendChild(b);
+    }
+    timeGrid.innerHTML='<p class="bk-note">Pick a date to see available times.</p>';
+  }
+
+  function buildTimes(){
+    if(!timeGrid||!st.date)return;
+    timeGrid.innerHTML='';
+    var dow=st.date.getDay();
+    var hrs=hoursByDay[dow]||hoursByDay[String(dow)]||[9,17];
+    var open=hrs[0],close=hrs[1];
+    var iso=st.date.getFullYear()+'-'+('0'+(st.date.getMonth()+1)).slice(-2)+'-'+('0'+st.date.getDate()).slice(-2);
+    var anyOpen=false;
+    for(var h=open;h<close;h++){
+      let t=document.createElement('button');
+      t.type='button';t.className='bk-time';t.textContent=fmtH(h);
+      if(hsh(iso+'|'+h)%10<3){t.disabled=true;t.title='Booked'}
+      else{(function(lbl){
+        t.addEventListener('click',function(){
+          timeGrid.querySelectorAll('.bk-time').forEach(function(x){x.classList.remove('sel')});
+          t.classList.add('sel');st.time=lbl;err('');
+        });
+      })(fmtH(h));anyOpen=true}
+      timeGrid.appendChild(t);
+    }
+    if(!anyOpen)timeGrid.innerHTML='<p class="bk-note">No openings this day — try another date.</p>';
+  }
+
+  root.querySelectorAll('.bk-next').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=st.step;
+      if(n===1){if(!st.svc){err('Please choose a service to continue.');return}}
+      if(n===2){if(!st.date){err('Please pick a date.');return}}
+      if(n===3){
+        if(!st.date){go(2);return}
+        if(!st.time){err('Please pick an available time.');return}
+      }
+      if(n===4){
+        var name=root.querySelector('#'+wid+'-name'),
+            phone=root.querySelector('#'+wid+'-phone'),
+            staff=root.querySelector('#'+wid+'-staff'),
+            party=root.querySelector('#'+wid+'-party'),
+            notes=root.querySelector('#'+wid+'-notes');
+        if(!name||name.value.trim().length<2){err('Please enter your name (2+ characters).');return}
+        var digits=phone?(phone.value.replace(/\D/g,'')||''):'';
+        if(!phone||digits.length<7){err('Please enter a valid phone number (7+ digits).');return}
+        var sum=st.svc.name+(st.svc.dur?' · '+st.svc.dur:'')+' — '+
+          st.date.toDateString()+' at '+st.time;
+        var c=root.querySelector('.bk-panel[data-panel="5"]');
+        c.querySelector('.bk-refcode').textContent=refCode('BK');
+        c.querySelector('.bk-summary').textContent=sum+' · '+name.value.trim();
+        var xtra=[];
+        if(staff&&staff.value.trim())xtra.push('Staff: '+staff.value.trim());
+        if(party)xtra.push('Party: '+party.options[party.selectedIndex].text);
+        if(notes&&notes.value.trim())xtra.push('Notes: '+notes.value.trim());
+        if(xtra.length)c.querySelector('.bk-note').textContent='We\'ll call or text to confirm shortly. '+xtra.join(' · ');
+        go(5);return;
+      }
+      if(n<5)go(n+1);
+    });
+  });
+  root.querySelectorAll('.bk-back').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=parseInt(b.dataset.goto||'1',10);
+      if(b.dataset.goto)go(t);else if(st.step>1)go(st.step-1);
+    });
+  });
+  go(1);
 }
-hero.addEventListener('pointermove',function(e){
-var r=hero.getBoundingClientRect();
-tx=(e.clientX-r.left-r.width/2)*0.35;
-ty=(e.clientY-r.top-r.height/2)*0.35;
-if(!raf){raf=requestAnimationFrame(loop)}
-});
-})();
 
-</script>
-<script>
 
 (function(){
-document.querySelectorAll('[data-split]').forEach(function(el){
-var words=el.textContent.split(' ');el.textContent='';var i=0;
-words.forEach(function(word,wi){
-var w=document.createElement('span');w.className='w';
-Array.from(word).forEach(function(chr){
-var s=document.createElement('span');s.className='ch';s.textContent=chr;
-s.style.transitionDelay=(i*0.022).toFixed(3)+'s';w.appendChild(s);i++;});
-el.appendChild(w);
-if(wi<words.length-1)el.appendChild(document.createTextNode(' '));
-});
-requestAnimationFrame(function(){requestAnimationFrame(function(){
-el.classList.add('done')})});
+function refCode(p){var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',s='';
+  for(var i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return p+'-'+s}
+function fieldLabel(el){
+  var wrap=el.closest('.qf-field,.bk-field,.qf-check,.qf-radios');
+  if(wrap){var s=wrap.querySelector(':scope > span');if(s)return s.textContent.replace(/\s*\(optional\)\s*/i,'').trim()}
+  return el.name||'This field';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('form[data-form]').forEach(function(form){
+    var fieldsBox=form.querySelector('.form-fields')||form;
+    var errBox=form.querySelector('.form-err');
+    var confirmBox=form.querySelector('.form-confirm');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(errBox){errBox.hidden=true;errBox.textContent=''}
+      form.querySelectorAll('[data-bad]').forEach(function(x){x.removeAttribute('data-bad')});
+      var reqs=form.querySelectorAll('[required]');
+      var seenRadio={},ok=true,firstBad=null,msg='';
+      reqs.forEach(function(el){
+        if(el.type==='radio'){
+          if(seenRadio[el.name])return;seenRadio[el.name]=1;
+          if(!form.querySelector('input[name="'+el.name+'"]:checked')){
+            ok=false;firstBad=el;msg='Please answer: '+fieldLabel(el);return}
+          return;
+        }
+        var v=(el.value||'').trim();
+        if(!v){ok=false;firstBad=firstBad||el;msg='Please fill in: '+fieldLabel(el);return}
+        if(el.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+          ok=false;firstBad=firstBad||el;msg='Please enter a valid email address.';return}
+        if(el.type==='tel'&&(v.replace(/\D/g,'').length)<7){
+          ok=false;firstBad=firstBad||el;msg='Please enter a valid phone number (7+ digits).';return}
+      });
+      if(!ok){
+        var wrap=firstBad.closest('.qf-field,.bk-field');
+        if(wrap)wrap.setAttribute('data-bad','1');
+        if(errBox){errBox.textContent=msg;errBox.hidden=false}
+        if(firstBad&&firstBad.focus)firstBad.focus();
+        return;
+      }
+      var prefix=form.dataset.ref||'Q';
+      var refEl=form.querySelector('.qf-ref');
+      if(refEl)refEl.textContent=refCode(prefix);
+      var nm=form.querySelector('input[name="name"]'),
+          ph=form.querySelector('input[name="phone"]'),
+          em=form.querySelector('input[name="email"]');
+      var parts=[];
+      if(nm&&nm.value.trim())parts.push(nm.value.trim());
+      if(ph&&ph.value.trim())parts.push(ph.value.trim());
+      if(em&&em.value.trim())parts.push(em.value.trim());
+      var nameEl=form.querySelector('.qf-name');
+      if(nameEl&&parts.length)nameEl.textContent=parts.join(' · ');
+      if(fieldsBox)fieldsBox.hidden=true;
+      if(confirmBox)confirmBox.hidden=false;
+    });
+  });
 });
 })();
 
-</script>
+
+(function(){
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('[data-calc]').forEach(function(root){
+    var beds=root.querySelector('.wdg-beds'),
+        baths=root.querySelector('.wdg-baths'),
+        freq=root.querySelector('.wdg-freq'),
+        out=root.querySelector('.wdg-range');
+    if(!beds||!baths||!freq||!out)return;
+    var mult={'One-time':1.35,'Monthly':1.15,'Bi-weekly':1.0,'Weekly':0.85};
+    function num(v){return parseInt(String(v).replace('+',''),10)||1}
+    function upd(){
+      var base=89+25*num(beds.value)+20*num(baths.value);
+      var m=mult[freq.value]||1;
+      var lo=Math.round(base*m*0.85),hi=Math.round(base*m*1.15);
+      out.textContent='$'+lo+'–$'+hi;
+    }
+    [beds,baths,freq].forEach(function(el){el.addEventListener('change',upd)});
+    upd();
+  });
+});
+})();
+</script><script>(window.__bkQ||[]).forEach(function(a){initBooking(a[0],a[1])});window.__bkQ=[];</script>
 </body>
 </html>
