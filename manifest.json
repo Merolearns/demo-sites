@@ -543,5 +543,1095 @@
   "name": "Cafe Love Box",
   "demo_url": "https://merolearns.github.io/demo-sites/cafe-love-box/",
   "phone_e164": ""
+ },
+ "a-style-concierge-salon": {
+  "name": "A Style Concierge Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/a-style-concierge-salon/",
+  "phone_e164": "+16199155050"
+ },
+ "good-vibes-barbershop": {
+  "name": "Good Vibes Barbershop",
+  "demo_url": "https://merolearns.github.io/demo-sites/good-vibes-barbershop/",
+  "phone_e164": "+16198675879"
+ },
+ "angelina-nails-salon": {
+  "name": "Angelina Nails Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/angelina-nails-salon/",
+  "phone_e164": "+16194224033"
+ },
+ "art-s-plumbing-and-drains": {
+  "name": "Art's Plumbing and Drains",
+  "demo_url": "https://merolearns.github.io/demo-sites/art-s-plumbing-and-drains/",
+  "phone_e164": "+17609751411"
+ },
+ "escondido-plumbing-drain-co": {
+  "name": "Escondido Plumbing & Drain Co",
+  "demo_url": "https://merolearns.github.io/demo-sites/escondido-plumbing-drain-co/",
+  "phone_e164": "+14422485629"
+ },
+ "remedy-plumbing": {
+  "name": "Remedy Plumbing",
+  "demo_url": "https://merolearns.github.io/demo-sites/remedy-plumbing/",
+  "phone_e164": "+17607168860"
+ },
+ "west-coast-air-conditioning": {
+  "name": "West Coast Air Conditioning",
+  "demo_url": "https://merolearns.github.io/demo-sites/west-coast-air-conditioning/",
+  "phone_e164": "+16193454132"
+ },
+ "kerohvac-el-cajon": {
+  "name": "kerohvac El Cajon",
+  "demo_url": "https://merolearns.github.io/demo-sites/kerohvac-el-cajon/",
+  "phone_e164": "+18446109483"
+ },
+ "ms-clean": {
+  "name": "Ms Clean",
+  "demo_url": "https://merolearns.github.io/demo-sites/ms-clean/",
+  "phone_e164": "+16192109863"
+ },
+ "city-janitorial-services": {
+  "name": "City Janitorial Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/city-janitorial-services/",
+  "phone_e164": "+16152996754"
+ },
+ "manos-de-oro-cervicios-locales-y-comercial": {
+  "name": "Manos de oro cervicios locales y comercial",
+  "demo_url": "https://merolearns.github.io/demo-sites/manos-de-oro-cervicios-locales-y-comercial/",
+  "phone_e164": "+16199623453"
+ },
+ "begonegraffiti": {
+  "name": "BeGoneGraffiti",
+  "demo_url": "https://merolearns.github.io/demo-sites/begonegraffiti/",
+  "phone_e164": "+16196130112"
+ },
+ "essential-landscaping-company": {
+  "name": "Essential Landscaping Company",
+  "demo_url": "https://merolearns.github.io/demo-sites/essential-landscaping-company/",
+  "phone_e164": "+17609166212"
+ },
+ "california-specialties": {
+  "name": "California Specialties",
+  "demo_url": "https://merolearns.github.io/demo-sites/california-specialties/",
+  "phone_e164": "+17607263080"
+ },
+ "vista-handyman": {
+  "name": "Vista Handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/vista-handyman/",
+  "phone_e164": "+17604521293"
+ },
+ "acdc-electricity-group": {
+  "name": "ACDC Electricity Group",
+  "demo_url": "https://merolearns.github.io/demo-sites/acdc-electricity-group/",
+  "phone_e164": "+16197889420"
+ },
+ "current-electric": {
+  "name": "Current Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/current-electric/",
+  "phone_e164": "+15059013673"
+ },
+ "national-city-electrician-pros": {
+  "name": "National City Electrician Pros",
+  "demo_url": "https://merolearns.github.io/demo-sites/national-city-electrician-pros/",
+  "phone_e164": "+16193091557"
+ },
+ "jurassic-claws": {
+  "name": "Jurassic claws",
+  "demo_url": "https://merolearns.github.io/demo-sites/jurassic-claws/",
+  "phone_e164": "+16197913075"
+ },
+ "golden-star-heating-and-cooling-inc": {
+  "name": "Golden Star Heating and Cooling INC",
+  "demo_url": "https://merolearns.github.io/demo-sites/golden-star-heating-and-cooling-inc/",
+  "phone_e164": "+16196357346"
+ },
+ "faby-s-housekeeping": {
+  "name": "Faby's Housekeeping",
+  "demo_url": "https://merolearns.github.io/demo-sites/faby-s-housekeeping/",
+  "phone_e164": "+16196770882"
+ },
+ "handyman-services": {
+  "name": "Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-services/",
+  "phone_e164": "+15597935753"
+ },
+ "the-glam-garage-salon": {
+  "name": "The Glam Garage Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-glam-garage-salon/",
+  "phone_e164": "+16192289977"
+ },
+ "hair-by-katarina": {
+  "name": "Hair By Katarina",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-by-katarina/",
+  "phone_e164": "+16193011058"
+ },
+ "la-jolla-barbershop": {
+  "name": "La Jolla Barbershop",
+  "demo_url": "https://merolearns.github.io/demo-sites/la-jolla-barbershop/",
+  "phone_e164": "+18584595792"
+ },
+ "yenny-lee-nails": {
+  "name": "Yenny & Lee Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/yenny-lee-nails/",
+  "phone_e164": "+16192710201"
+ },
+ "cinthia-nailed-it": {
+  "name": "Cinthia Nailed It",
+  "demo_url": "https://merolearns.github.io/demo-sites/cinthia-nailed-it/",
+  "phone_e164": "+16198744995"
+ },
+ "all-in-one-cleaning": {
+  "name": "All In One Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/all-in-one-cleaning/",
+  "phone_e164": "+16194084562"
+ },
+ "catalina-s-house-cleaning": {
+  "name": "Catalina's House Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/catalina-s-house-cleaning/",
+  "phone_e164": "+16193024850"
+ },
+ "13essentials": {
+  "name": "13Essentials",
+  "demo_url": "https://merolearns.github.io/demo-sites/13essentials/",
+  "phone_e164": "+18009609344"
+ },
+ "salon-steele": {
+  "name": "Salon Steele",
+  "demo_url": "https://merolearns.github.io/demo-sites/salon-steele/",
+  "phone_e164": "+16198806706"
+ },
+ "montiel-electric": {
+  "name": "Montiel Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/montiel-electric/",
+  "phone_e164": "+16194092188"
+ },
+ "tortilleria-bakery": {
+  "name": "Tortilleria Bakery",
+  "demo_url": "https://merolearns.github.io/demo-sites/tortilleria-bakery/",
+  "phone_e164": "+17607218486"
+ },
+ "jj-carpet-care-inc": {
+  "name": "JJ Carpet Care Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/jj-carpet-care-inc/",
+  "phone_e164": "+16199573851"
+ },
+ "frank-s-plumbing-handyman-services": {
+  "name": "Frank's Plumbing & Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/frank-s-plumbing-handyman-services/",
+  "phone_e164": "+17604455409"
+ },
+ "paige-serrano-independent-stylist-inside-maverick-s-barbershop-la-jolla": {
+  "name": "Paige Serrano - independent stylist inside Maverick\u2019s Barbershop La Jolla",
+  "demo_url": "https://merolearns.github.io/demo-sites/paige-serrano-independent-stylist-inside-maverick-s-barbershop-la-jolla/",
+  "phone_e164": ""
+ },
+ "emergency-heating-and-cooling-services-el-cajon": {
+  "name": "Emergency Heating and Cooling Services El Cajon",
+  "demo_url": "https://merolearns.github.io/demo-sites/emergency-heating-and-cooling-services-el-cajon/",
+  "phone_e164": "+18584269211"
+ },
+ "besek-electric": {
+  "name": "Besek Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/besek-electric/",
+  "phone_e164": "+16196918148"
+ },
+ "valarias": {
+  "name": "valarias",
+  "demo_url": "https://merolearns.github.io/demo-sites/valarias/",
+  "phone_e164": ""
+ },
+ "arcticxpert-cooling": {
+  "name": "ArcticXpert Cooling",
+  "demo_url": "https://merolearns.github.io/demo-sites/arcticxpert-cooling/",
+  "phone_e164": ""
+ },
+ "fernando-landscaping": {
+  "name": "Fernando Landscaping",
+  "demo_url": "https://merolearns.github.io/demo-sites/fernando-landscaping/",
+  "phone_e164": ""
+ },
+ "tyk-style": {
+  "name": "TYK Style",
+  "demo_url": "https://merolearns.github.io/demo-sites/tyk-style/",
+  "phone_e164": "+13238016819"
+ },
+ "beverly-cuts": {
+  "name": "Beverly Cuts",
+  "demo_url": "https://merolearns.github.io/demo-sites/beverly-cuts/",
+  "phone_e164": "+15623904416"
+ },
+ "mimi-nails": {
+  "name": "Mimi Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/mimi-nails/",
+  "phone_e164": "+12724121076"
+ },
+ "arms-plambers": {
+  "name": "Arms Plambers",
+  "demo_url": "https://merolearns.github.io/demo-sites/arms-plambers/",
+  "phone_e164": "+13238186369"
+ },
+ "mg-heating-and-air-conditioning": {
+  "name": "MG Heating and Air Conditioning",
+  "demo_url": "https://merolearns.github.io/demo-sites/mg-heating-and-air-conditioning/",
+  "phone_e164": "+17473221826"
+ },
+ "rapid-commercial-hvac-of-burbank": {
+  "name": "Rapid Commercial HVAC of Burbank",
+  "demo_url": "https://merolearns.github.io/demo-sites/rapid-commercial-hvac-of-burbank/",
+  "phone_e164": "+12393965816"
+ },
+ "jamie-roach-debris-removal": {
+  "name": "Jamie Roach Debris Removal",
+  "demo_url": "https://merolearns.github.io/demo-sites/jamie-roach-debris-removal/",
+  "phone_e164": "+18185884348"
+ },
+ "hvac-contractors-calabasas": {
+  "name": "HVAC CONTRACTORS Calabasas",
+  "demo_url": "https://merolearns.github.io/demo-sites/hvac-contractors-calabasas/",
+  "phone_e164": "+18186383904"
+ },
+ "edison-electricians": {
+  "name": "Edison Electricians",
+  "demo_url": "https://merolearns.github.io/demo-sites/edison-electricians/",
+  "phone_e164": "+12138631268"
+ },
+ "electricians-near-me-inc": {
+  "name": "Electricians Near Me Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/electricians-near-me-inc/",
+  "phone_e164": "+13109974230"
+ },
+ "north-hollywood-fast-neighborhood-electric": {
+  "name": "North Hollywood Fast Neighborhood Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/north-hollywood-fast-neighborhood-electric/",
+  "phone_e164": "+13234179198"
+ },
+ "waters-hvac-solutions": {
+  "name": "Waters HVAC Solutions",
+  "demo_url": "https://merolearns.github.io/demo-sites/waters-hvac-solutions/",
+  "phone_e164": "+14243777673"
+ },
+ "handyman-services-of-long-beach": {
+  "name": "Handyman Services of Long Beach",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-services-of-long-beach/",
+  "phone_e164": "+15622352645"
+ },
+ "handyman-services-los-angeles": {
+  "name": "Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-services-los-angeles/",
+  "phone_e164": "+13234405755"
+ },
+ "handyman-services-garden-grove": {
+  "name": "Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-services-garden-grove/",
+  "phone_e164": "+17147524807"
+ },
+ "manila-philippine-barber-shop": {
+  "name": "Manila Philippine Barber Shop",
+  "demo_url": "https://merolearns.github.io/demo-sites/manila-philippine-barber-shop/",
+  "phone_e164": "+13236617302"
+ },
+ "pink-house-nail-spa": {
+  "name": "Pink House Nail Spa",
+  "demo_url": "https://merolearns.github.io/demo-sites/pink-house-nail-spa/",
+  "phone_e164": "+12132827778"
+ },
+ "capri-nails": {
+  "name": "Capri Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/capri-nails/",
+  "phone_e164": "+12133474476"
+ },
+ "bliss-nail": {
+  "name": "Bliss Nail",
+  "demo_url": "https://merolearns.github.io/demo-sites/bliss-nail/",
+  "phone_e164": "+12138740125"
+ },
+ "chloeism-nail": {
+  "name": "Chloeism nail",
+  "demo_url": "https://merolearns.github.io/demo-sites/chloeism-nail/",
+  "phone_e164": "+13234224300"
+ },
+ "solo-nail": {
+  "name": "Solo Nail",
+  "demo_url": "https://merolearns.github.io/demo-sites/solo-nail/",
+  "phone_e164": "+12134226868"
+ },
+ "nailbar-casey-appointments-only": {
+  "name": "Nailbar Casey -Appointments only",
+  "demo_url": "https://merolearns.github.io/demo-sites/nailbar-casey-appointments-only/",
+  "phone_e164": "+12133696030"
+ },
+ "leak-free-plumbing-rooter": {
+  "name": "Leak Free Plumbing & Rooter",
+  "demo_url": "https://merolearns.github.io/demo-sites/leak-free-plumbing-rooter/",
+  "phone_e164": "+16268401155"
+ },
+ "spic-n-span-maintenance": {
+  "name": "Spic N Span Maintenance",
+  "demo_url": "https://merolearns.github.io/demo-sites/spic-n-span-maintenance/",
+  "phone_e164": "+13239916861"
+ },
+ "asa-nails": {
+  "name": "Asa Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/asa-nails/",
+  "phone_e164": "+15106004508"
+ },
+ "tnt-electric": {
+  "name": "TNT Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/tnt-electric/",
+  "phone_e164": "+13106578681"
+ },
+ "mejiaselectricts": {
+  "name": "Mejiaselectricts",
+  "demo_url": "https://merolearns.github.io/demo-sites/mejiaselectricts/",
+  "phone_e164": "+18186052354"
+ },
+ "rosy-lavender-house-cleaning": {
+  "name": "Rosy Lavender House Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/rosy-lavender-house-cleaning/",
+  "phone_e164": "+13106210073"
+ },
+ "saint-cleaners": {
+  "name": "Saint Cleaners",
+  "demo_url": "https://merolearns.github.io/demo-sites/saint-cleaners/",
+  "phone_e164": "+16128141162"
+ },
+ "handyman-services-and-more": {
+  "name": "Handyman Services and More",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-services-and-more/",
+  "phone_e164": "+15625958936"
+ },
+ "precision-electric": {
+  "name": "Precision Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/precision-electric/",
+  "phone_e164": "+18312954636"
+ },
+ "mattco-cleaners": {
+  "name": "Mattco Cleaners",
+  "demo_url": "https://merolearns.github.io/demo-sites/mattco-cleaners/",
+  "phone_e164": ""
+ },
+ "san-honore-panaderia": {
+  "name": "San Honore Panaderia",
+  "demo_url": "https://merolearns.github.io/demo-sites/san-honore-panaderia/",
+  "phone_e164": ""
+ },
+ "hair-nail-shop": {
+  "name": "Hair & Nail Shop",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-nail-shop/",
+  "phone_e164": "+19517377060"
+ },
+ "nina-nails": {
+  "name": "Nina Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/nina-nails/",
+  "phone_e164": "+19513160441"
+ },
+ "infinity-nails": {
+  "name": "Infinity Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/infinity-nails/",
+  "phone_e164": "+19513715157"
+ },
+ "felix-hair-style": {
+  "name": "Felix Hair Style",
+  "demo_url": "https://merolearns.github.io/demo-sites/felix-hair-style/",
+  "phone_e164": "+19514648462"
+ },
+ "rays-plumbing": {
+  "name": "Rays Plumbing",
+  "demo_url": "https://merolearns.github.io/demo-sites/rays-plumbing/",
+  "phone_e164": "+19095012593"
+ },
+ "e-c-plumbing": {
+  "name": "E.C. plumbing",
+  "demo_url": "https://merolearns.github.io/demo-sites/e-c-plumbing/",
+  "phone_e164": "+19092775521"
+ },
+ "western-sequoia-corporation": {
+  "name": "Western Sequoia Corporation",
+  "demo_url": "https://merolearns.github.io/demo-sites/western-sequoia-corporation/",
+  "phone_e164": "+19099197790"
+ },
+ "c-and-b-electric": {
+  "name": "C and B Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/c-and-b-electric/",
+  "phone_e164": "+19513711644"
+ },
+ "augustine-bono-handyman-services": {
+  "name": "Augustine Bono Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/augustine-bono-handyman-services/",
+  "phone_e164": "+17608805472"
+ },
+ "thebeautysentence": {
+  "name": "Thebeautysentence",
+  "demo_url": "https://merolearns.github.io/demo-sites/thebeautysentence/",
+  "phone_e164": "+16193637198"
+ },
+ "mas-hair-and-beauty-salon": {
+  "name": "MAS Hair and Beauty Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/mas-hair-and-beauty-salon/",
+  "phone_e164": "+19516560039"
+ },
+ "afxtraclean": {
+  "name": "afxtraclean",
+  "demo_url": "https://merolearns.github.io/demo-sites/afxtraclean/",
+  "phone_e164": "+15624136357"
+ },
+ "c-e-thomas-construction": {
+  "name": "C E Thomas Construction",
+  "demo_url": "https://merolearns.github.io/demo-sites/c-e-thomas-construction/",
+  "phone_e164": "+19095140672"
+ },
+ "rbhc-cleaning": {
+  "name": "RBHC Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/rbhc-cleaning/",
+  "phone_e164": "+19097137787"
+ },
+ "champ-s-hvac-inc": {
+  "name": "Champ's HVAC Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/champ-s-hvac-inc/",
+  "phone_e164": "+19094249400"
+ },
+ "magic-maids": {
+  "name": "Magic Maids",
+  "demo_url": "https://merolearns.github.io/demo-sites/magic-maids/",
+  "phone_e164": "+19092970987"
+ },
+ "percy-and-percy-plumbing": {
+  "name": "Percy and Percy Plumbing",
+  "demo_url": "https://merolearns.github.io/demo-sites/percy-and-percy-plumbing/",
+  "phone_e164": "+19092522611"
+ },
+ "all-ways-at-your-services": {
+  "name": "All-Ways at Your Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/all-ways-at-your-services/",
+  "phone_e164": "+17607761818"
+ },
+ "fidelity-handyman-services": {
+  "name": "Fidelity Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/fidelity-handyman-services/",
+  "phone_e164": "+17606878859"
+ },
+ "california-house-cleaning-services": {
+  "name": "California House Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/california-house-cleaning-services/",
+  "phone_e164": "+16263196960"
+ },
+ "dre-s-kutz": {
+  "name": "Dre's Kutz",
+  "demo_url": "https://merolearns.github.io/demo-sites/dre-s-kutz/",
+  "phone_e164": "+15625149541"
+ },
+ "golden-beauty": {
+  "name": "Golden Beauty",
+  "demo_url": "https://merolearns.github.io/demo-sites/golden-beauty/",
+  "phone_e164": "+19092586887"
+ },
+ "hair-by-nathalie-hernandez": {
+  "name": "Hair By Nathalie Hernandez",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-by-nathalie-hernandez/",
+  "phone_e164": "+19513266135"
+ },
+ "cheyennes-vanity": {
+  "name": "Cheyennes Vanity",
+  "demo_url": "https://merolearns.github.io/demo-sites/cheyennes-vanity/",
+  "phone_e164": "+19516401976"
+ },
+ "unlimited-styles-hair-studio": {
+  "name": "Unlimited Styles Hair Studio",
+  "demo_url": "https://merolearns.github.io/demo-sites/unlimited-styles-hair-studio/",
+  "phone_e164": "+14016496104"
+ },
+ "i-nails-bar": {
+  "name": "I Nails Bar",
+  "demo_url": "https://merolearns.github.io/demo-sites/i-nails-bar/",
+  "phone_e164": "+19512561886"
+ },
+ "aleman-gardening": {
+  "name": "Aleman Gardening",
+  "demo_url": "https://merolearns.github.io/demo-sites/aleman-gardening/",
+  "phone_e164": "+19099802411"
+ },
+ "cakes-cactus": {
+  "name": "Cakes & Cactus",
+  "demo_url": "https://merolearns.github.io/demo-sites/cakes-cactus/",
+  "phone_e164": "+19144692429"
+ },
+ "karla-s-super-clean": {
+  "name": "Karla's Super Clean",
+  "demo_url": "https://merolearns.github.io/demo-sites/karla-s-super-clean/",
+  "phone_e164": "+19096593046"
+ },
+ "keystone-cleaning-services": {
+  "name": "Keystone Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/keystone-cleaning-services/",
+  "phone_e164": "+19099131881"
+ },
+ "air-temp-air-conditioning-and-heating": {
+  "name": "Air Temp Air Conditioning and Heating",
+  "demo_url": "https://merolearns.github.io/demo-sites/air-temp-air-conditioning-and-heating/",
+  "phone_e164": "+13202686166"
+ },
+ "the-notebook-cafe": {
+  "name": "The NoteBook Cafe",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-notebook-cafe/",
+  "phone_e164": "+19518230004"
+ },
+ "vimar-cleaning-services": {
+  "name": "VIMAR Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/vimar-cleaning-services/",
+  "phone_e164": "+19098274343"
+ },
+ "handyman-palm-springs": {
+  "name": "HandyMan",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-palm-springs/",
+  "phone_e164": "+17608085935"
+ },
+ "moore-s-and-jessie-s-cleaning-services": {
+  "name": "Moore's and Jessie's Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/moore-s-and-jessie-s-cleaning-services/",
+  "phone_e164": "+19096400946"
+ },
+ "baxter-electrical-contractors": {
+  "name": "Baxter Electrical Contractors",
+  "demo_url": "https://merolearns.github.io/demo-sites/baxter-electrical-contractors/",
+  "phone_e164": "+19515201100"
+ },
+ "alvaros-handyman": {
+  "name": "Alvaros handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/alvaros-handyman/",
+  "phone_e164": "+17609055153"
+ },
+ "advantage-electrical-services": {
+  "name": "Advantage Electrical Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/advantage-electrical-services/",
+  "phone_e164": "+19517377320"
+ },
+ "doc-does-that": {
+  "name": "Doc Does That",
+  "demo_url": "https://merolearns.github.io/demo-sites/doc-does-that/",
+  "phone_e164": "+12133226402"
+ },
+ "vip-handyman-and-cleaning-services": {
+  "name": "VIP Handyman and Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/vip-handyman-and-cleaning-services/",
+  "phone_e164": "+17603465207"
+ },
+ "linkage-inc": {
+  "name": "Linkage Inc.",
+  "demo_url": "https://merolearns.github.io/demo-sites/linkage-inc/",
+  "phone_e164": "+18333546524"
+ },
+ "braidsbytea": {
+  "name": "BraidsbyTea",
+  "demo_url": "https://merolearns.github.io/demo-sites/braidsbytea/",
+  "phone_e164": "+19095074971"
+ },
+ "413-hair-studio": {
+  "name": "413 Hair Studio",
+  "demo_url": "https://merolearns.github.io/demo-sites/413-hair-studio/",
+  "phone_e164": "+19516562000"
+ },
+ "corporate-clean": {
+  "name": "Corporate Clean",
+  "demo_url": "https://merolearns.github.io/demo-sites/corporate-clean/",
+  "phone_e164": ""
+ },
+ "la-beauty": {
+  "name": "LA BEAUTY",
+  "demo_url": "https://merolearns.github.io/demo-sites/la-beauty/",
+  "phone_e164": "+18134826391"
+ },
+ "spindrift-barbering-co": {
+  "name": "Spindrift Barbering Co",
+  "demo_url": "https://merolearns.github.io/demo-sites/spindrift-barbering-co/",
+  "phone_e164": "+18139096405"
+ },
+ "mv-feet-hands-care": {
+  "name": "Mv.Feet & Hands Care",
+  "demo_url": "https://merolearns.github.io/demo-sites/mv-feet-hands-care/",
+  "phone_e164": "+17272511817"
+ },
+ "cristinaxnails": {
+  "name": "Cristinaxnails",
+  "demo_url": "https://merolearns.github.io/demo-sites/cristinaxnails/",
+  "phone_e164": "+17275542954"
+ },
+ "greenside-waterworks": {
+  "name": "Greenside Waterworks",
+  "demo_url": "https://merolearns.github.io/demo-sites/greenside-waterworks/",
+  "phone_e164": "+17276587063"
+ },
+ "harbor-plumbing-solution": {
+  "name": "Harbor Plumbing Solution",
+  "demo_url": "https://merolearns.github.io/demo-sites/harbor-plumbing-solution/",
+  "phone_e164": "+17274937578"
+ },
+ "plumax-plumbing-building-handyman-services": {
+  "name": "PluMax Plumbing / Building / Handyman Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/plumax-plumbing-building-handyman-services/",
+  "phone_e164": "+17273588678"
+ },
+ "anywhere-plumbing-clearwater": {
+  "name": "Anywhere Plumbing Clearwater",
+  "demo_url": "https://merolearns.github.io/demo-sites/anywhere-plumbing-clearwater/",
+  "phone_e164": "+17275161589"
+ },
+ "ductexo-airducts-services": {
+  "name": "Ductexo AirDucts Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/ductexo-airducts-services/",
+  "phone_e164": "+19414315361"
+ },
+ "fresh-home-air-duct-experts": {
+  "name": "Fresh Home Air Duct Experts",
+  "demo_url": "https://merolearns.github.io/demo-sites/fresh-home-air-duct-experts/",
+  "phone_e164": "+19413940413"
+ },
+ "your-hvac-co": {
+  "name": "Your HVAC Co",
+  "demo_url": "https://merolearns.github.io/demo-sites/your-hvac-co/",
+  "phone_e164": "+19412338495"
+ },
+ "sarasota-cleaning-pros": {
+  "name": "Sarasota Cleaning Pros",
+  "demo_url": "https://merolearns.github.io/demo-sites/sarasota-cleaning-pros/",
+  "phone_e164": "+19414041394"
+ },
+ "red-brick-electrical-installation": {
+  "name": "Red Brick Electrical Installation",
+  "demo_url": "https://merolearns.github.io/demo-sites/red-brick-electrical-installation/",
+  "phone_e164": "+19412398903"
+ },
+ "american-quality-roofing": {
+  "name": "American Quality Roofing",
+  "demo_url": "https://merolearns.github.io/demo-sites/american-quality-roofing/",
+  "phone_e164": "+18634003203"
+ },
+ "aura-edge-roofers": {
+  "name": "Aura Edge Roofers",
+  "demo_url": "https://merolearns.github.io/demo-sites/aura-edge-roofers/",
+  "phone_e164": "+18638671973"
+ },
+ "simply-done": {
+  "name": "Simply Done",
+  "demo_url": "https://merolearns.github.io/demo-sites/simply-done/",
+  "phone_e164": "+18134458711"
+ },
+ "decontaminate-inc": {
+  "name": "Decontaminate Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/decontaminate-inc/",
+  "phone_e164": "+17272811996"
+ },
+ "ambition-hvac-llc": {
+  "name": "Ambition HVAC LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/ambition-hvac-llc/",
+  "phone_e164": "+18134458684"
+ },
+ "better-bay-handy-services-llc": {
+  "name": "Better Bay Handy Services LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/better-bay-handy-services-llc/",
+  "phone_e164": "+17279331593"
+ },
+ "new-world-construction-llc": {
+  "name": "New World Construction LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/new-world-construction-llc/",
+  "phone_e164": "+16892480795"
+ },
+ "carlos-sousa-construction": {
+  "name": "Carlos Sousa Construction",
+  "demo_url": "https://merolearns.github.io/demo-sites/carlos-sousa-construction/",
+  "phone_e164": "+17274586741"
+ },
+ "handydude-rob-llc": {
+  "name": "HandyDude Rob LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/handydude-rob-llc/",
+  "phone_e164": "+12022362722"
+ },
+ "peter-asap-handyman": {
+  "name": "Peter Asap Handyman",
+  "demo_url": "https://merolearns.github.io/demo-sites/peter-asap-handyman/",
+  "phone_e164": "+17278882871"
+ },
+ "plumbing-repairs-r-us-inc": {
+  "name": "Plumbing Repairs R Us, Inc.",
+  "demo_url": "https://merolearns.github.io/demo-sites/plumbing-repairs-r-us-inc/",
+  "phone_e164": "+17274879645"
+ },
+ "lakeland-roofing-consultants": {
+  "name": "Lakeland Roofing Consultants",
+  "demo_url": "https://merolearns.github.io/demo-sites/lakeland-roofing-consultants/",
+  "phone_e164": "+18632794604"
+ },
+ "amx-roofer": {
+  "name": "AMX ROOFER",
+  "demo_url": "https://merolearns.github.io/demo-sites/amx-roofer/",
+  "phone_e164": "+18639349993"
+ },
+ "organic-guys": {
+  "name": "Organic Guys",
+  "demo_url": "https://merolearns.github.io/demo-sites/organic-guys/",
+  "phone_e164": "+17276458229"
+ },
+ "design-landscaping-management": {
+  "name": "Design Landscaping Management",
+  "demo_url": "https://merolearns.github.io/demo-sites/design-landscaping-management/",
+  "phone_e164": "+17278073332"
+ },
+ "miggy-hair": {
+  "name": "Miggy Hair",
+  "demo_url": "https://merolearns.github.io/demo-sites/miggy-hair/",
+  "phone_e164": "+18138171523"
+ },
+ "hair-by-jasmin-otero": {
+  "name": "Hair by Jasmin Otero",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-by-jasmin-otero/",
+  "phone_e164": "+18135043822"
+ },
+ "pretty-girls-in-curls": {
+  "name": "Pretty Girls In Curls",
+  "demo_url": "https://merolearns.github.io/demo-sites/pretty-girls-in-curls/",
+  "phone_e164": "+16562393197"
+ },
+ "cross-barber-shop": {
+  "name": "Cross Barber Shop",
+  "demo_url": "https://merolearns.github.io/demo-sites/cross-barber-shop/",
+  "phone_e164": "+17278218318"
+ },
+ "the-nail-edit-collective": {
+  "name": "The Nail Edit Collective",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-nail-edit-collective/",
+  "phone_e164": "+18184474560"
+ },
+ "nails-by-mily-inside-beautiva-salon-studios": {
+  "name": "Nails by Mily (Inside Beautiva Salon Studios)",
+  "demo_url": "https://merolearns.github.io/demo-sites/nails-by-mily-inside-beautiva-salon-studios/",
+  "phone_e164": "+17274001596"
+ },
+ "ac-company": {
+  "name": "AC Company",
+  "demo_url": "https://merolearns.github.io/demo-sites/ac-company/",
+  "phone_e164": "+19413137909"
+ },
+ "good-karma-heating-and-air-llc": {
+  "name": "Good Karma Heating and Air LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/good-karma-heating-and-air-llc/",
+  "phone_e164": "+19417808967"
+ },
+ "weathertek-roofing-and-concrete": {
+  "name": "Weathertek Roofing and Concrete",
+  "demo_url": "https://merolearns.github.io/demo-sites/weathertek-roofing-and-concrete/",
+  "phone_e164": "+18632907643"
+ },
+ "florida-maids-cleaning-services": {
+  "name": "Florida Maids Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/florida-maids-cleaning-services/",
+  "phone_e164": "+18883566243"
+ },
+ "intouch-cleaning-services": {
+  "name": "InTouch Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/intouch-cleaning-services/",
+  "phone_e164": "+18479240461"
+ },
+ "7raised": {
+  "name": "7Raised",
+  "demo_url": "https://merolearns.github.io/demo-sites/7raised/",
+  "phone_e164": "+18134423260"
+ },
+ "the-pro-team": {
+  "name": "The Pro Team",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-pro-team/",
+  "phone_e164": "+19415658855"
+ },
+ "coastline-distribution": {
+  "name": "Coastline Distribution",
+  "demo_url": "https://merolearns.github.io/demo-sites/coastline-distribution/",
+  "phone_e164": "+19419554015"
+ },
+ "david-harvey-el-co-inc": {
+  "name": "David Harvey El Co Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/david-harvey-el-co-inc/",
+  "phone_e164": "+18139493713"
+ },
+ "nikki-s-lawn-care": {
+  "name": "Nikki's Lawn Care",
+  "demo_url": "https://merolearns.github.io/demo-sites/nikki-s-lawn-care/",
+  "phone_e164": "+17274856530"
+ },
+ "droid-lawn-care-llc": {
+  "name": "Droid Lawn Care LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/droid-lawn-care-llc/",
+  "phone_e164": "+17276570646"
+ },
+ "slayed-by-izzy": {
+  "name": "Slayed By Izzy",
+  "demo_url": "https://merolearns.github.io/demo-sites/slayed-by-izzy/",
+  "phone_e164": ""
+ },
+ "salon-josephine": {
+  "name": "Salon Josephine",
+  "demo_url": "https://merolearns.github.io/demo-sites/salon-josephine/",
+  "phone_e164": ""
+ },
+ "coolrestore-experts": {
+  "name": "CoolRestore Experts",
+  "demo_url": "https://merolearns.github.io/demo-sites/coolrestore-experts/",
+  "phone_e164": ""
+ },
+ "cea-merchant-banking-investors-ltd": {
+  "name": "Cea Merchant Banking Investors, Ltd.",
+  "demo_url": "https://merolearns.github.io/demo-sites/cea-merchant-banking-investors-ltd/",
+  "phone_e164": ""
+ },
+ "gulf-coast-landscape-design": {
+  "name": "Gulf Coast Landscape & Design",
+  "demo_url": "https://merolearns.github.io/demo-sites/gulf-coast-landscape-design/",
+  "phone_e164": ""
+ },
+ "marian-s-king-of-kings-salon": {
+  "name": "Marian's King of Kings Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/marian-s-king-of-kings-salon/",
+  "phone_e164": "+13525526090"
+ },
+ "marathon-mowing-company": {
+  "name": "Marathon Mowing Company",
+  "demo_url": "https://merolearns.github.io/demo-sites/marathon-mowing-company/",
+  "phone_e164": "+13212621150"
+ },
+ "shabby-to-chic-hair-boutique": {
+  "name": "Shabby to Chic Hair Boutique",
+  "demo_url": "https://merolearns.github.io/demo-sites/shabby-to-chic-hair-boutique/",
+  "phone_e164": "+13524341310"
+ },
+ "fazio-hair-palace": {
+  "name": "Fazio Hair Palace",
+  "demo_url": "https://merolearns.github.io/demo-sites/fazio-hair-palace/",
+  "phone_e164": "+14077371175"
+ },
+ "miraculous-braids": {
+  "name": "Miraculous Braids",
+  "demo_url": "https://merolearns.github.io/demo-sites/miraculous-braids/",
+  "phone_e164": "+14072211206"
+ },
+ "hair-by-richard-santos": {
+  "name": "Hair by Richard Santos",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-by-richard-santos/",
+  "phone_e164": "+14079208635"
+ },
+ "on-point-by-luena": {
+  "name": "On point by Luena",
+  "demo_url": "https://merolearns.github.io/demo-sites/on-point-by-luena/",
+  "phone_e164": "+14074048772"
+ },
+ "apopka-air-duct-cleaning-pros": {
+  "name": "Apopka Air Duct Cleaning Pros",
+  "demo_url": "https://merolearns.github.io/demo-sites/apopka-air-duct-cleaning-pros/",
+  "phone_e164": "+14076800298"
+ },
+ "bjk-cleaning-service-and-housekeeping": {
+  "name": "BJK Cleaning Service and Housekeeping",
+  "demo_url": "https://merolearns.github.io/demo-sites/bjk-cleaning-service-and-housekeeping/",
+  "phone_e164": "+14075838840"
+ },
+ "h-d-maintenance-and-clean-ups": {
+  "name": "H&D maintenance and clean ups",
+  "demo_url": "https://merolearns.github.io/demo-sites/h-d-maintenance-and-clean-ups/",
+  "phone_e164": "+16893237643"
+ },
+ "freedom-can-cleaners": {
+  "name": "Freedom Can Cleaners",
+  "demo_url": "https://merolearns.github.io/demo-sites/freedom-can-cleaners/",
+  "phone_e164": "+16892801485"
+ },
+ "global-discount-club-cleaners": {
+  "name": "Global Discount Club Cleaners",
+  "demo_url": "https://merolearns.github.io/demo-sites/global-discount-club-cleaners/",
+  "phone_e164": "+14072995688"
+ },
+ "jayda-cleaning": {
+  "name": "Jayda Cleaning",
+  "demo_url": "https://merolearns.github.io/demo-sites/jayda-cleaning/",
+  "phone_e164": "+13212301917"
+ },
+ "prideking-remodeling": {
+  "name": "Prideking Remodeling",
+  "demo_url": "https://merolearns.github.io/demo-sites/prideking-remodeling/",
+  "phone_e164": "+14076012302"
+ },
+ "handyman-1758": {
+  "name": "Handyman 1758",
+  "demo_url": "https://merolearns.github.io/demo-sites/handyman-1758/",
+  "phone_e164": "+14073078587"
+ },
+ "grace-services-and-contracting": {
+  "name": "Grace Services and Contracting",
+  "demo_url": "https://merolearns.github.io/demo-sites/grace-services-and-contracting/",
+  "phone_e164": "+14074191605"
+ },
+ "sumatime-electric-llc": {
+  "name": "Sumatime Electric Llc",
+  "demo_url": "https://merolearns.github.io/demo-sites/sumatime-electric-llc/",
+  "phone_e164": "+14074884750"
+ },
+ "iron-crest-electrician": {
+  "name": "Iron Crest Electrician",
+  "demo_url": "https://merolearns.github.io/demo-sites/iron-crest-electrician/",
+  "phone_e164": "+13214910613"
+ },
+ "de-leon-s-den-image-specialist": {
+  "name": "De Leon's Den Image Specialist",
+  "demo_url": "https://merolearns.github.io/demo-sites/de-leon-s-den-image-specialist/",
+  "phone_e164": "+13218050167"
+ },
+ "iris-hair-studio-and-nails": {
+  "name": "Iris Hair Studio and Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/iris-hair-studio-and-nails/",
+  "phone_e164": "+13525523364"
+ },
+ "sod-express-nursery": {
+  "name": "Sod Express Nursery",
+  "demo_url": "https://merolearns.github.io/demo-sites/sod-express-nursery/",
+  "phone_e164": "+14073311155"
+ },
+ "naty-u-as": {
+  "name": "Naty u\u00f1as",
+  "demo_url": "https://merolearns.github.io/demo-sites/naty-u-as/",
+  "phone_e164": "+5353675029"
+ },
+ "koketas-nail-salon": {
+  "name": "Koketas Nail Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/koketas-nail-salon/",
+  "phone_e164": "+14077502742"
+ },
+ "hgr-nails": {
+  "name": "HGR Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/hgr-nails/",
+  "phone_e164": "+14077859668"
+ },
+ "cypher-electric": {
+  "name": "Cypher Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/cypher-electric/",
+  "phone_e164": "+13213531621"
+ },
+ "designs-by-doris": {
+  "name": "Designs by Doris",
+  "demo_url": "https://merolearns.github.io/demo-sites/designs-by-doris/",
+  "phone_e164": "+16032335215"
+ },
+ "hair-works": {
+  "name": "Hair Works",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-works/",
+  "phone_e164": "+13524325456"
+ },
+ "the-k-bass-effect": {
+  "name": "The K. Bass Effect",
+  "demo_url": "https://merolearns.github.io/demo-sites/the-k-bass-effect/",
+  "phone_e164": "+14075162426"
+ },
+ "pro-top-nails": {
+  "name": "Pro Top Nails",
+  "demo_url": "https://merolearns.github.io/demo-sites/pro-top-nails/",
+  "phone_e164": "+14073617745"
+ },
+ "ivy-mulero-nail-studio": {
+  "name": "Ivy Mulero Nail Studio",
+  "demo_url": "https://merolearns.github.io/demo-sites/ivy-mulero-nail-studio/",
+  "phone_e164": "+14076242229"
+ },
+ "aileen-at-the-nail-boutique": {
+  "name": "Aileen at The Nail Boutique",
+  "demo_url": "https://merolearns.github.io/demo-sites/aileen-at-the-nail-boutique/",
+  "phone_e164": "+14078736214"
+ },
+ "norbe-nails-tech": {
+  "name": "Norbe Nails Tech",
+  "demo_url": "https://merolearns.github.io/demo-sites/norbe-nails-tech/",
+  "phone_e164": "+14077091973"
+ },
+ "mary-nailtech": {
+  "name": "Mary_nailtech",
+  "demo_url": "https://merolearns.github.io/demo-sites/mary-nailtech/",
+  "phone_e164": "+14072347009"
+ },
+ "pixies-magical-corner-patisserie": {
+  "name": "Pixies Magical Corner Patisserie",
+  "demo_url": "https://merolearns.github.io/demo-sites/pixies-magical-corner-patisserie/",
+  "phone_e164": "+14075433054"
+ },
+ "met-electric": {
+  "name": "Met Electric",
+  "demo_url": "https://merolearns.github.io/demo-sites/met-electric/",
+  "phone_e164": "+14079820349"
+ },
+ "dye-pretty-by-jess": {
+  "name": "Dye Pretty by Jess",
+  "demo_url": "https://merolearns.github.io/demo-sites/dye-pretty-by-jess/",
+  "phone_e164": "+17727087707"
+ },
+ "hair-space": {
+  "name": "Hair Space",
+  "demo_url": "https://merolearns.github.io/demo-sites/hair-space/",
+  "phone_e164": "+13522418777"
+ },
+ "sweetcloudbakery": {
+  "name": "Sweetcloudbakery",
+  "demo_url": "https://merolearns.github.io/demo-sites/sweetcloudbakery/",
+  "phone_e164": "+14078082388"
+ },
+ "hvac-training-centers-inc": {
+  "name": "Hvac Training Centers Inc",
+  "demo_url": "https://merolearns.github.io/demo-sites/hvac-training-centers-inc/",
+  "phone_e164": "+17868574930"
+ },
+ "heating-cooling-unit-apopka": {
+  "name": "Heating & Cooling Unit Apopka",
+  "demo_url": "https://merolearns.github.io/demo-sites/heating-cooling-unit-apopka/",
+  "phone_e164": "+16899101021"
+ },
+ "tri-county-cleaning-solutions": {
+  "name": "Tri-County Cleaning Solutions",
+  "demo_url": "https://merolearns.github.io/demo-sites/tri-county-cleaning-solutions/",
+  "phone_e164": "+14076080692"
+ },
+ "netto-service-solution-llc": {
+  "name": "Netto Service Solution LLC",
+  "demo_url": "https://merolearns.github.io/demo-sites/netto-service-solution-llc/",
+  "phone_e164": "+12017264875"
+ },
+ "moe-cleaning-service": {
+  "name": "Moe cleaning service",
+  "demo_url": "https://merolearns.github.io/demo-sites/moe-cleaning-service/",
+  "phone_e164": "+19857135719"
+ },
+ "emilio-cesar-carrillo-lawn-services": {
+  "name": "Emilio Cesar Carrillo Lawn Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/emilio-cesar-carrillo-lawn-services/",
+  "phone_e164": "+14077929094"
+ },
+ "locks-by-aliyah": {
+  "name": "Locks by Aliyah",
+  "demo_url": "https://merolearns.github.io/demo-sites/locks-by-aliyah/",
+  "phone_e164": "+17743757181"
+ },
+ "ashleysbeautyinc": {
+  "name": "Ashleysbeautyinc",
+  "demo_url": "https://merolearns.github.io/demo-sites/ashleysbeautyinc/",
+  "phone_e164": "+16892413166"
+ },
+ "florida-cleans-elite-cleaning-services": {
+  "name": "Florida Cleans Elite Cleaning Services",
+  "demo_url": "https://merolearns.github.io/demo-sites/florida-cleans-elite-cleaning-services/",
+  "phone_e164": "+13212080348"
+ },
+ "cafe-3310": {
+  "name": "Cafe 3310",
+  "demo_url": "https://merolearns.github.io/demo-sites/cafe-3310/",
+  "phone_e164": ""
+ },
+ "woodson-support": {
+  "name": "Woodson support",
+  "demo_url": "https://merolearns.github.io/demo-sites/woodson-support/",
+  "phone_e164": ""
+ },
+ "modern-blonde-salon": {
+  "name": "Modern Blonde Salon",
+  "demo_url": "https://merolearns.github.io/demo-sites/modern-blonde-salon/",
+  "phone_e164": ""
  }
 }
