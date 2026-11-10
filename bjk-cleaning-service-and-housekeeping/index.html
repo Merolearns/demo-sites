@@ -4,15 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BJK Cleaning Service and Housekeeping — Cleaning Service in Ocoee</title>
-<meta name="description" content="BJK Cleaning Service and Housekeeping — Cleaning Service in Ocoee.">
+<meta name="description" content="A spotless home without lifting a finger at BJK Cleaning Service and Housekeeping, Cleaning Service in Ocoee (1987 Switch Grass Circle). Call +1 407-583-88">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF6B1A'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='%23fff' font-family='Arial' font-weight='bold'%3EB%3C/text%3E%3C/svg%3E">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
 line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select,textarea{font-family:inherit}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
@@ -23,6 +25,41 @@ letter-spacing:-.01em}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
 font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 .eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+/* design system: M6 tokens/components, M10 micro-interactions,
+   M26 no layout shift, M31 focus-visible, M30 reduced motion */
+:root{--ds-duration-fast:150ms;--ds-duration-med:350ms;--ds-duration-slow:900ms;
+--ds-ease:cubic-bezier(.16,1,.3,1)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn:active,.btn:hover:active{transform:scale(.98) translateY(0)}
+a,button,.bk-svc,.bk-date,.bk-time,.tilt{transition-duration:var(--ds-duration-fast)}
+.wrap .ds-link{text-decoration:none;background:linear-gradient(currentColor,currentColor)
+0 100%/0 1px no-repeat;transition:background-size var(--ds-duration-med) var(--ds-ease)}
+.wrap .ds-link:hover,.wrap .ds-link:focus-visible{background-size:100% 1px}
+.ds-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform var(--ds-duration-med) var(--ds-ease),box-shadow var(--ds-duration-med) var(--ds-ease)}
+.ds-btn:hover{transform:translateY(-3px)}
+.ds-btn:hover:active,.ds-btn:active{transform:scale(.98) translateY(0)}
+.ds-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+transition:transform var(--ds-duration-med) var(--ds-ease),border-color var(--ds-duration-med) var(--ds-ease)}
+.ds-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.ds-section{padding-block:clamp(4rem,8vw,6rem)}
+.ds-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.ds-eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+img[width][height]{height:auto}
+.map-frame iframe,iframe[src*="google.com/maps"]{aspect-ratio:16/9;width:100%;height:auto;
+min-height:280px;display:block}
+[data-plx]{will-change:transform}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.marquee-track{animation:none}
+.reveal{transition:none}
+.tilt{transform:none!important}
+.ds-reduced-motion .marquee-track{animation:none}}
 
 .reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
 transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
@@ -57,6 +94,7 @@ border-radius:var(--radius,1.25rem);padding:clamp(1.5rem,4vw,3rem)}
 .qf-head h2,.qf-head h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.25rem);
 letter-spacing:-.01em;line-height:1.15;margin-bottom:.5rem}
 .qf-sub{color:var(--muted);font-size:1rem;max-width:46ch}
+.qf-fine{color:var(--muted);font-size:.82rem;margin-top:.8rem;max-width:46ch}
 .qf-form{max-width:38rem}
 .qf-field{display:block;margin-bottom:1.1rem}
 .qf-field>span{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
@@ -288,6 +326,8 @@ border-radius:50%;border:1.5rem solid rgba(255,107,26,.10)}
 .hero h1{font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;
 line-height:.98;letter-spacing:-.015em;margin:1.4rem 0 1.2rem}
 .hero h1 .hl{color:var(--accent)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.svc-price{color:var(--accent);font-weight:700;margin-top:.6rem}
 .hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);
 max-width:36rem;margin-bottom:2.4rem}
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
@@ -312,7 +352,7 @@ color:var(--muted)}
 padding-top:7rem!important}
 /* ---- stats ---- */
 .stats{background:var(--bg2);padding:6rem 0}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.2rem}
 .stat{border:2px solid var(--line);background:var(--card);
 border-radius:var(--radius);padding:2.2rem 1.6rem;text-align:center;
 position:relative;transition:border-color .3s ease}
@@ -411,13 +451,187 @@ gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
 .sect-head{flex-direction:column;align-items:flex-start;gap:.8rem}
 .hero{padding:8rem 0 5.5rem}
 }
+/* ---- open-now badge, booking terms, photo upload, sticky bar ---- */
+.chip-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.open-now{display:inline-flex;align-items:center;border:1px solid var(--accent);
+color:var(--accent);border-radius:999px;padding:.35rem .9rem;font-size:.85rem;font-weight:700}
+.open-now.is-open{background:var(--accent);color:var(--accent-ink)}
+.visit-row .open-now{margin-bottom:.6rem}
+.bk-terms{margin-top:1rem;font-size:.85rem;color:var(--muted)}
+.bk-terms summary{cursor:pointer;font-weight:600}
+.bk-terms p{margin-top:.5rem;max-width:60ch}
+.qf-thumbs{display:flex;flex-wrap:wrap;gap:.6rem}
+.qf-thumb{width:6rem;display:flex;flex-direction:column;gap:.3rem}
+.qf-thumb img{width:6rem;height:6rem;object-fit:cover;border-radius:var(--radius);
+border:1px solid var(--line)}
+.qf-thumb button{min-height:44px;font:inherit;font-size:.8rem;background:transparent;
+color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);cursor:pointer}
+.qf-photo-msg{font-size:.9rem;font-weight:600;color:var(--accent);margin:.5rem 0}
+.qf-photo-msg:empty{display:none}
+.qf-photo-note{font-size:.82rem;color:var(--muted);margin-bottom:1.1rem}
+footer a{color:var(--accent)}
+.sc-dismiss,.sc-reopen{display:none}
+@media (max-width:767px){
+.sc-dismiss{display:flex;flex:none;width:44px;height:44px;align-self:center;
+align-items:center;justify-content:center;background:transparent;color:var(--muted);
+border:1px solid var(--line);border-radius:var(--radius);cursor:pointer}
+.sc-dismiss svg{width:1rem;height:1rem}
+body.no-sticky{padding-bottom:0}
+body.no-sticky .sticky-cta{display:none}
+body.no-sticky .demo-badge{bottom:5.25rem}
+.sc-reopen.show{display:flex;position:fixed;right:1rem;bottom:1rem;z-index:60;
+min-height:44px;align-items:center;padding:0 1.2rem;border:0;border-radius:999px;
+background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;
+cursor:pointer;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+.bk-time,.bk-date,.bk-svc,.sticky-cta a,.qf-field input,.qf-field select,
+.bk-field input,.bk-field select,.btn{min-height:44px}
+}
 
 body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;
 opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 </style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
+<style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
+   attributes, plus .btn / .reveal hooks it never restyles. Every component is
+   fully visible and usable with JS off; animation states are set by the JS. */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* kinetic hero */
+.mk-kinetic{position:relative;z-index:2;padding:clamp(7rem,16vh,11rem) 0 clamp(4rem,10vh,7rem)}
+.mk-title{font-size:clamp(3rem,8.4vw,7.6rem);margin:1.4rem 0 1.6rem}
+.mk-line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.mk-line-inner,.mk-w{display:inline-block}
+.mk-c{display:inline-block;will-change:auto}
+.mk-sub{max-width:34rem;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted)}
+.mk-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+.mk-pending [data-mk-hero] .mk-line-inner,
+.mk-pending [data-mk-hero] [data-mk-hero-fade]{opacity:0}
+
+/* scroll story: stacked by default, overlaid when JS pins it (.is-pinned) */
+.mk-story{background:var(--bg2);border-block:1px solid var(--line)}
+.mk-story-pin{width:min(1200px,92vw);margin-inline:auto;padding:6rem 0;
+display:grid;grid-template-rows:auto auto 1fr;gap:2rem}
+.mk-story-head h2{font-size:clamp(2.2rem,4.6vw,3.8rem)}
+.mk-story-progress{height:2px;background:var(--line);overflow:hidden}
+.mk-story-progress i{display:block;height:100%;background:var(--accent);
+transform:scaleX(0);transform-origin:0 50%}
+.mk-story-steps{list-style:none;display:grid;gap:3rem}
+.mk-story-step{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.mk-story-art{aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+background:var(--card)}
+.mk-story-art img,.mk-story-art svg{width:100%;height:100%;object-fit:cover}
+.mk-story-num{font-family:var(--font-display);font-size:1rem;letter-spacing:.2em;color:var(--accent)}
+.mk-story-step h3{font-family:var(--font-display);font-size:clamp(1.8rem,3.2vw,2.8rem);
+line-height:1.05;margin:.6rem 0 1rem}
+.mk-story-step p{color:var(--muted);max-width:30rem}
+.mk-story.is-pinned .mk-story-pin{height:100vh;padding:clamp(5rem,12vh,7rem) 0 3rem}
+.mk-story.is-pinned .mk-story-steps{grid-template-areas:"s";min-height:0}
+.mk-story.is-pinned .mk-story-step{grid-area:s;opacity:0;transform:translateY(24px);
+pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+.mk-story.is-pinned .mk-story-step.is-active{opacity:1;transform:none;pointer-events:auto}
+.mk-story.is-pinned .mk-story-art{max-height:52vh;width:100%}
+@media (max-width:767px){.mk-story-step{grid-template-columns:1fr;gap:1.4rem}
+.mk-story-pin{padding:4rem 0}}
+
+/* 3D hero: art is the static fallback; canvas sits on top when live */
+.mk-hero3d{position:relative;overflow:clip;min-height:min(100vh,920px);display:flex;align-items:center}
+.mk-hero3d>.wrap{position:relative;z-index:2}
+.mk-hero3d-art,.mk-hero3d canvas{position:absolute;inset:0;width:100%;height:100%}
+.mk-hero3d-art{z-index:0;transition:opacity .8s ease}
+.mk-hero3d canvas{z-index:1;opacity:0;transition:opacity .8s ease}
+.mk-hero3d.is-live canvas{opacity:1}
+.mk-hero3d.is-live .mk-hero3d-art{opacity:.25}
+.mk-hero3d-art svg{position:absolute;right:4%;top:50%;width:min(46vw,640px);height:auto;
+transform:translateY(-50%);color:var(--accent)}
+.mk-art-halo{background:radial-gradient(circle at 70% 50%,transparent 21%,
+color-mix(in srgb,var(--accent) 55%,transparent) 22.5%,transparent 27%),
+radial-gradient(circle at 70% 50%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 45%)}
+.mk-art-steam{background:radial-gradient(ellipse 40% 50% at 70% 42%,
+color-mix(in srgb,var(--accent) 30%,transparent),transparent 70%)}
+.mk-art-frame{background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/48px 48px,
+linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/48px 48px}
+.mk-art-pulse,.mk-art-orb{background:radial-gradient(circle at 70% 50%,
+color-mix(in srgb,var(--accent) 28%,transparent),transparent 42%)}
+@media (max-width:767px){.mk-hero3d-art svg{right:-20%;width:90vw;opacity:.35}}
+
+/* before / after */
+.mk-ba{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;
+touch-action:pan-y;user-select:none;cursor:ew-resize;--pos:50%;border:1px solid var(--line)}
+.mk-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.mk-ba .mk-ba-after{clip-path:inset(0 0 0 var(--pos))}
+.mk-ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;
+background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.mk-ba-handle::after{content:"\2194";position:absolute;top:50%;left:50%;width:48px;height:48px;
+margin:-24px 0 0 -24px;border-radius:50%;background:#fff;color:#111;display:grid;
+place-items:center;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.mk-ba-handle:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
+.mk-ba.is-anim .mk-ba-after{transition:clip-path .3s cubic-bezier(.16,1,.3,1)}
+.mk-ba.is-anim .mk-ba-handle{transition:left .3s cubic-bezier(.16,1,.3,1)}
+.mk-ba-label{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:999px;
+background:rgba(0,0,0,.55);color:#fff;font-size:.78rem;font-weight:600;
+letter-spacing:.12em;text-transform:uppercase}
+.mk-ba-label.is-before{left:1rem}.mk-ba-label.is-after{right:1rem}
+
+/* tilt cards */
+.mk-tilt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.mk-tilt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;
+transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s ease}
+.mk-tilt.is-tilting{transition:transform .12s linear;will-change:transform;border-color:var(--accent)}
+.mk-tilt h3{font-family:var(--font-display);font-size:1.5rem;margin:.6rem 0}
+.mk-tilt p{color:var(--muted)}
+
+/* draggable gallery */
+.mk-gallery-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;
+scrollbar-width:none;padding-bottom:.5rem;cursor:grab;overscroll-behavior-x:contain}
+.mk-gallery-track::-webkit-scrollbar{display:none}
+.mk-gallery-track.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.mk-gallery-item{flex:0 0 min(78vw,380px);scroll-snap-align:start;margin:0}
+.mk-gallery-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;
+pointer-events:none}
+.mk-gallery-item figcaption{margin-top:.7rem;color:var(--muted);font-size:.92rem}
+.mk-gallery-nav{display:flex;gap:.6rem;margin-top:1.2rem}
+.mk-gallery-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);
+background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}
+.mk-gallery-nav button:hover,.mk-gallery-nav button:focus-visible{border-color:var(--accent);color:var(--accent)}
+
+/* custom cursor: only shown while html.mk-cursor is set by the JS */
+.mk-cursor-dot,.mk-cursor-ring{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;
+display:none}
+html.mk-cursor,html.mk-cursor *{cursor:none}
+html.mk-cursor input,html.mk-cursor textarea,html.mk-cursor select{cursor:auto}
+.mk-cursor .mk-cursor-dot,.mk-cursor .mk-cursor-ring{display:block}
+.mk-cursor-dot{width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--accent)}
+.mk-cursor-ring{width:32px;height:32px;margin:-16px 0 0 -16px}
+.mk-cursor-ring i{position:absolute;inset:0;border:1.5px solid var(--accent);border-radius:50%;
+transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .35s ease}
+.mk-cursor-ring span{position:absolute;inset:0;display:grid;place-items:center;
+font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+color:var(--accent-ink);opacity:0;transition:opacity .3s ease}
+.mk-cursor-ring.is-link i{transform:scale(1.5)}
+.mk-cursor-ring.is-view i{transform:scale(2.6);background:var(--accent)}
+.mk-cursor-ring.is-view span{opacity:1}
+.mk-cursor-ring.is-out{opacity:0}
+
+/* M12 transitions, CSS only */
+.mk-fade{animation:mk-fade .45s cubic-bezier(.16,1,.3,1) both}
+details[open]>:not(summary){animation:mk-fade .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes mk-fade{from{opacity:0;transform:translateY(8px)}}
+
+/* M30: reduced motion, by media query or ?force-reduced=1 (html.mk-reduced) */
+html.mk-reduced *,html.mk-reduced *::before,html.mk-reduced *::after{
+animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.mk-reduced .reveal{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.mk-fade,details[open]>:not(summary){animation:none}}
+</style>
+<script>(function(d){var r=/[?&]force-reduced/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(r?'mk-reduced':'mk-pending');setTimeout(function(){d.classList.remove('mk-pending')},2500)})(document.documentElement)</script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
 </head>
 <body>
+<div class="mk-cursor-dot" aria-hidden="true"></div><div class="mk-cursor-ring" aria-hidden="true"><i></i><span></span></div>
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top">BJK Cleaning Service and <em>Housekeeping</em></a>
@@ -427,23 +641,24 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 </header>
 
 <main id="top">
-<section class="hero">
+<section class="mk-hero3d" data-3d data-signature="frame"><div class="mk-hero3d-art mk-art-frame" aria-hidden="true"><svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M60 340V190L200 80l140 110v150z"/><path d="M60 190h280M100 190v150M140 190v150M180 190v150M220 190v150M260 190v150M300 190v150M200 80v110M130 135v55M270 135v55" opacity=".55"/></svg></div><div class="wrap"><section class="hero">
   <div class="hero-grid" data-plx="0.08"></div>
   <div class="hero-beacon" data-plx="-0.12"></div>
   <div class="wrap hero-inner">
     
     <p class="eyebrow reveal">Cleaning Service · Ocoee</p>
-    <h1 class="font-display reveal">BJK Cleaning Service and Housekeeping<br><span class="hl">in Ocoee</span></h1>
-    <p class="hero-sub reveal">A spotless home without lifting a finger. BJK Cleaning Service and Housekeeping handles
-    deep cleans, recurring and move-out across
-    Ocoee — on time, on price, on the books.</p>
+    <h1 class="font-display reveal">A spotless home without lifting a finger <em>in Ocoee</em> from $129 — sample price</h1>
+    <p class="hero-sub reveal">BJK Cleaning Service and Housekeeping is Ocoee&#x27;s cleaning service — a spotless home without lifting a finger. Fixed written quotes before any work starts, same-day appointments where the diary allows, and a clean-up after every job. Service calls from $129 (sample starting price — the final price is confirmed on site). Reach us at 1987 Switch Grass Circle, Ocoee — Open Mon–Sat 7:00 AM–8:00 PM.</p>
     <div class="hero-ctas reveal">
-      <a class="btn tilt" href="#estimate">Get an instant estimate</a>
+      <a class="btn tilt" href="#estimate">Get my fixed quote</a>
       <a class="btn btn-outline tilt" href="tel:+14075838840"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call us</a>
     </div>
-    <p class="rating-chip reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p>
+    <div class="chip-row reveal">
+      <p class="rating-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p>
+      <p class="open-now" data-open-now>Call for hours</p>
+    </div>
   </div>
-</section>
+</section></div></section>
 
 <div class="band marquee" aria-hidden="true">
   <div class="marquee-track"><span><b>//</b> A spotless home without lifting a finger</span><span><b>//</b> Deep house cleaning</span><span><b>//</b> Recurring home service</span><span><b>//</b> Move-in / move-out cleans</span><span><b>//</b> Kitchen &amp; bath detailing</span><span><b>//</b> Window &amp; blind cleaning</span><span><b>//</b> A spotless home without lifting a finger</span><span><b>//</b> Deep house cleaning</span><span><b>//</b> Recurring home service</span><span><b>//</b> Move-in / move-out cleans</span><span><b>//</b> Kitchen &amp; bath detailing</span><span><b>//</b> Window &amp; blind cleaning</span></div>
@@ -451,20 +666,7 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 
 <section class="stats slash">
   <div class="wrap">
-    <div class="stats-grid" data-stagger>
-      <div class="stat reveal">
-        <div class="num"><span data-count="1200" data-suffix="+">0</span></div>
-        <div class="lbl">Jobs completed</div>
-      </div>
-      <div class="stat reveal">
-        <div class="num"><span data-count="5" data-decimals="2">0</span><span class="mini-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
-        <div class="lbl">Google rating</div>
-      </div>
-      <div class="stat reveal">
-        <div class="num"><span data-count="60" data-suffix=" min">0</span></div>
-        <div class="lbl">Avg. response time</div>
-      </div>
-    </div>
+    <div class="stats-grid" data-stagger><div class="stat reveal"><div class="num"><span data-count="4" data-decimals="0">0</span></div><div class="lbl">Bookable services</div></div><div class="stat reveal"><div class="num"><span data-count="6" data-decimals="0">0</span></div><div class="lbl">Days open per week</div></div></div>
   </div>
 </section>
 
@@ -474,21 +676,21 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="sect-num">01</div>
       <div>
         <p class="eyebrow reveal">What we do</p>
-        <h2 class="font-display reveal">Cleaning Service in Ocoee</h2>
+        <h2 class="font-display reveal">Starting prices, <em>fixed quotes.</em></h2>
       </div>
       <p class="sub reveal">Every service below is priced upfront and backed by our
       workmanship guarantee. No surprises — just trade work done right.</p>
     </div>
-    <div class="svc-grid" data-stagger><div class="svc reveal"><span class="n">01</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Deep house cleaning</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Recurring home service</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">03</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Move-in / move-out cleans</h3><p>Booked fast, done right, backed in writing.</p></div><div class="svc reveal"><span class="n">04</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Kitchen &amp; bath detailing</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">05</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Window &amp; blind cleaning</h3><p>Licensed pros with the right tools for the job.</p></div><div class="svc reveal"><span class="n">06</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Post-renovation cleanup</h3><p>Booked fast, done right, backed in writing.</p></div></div>
+    <div class="svc-grid" data-stagger><div class="svc reveal"><span class="n">01</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Deep house cleaning</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Recurring home service</h3><p>The right tools for the job, every time.</p></div><div class="svc reveal"><span class="n">03</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Move-in / move-out cleans</h3><p>Booked fast, done right, backed in writing.</p></div><div class="svc reveal"><span class="n">04</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Kitchen &amp; bath detailing</h3><p>Upfront pricing and a clean finish, every time.</p></div><div class="svc reveal"><span class="n">05</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Window &amp; blind cleaning</h3><p>The right tools for the job, every time.</p></div><div class="svc reveal"><span class="n">06</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Post-renovation cleanup</h3><p>Booked fast, done right, backed in writing.</p></div><div class="svc reveal"><span class="n">07</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Bigger jobs &amp; projects</h3><p>For homeowners in Ocoee who want cleaner work done right the first time. Replacements, remodels and full projects are quoted after a free on-site visit — fixed written price, written schedule, no hourly creep.</p><p class="svc-price">Fixed quote · Quoted per job</p></div></div>
   </div>
 </section>
 
 <section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">02</div><div><p class="eyebrow reveal">Instant estimate</p><h2 class="font-display reveal">What will it cost?</h2></div><p class="sub reveal">Slide to your home's size — honest starting-at pricing, no email required to see it.</p></div><section class="wdg-est" id="estimate"><div class="wrap"><h2>Instant estimate</h2><div class="wdg-est-grid" data-calc><div class="bk-card"><label class="bk-field"><span>Bedrooms</span><select class="wdg-beds"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select></label><label class="bk-field"><span>Bathrooms</span><select class="wdg-baths"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select></label><label class="bk-field"><span>Frequency</span><select class="wdg-freq"><option>One-time</option><option>Monthly</option><option>Bi-weekly</option><option>Weekly</option></select></label></div><div class="bk-card"><p class="bk-sub">Your estimated range</p><p class="wdg-range">$—</p><a class="btn" href="#booking">Book this clean <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div></div></section></div></section>
-<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">03</div><div><p class="eyebrow reveal">Scheduling</p><h2 class="font-display reveal">Book your clean</h2></div><p class="sub reveal">Pick a clean and a time — same crew, checklisted, guaranteed.</p></div><section class="booking" id="booking"><div class="wrap"><h2>Book your clean</h2><p class="bk-sub">Pick a clean and a time that works — confirmation by text.</p><div class="bk-card"><ol class="bk-steps"><li>Service</li><li>Date</li><li>Time</li><li>Details</li><li>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><button type="button" class="bk-svc" data-name="Deep clean" data-dur="3–5 hrs"><span class="bk-svc-name">Deep clean</span><span class="bk-svc-meta">3–5 hrs · from $199</span><span class="bk-svc-blurb">Top-to-bottom detail: baseboards, grout, inside appliances.</span></button><button type="button" class="bk-svc" data-name="Recurring clean" data-dur="2–3 hrs"><span class="bk-svc-name">Recurring clean</span><span class="bk-svc-meta">2–3 hrs · from $129</span><span class="bk-svc-blurb">Weekly, biweekly or monthly — same crew each visit.</span></button><button type="button" class="bk-svc" data-name="Move-in / move-out clean" data-dur="4–6 hrs"><span class="bk-svc-name">Move-in / move-out clean</span><span class="bk-svc-meta">4–6 hrs · from $249</span><span class="bk-svc-blurb">Empty-home detail that passes landlord walkthroughs.</span></button><button type="button" class="bk-svc" data-name="Post-renovation clean" data-dur="4–6 hrs"><span class="bk-svc-name">Post-renovation clean</span><span class="bk-svc-meta">4–6 hrs · from $279</span><span class="bk-svc-blurb">Fine dust, debris and residue removed after the work.</span></button></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><label class="bk-field"><span>Your name *</span><input type="text" id="booking-name" placeholder="Full name" autocomplete="name"></label><label class="bk-field"><span>Phone *</span><input type="tel" id="booking-phone" placeholder="(555) 123-4567" autocomplete="tel"></label><label class="bk-field"><span>Notes <em>(optional)</em></span><textarea id="booking-notes" placeholder="Anything we should know?"></textarea></label><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're booked!</h3><p class="bk-summary"></p><p class="bk-ref">Reference <strong class="bk-refcode"></strong></p><p class="bk-note">We'll call or text to confirm shortly.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking", {"closedDays": [0], "hoursByDay": {"1": [7, 20], "2": [7, 20], "3": [7, 20], "4": [7, 20], "5": [7, 20], "6": [7, 20]}})</script><p class="plan-note reveal"><strong>Recurring plans save 15%</strong> vs one-time deep cleans — pick weekly, biweekly or monthly at booking and the discount applies automatically.</p></div></section>
-<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">04</div><div><p class="eyebrow reveal">First-timer offer</p><h2 class="font-display reveal">15% off your first recurring clean</h2></div><p class="sub reveal">New to recurring service? Get the discount code by email.</p></div><section class="followup" id="first-clean"><div class="wrap"><div class="qf-panel"><h3>15% off your first recurring clean</h3><p class="qf-sub">Join the list and we&#x27;ll send your 15%-off code for your first recurring clean.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Claim offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your 15% off your first recurring clean.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section></div></section>
+<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">03</div><div><p class="eyebrow reveal">Scheduling</p><h2 class="font-display reveal">Book your clean</h2></div><p class="sub reveal">Pick a clean and a time — same crew, checklisted, guaranteed.</p></div><section class="booking" id="booking"><div class="wrap"><h2>Book your clean</h2><p class="bk-sub">Pick a clean and a time that works — confirmation by text.</p><div class="bk-card"><ol class="bk-steps"><li>Service</li><li>Date</li><li>Time</li><li>Details</li><li>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><button type="button" class="bk-svc" data-name="Deep clean" data-dur="3–5 hrs"><span class="bk-svc-name">Deep clean</span><span class="bk-svc-meta">3–5 hrs · from $199</span><span class="bk-svc-blurb">Top-to-bottom detail: baseboards, grout, inside appliances.</span></button><button type="button" class="bk-svc" data-name="Recurring clean" data-dur="2–3 hrs"><span class="bk-svc-name">Recurring clean</span><span class="bk-svc-meta">2–3 hrs · from $129</span><span class="bk-svc-blurb">Weekly, biweekly or monthly — same crew each visit.</span></button><button type="button" class="bk-svc" data-name="Move-in / move-out clean" data-dur="4–6 hrs"><span class="bk-svc-name">Move-in / move-out clean</span><span class="bk-svc-meta">4–6 hrs · from $249</span><span class="bk-svc-blurb">Empty-home detail that passes landlord walkthroughs.</span></button><button type="button" class="bk-svc" data-name="Post-renovation clean" data-dur="4–6 hrs"><span class="bk-svc-name">Post-renovation clean</span><span class="bk-svc-meta">4–6 hrs · from $279</span><span class="bk-svc-blurb">Fine dust, debris and residue removed after the work.</span></button></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><label class="bk-field"><span>Your name *</span><input type="text" id="booking-name" placeholder="Full name" autocomplete="name"></label><label class="bk-field"><span>Phone *</span><input type="tel" id="booking-phone" placeholder="(555) 123-4567" autocomplete="tel"></label><label class="bk-field"><span>Notes <em>(optional)</em></span><textarea id="booking-notes" placeholder="Anything we should know?"></textarea></label><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're booked!</h3><p class="bk-summary"></p><p class="bk-ref">Reference <strong class="bk-refcode"></strong></p><p class="bk-note">We'll call or text to confirm shortly.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking", {"closedDays": [0], "hoursByDay": {"1": [7, 20], "2": [7, 20], "3": [7, 20], "4": [7, 20], "5": [7, 20], "6": [7, 20]}})</script><details class="bk-terms"><summary>Booking terms &amp; cancellation</summary><p>Demo booking — no payment is taken on this page. Free cancellation up to 24 hours before your appointment; please call +1 407-583-8840 to change or cancel. Any deposit the business takes is confirmed by phone, never charged here.</p></details><p class="plan-note reveal"><strong>Recurring plans save 15%</strong> vs one-time deep cleans — pick weekly, biweekly or monthly at booking and the discount applies automatically.</p></div></section>
+<section class="sect slash"><div class="wrap"><div class="sect-head"><div class="sect-num">04</div><div><p class="eyebrow reveal">First-timer offer</p><h2 class="font-display reveal">15% off your first recurring clean</h2></div><p class="sub reveal">New to recurring service? Get the discount code by email.</p></div><section class="followup" id="first-clean"><div class="wrap"><div class="qf-panel"><h3>15% off your first recurring clean</h3><p class="qf-sub">Join the list and we&#x27;ll send your 15%-off code for your first recurring clean.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Get my 15% off code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your 15% off your first recurring clean.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section></div></section>
 <section class="sect slash" id="process"><div class="wrap"><div class="sect-head"><div class="sect-num">05</div><div><p class="eyebrow reveal">Process</p><h2 class="font-display reveal">How it works</h2></div><p class="sub reveal">Three steps to a spotless home.</p></div><section class="how-it-works"><div class="wrap"><h2>How it works</h2><ol class="hiw-grid"><li><h3>Tell us about your home</h3><p>Beds, baths and frequency — the estimator takes about 30 seconds.</p></li><li><h3>Get an instant price range</h3><p>Honest starting-at pricing, confirmed as a fixed quote before we start.</p></li><li><h3>We clean</h3><p>Same crew, checklisted top to bottom, satisfaction guaranteed.</p></li></ol></div></section></div></section>
-<section class="sect slash" id="reviews"><div class="wrap"><div class="sect-head"><div class="sect-num">06</div><div><p class="eyebrow reveal">Reviews</p><h2 class="font-display reveal">What neighbors say</h2></div><p class="sub reveal">Rated 5 stars by Ocoee homeowners.</p></div><section class="reviews"><div class="wrap"><span class="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:1.75rem">Find us on Google</h2><p class="rev-src">Check our hours, photos, and customer reviews.</p><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=BJK%20Cleaning%20Service%20and%20Housekeeping%20Ocoee" target="_blank" rel="noopener">View on Google Maps</a></div></section></div></section>
-<section class="sect slash" id="areas"><div class="wrap"><div class="sect-head"><div class="sect-num">07</div><div><p class="eyebrow reveal">Coverage</p><h2 class="font-display reveal">Service areas</h2></div><p class="sub reveal">Proudly serving Ocoee and the surrounding neighborhoods.</p></div><div class="service-areas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Proudly serving Ocoee and surrounding areas.</span></div></div></section>
+<section class="sect slash" id="reviews"><div class="wrap"><div class="sect-head"><div class="sect-num">06</div><div><p class="eyebrow reveal">Reviews</p><h2 class="font-display reveal">What neighbors say</h2></div><p class="sub reveal">See what Ocoee customers say on Google.</p></div><section class="reviews"><div class="wrap"><span class="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:1.75rem">Find us on Google</h2><p class="rev-src">Check our hours, photos, and customer reviews.</p><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=BJK%20Cleaning%20Service%20and%20Housekeeping%20Ocoee" target="_blank" rel="noopener">View on Google Maps</a></div></section></div></section>
+<section class="sect slash" id="areas"><div class="wrap"><div class="sect-head"><div class="sect-num">07</div><div><p class="eyebrow reveal">Coverage</p><h2 class="font-display reveal">Service areas</h2></div><p class="sub reveal">BJK Cleaning Service and Housekeeping works across Ocoee and nearby areas. Call and we'll confirm we cover you.</p></div><div class="service-areas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Proudly serving Ocoee and surrounding areas.</span></div></div></section>
 
 <section class="about slash" id="about">
   <div class="wrap">
@@ -502,22 +704,20 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
     <div class="about-grid">
       <div class="about-copy">
         <p class="reveal">BJK Cleaning Service and Housekeeping is Ocoee's cleaning service team built for one thing: work that holds up. From the first call to the final walkthrough, we show up on time, price the job straight, and leave the place better than we found it.</p>
-        <p class="reveal">Every job in Ocoee gets a licensed pro, clean tools, and a written guarantee. That's why your neighbors keep our number on the fridge.</p>
+        <p class="reveal">Ask about licensing, insurance and our workmanship guarantee — we'll show you the paperwork and confirm the terms before any work starts.</p>
         <ul class="checks">
-          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Licensed, insured cleaning service pros</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ask about licensing and insurance — we'll show you the paperwork before any work starts.</li>
           <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Upfront flat-rate pricing — no hourly creep</li>
           <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Same-day and emergency appointments</li>
-          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Written workmanship guarantee on every job</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Yes — every job is backed by our workmanship guarantee. If something we fixed fails, we come back and make it right.</li>
         </ul>
         <div class="hero-ctas reveal">
           <a class="btn tilt" href="tel:+14075838840"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Get a free quote</a>
         </div>
       </div>
       <aside class="quote reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
-        <p>"Showed up on time, fixed it fast, and the price was exactly what
-        they quoted. Best cleaning service service we've used in Ocoee."</p>
-        <cite>— A happy customer in Ocoee</cite>
+        <p>We show up when we say, price the job before we start, and confirm
+        every price with you before any work begins.</p>
       </aside>
     </div>
   </div>
@@ -544,7 +744,7 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
           <div><strong>Address</strong><span>1987 Switch Grass Circle, Ocoee, FL 34761</span></div>
         </div>
         <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div><strong>Hours</strong><table class="hours"><tbody><tr data-dow="1"><td>Monday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="2"><td>Tuesday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>7:00 AM – 8:00 PM</td></tr></tbody></table></div>
+          <div><strong>Hours</strong><p class="open-now" data-open-now>Call for hours</p><table class="hours"><tbody><tr data-dow="1"><td>Monday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="2"><td>Tuesday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>7:00 AM – 8:00 PM</td></tr></tbody></table></div>
         </div>
         <div class="visit-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <div><strong>Call us</strong>
@@ -564,6 +764,7 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 <footer>
   <div class="wrap">
     <span>© 2026 BJK Cleaning Service and Housekeeping — Cleaning Service in Ocoee.</span>
+    <span>BJK Cleaning Service and Housekeeping · 1987 Switch Grass Circle, Ocoee, FL 34761 · <a href="tel:+14075838840">+1 407-583-8840</a></span>
     <span>Site concept preview. Not affiliated.</span>
   </div>
 </footer>
@@ -588,7 +789,7 @@ opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
   }
 }
 </script>
-<div class="sticky-cta"><a class="sc-call" href="tel:+14075838840"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a><a class="sc-book" href="#booking">Book Now</a></div>
+<div class="sticky-cta"><a class="sc-call" href="tel:+14075838840"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a><a class="sc-book" href="#estimate">Get my fixed quote</a><button type="button" class="sc-dismiss" aria-label="Dismiss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><button type="button" class="sc-reopen">Get my fixed quote</button>
 <div class="demo-badge" role="note">Demo concept — not affiliated with BJK Cleaning Service and Housekeeping<button type="button" aria-label="Dismiss demo notice" onclick="this.parentElement.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
 <script>
 (function(){var els=document.querySelectorAll('.reveal');
@@ -626,6 +827,7 @@ els.forEach(function(el){io.observe(el);});
 
 
 (function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 if(!matchMedia('(pointer:fine)').matches)return;
 var cards=document.querySelectorAll('.tilt');
 for(var i=0;i<cards.length;i++)(function(el){
@@ -645,7 +847,8 @@ setTimeout(function(){el.style.transition=''},600);
 })();
 
 
-(function(){var els=document.querySelectorAll('[data-plx]');
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=document.querySelectorAll('[data-plx]');
 if(!els.length||!('requestAnimationFrame' in window))return;
 var ticking=false;
 function upd(){ticking=false;var vh=innerHeight;
@@ -656,6 +859,12 @@ off=(r.top+r.height/2-vh/2)*sp;
 el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
 addEventListener('scroll',function(){if(!ticking){ticking=true;
 requestAnimationFrame(upd)}},{passive:true});upd()})();
+
+
+(function(){if(!window.matchMedia)return;
+var m=matchMedia('(prefers-reduced-motion: reduce)'),h=document.documentElement;
+function s(){h.classList.toggle('ds-reduced-motion',m.matches)}s();
+if(m.addEventListener)m.addEventListener('change',s);else if(m.addListener)m.addListener(s)})();
 
 function initBooking(wid, cfg){
   var root=document.getElementById(wid);
@@ -867,6 +1076,774 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 })();
+
+(function(){
+var D=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function mins(s){var m=/(\d{1,2}):(\d{2})\s*([AP])M/i.exec(s);if(!m)return null;
+  return (+m[1]%12+(/p/i.test(m[3])?12:0))*60+ +m[2]}
+document.addEventListener('DOMContentLoaded',function(){
+  var els=document.querySelectorAll('[data-open-now]');if(!els.length)return;
+  var days={},any=false;
+  document.querySelectorAll('.hours tr[data-dow]').forEach(function(r){
+    var t=r.cells[1]&&r.cells[1].textContent.match(/\d{1,2}:\d{2}\s*[AP]M/gi);
+    if(!t||t.length<2)return;var o=mins(t[0]),c=mins(t[1]);
+    if(c<=o)c+=1440;
+    days[+r.dataset.dow]={o:o,c:c,os:t[0],cs:t[1]};any=true});
+  var msg='Call for hours';
+  if(any){var d=new Date(),dow=d.getDay(),now=d.getHours()*60+d.getMinutes(),td=days[dow];
+    if(td&&now<td.o)msg='Opens today at '+td.os;
+    else if(td&&now<td.c)msg='Open now · Closes '+td.cs;
+    else for(var k=1;k<=7;k++){var n=days[(dow+k)%7];
+      if(n){msg='Closed · Opens '+D[(dow+k)%7]+' '+n.os;break}}}
+  els.forEach(function(el){el.textContent=msg;el.classList.toggle('is-open',/^Open now/.test(msg))});
+});
+})();
+
+(function(){
+document.addEventListener('DOMContentLoaded',function(){
+  var bar=document.querySelector('.sticky-cta'),pill=document.querySelector('.sc-reopen');
+  if(bar&&pill){
+    bar.querySelector('.sc-dismiss').addEventListener('click',function(){
+      document.body.classList.add('no-sticky');pill.classList.add('show')});
+    pill.addEventListener('click',function(){
+      document.body.classList.remove('no-sticky');pill.classList.remove('show')});
+  }
+  document.querySelectorAll('.qf-form').forEach(function(form){
+    var inp=form.querySelector('input[type=file]');if(!inp)return;
+    var box=form.querySelector('.qf-thumbs'),msg=form.querySelector('.qf-photo-msg'),files=[];
+    function count(){return files.length+(files.length===1?' photo':' photos')+' attached'}
+    function draw(note){box.innerHTML='';
+      files.forEach(function(f,i){var w=document.createElement('div');w.className='qf-thumb';
+        var img=document.createElement('img');img.src=f.url;img.alt=f.file.name;
+        var b=document.createElement('button');b.type='button';b.textContent='Remove';
+        b.setAttribute('aria-label','Remove photo '+(i+1));
+        b.addEventListener('click',function(){URL.revokeObjectURL(f.url);files.splice(i,1);draw()});
+        w.appendChild(img);w.appendChild(b);box.appendChild(w)});
+      msg.textContent=note||(files.length?count():'')}
+    inp.addEventListener('change',function(){var full=false;
+      Array.prototype.forEach.call(inp.files,function(file){
+        if(files.length>=5){full=true;return}
+        files.push({file:file,url:URL.createObjectURL(file)})});
+      inp.value='';draw(full?'Up to 5 photos — remove one to add another.':'')});
+    // registered after JS_FORMS' handler, so the confirm panel is already shown on success
+    form.addEventListener('submit',function(){
+      var done=form.querySelector('.qf-photo-done'),conf=form.querySelector('.form-confirm');
+      if(!conf.hidden&&files.length){done.textContent=count()+' to your request.';done.hidden=false}});
+  });
+});
+})();
 </script><script>(window.__bkQ||[]).forEach(function(a){initBooking(a[0],a[1])});window.__bkQ=[];</script>
+<script>/* MotionKit runtime. Plain IIFE, no build step. Needs gsap + ScrollTrigger
+   (and optionally Lenis) loaded with defer; three.js is imported lazily only
+   when a .mk-hero3d[data-3d] exists and the device can take it. */
+(function () {
+  "use strict";
+  var MK = (window.MotionKit = {});
+  var doc = document.documentElement;
+  var qs = location.search;
+  var THREE_URL =
+    "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js";
+  var env = (MK.env = {});
+
+  function each(sel, fn, root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn);
+  }
+  function safe(name, fn) {
+    try {
+      fn();
+    } catch (e) {
+      console.warn("[MotionKit] " + name, e);
+    }
+  }
+  function detect() {
+    env.reduced =
+      /[?&]force-reduced/.test(qs) ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches;
+    env.touch =
+      /[?&]force-touch/.test(qs) ||
+      matchMedia("(pointer: coarse)").matches ||
+      !matchMedia("(hover: hover)").matches;
+    env.mobile = innerWidth < 768;
+    env.gsap = !!(window.gsap && window.ScrollTrigger);
+    try {
+      var c = document.createElement("canvas");
+      env.webgl = !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch (e) {
+      env.webgl = false;
+    }
+  }
+
+  MK.init = function (opts) {
+    opts = MK.opts = opts || {};
+    detect();
+    if (opts.threeUrl) THREE_URL = opts.threeUrl;
+    // interactions work in every mode; only animation is gated
+    safe("beforeAfter", beforeAfter);
+    safe("gallery", gallery);
+    if (env.reduced) {
+      doc.classList.add("mk-reduced");
+      each(".reveal", function (el) {
+        el.classList.add("in");
+      });
+      return ready();
+    }
+    if (env.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+      safe("smooth", smooth);
+      safe("kinetic", kinetic);
+      safe("reveals", reveals);
+      safe("stories", stories);
+    }
+    ready();
+    safe("tilt", tilt);
+    cursor();
+    (window.requestIdleCallback || setTimeout)(function () {
+      safe("hero3d", hero3d);
+    });
+  };
+  function ready() {
+    doc.classList.remove("mk-pending");
+  }
+
+  /* M8: Lenis on fine pointers only, driven by the GSAP ticker */
+  function smooth() {
+    if (env.touch || !window.Lenis) return;
+    var lenis = (MK.lenis = new Lenis({ lerp: 0.11, anchors: true }));
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function (t) {
+      lenis.raf(t * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* kinetic type: split text nodes into word > char spans, keep inline markup */
+  function split(root) {
+    var chars = [];
+    (function walk(n) {
+      Array.prototype.slice.call(n.childNodes).forEach(function (c) {
+        if (c.nodeType === 1) return walk(c);
+        if (c.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(function (w) {
+          if (!w) return;
+          if (/^\s+$/.test(w))
+            return frag.appendChild(document.createTextNode(w));
+          var ws = document.createElement("span");
+          ws.className = "mk-w";
+          ws.setAttribute("aria-hidden", "true");
+          Array.from(w).forEach(function (ch) {
+            var s = document.createElement("span");
+            s.className = "mk-c";
+            s.textContent = ch;
+            ws.appendChild(s);
+            chars.push(s);
+          });
+          frag.appendChild(ws);
+        });
+        n.replaceChild(frag, c);
+      });
+    })(root);
+    return chars;
+  }
+  MK.split = split;
+
+  function kinetic() {
+    each("[data-mk-hero]", function (h) {
+      var chars = [];
+      each(
+        ".mk-title",
+        function (t) {
+          t.setAttribute("aria-label", t.textContent.trim());
+        },
+        h,
+      );
+      each(
+        ".mk-line-inner",
+        function (el) {
+          chars = chars.concat(split(el));
+        },
+        h,
+      );
+      gsap
+        .timeline({ defaults: { ease: "expo.out" } })
+        .from(chars, {
+          yPercent: 115,
+          rotate: 6,
+          duration: 0.8,
+          stagger: 0.016,
+        })
+        .from(
+          h.querySelectorAll("[data-mk-hero-fade]"),
+          { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.08 },
+          0.25,
+        );
+    });
+  }
+
+  /* M9: [data-mk-reveal] (+ data-mk-stagger) and legacy .reveal upgrade */
+  function reveals() {
+    each("[data-mk-reveal]", function (el) {
+      var t = el.hasAttribute("data-mk-stagger") ? el.children : el;
+      gsap.from(t, {
+        autoAlpha: 0,
+        y: 28,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.08,
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    });
+    // _core.py's IntersectionObserver marks visible .reveal elements .in on load;
+    // only take over if nothing did (theme shipped without JS_REVEAL).
+    setTimeout(function () {
+      if (document.querySelector(".reveal.in")) return;
+      var legacy = document.querySelectorAll(".reveal");
+      if (!legacy.length) return;
+      ScrollTrigger.batch(legacy, {
+        start: "top 92%",
+        once: true,
+        onEnter: function (b) {
+          b.forEach(function (e) {
+            e.classList.add("in");
+          });
+        },
+      });
+    }, 400);
+  }
+
+  /* A3: pinned story; progress follows the scrollbar 1:1 and reverses */
+  function stories() {
+    if (env.mobile) return; // phones get the stacked layout + native scroll (M28)
+    each(".mk-story", function (s) {
+      var steps = s.querySelectorAll(".mk-story-step");
+      var bar = s.querySelector(".mk-story-progress i");
+      var n = steps.length,
+        cur = -1;
+      function set(i) {
+        if (i === cur) return;
+        cur = i;
+        Array.prototype.forEach.call(steps, function (st, k) {
+          st.classList.toggle("is-active", k === i);
+          st.setAttribute("aria-current", k === i ? "step" : "false");
+        });
+      }
+      s.classList.add("is-pinned");
+      set(0);
+      ScrollTrigger.create({
+        trigger: s.querySelector(".mk-story-pin"),
+        start: "top top",
+        end: "+=" + n * 100 + "%",
+        pin: true,
+        onUpdate: function (self) {
+          bar.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
+          set(Math.min(n - 1, Math.floor(self.progress * n)));
+        },
+      });
+    });
+  }
+
+  /* before/after: pointer + keyboard, ARIA slider */
+  function beforeAfter() {
+    each(".mk-ba", function (ba) {
+      var h = ba.querySelector(".mk-ba-handle"),
+        drag = false;
+      function set(p, anim) {
+        p = Math.max(0, Math.min(100, p));
+        ba.classList.toggle("is-anim", !!anim && !env.reduced);
+        ba.style.setProperty("--pos", p + "%");
+        h.setAttribute("aria-valuenow", Math.round(p));
+      }
+      function at(x) {
+        var r = ba.getBoundingClientRect();
+        return ((x - r.left) / r.width) * 100;
+      }
+      ba.addEventListener("pointerdown", function (e) {
+        drag = true;
+        ba.setPointerCapture(e.pointerId);
+        set(at(e.clientX), true);
+      });
+      ba.addEventListener("pointermove", function (e) {
+        if (drag) set(at(e.clientX));
+      });
+      ba.addEventListener("pointerup", function () {
+        drag = false;
+      });
+      ba.addEventListener("pointercancel", function () {
+        drag = false;
+      });
+      h.addEventListener("keydown", function (e) {
+        var p = +h.getAttribute("aria-valuenow");
+        var map = {
+          ArrowLeft: p - 5,
+          ArrowDown: p - 5,
+          ArrowRight: p + 5,
+          ArrowUp: p + 5,
+          PageDown: p - 20,
+          PageUp: p + 20,
+          Home: 0,
+          End: 100,
+        };
+        if (!(e.key in map)) return;
+        e.preventDefault();
+        set(map[e.key], true);
+      });
+    });
+  }
+
+  /* A4: tilt toward cursor, fine pointers only */
+  function tilt() {
+    if (env.touch) return;
+    each("[data-tilt]", function (el) {
+      var max = +el.getAttribute("data-tilt") || 8,
+        raf = 0,
+        rx = 0,
+        ry = 0;
+      el.addEventListener("pointerenter", function () {
+        el.classList.add("is-tilting");
+      });
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        ry = ((e.clientX - r.left) / r.width - 0.5) * 2 * max;
+        rx = -((e.clientY - r.top) / r.height - 0.5) * 2 * max;
+        raf =
+          raf ||
+          requestAnimationFrame(function () {
+            raf = 0;
+            el.style.transform =
+              "perspective(800px) rotateX(" +
+              rx.toFixed(2) +
+              "deg) rotateY(" +
+              ry.toFixed(2) +
+              "deg)";
+          });
+      });
+      el.addEventListener("pointerleave", function () {
+        el.classList.remove("is-tilting");
+        el.style.transform = "";
+      });
+    });
+  }
+
+  /* draggable gallery: mouse drag + momentum; touch keeps native swipe + snap */
+  function gallery() {
+    each(".mk-gallery", function (g) {
+      var t = g.querySelector(".mk-gallery-track");
+      function stepW() {
+        var c = t.firstElementChild;
+        return c
+          ? c.getBoundingClientRect().width +
+              (parseFloat(getComputedStyle(t).columnGap) || 0)
+          : 300;
+      }
+      function go(dir) {
+        t.scrollBy({
+          left: dir * stepW(),
+          behavior: env.reduced ? "auto" : "smooth",
+        });
+      }
+      g.querySelector("[data-mk-prev]").addEventListener("click", function () {
+        go(-1);
+      });
+      g.querySelector("[data-mk-next]").addEventListener("click", function () {
+        go(1);
+      });
+      t.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          go(e.key === "ArrowLeft" ? -1 : 1);
+        }
+      });
+      t.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+      });
+      if (env.touch || env.reduced) return;
+      var down = false,
+        x0,
+        s0,
+        lastX,
+        lastT,
+        v = 0,
+        raf = 0;
+      t.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse") return;
+        down = true;
+        cancelAnimationFrame(raf);
+        t.classList.add("is-drag");
+        x0 = lastX = e.clientX;
+        s0 = t.scrollLeft;
+        lastT = performance.now();
+        v = 0;
+        t.setPointerCapture(e.pointerId);
+      });
+      t.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var now = performance.now();
+        v = (e.clientX - lastX) / Math.max(1, now - lastT);
+        lastX = e.clientX;
+        lastT = now;
+        t.scrollLeft = s0 - (e.clientX - x0);
+      });
+      function release() {
+        if (!down) return;
+        down = false;
+        (function glide() {
+          v *= 0.92;
+          t.scrollLeft -= v * 16;
+          if (Math.abs(v) > 0.05) {
+            raf = requestAnimationFrame(glide);
+            return;
+          }
+          t.classList.remove("is-drag");
+          var w = stepW();
+          t.scrollTo({
+            left: Math.round(t.scrollLeft / w) * w,
+            behavior: "smooth",
+          });
+        })();
+      }
+      t.addEventListener("pointerup", release);
+      t.addEventListener("pointercancel", release);
+    });
+  }
+
+  /* M11: dot + spring ring + magnetic pull; any error restores the native cursor */
+  function cursor() {
+    var dot = document.querySelector(".mk-cursor-dot"),
+      ring = document.querySelector(".mk-cursor-ring");
+    if (env.touch || env.mobile || !dot || !ring) return;
+    function off() {
+      doc.classList.remove("mk-cursor");
+    }
+    try {
+      var x = -100,
+        y = -100,
+        rx = x,
+        ry = y,
+        raf = 0,
+        label = ring.querySelector("span");
+      function loop() {
+        rx += (x - rx) * 0.2;
+        ry += (y - ry) * 0.2;
+        ring.style.transform =
+          "translate(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px)";
+        raf =
+          Math.abs(x - rx) + Math.abs(y - ry) > 0.2
+            ? requestAnimationFrame(loop)
+            : 0;
+      }
+      addEventListener(
+        "pointermove",
+        function (e) {
+          if (e.pointerType !== "mouse") return;
+          x = e.clientX;
+          y = e.clientY;
+          dot.style.transform = "translate(" + x + "px," + y + "px)";
+          ring.classList.remove("is-out");
+          raf = raf || requestAnimationFrame(loop);
+        },
+        { passive: true },
+      );
+      document.addEventListener("pointerover", function (e) {
+        var v = e.target.closest && e.target.closest("[data-cursor]");
+        ring.classList.toggle("is-view", !!v);
+        ring.classList.toggle(
+          "is-link",
+          !v && !!e.target.closest("a,button,[data-magnetic],[role=slider]"),
+        );
+        label.textContent = v
+          ? v.getAttribute("data-cursor-label") || "View"
+          : "";
+      });
+      document.addEventListener("mouseout", function (e) {
+        if (!e.relatedTarget) ring.classList.add("is-out");
+      });
+      each(".btn,[data-magnetic]", function (el) {
+        var base = getComputedStyle(el).transition;
+        el.style.transition =
+          (base && base.indexOf("all 0s") !== 0 ? base + "," : "") +
+          "translate .35s cubic-bezier(.16,1,.3,1)";
+        el.addEventListener("pointermove", function (e) {
+          var r = el.getBoundingClientRect();
+          var dx = ((e.clientX - r.left) / r.width) * 2 - 1,
+            dy = ((e.clientY - r.top) / r.height) * 2 - 1;
+          el.style.translate =
+            (dx * 8).toFixed(1) + "px " + (dy * 8).toFixed(1) + "px";
+        });
+        el.addEventListener("pointerleave", function () {
+          el.style.translate = "";
+        });
+      });
+      doc.classList.add("mk-cursor");
+      addEventListener("error", off);
+    } catch (e) {
+      off();
+      console.warn("[MotionKit] cursor", e);
+    }
+  }
+
+  /* A1: one small WebGL signature per category */
+  function hero3d() {
+    var els = document.querySelectorAll(".mk-hero3d[data-3d]");
+    if (!els.length || env.touch || env.mobile || !env.webgl) return;
+    MK.three = MK.three || import(THREE_URL);
+    MK.three.then(
+      function (THREE) {
+        Array.prototype.forEach.call(els, function (el) {
+          safe("hero3d", function () {
+            scene3d(THREE, el);
+          });
+        });
+      },
+      function (e) {
+        console.warn("[MotionKit] three.js failed to load", e);
+      },
+    );
+  }
+
+  var MODES = { halo: 0, steam: 1, pulse: 2, orb: 3 };
+  var VERT = [
+    "uniform float uTime;uniform float uMode;uniform float uPx;attribute float aSeed;varying float vSeed;varying float vFade;",
+    "void main(){vec3 p=position;float t=uTime;vFade=1.0;",
+    "if(uMode<0.5){float a=atan(p.z,p.x)+t*(0.08+0.06*aSeed);float r=length(p.xz)*(1.0+0.04*sin(t*0.8+aSeed*6.28));",
+    "p.x=cos(a)*r;p.z=sin(a)*r;p.y+=0.08*sin(t+aSeed*12.0);}",
+    "else if(uMode<1.5){float h=mod(p.y+t*(0.25+0.35*aSeed),3.2);vFade=sin(h/3.2*3.1416);",
+    "p.y=h-1.2;p.x+=0.35*sin(h*2.2+t*0.7+aSeed*6.28)*h*0.4;p.z+=0.25*cos(h*1.7+aSeed*6.28)*h*0.4;}",
+    "else if(uMode<2.5){float b=mod(t,1.2);float beat=exp(-pow((b-0.1)*18.0,2.0))+0.6*exp(-pow((b-0.32)*18.0,2.0));",
+    "float a=atan(p.y,p.x)+t*0.15*(aSeed-0.5);float r=length(p.xy)*(1.0+0.12*beat*(0.6+aSeed));",
+    "p.x=cos(a)*r;p.y=sin(a)*r;}",
+    "else{p*=1.0+0.05*sin(t*0.9+aSeed*6.28);}",
+    "vSeed=aSeed;vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;",
+    "gl_PointSize=uPx*(0.6+aSeed)*(4.0/-mv.z);}",
+  ].join("\n");
+  var FRAG = [
+    "uniform vec3 uA;uniform vec3 uB;varying float vSeed;varying float vFade;",
+    "void main(){float d=length(gl_PointCoord-0.5);if(d>0.5)discard;",
+    "gl_FragColor=vec4(mix(uA,uB,vSeed),(1.0-d*2.0)*0.85*vFade);}",
+  ].join("\n");
+
+  function cloud(sig, n) {
+    var pos = new Float32Array(n * 3),
+      seed = new Float32Array(n),
+      i,
+      a,
+      r,
+      u;
+    for (i = 0; i < n; i++) {
+      seed[i] = Math.random();
+      a = Math.random() * Math.PI * 2;
+      u = Math.random();
+      if (sig === "halo") {
+        // tilted ring with a soft inner bloom
+        r = 1.6 + (Math.random() - 0.5) * (u < 0.8 ? 0.35 : 1.6);
+        pos.set(
+          [Math.cos(a) * r, (Math.random() - 0.5) * 0.25, Math.sin(a) * r],
+          i * 3,
+        );
+      } else if (sig === "steam") {
+        // rising column above a plate rim
+        r = Math.sqrt(u) * 0.7;
+        pos.set(
+          [Math.cos(a) * r, Math.random() * 3.2, Math.sin(a) * r * 0.5],
+          i * 3,
+        );
+      } else if (sig === "pulse") {
+        // energy ring in the view plane
+        r = 1.5 + (Math.random() - 0.5) * (u < 0.85 ? 0.18 : 0.9);
+        pos.set(
+          [Math.cos(a) * r, Math.sin(a) * r, (Math.random() - 0.5) * 0.3],
+          i * 3,
+        );
+      } else {
+        // orb: fibonacci sphere
+        var y = 1 - (i / (n - 1)) * 2,
+          rr = Math.sqrt(1 - y * y) * 1.5,
+          th = i * 2.39996;
+        pos.set([Math.cos(th) * rr, y * 1.5, Math.sin(th) * rr], i * 3);
+      }
+    }
+    return { pos: pos, seed: seed };
+  }
+
+  function houseFrame(THREE) {
+    // trades: studded wall frame + gable roof, as line segments
+    var v = [],
+      W = 1.6,
+      D = 1.1,
+      H = 1.1,
+      R = 1.9,
+      x,
+      z;
+    function L(a, b) {
+      v.push(a[0], a[1], a[2], b[0], b[1], b[2]);
+    }
+    [
+      [-W, -D],
+      [W, -D],
+      [W, D],
+      [-W, D],
+    ].forEach(function (c, k, arr) {
+      var n = arr[(k + 1) % 4];
+      L([c[0], 0, c[1]], [n[0], 0, n[1]]);
+      L([c[0], H, c[1]], [n[0], H, n[1]]);
+      L([c[0], 0, c[1]], [c[0], H, c[1]]);
+    });
+    for (x = -W + 0.4; x < W; x += 0.4) {
+      L([x, 0, -D], [x, H, -D]);
+      L([x, 0, D], [x, H, D]);
+    }
+    for (z = -D + 0.367; z < D; z += 0.367) {
+      L([-W, 0, z], [-W, H, z]);
+      L([W, 0, z], [W, H, z]);
+    }
+    L([-W, R, 0], [W, R, 0]);
+    for (x = -W; x <= W + 0.01; x += 0.4) {
+      L([x, H, -D], [x, R, 0]);
+      L([x, R, 0], [x, H, D]);
+    }
+    var pos = new Float32Array(v),
+      n = pos.length / 3,
+      off = new Float32Array(n * 3);
+    for (var s = 0; s < n; s += 2) {
+      // both ends of a segment fly in together
+      var o = [
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 6,
+      ];
+      off.set(o, s * 3);
+      off.set(o, s * 3 + 3);
+    }
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("aOff", new THREE.BufferAttribute(off, 3));
+    g.translate(0, -0.9, 0);
+    return g;
+  }
+
+  function scene3d(THREE, el) {
+    var sig = el.getAttribute("data-signature") || "orb";
+    var css = getComputedStyle(el);
+    // raw ShaderMaterial skips output color conversion, so feed sRGB values
+    var colA = new THREE.Color(
+      (css.getPropertyValue("--accent") || "#e8622c").trim(),
+    ).convertLinearToSRGB();
+    var colB = new THREE.Color(
+      (css.getPropertyValue("--ink") || "#ffffff").trim(),
+    ).convertLinearToSRGB();
+    var dpr = Math.min(devicePixelRatio || 1, 1.5);
+    var renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: false, // AA is the slowest path in software GL; DPR 1.5 keeps lines clean
+      powerPreference: "low-power",
+    });
+    renderer.setPixelRatio(dpr);
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(40, 1, 0.1, 50);
+    cam.position.set(0, 0, 7);
+    var uni = { uTime: { value: 0 }, uA: { value: colA }, uB: { value: colB } },
+      obj,
+      mat;
+    if (sig === "frame") {
+      uni.uK = { value: 0 };
+      mat = new THREE.ShaderMaterial({
+        uniforms: uni,
+        transparent: true,
+        depthWrite: false,
+        vertexShader:
+          "uniform float uK;attribute vec3 aOff;void main(){vec3 p=position+aOff*(1.0-uK);" +
+          "gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}",
+        fragmentShader:
+          "uniform vec3 uA;uniform float uK;void main(){gl_FragColor=vec4(uA,0.35+0.6*uK);}",
+      });
+      obj = new THREE.LineSegments(houseFrame(THREE), mat);
+      obj.rotation.x = 0.32;
+    } else {
+      var n = { halo: 1600, steam: 1200, pulse: 1500 }[sig] || 1400;
+      if ((devicePixelRatio || 1) > 2) n = n >> 1;
+      var c = cloud(sig, n),
+        g = new THREE.BufferGeometry();
+      g.setAttribute("position", new THREE.BufferAttribute(c.pos, 3));
+      g.setAttribute("aSeed", new THREE.BufferAttribute(c.seed, 1));
+      uni.uMode = { value: MODES[sig] || 3 };
+      uni.uPx = { value: 5 * dpr };
+      mat = new THREE.ShaderMaterial({
+        uniforms: uni,
+        vertexShader: VERT,
+        fragmentShader: FRAG,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      obj = new THREE.Points(g, mat);
+      if (sig === "halo") obj.rotation.x = 0.5;
+      if (sig === "steam") obj.position.y = -1.3;
+    }
+    scene.add(obj);
+    el.appendChild(renderer.domElement);
+    renderer.domElement.setAttribute("aria-hidden", "true");
+
+    function size() {
+      var w = el.clientWidth,
+        h = el.clientHeight;
+      renderer.setSize(w, h, false);
+      cam.aspect = w / h;
+      // keep the object right of the copy on wide screens
+      cam.setViewOffset(w, h, w > 900 ? -w * 0.2 : 0, 0, w, h);
+      cam.updateProjectionMatrix();
+    }
+    size();
+    var ro = new ResizeObserver(size);
+    ro.observe(el);
+
+    var visible = false,
+      raf = 0,
+      t0 = performance.now(),
+      mx = 0,
+      my = 0;
+    addEventListener(
+      "pointermove",
+      function (e) {
+        mx = e.clientX / innerWidth - 0.5;
+        my = e.clientY / innerHeight - 0.5;
+      },
+      { passive: true },
+    );
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      uni.uTime.value = t;
+      if (uni.uK)
+        uni.uK.value = Math.min(1, 1 - Math.pow(1 - Math.min(t / 2.4, 1), 3));
+      obj.rotation.y +=
+        ((sig === "frame" ? t * 0.25 : t * 0.05) + mx * 0.6 - obj.rotation.y) *
+        0.05;
+      cam.position.y += (-my * 0.8 - cam.position.y) * 0.05;
+      cam.lookAt(0, 0, 0);
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(frame);
+    }
+    function run() {
+      var go = visible && !document.hidden;
+      if (go && !raf) raf = requestAnimationFrame(frame);
+      if (!go && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    }
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      run();
+    }).observe(el);
+    document.addEventListener("visibilitychange", run);
+    addEventListener("pagehide", function () {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      obj.geometry.dispose();
+      mat.dispose();
+      renderer.dispose();
+    });
+    el.classList.add("is-live");
+  }
+})();
+</script><script>document.addEventListener('DOMContentLoaded',function(){MotionKit.init({"category": "trades", "signature": "frame"})})</script>
 </body>
 </html>
