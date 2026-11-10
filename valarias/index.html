@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>valarias — Bakery in Oceanside</title>
-<meta name="description" content="valarias — Bakery in Oceanside.">
+<meta name="description" content="Bread baked at dawn at valarias, Bakery in Oceanside (406 S The Strand).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23E8A33D'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='%23fff' font-family='Arial' font-weight='bold'%3EV%3C/text%3E%3C/svg%3E">
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
 line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select,textarea{font-family:inherit}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
@@ -24,6 +26,41 @@ letter-spacing:-.01em}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
 font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 .eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+
+/* design system: M6 tokens/components, M10 micro-interactions,
+   M26 no layout shift, M31 focus-visible, M30 reduced motion */
+:root{--ds-duration-fast:150ms;--ds-duration-med:350ms;--ds-duration-slow:900ms;
+--ds-ease:cubic-bezier(.16,1,.3,1)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn:active,.btn:hover:active{transform:scale(.98) translateY(0)}
+a,button,.bk-svc,.bk-date,.bk-time,.tilt{transition-duration:var(--ds-duration-fast)}
+.wrap .ds-link{text-decoration:none;background:linear-gradient(currentColor,currentColor)
+0 100%/0 1px no-repeat;transition:background-size var(--ds-duration-med) var(--ds-ease)}
+.wrap .ds-link:hover,.wrap .ds-link:focus-visible{background-size:100% 1px}
+.ds-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
+border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+box-shadow:0 12px 32px -10px var(--accent);
+transition:transform var(--ds-duration-med) var(--ds-ease),box-shadow var(--ds-duration-med) var(--ds-ease)}
+.ds-btn:hover{transform:translateY(-3px)}
+.ds-btn:hover:active,.ds-btn:active{transform:scale(.98) translateY(0)}
+.ds-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+transition:transform var(--ds-duration-med) var(--ds-ease),border-color var(--ds-duration-med) var(--ds-ease)}
+.ds-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.ds-section{padding-block:clamp(4rem,8vw,6rem)}
+.ds-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.ds-eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
+img[width][height]{height:auto}
+.map-frame iframe,iframe[src*="google.com/maps"]{aspect-ratio:16/9;width:100%;height:auto;
+min-height:280px;display:block}
+[data-plx]{will-change:transform}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.marquee-track{animation:none}
+.reveal{transition:none}
+.tilt{transform:none!important}
+.ds-reduced-motion .marquee-track{animation:none}}
 
 
 .reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
@@ -62,6 +99,7 @@ border-radius:var(--radius,1.25rem);padding:clamp(1.5rem,4vw,3rem)}
 .qf-head h2,.qf-head h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.25rem);
 letter-spacing:-.01em;line-height:1.15;margin-bottom:.5rem}
 .qf-sub{color:var(--muted);font-size:1rem;max-width:46ch}
+.qf-fine{color:var(--muted);font-size:.82rem;margin-top:.8rem;max-width:46ch}
 .qf-form{max-width:38rem}
 .qf-field{display:block;margin-bottom:1.1rem}
 .qf-field>span{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
@@ -336,11 +374,9 @@ max-width:52ch}
 border-radius:var(--radius);padding:2.6rem;position:relative}
 .quote-card svg{width:2.2rem;height:2.2rem;color:var(--accent);
 margin-bottom:1.2rem}
-.quote-card blockquote{font-family:var(--font-display);
+.quote-card .promise{font-family:var(--font-display);
 font-size:clamp(1.4rem,2.4vw,1.9rem);font-style:italic;line-height:1.35}
-.quote-card cite{display:block;margin-top:1.2rem;color:var(--muted);
-font-style:normal;font-size:.95rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem;
 margin-top:3rem}
 .stat b{display:block;font-family:var(--font-display);
 font-size:clamp(2rem,3.6vw,3rem);color:var(--accent)}
@@ -379,11 +415,199 @@ align-items:center}
 .stats{grid-template-columns:1fr 1fr}
 .section{padding:4.5rem 0}
 }
+/* ---------- open-now pill ---------- */
+.open-pill{display:inline-flex;align-items:center;padding:.45rem 1rem;
+border-radius:999px;background:var(--accent);color:var(--accent-ink);
+font-size:.88rem;font-weight:600;margin:0 0 .8rem}
+.hero .open-pill{margin:.6rem 0 0 .6rem}
+/* ---------- booking terms ---------- */
+.bk-terms{margin-top:1.4rem;color:var(--muted);font-size:.88rem}
+.bk-terms summary{cursor:pointer;color:var(--ink)}
+.bk-terms p{margin-top:.6rem;max-width:70ch}
+/* ---------- order builder ---------- */
+.ob{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start}
+.ob[hidden],.ob-confirm[hidden]{display:none}
+.ob-cat{font-family:var(--font-display);font-style:italic;color:var(--accent);
+font-size:1.4rem;margin:2rem 0 .4rem}
+.ob-cat:first-child{margin-top:0}
+.ob-row{display:grid;grid-template-columns:1fr auto auto 5rem;gap:1rem;
+align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.ob-price,.ob-line{color:var(--muted);white-space:nowrap}
+.ob-line{text-align:right}
+.ob-qty{display:inline-flex;align-items:center;gap:.4rem}
+.ob-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}
+.ob-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ob-n{min-width:1.6rem;text-align:center;font-weight:600}
+.ob-sum,.ob-confirm{background:var(--card);border:1px solid var(--line);
+border-radius:var(--radius);padding:2rem;position:sticky;top:6rem}
+.ob-sum h3,.ob-confirm h3{font-family:var(--font-display);font-size:1.6rem;margin-bottom:.8rem}
+.ob-tot{margin-bottom:1.2rem;color:var(--muted)}
+.ob-tot b{color:var(--accent);font-size:1.3rem}
+.ob-note{margin-top:1rem;color:var(--muted);font-size:.85rem}
+.ob-confirm ul{margin:1rem 0;padding-left:1.2rem}
+.ob-confirm p{margin-top:.5rem}
+/* ---------- sticky bar reopen pill (mobile only) ---------- */
+.sc-reopen{display:none;position:fixed;right:1rem;bottom:1rem;z-index:60;
+min-height:44px;align-items:center;padding:0 1.2rem;border-radius:999px;border:0;
+background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer}
+@media(max-width:767px){
+.ob{grid-template-columns:1fr}
+.ob-row{grid-template-columns:1fr auto}
+.ob-sum,.ob-confirm{position:static}
+.bk-time,.bk-date,.bk-svc,.sticky-cta a,.qf-field input,.qf-field select,
+.bk-field input,.bk-field select,.btn{min-height:44px}
+.sc-dismiss{flex:0 0 44px;min-height:44px;background:transparent;border:0;
+color:var(--ink);font-size:1.5rem;cursor:pointer}
+body.no-sticky{padding-bottom:0}
+body.no-sticky .demo-badge{bottom:5.25rem}
+body.no-sticky .sticky-cta{display:none}
+.sc-reopen.show{display:flex}
+}
 
 </style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
+<style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
+   attributes, plus .btn / .reveal hooks it never restyles. Every component is
+   fully visible and usable with JS off; animation states are set by the JS. */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* kinetic hero */
+.mk-kinetic{position:relative;z-index:2;padding:clamp(7rem,16vh,11rem) 0 clamp(4rem,10vh,7rem)}
+.mk-title{font-size:clamp(3rem,8.4vw,7.6rem);margin:1.4rem 0 1.6rem}
+.mk-line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.mk-line-inner,.mk-w{display:inline-block}
+.mk-c{display:inline-block;will-change:auto}
+.mk-sub{max-width:34rem;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted)}
+.mk-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+.mk-pending [data-mk-hero] .mk-line-inner,
+.mk-pending [data-mk-hero] [data-mk-hero-fade]{opacity:0}
+
+/* scroll story: stacked by default, overlaid when JS pins it (.is-pinned) */
+.mk-story{background:var(--bg2);border-block:1px solid var(--line)}
+.mk-story-pin{width:min(1200px,92vw);margin-inline:auto;padding:6rem 0;
+display:grid;grid-template-rows:auto auto 1fr;gap:2rem}
+.mk-story-head h2{font-size:clamp(2.2rem,4.6vw,3.8rem)}
+.mk-story-progress{height:2px;background:var(--line);overflow:hidden}
+.mk-story-progress i{display:block;height:100%;background:var(--accent);
+transform:scaleX(0);transform-origin:0 50%}
+.mk-story-steps{list-style:none;display:grid;gap:3rem}
+.mk-story-step{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.mk-story-art{aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+background:var(--card)}
+.mk-story-art img,.mk-story-art svg{width:100%;height:100%;object-fit:cover}
+.mk-story-num{font-family:var(--font-display);font-size:1rem;letter-spacing:.2em;color:var(--accent)}
+.mk-story-step h3{font-family:var(--font-display);font-size:clamp(1.8rem,3.2vw,2.8rem);
+line-height:1.05;margin:.6rem 0 1rem}
+.mk-story-step p{color:var(--muted);max-width:30rem}
+.mk-story.is-pinned .mk-story-pin{height:100vh;padding:clamp(5rem,12vh,7rem) 0 3rem}
+.mk-story.is-pinned .mk-story-steps{grid-template-areas:"s";min-height:0}
+.mk-story.is-pinned .mk-story-step{grid-area:s;opacity:0;transform:translateY(24px);
+pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+.mk-story.is-pinned .mk-story-step.is-active{opacity:1;transform:none;pointer-events:auto}
+.mk-story.is-pinned .mk-story-art{max-height:52vh;width:100%}
+@media (max-width:767px){.mk-story-step{grid-template-columns:1fr;gap:1.4rem}
+.mk-story-pin{padding:4rem 0}}
+
+/* 3D hero: art is the static fallback; canvas sits on top when live */
+.mk-hero3d{position:relative;overflow:clip;min-height:min(100vh,920px);display:flex;align-items:center}
+.mk-hero3d>.wrap{position:relative;z-index:2}
+.mk-hero3d-art,.mk-hero3d canvas{position:absolute;inset:0;width:100%;height:100%}
+.mk-hero3d-art{z-index:0;transition:opacity .8s ease}
+.mk-hero3d canvas{z-index:1;opacity:0;transition:opacity .8s ease}
+.mk-hero3d.is-live canvas{opacity:1}
+.mk-hero3d.is-live .mk-hero3d-art{opacity:.25}
+.mk-hero3d-art svg{position:absolute;right:4%;top:50%;width:min(46vw,640px);height:auto;
+transform:translateY(-50%);color:var(--accent)}
+.mk-art-halo{background:radial-gradient(circle at 70% 50%,transparent 21%,
+color-mix(in srgb,var(--accent) 55%,transparent) 22.5%,transparent 27%),
+radial-gradient(circle at 70% 50%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 45%)}
+.mk-art-steam{background:radial-gradient(ellipse 40% 50% at 70% 42%,
+color-mix(in srgb,var(--accent) 30%,transparent),transparent 70%)}
+.mk-art-frame{background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/48px 48px,
+linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/48px 48px}
+.mk-art-pulse,.mk-art-orb{background:radial-gradient(circle at 70% 50%,
+color-mix(in srgb,var(--accent) 28%,transparent),transparent 42%)}
+@media (max-width:767px){.mk-hero3d-art svg{right:-20%;width:90vw;opacity:.35}}
+
+/* before / after */
+.mk-ba{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;
+touch-action:pan-y;user-select:none;cursor:ew-resize;--pos:50%;border:1px solid var(--line)}
+.mk-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.mk-ba .mk-ba-after{clip-path:inset(0 0 0 var(--pos))}
+.mk-ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;
+background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.mk-ba-handle::after{content:"\2194";position:absolute;top:50%;left:50%;width:48px;height:48px;
+margin:-24px 0 0 -24px;border-radius:50%;background:#fff;color:#111;display:grid;
+place-items:center;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.mk-ba-handle:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
+.mk-ba.is-anim .mk-ba-after{transition:clip-path .3s cubic-bezier(.16,1,.3,1)}
+.mk-ba.is-anim .mk-ba-handle{transition:left .3s cubic-bezier(.16,1,.3,1)}
+.mk-ba-label{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:999px;
+background:rgba(0,0,0,.55);color:#fff;font-size:.78rem;font-weight:600;
+letter-spacing:.12em;text-transform:uppercase}
+.mk-ba-label.is-before{left:1rem}.mk-ba-label.is-after{right:1rem}
+
+/* tilt cards */
+.mk-tilt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.mk-tilt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;
+transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s ease}
+.mk-tilt.is-tilting{transition:transform .12s linear;will-change:transform;border-color:var(--accent)}
+.mk-tilt h3{font-family:var(--font-display);font-size:1.5rem;margin:.6rem 0}
+.mk-tilt p{color:var(--muted)}
+
+/* draggable gallery */
+.mk-gallery-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;
+scrollbar-width:none;padding-bottom:.5rem;cursor:grab;overscroll-behavior-x:contain}
+.mk-gallery-track::-webkit-scrollbar{display:none}
+.mk-gallery-track.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.mk-gallery-item{flex:0 0 min(78vw,380px);scroll-snap-align:start;margin:0}
+.mk-gallery-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;
+pointer-events:none}
+.mk-gallery-item figcaption{margin-top:.7rem;color:var(--muted);font-size:.92rem}
+.mk-gallery-nav{display:flex;gap:.6rem;margin-top:1.2rem}
+.mk-gallery-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);
+background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}
+.mk-gallery-nav button:hover,.mk-gallery-nav button:focus-visible{border-color:var(--accent);color:var(--accent)}
+
+/* custom cursor: only shown while html.mk-cursor is set by the JS */
+.mk-cursor-dot,.mk-cursor-ring{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;
+display:none}
+html.mk-cursor,html.mk-cursor *{cursor:none}
+html.mk-cursor input,html.mk-cursor textarea,html.mk-cursor select{cursor:auto}
+.mk-cursor .mk-cursor-dot,.mk-cursor .mk-cursor-ring{display:block}
+.mk-cursor-dot{width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--accent)}
+.mk-cursor-ring{width:32px;height:32px;margin:-16px 0 0 -16px}
+.mk-cursor-ring i{position:absolute;inset:0;border:1.5px solid var(--accent);border-radius:50%;
+transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .35s ease}
+.mk-cursor-ring span{position:absolute;inset:0;display:grid;place-items:center;
+font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+color:var(--accent-ink);opacity:0;transition:opacity .3s ease}
+.mk-cursor-ring.is-link i{transform:scale(1.5)}
+.mk-cursor-ring.is-view i{transform:scale(2.6);background:var(--accent)}
+.mk-cursor-ring.is-view span{opacity:1}
+.mk-cursor-ring.is-out{opacity:0}
+
+/* M12 transitions, CSS only */
+.mk-fade{animation:mk-fade .45s cubic-bezier(.16,1,.3,1) both}
+details[open]>:not(summary){animation:mk-fade .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes mk-fade{from{opacity:0;transform:translateY(8px)}}
+
+/* M30: reduced motion, by media query or ?force-reduced=1 (html.mk-reduced) */
+html.mk-reduced *,html.mk-reduced *::before,html.mk-reduced *::after{
+animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.mk-reduced .reveal{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.mk-fade,details[open]>:not(summary){animation:none}}
+</style>
+<script>(function(d){var r=/[?&]force-reduced/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(r?'mk-reduced':'mk-pending');setTimeout(function(){d.classList.remove('mk-pending')},2500)})(document.documentElement)</script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
 </head>
 <body>
+<div class="mk-cursor-dot" aria-hidden="true"></div><div class="mk-cursor-ring" aria-hidden="true"><i></i><span></span></div>
 <nav class="nav"><div class="wrap nav-in">
 <a class="brand" href="#top">valarias</a>
 <div class="nav-links">
@@ -392,7 +616,7 @@ align-items:center}
 </div>
 <a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
 </div></nav>
-<header class="hero" id="top">
+<section class="mk-hero3d" data-3d data-signature="steam"><div class="mk-hero3d-art mk-art-steam" aria-hidden="true"><svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="200" cy="300" rx="150" ry="34"/><ellipse cx="200" cy="296" rx="96" ry="18" opacity=".5"/><path d="M170 250c-20-30 20-50 0-90s20-60 0-90M210 250c-20-30 20-50 0-90s20-60 0-90M250 250c-20-30 20-50 0-90" opacity=".55" stroke-linecap="round"/></svg></div><div class="wrap"><header class="hero" id="top">
 <div class="hero-layers">
 <div class="hero-glow" data-plx="0.10"></div>
 <div class="giant-word" data-plx="0.22" aria-hidden="true">BAKERY</div>
@@ -401,20 +625,19 @@ align-items:center}
 <div class="wrap">
 <span class="eyebrow reveal">Bakery · Oceanside</span>
 <h1 class="font-display reveal" style="--d:.1s">
-Real <em>bakery</em> food, made the slow way.</h1>
-<p class="hero-sub reveal" style="--d:.2s">valarias is the bakery spot
-Oceanside actually talks about — cooked in-house, served warm, worth every minute.</p>
+Bread baked at dawn <em>in Oceanside</em> from $3.50 — sample price</h1>
+<p class="hero-sub reveal" style="--d:.2s">valarias serves bread baked at dawn in Oceanside — made fresh, never from the freezer. Pastries from $3.50 (sample menu prices — the menu at the table is final). Find us at 406 S The Strand, Oceanside.</p>
 <div class="hero-cta reveal" style="--d:.3s">
-<a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call valarias</a>
-<a class="btn btn-ghost tilt" href="#menu">See the menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+<a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call valarias · [PHONE]</a>
+<a class="btn btn-ghost tilt" href="#menu">See the bakery case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </div>
-<div class="reveal" style="--d:.4s"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span></div>
+<div class="reveal" style="--d:.4s"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span><span class="open-pill" data-open-now>Call for hours</span></div>
 </div>
 </header>
-<div class="marquee" aria-hidden="true"><div class="marquee-track"><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Family Owned</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Since Day One</span></div></div><section class="section" id="menu"><div class="wrap">
+</div></section><div class="marquee" aria-hidden="true"><div class="marquee-track"><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Oceanside</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span></div></div><section class="section" id="menu"><div class="wrap">
 <div class="sec-head">
 <div><span class="eyebrow reveal">The Bakery Case</span>
-<h2 class="font-display reveal">What we're<br>known for</h2></div>
+<h2 class="font-display reveal">The menu — <em>no freezer shortcuts.</em></h2></div>
 <p class="reveal" style="color:var(--muted);max-width:36ch">Breads, pastries &amp; celebration cakes — baked fresh every morning.</p>
 </div>
 <div class="menu-cat reveal"><h3>Breads</h3><span class="menu-dots"></span></div><div class="menu-list" data-stagger><div class="menu-row reveal"><span class="menu-num">01</span><span class="menu-name">Classic Sourdough</span><span class="menu-dots"></span><span class="menu-note">Baked daily at dawn · serves 6–8</span><span class="menu-price">from $6</span></div><div class="menu-row reveal"><span class="menu-num">02</span><span class="menu-name">Cuban Bread</span><span class="menu-dots"></span><span class="menu-note">Crisp crust, soft crumb · serves 4–6</span><span class="menu-price">from $4</span></div><div class="menu-row reveal"><span class="menu-num">03</span><span class="menu-name">Brioche Loaf</span><span class="menu-dots"></span><span class="menu-note">Buttery &amp; golden · serves 8</span><span class="menu-price">from $7</span></div><div class="menu-row reveal"><span class="menu-num">04</span><span class="menu-name">Baguette Duo</span><span class="menu-dots"></span><span class="menu-note">Twice-baked, crackling crust</span><span class="menu-price">from $5</span></div></div>
@@ -423,6 +646,40 @@ Oceanside actually talks about — cooked in-house, served warm, worth every min
 <p class="menu-foot reveal">Prices shown are estimates ("from" pricing) and may vary by
 season and portion — final prices are confirmed in-store or by phone.</p>
 </div></section>
+<section class="section" id="order-builder"><div class="wrap">
+<div class="sec-head">
+<div><span class="eyebrow reveal">Pickup</span>
+<h2 class="font-display reveal">Build your order</h2></div>
+<p class="reveal" style="color:var(--muted);max-width:36ch">Pick what you want, choose a
+pickup time, and we'll have it ready. You pay at pickup.</p>
+</div>
+<div data-order>
+<div class="ob">
+<div class="ob-items"><h3 class="ob-cat">Breads</h3><div class="ob-row" data-price="6.00" data-name="Classic Sourdough" data-q="0"><span>Classic Sourdough</span><span class="ob-price">from $6</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Classic Sourdough">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Classic Sourdough">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="4.00" data-name="Cuban Bread" data-q="0"><span>Cuban Bread</span><span class="ob-price">from $4</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Cuban Bread">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Cuban Bread">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="7.00" data-name="Brioche Loaf" data-q="0"><span>Brioche Loaf</span><span class="ob-price">from $7</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Brioche Loaf">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Brioche Loaf">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="5.00" data-name="Baguette Duo" data-q="0"><span>Baguette Duo</span><span class="ob-price">from $5</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Baguette Duo">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Baguette Duo">+</button></span><span class="ob-line">$0.00</span></div><h3 class="ob-cat">Pastries</h3><div class="ob-row" data-price="3.50" data-name="Butter Croissant" data-q="0"><span>Butter Croissant</span><span class="ob-price">from $3.50</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Butter Croissant">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Butter Croissant">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="3.75" data-name="Guava &amp; Cheese Pastry" data-q="0"><span>Guava &amp; Cheese Pastry</span><span class="ob-price">from $3.75</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Guava &amp; Cheese Pastry">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Guava &amp; Cheese Pastry">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="4.25" data-name="Cinnamon Morning Bun" data-q="0"><span>Cinnamon Morning Bun</span><span class="ob-price">from $4.25</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Cinnamon Morning Bun">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Cinnamon Morning Bun">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="4.00" data-name="Chocolate Danish" data-q="0"><span>Chocolate Danish</span><span class="ob-price">from $4</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Chocolate Danish">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Chocolate Danish">+</button></span><span class="ob-line">$0.00</span></div><h3 class="ob-cat">Cakes &amp; Celebrations</h3><div class="ob-row" data-price="35.00" data-name="Whole Celebration Cake" data-q="0"><span>Whole Celebration Cake</span><span class="ob-price">from $35</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Whole Celebration Cake">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Whole Celebration Cake">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="32.00" data-name="Tres Leches Cake" data-q="0"><span>Tres Leches Cake</span><span class="ob-price">from $32</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Tres Leches Cake">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Tres Leches Cake">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="38.00" data-name="Cheesecake" data-q="0"><span>Cheesecake</span><span class="ob-price">from $38</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Cheesecake">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Cheesecake">+</button></span><span class="ob-line">$0.00</span></div><div class="ob-row" data-price="24.00" data-name="Dozen Cupcakes" data-q="0"><span>Dozen Cupcakes</span><span class="ob-price">from $24</span><span class="ob-qty"><button type="button" class="ob-btn" data-d="-1" aria-label="One less Dozen Cupcakes">−</button><output class="ob-n">0</output><button type="button" class="ob-btn" data-d="1" aria-label="One more Dozen Cupcakes">+</button></span><span class="ob-line">$0.00</span></div></div>
+<form class="ob-sum" novalidate>
+<h3>Your order</h3>
+<p class="ob-tot"><span class="ob-count">0 items</span> · Subtotal <b class="ob-sub">$0.00</b></p>
+<label class="qf-field"><span>Pickup today</span><select name="pickup">
+<option>ASAP (~20 min)</option><option>In 30 min</option><option>In 1 hour</option>
+<option>In 2 hours</option></select></label>
+<label class="qf-field"><span>Your name *</span><input name="name" autocomplete="name"></label>
+<label class="qf-field"><span>Phone *</span><input name="phone" type="tel" autocomplete="tel"></label>
+<button class="btn" type="submit">Place pickup order</button>
+<p class="form-err" role="alert" hidden></p>
+<p class="ob-note">Totals use our "from" prices; the final price is confirmed at pickup.
+No payment is taken on this page.</p>
+</form>
+</div>
+<div class="ob-confirm" hidden role="status">
+<h3>Order placed!</h3>
+<p>Order ref <b class="ob-ref"></b></p>
+<ul class="ob-lines"></ul>
+<p>Total <b class="ob-total"></b> · Pickup: <span class="ob-pick"></span></p>
+<p class="ob-who"></p>
+<p>We'll have it ready — pay at pickup. No payment was taken on this page.</p>
+</div>
+</div>
+</div></section>
 <section class="section" id="booking" style="background:var(--bg2)"><div class="wrap">
 <div class="sec-head">
 <div><span class="eyebrow reveal">Order Ahead</span>
@@ -430,6 +687,10 @@ season and portion — final prices are confirmed in-store or by phone.</p>
 <p class="reveal" style="color:var(--muted);max-width:36ch">Skip the line — tell us what you want and when you&#x27;ll swing by valarias. We&#x27;ll have it boxed and ready.</p>
 </div>
 <div class="reveal"><section class="booking" id="booking-widget"><div class="wrap"><h2>Order ahead for pickup</h2><p class="bk-sub">Skip the line — tell us what you want and when you&#x27;ll swing by valarias. We&#x27;ll have it boxed and ready.</p><div class="bk-card"><ol class="bk-steps"><li>Service</li><li>Date</li><li>Time</li><li>Details</li><li>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><button type="button" class="bk-svc" data-name="Signature sourdough loaf" data-dur="Ready same day"><span class="bk-svc-name">Signature sourdough loaf</span><span class="bk-svc-meta">Ready same day · from $6</span><span class="bk-svc-blurb">Order by 2 PM for same-day pickup.</span></button><button type="button" class="bk-svc" data-name="Half-dozen pastries" data-dur="Ready next morning"><span class="bk-svc-name">Half-dozen pastries</span><span class="bk-svc-meta">Ready next morning · from $18</span><span class="bk-svc-blurb">Croissants, guava pastries &amp; the day&#x27;s best.</span></button><button type="button" class="bk-svc" data-name="Whole celebration cake" data-dur="48 hr notice"><span class="bk-svc-name">Whole celebration cake</span><span class="bk-svc-meta">48 hr notice · from $35</span><span class="bk-svc-blurb">Custom flavors, fillings &amp; messages.</span></button></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><label class="bk-field"><span>Your name *</span><input type="text" id="booking-widget-name" placeholder="Full name" autocomplete="name"></label><label class="bk-field"><span>Phone *</span><input type="tel" id="booking-widget-phone" placeholder="(555) 123-4567" autocomplete="tel"></label><label class="bk-field"><span>Notes <em>(optional)</em></span><textarea id="booking-widget-notes" placeholder="Anything we should know?"></textarea></label><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're booked!</h3><p class="bk-summary"></p><p class="bk-ref">Reference <strong class="bk-refcode"></strong></p><p class="bk-note">We'll call or text to confirm shortly.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking-widget", {"closedDays": [], "hoursByDay": {}})</script></div>
+<details class="bk-terms"><summary>Booking terms &amp; cancellation</summary>
+<p>Demo booking — no payment is taken on this page. Free cancellation up to
+24 hours before your appointment; please call Call us to change or cancel.
+Any deposit the business takes is confirmed by phone, never charged here.</p></details>
 </div></section>
 <section class="section" id="catering"><div class="wrap">
 <div class="sec-head">
@@ -440,7 +701,7 @@ lunches, birthdays — valarias travels well. Tell us about the
 event and we'll take it from there.</p>
 </div>
 <div class="reveal"><section class="service-menu"><div class="wrap"><h2>Catering packages</h2><div class="smenu-row"><div class="smenu-info"><h3>Office breakfast box</h3><p>Pastries, fresh fruit &amp; a box of coffee.</p></div><span class="smenu-dur">Serves 10</span><span class="smenu-price">from $60</span></div><div class="smenu-row"><div class="smenu-info"><h3>Party platter</h3><p>Sandwiches or hot bites, ready to serve.</p></div><span class="smenu-dur">Serves 15–20</span><span class="smenu-price">from $90</span></div><div class="smenu-row"><div class="smenu-info"><h3>Full event catering</h3><p>Staffed service — tell us the occasion.</p></div><span class="smenu-dur">50+ guests</span><span class="smenu-price">Custom</span></div><p class="smenu-note">Estimates only — final quote confirmed after a quick call.</p></div></section></div>
-<div class="reveal" style="margin-top:3rem"><section class="quote-sect" id="catering-form"><div class="wrap"><div class="qf-panel"><div class="qf-head"><h2>Catering &amp; private events</h2><p class="qf-sub">From office lunches to weddings — valarias travels well.</p></div><form class="qf-form" data-form data-ref="Q" novalidate><div class="form-fields"><label class="qf-field"><span>Service needed</span><select name="service"><option value="">Select a service…</option><option>Wedding catering</option><option>Corporate event</option><option>Birthday/celebration</option><option>Private dining</option></select></label><label class="qf-field"><span>Your name *</span><input type="text" name="name" placeholder="Full name" required autocomplete="name"></label><label class="qf-field"><span>Phone *</span><input type="tel" name="phone" placeholder="(555) 123-4567" required autocomplete="tel"></label><label class="qf-field"><span>Event date <em>(optional)</em></span><input type="date" name="event_date" placeholder=""></label><label class="qf-field"><span>Headcount <em>(optional)</em></span><input type="number" name="headcount" placeholder=""></label><label class="qf-field"><span>Budget range <em>(optional)</em></span><select name="budget"><option value="">Choose…</option><option>Under $500</option><option>$500–$1,500</option><option>$1,500–$5,000</option><option>$5,000+</option></select></label><button type="submit" class="btn">Request quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Quote requested</h3><p class="qf-name"></p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p>Thanks — we reply to event inquiries within one business day.</p></div></form></div></div></section></div>
+<div class="reveal" style="margin-top:3rem"><section class="quote-sect" id="catering-form"><div class="wrap"><div class="qf-panel"><div class="qf-head"><h2>Ask about catering &amp; events</h2><p class="qf-sub">From office lunches to weddings — valarias travels well.</p></div><form class="qf-form" data-form data-ref="Q" novalidate><div class="form-fields"><label class="qf-field"><span>Service needed</span><select name="service"><option value="">Select a service…</option><option>Wedding catering</option><option>Corporate event</option><option>Birthday/celebration</option><option>Private dining</option></select></label><label class="qf-field"><span>Your name *</span><input type="text" name="name" placeholder="Full name" required autocomplete="name"></label><label class="qf-field"><span>Phone *</span><input type="tel" name="phone" placeholder="(555) 123-4567" required autocomplete="tel"></label><label class="qf-field"><span>Event date <em>(optional)</em></span><input type="date" name="event_date" placeholder=""></label><label class="qf-field"><span>Headcount <em>(optional)</em></span><input type="number" name="headcount" placeholder=""></label><label class="qf-field"><span>Budget range <em>(optional)</em></span><select name="budget"><option value="">Choose…</option><option>Under $500</option><option>$500–$1,500</option><option>$1,500–$5,000</option><option>$5,000+</option></select></label><button type="submit" class="btn">Request quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Quote requested</h3><p class="qf-name"></p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p>Thanks — we reply to event inquiries within one business day.</p></div></form></div></div></section></div>
 </div></section>
 <section class="section" id="about" style="background:var(--bg2)"><div class="wrap">
 <div class="about-grid">
@@ -454,23 +715,14 @@ Oceanside keeps coming back for because it tastes like somebody cared.</p>
 <p class="reveal">Walk in hungry. Walk out already planning your next visit.</p>
 </div>
 <div class="quote-card reveal">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8c-3 1-5 4-5 8v2h5v-6H7.5C8 10.5 9 9.5 10 9V8zm9 0c-3 1-5 4-5 8v2h5v-6h-2.5c.5-1.5 1.5-2.5 2.5-3V8z"/></svg>
-<blockquote>"The bakery is unreal — you can taste that it's made fresh.
-Hands down the best bakery in Oceanside."</blockquote>
-<cite>— A Oceanside regular</cite>
+<p class="promise">Our standard is simple: bakery made fresh, served the
+way we'd want it ourselves. If something isn't right, tell us and we'll make it right.</p>
 </div>
 </div>
-<div class="stats" data-stagger>
-<div class="stat reveal"><b><span data-count="5" data-decimals="2">0</span></b>
-<span>Google rating</span></div>
-<div class="stat reveal"><b><span data-count="1" data-suffix="+">0</span></b>
-<span>Happy reviews</span></div>
-<div class="stat reveal"><b><span data-count="100" data-suffix="%">0</span></b>
-<span>Made in-house</span></div>
-</div>
+<div class="stats" data-stagger><div class="stat reveal"><b><span data-count="12">0</span></b><span>Menu items</span></div></div>
 </div></section>
 <section class="section" id="offer"><div class="wrap">
-<div class="reveal"><section class="followup" id="birthday-club"><div class="wrap"><div class="qf-panel"><h3>Join the birthday club — free treat on your birthday</h3><p class="qf-sub">One email a month, plus a free treat on your birthday from valarias. No spam, ever.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Claim offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your join the birthday club — free treat on your birthday.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section></div>
+<div class="reveal"><section class="followup" id="birthday-club"><div class="wrap"><div class="qf-panel"><h3>Tonight&#x27;s specials, first</h3><p class="qf-sub">Join the list and we&#x27;ll send tonight&#x27;s specials and any open tables before the rush.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Send me tonight&#x27;s specials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="qf-fine">Offer shown as a sample — valarias confirms it before it goes live.</p><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your tonight&#x27;s specials, first.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section></div>
 </div></section>
 <section class="reviews"><div class="wrap"><span class="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:1.75rem">Find us on Google</h2><p class="rev-src">Check our hours, photos, and customer reviews.</p><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=valarias%20Oceanside" target="_blank" rel="noopener">View on Google Maps</a></div></section><section class="section" id="visit"><div class="wrap">
 <div class="sec-head">
@@ -485,6 +737,7 @@ src="https://www.google.com/maps?q=33.18904978,-117.37957636&z=16&output=embed" 
 <p>406 S The Strand, Oceanside, CA 92054<br>
 <a href="https://www.google.com/maps/dir/?api=1&destination=33.18904978,-117.37957636" target="_blank" rel="noopener" style="color:var(--accent)">Get directions →</a></p></div></div>
 <div class="visit-row reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><h3>Hours</h3>
+<span class="open-pill" data-open-now>Call for hours</span>
 <p class="hours-var">Hours vary — <a href="#visit" class="hours-call">call us</a> and we'll let you know when we're in.</p></div></div>
 <div class="visit-row reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><h3>Call Us</h3>
 <p><a class="btn tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a></p></div></div>
@@ -496,10 +749,12 @@ src="https://www.google.com/maps?q=33.18904978,-117.37957636&z=16&output=embed" 
 <a class="brand" href="#top">valarias</a>
 <a class="btn btn-ghost tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
 </div>
+<p class="foot-note">valarias · 406 S The Strand, Oceanside, CA 92054</p>
 <p class="foot-note">© valarias · Bakery in Oceanside
 · Call for hours</p>
 </div></footer>
-<div class="sticky-cta"><a class="sc-book" href="#booking">Book Now</a></div>
+<div class="sticky-cta"><a class="sc-book" href="#booking">Order Ahead</a><button class="sc-dismiss" type="button" aria-label="Dismiss">×</button></div>
+<button class="sc-reopen" type="button">Order Ahead</button>
 <script>
 (function(){var els=document.querySelectorAll('.reveal');
 function show(el){el.classList.add('in')}
@@ -536,6 +791,7 @@ els.forEach(function(el){io.observe(el);});
 
 
 (function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 if(!matchMedia('(pointer:fine)').matches)return;
 var cards=document.querySelectorAll('.tilt');
 for(var i=0;i<cards.length;i++)(function(el){
@@ -555,7 +811,8 @@ setTimeout(function(){el.style.transition=''},600);
 })();
 
 
-(function(){var els=document.querySelectorAll('[data-plx]');
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=document.querySelectorAll('[data-plx]');
 if(!els.length||!('requestAnimationFrame' in window))return;
 var ticking=false;
 function upd(){ticking=false;var vh=innerHeight;
@@ -566,6 +823,12 @@ off=(r.top+r.height/2-vh/2)*sp;
 el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)'})}
 addEventListener('scroll',function(){if(!ticking){ticking=true;
 requestAnimationFrame(upd)}},{passive:true});upd()})();
+
+
+(function(){if(!window.matchMedia)return;
+var m=matchMedia('(prefers-reduced-motion: reduce)'),h=document.documentElement;
+function s(){h.classList.toggle('ds-reduced-motion',m.matches)}s();
+if(m.addEventListener)m.addEventListener('change',s);else if(m.addListener)m.addListener(s)})();
 
 
 function initBooking(wid, cfg){
@@ -778,6 +1041,62 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 })();
+
+
+(function(){
+var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function mins(s){var m=/(\d{1,2}):(\d{2})\s*([AP]M)/i.exec(s);if(!m)return null;
+  return (+m[1]%12+(/p/i.test(m[3])?12:0))*60+ +m[2]}
+function money(n){return '$'+n.toFixed(2)}
+document.addEventListener('DOMContentLoaded',function(){
+  var hrs={},any=false;
+  document.querySelectorAll('.hours tr[data-dow]').forEach(function(r){
+    var d=+r.dataset.dow,p=r.cells[1]?r.cells[1].textContent.split('\u2013'):[];
+    if(d<0||p.length<2)return;var o=mins(p[0]),c=mins(p[1]);if(o==null||c==null)return;
+    if(c<=o)c+=1440;hrs[d]={o:o,c:c,os:p[0].trim(),cs:p[1].trim()};any=true});
+  var now=new Date(),d=now.getDay(),m=now.getHours()*60+now.getMinutes(),msg='Call for hours';
+  if(any){var y=hrs[(d+6)%7],h=hrs[d];msg=null;
+    if(y&&m+1440<y.c)msg='Open now · Closes '+y.cs;
+    else if(h&&m>=h.o&&m<h.c)msg='Open now · Closes '+h.cs;
+    else if(h&&m<h.o)msg='Opens today at '+h.os;
+    else for(var i=1;i<=7&&!msg;i++){var x=hrs[(d+i)%7];if(x)msg='Closed · Opens '+DAYS[(d+i)%7]+' '+x.os}}
+  document.querySelectorAll('[data-open-now]').forEach(function(e){e.textContent=msg});
+
+  var pill=document.querySelector('.sc-reopen'),dis=document.querySelector('.sc-dismiss');
+  function bar(show){document.body.classList.toggle('no-sticky',!show);pill.classList.toggle('show',!show)}
+  if(pill&&dis){dis.addEventListener('click',function(){bar(false)});
+    pill.addEventListener('click',function(){bar(true)})}
+
+  document.querySelectorAll('[data-order]').forEach(function(root){
+    var rows=[].slice.call(root.querySelectorAll('.ob-row')),form=root.querySelector('form'),
+        err=form.querySelector('.form-err'),box=root.querySelector('.ob-confirm');
+    function upd(){var c=0,s=0;rows.forEach(function(r){var q=+r.dataset.q,p=+r.dataset.price;
+      c+=q;s+=q*p;r.querySelector('.ob-n').textContent=q;r.querySelector('.ob-line').textContent=money(q*p)});
+      root.querySelector('.ob-count').textContent=c+(c===1?' item':' items');
+      root.querySelector('.ob-sub').textContent=money(s);return s}
+    rows.forEach(function(r){r.addEventListener('click',function(e){var b=e.target.closest('[data-d]');
+      if(!b)return;r.dataset.q=Math.max(0,Math.min(99,+r.dataset.q+ +b.dataset.d));upd()})});
+    form.addEventListener('submit',function(e){e.preventDefault();
+      var nm=form.querySelector('[name=name]').value.trim(),ph=form.querySelector('[name=phone]').value.trim(),
+          picked=rows.filter(function(r){return +r.dataset.q>0}),bad='';
+      if(!picked.length)bad='Add at least one item to order.';
+      else if(nm.length<2)bad='Please enter your name (2+ characters).';
+      else if(ph.replace(/\D/g,'').length<7)bad='Please enter a valid phone number (7+ digits).';
+      if(bad){err.textContent=bad;err.hidden=false;return}
+      err.hidden=true;
+      var a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',ref='ORD-';
+      for(var i=0;i<6;i++)ref+=a[Math.floor(Math.random()*a.length)];
+      var ul=box.querySelector('.ob-lines');ul.textContent='';
+      picked.forEach(function(r){var li=document.createElement('li');
+        li.textContent=r.dataset.q+' × '+r.dataset.name+' — '+money(r.dataset.q*r.dataset.price);ul.appendChild(li)});
+      box.querySelector('.ob-ref').textContent=ref;
+      box.querySelector('.ob-total').textContent=money(upd());
+      box.querySelector('.ob-pick').textContent=form.querySelector('[name=pickup]').value;
+      box.querySelector('.ob-who').textContent=nm+' · '+ph;
+      root.querySelector('.ob').hidden=true;box.hidden=false});
+    upd()});
+});
+})();
 </script><script>(window.__bkQ||[]).forEach(function(a){initBooking(a[0],a[1])});window.__bkQ=[];</script>
 <div class="demo-badge" role="note">Demo concept — not affiliated with valarias<button type="button" aria-label="Dismiss demo notice" onclick="this.parentElement.remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
 <script type="application/ld+json">
@@ -800,5 +1119,717 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 }
 </script>
+<script>/* MotionKit runtime. Plain IIFE, no build step. Needs gsap + ScrollTrigger
+   (and optionally Lenis) loaded with defer; three.js is imported lazily only
+   when a .mk-hero3d[data-3d] exists and the device can take it. */
+(function () {
+  "use strict";
+  var MK = (window.MotionKit = {});
+  var doc = document.documentElement;
+  var qs = location.search;
+  var THREE_URL =
+    "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js";
+  var env = (MK.env = {});
+
+  function each(sel, fn, root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn);
+  }
+  function safe(name, fn) {
+    try {
+      fn();
+    } catch (e) {
+      console.warn("[MotionKit] " + name, e);
+    }
+  }
+  function detect() {
+    env.reduced =
+      /[?&]force-reduced/.test(qs) ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches;
+    env.touch =
+      /[?&]force-touch/.test(qs) ||
+      matchMedia("(pointer: coarse)").matches ||
+      !matchMedia("(hover: hover)").matches;
+    env.mobile = innerWidth < 768;
+    env.gsap = !!(window.gsap && window.ScrollTrigger);
+    try {
+      var c = document.createElement("canvas");
+      env.webgl = !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch (e) {
+      env.webgl = false;
+    }
+  }
+
+  MK.init = function (opts) {
+    opts = MK.opts = opts || {};
+    detect();
+    if (opts.threeUrl) THREE_URL = opts.threeUrl;
+    // interactions work in every mode; only animation is gated
+    safe("beforeAfter", beforeAfter);
+    safe("gallery", gallery);
+    if (env.reduced) {
+      doc.classList.add("mk-reduced");
+      each(".reveal", function (el) {
+        el.classList.add("in");
+      });
+      return ready();
+    }
+    if (env.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+      safe("smooth", smooth);
+      safe("kinetic", kinetic);
+      safe("reveals", reveals);
+      safe("stories", stories);
+    }
+    ready();
+    safe("tilt", tilt);
+    cursor();
+    (window.requestIdleCallback || setTimeout)(function () {
+      safe("hero3d", hero3d);
+    });
+  };
+  function ready() {
+    doc.classList.remove("mk-pending");
+  }
+
+  /* M8: Lenis on fine pointers only, driven by the GSAP ticker */
+  function smooth() {
+    if (env.touch || !window.Lenis) return;
+    var lenis = (MK.lenis = new Lenis({ lerp: 0.11, anchors: true }));
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function (t) {
+      lenis.raf(t * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* kinetic type: split text nodes into word > char spans, keep inline markup */
+  function split(root) {
+    var chars = [];
+    (function walk(n) {
+      Array.prototype.slice.call(n.childNodes).forEach(function (c) {
+        if (c.nodeType === 1) return walk(c);
+        if (c.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(function (w) {
+          if (!w) return;
+          if (/^\s+$/.test(w))
+            return frag.appendChild(document.createTextNode(w));
+          var ws = document.createElement("span");
+          ws.className = "mk-w";
+          ws.setAttribute("aria-hidden", "true");
+          Array.from(w).forEach(function (ch) {
+            var s = document.createElement("span");
+            s.className = "mk-c";
+            s.textContent = ch;
+            ws.appendChild(s);
+            chars.push(s);
+          });
+          frag.appendChild(ws);
+        });
+        n.replaceChild(frag, c);
+      });
+    })(root);
+    return chars;
+  }
+  MK.split = split;
+
+  function kinetic() {
+    each("[data-mk-hero]", function (h) {
+      var chars = [];
+      each(
+        ".mk-title",
+        function (t) {
+          t.setAttribute("aria-label", t.textContent.trim());
+        },
+        h,
+      );
+      each(
+        ".mk-line-inner",
+        function (el) {
+          chars = chars.concat(split(el));
+        },
+        h,
+      );
+      gsap
+        .timeline({ defaults: { ease: "expo.out" } })
+        .from(chars, {
+          yPercent: 115,
+          rotate: 6,
+          duration: 0.8,
+          stagger: 0.016,
+        })
+        .from(
+          h.querySelectorAll("[data-mk-hero-fade]"),
+          { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.08 },
+          0.25,
+        );
+    });
+  }
+
+  /* M9: [data-mk-reveal] (+ data-mk-stagger) and legacy .reveal upgrade */
+  function reveals() {
+    each("[data-mk-reveal]", function (el) {
+      var t = el.hasAttribute("data-mk-stagger") ? el.children : el;
+      gsap.from(t, {
+        autoAlpha: 0,
+        y: 28,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.08,
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    });
+    // _core.py's IntersectionObserver marks visible .reveal elements .in on load;
+    // only take over if nothing did (theme shipped without JS_REVEAL).
+    setTimeout(function () {
+      if (document.querySelector(".reveal.in")) return;
+      var legacy = document.querySelectorAll(".reveal");
+      if (!legacy.length) return;
+      ScrollTrigger.batch(legacy, {
+        start: "top 92%",
+        once: true,
+        onEnter: function (b) {
+          b.forEach(function (e) {
+            e.classList.add("in");
+          });
+        },
+      });
+    }, 400);
+  }
+
+  /* A3: pinned story; progress follows the scrollbar 1:1 and reverses */
+  function stories() {
+    if (env.mobile) return; // phones get the stacked layout + native scroll (M28)
+    each(".mk-story", function (s) {
+      var steps = s.querySelectorAll(".mk-story-step");
+      var bar = s.querySelector(".mk-story-progress i");
+      var n = steps.length,
+        cur = -1;
+      function set(i) {
+        if (i === cur) return;
+        cur = i;
+        Array.prototype.forEach.call(steps, function (st, k) {
+          st.classList.toggle("is-active", k === i);
+          st.setAttribute("aria-current", k === i ? "step" : "false");
+        });
+      }
+      s.classList.add("is-pinned");
+      set(0);
+      ScrollTrigger.create({
+        trigger: s.querySelector(".mk-story-pin"),
+        start: "top top",
+        end: "+=" + n * 100 + "%",
+        pin: true,
+        onUpdate: function (self) {
+          bar.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
+          set(Math.min(n - 1, Math.floor(self.progress * n)));
+        },
+      });
+    });
+  }
+
+  /* before/after: pointer + keyboard, ARIA slider */
+  function beforeAfter() {
+    each(".mk-ba", function (ba) {
+      var h = ba.querySelector(".mk-ba-handle"),
+        drag = false;
+      function set(p, anim) {
+        p = Math.max(0, Math.min(100, p));
+        ba.classList.toggle("is-anim", !!anim && !env.reduced);
+        ba.style.setProperty("--pos", p + "%");
+        h.setAttribute("aria-valuenow", Math.round(p));
+      }
+      function at(x) {
+        var r = ba.getBoundingClientRect();
+        return ((x - r.left) / r.width) * 100;
+      }
+      ba.addEventListener("pointerdown", function (e) {
+        drag = true;
+        ba.setPointerCapture(e.pointerId);
+        set(at(e.clientX), true);
+      });
+      ba.addEventListener("pointermove", function (e) {
+        if (drag) set(at(e.clientX));
+      });
+      ba.addEventListener("pointerup", function () {
+        drag = false;
+      });
+      ba.addEventListener("pointercancel", function () {
+        drag = false;
+      });
+      h.addEventListener("keydown", function (e) {
+        var p = +h.getAttribute("aria-valuenow");
+        var map = {
+          ArrowLeft: p - 5,
+          ArrowDown: p - 5,
+          ArrowRight: p + 5,
+          ArrowUp: p + 5,
+          PageDown: p - 20,
+          PageUp: p + 20,
+          Home: 0,
+          End: 100,
+        };
+        if (!(e.key in map)) return;
+        e.preventDefault();
+        set(map[e.key], true);
+      });
+    });
+  }
+
+  /* A4: tilt toward cursor, fine pointers only */
+  function tilt() {
+    if (env.touch) return;
+    each("[data-tilt]", function (el) {
+      var max = +el.getAttribute("data-tilt") || 8,
+        raf = 0,
+        rx = 0,
+        ry = 0;
+      el.addEventListener("pointerenter", function () {
+        el.classList.add("is-tilting");
+      });
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        ry = ((e.clientX - r.left) / r.width - 0.5) * 2 * max;
+        rx = -((e.clientY - r.top) / r.height - 0.5) * 2 * max;
+        raf =
+          raf ||
+          requestAnimationFrame(function () {
+            raf = 0;
+            el.style.transform =
+              "perspective(800px) rotateX(" +
+              rx.toFixed(2) +
+              "deg) rotateY(" +
+              ry.toFixed(2) +
+              "deg)";
+          });
+      });
+      el.addEventListener("pointerleave", function () {
+        el.classList.remove("is-tilting");
+        el.style.transform = "";
+      });
+    });
+  }
+
+  /* draggable gallery: mouse drag + momentum; touch keeps native swipe + snap */
+  function gallery() {
+    each(".mk-gallery", function (g) {
+      var t = g.querySelector(".mk-gallery-track");
+      function stepW() {
+        var c = t.firstElementChild;
+        return c
+          ? c.getBoundingClientRect().width +
+              (parseFloat(getComputedStyle(t).columnGap) || 0)
+          : 300;
+      }
+      function go(dir) {
+        t.scrollBy({
+          left: dir * stepW(),
+          behavior: env.reduced ? "auto" : "smooth",
+        });
+      }
+      g.querySelector("[data-mk-prev]").addEventListener("click", function () {
+        go(-1);
+      });
+      g.querySelector("[data-mk-next]").addEventListener("click", function () {
+        go(1);
+      });
+      t.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          go(e.key === "ArrowLeft" ? -1 : 1);
+        }
+      });
+      t.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+      });
+      if (env.touch || env.reduced) return;
+      var down = false,
+        x0,
+        s0,
+        lastX,
+        lastT,
+        v = 0,
+        raf = 0;
+      t.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse") return;
+        down = true;
+        cancelAnimationFrame(raf);
+        t.classList.add("is-drag");
+        x0 = lastX = e.clientX;
+        s0 = t.scrollLeft;
+        lastT = performance.now();
+        v = 0;
+        t.setPointerCapture(e.pointerId);
+      });
+      t.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var now = performance.now();
+        v = (e.clientX - lastX) / Math.max(1, now - lastT);
+        lastX = e.clientX;
+        lastT = now;
+        t.scrollLeft = s0 - (e.clientX - x0);
+      });
+      function release() {
+        if (!down) return;
+        down = false;
+        (function glide() {
+          v *= 0.92;
+          t.scrollLeft -= v * 16;
+          if (Math.abs(v) > 0.05) {
+            raf = requestAnimationFrame(glide);
+            return;
+          }
+          t.classList.remove("is-drag");
+          var w = stepW();
+          t.scrollTo({
+            left: Math.round(t.scrollLeft / w) * w,
+            behavior: "smooth",
+          });
+        })();
+      }
+      t.addEventListener("pointerup", release);
+      t.addEventListener("pointercancel", release);
+    });
+  }
+
+  /* M11: dot + spring ring + magnetic pull; any error restores the native cursor */
+  function cursor() {
+    var dot = document.querySelector(".mk-cursor-dot"),
+      ring = document.querySelector(".mk-cursor-ring");
+    if (env.touch || env.mobile || !dot || !ring) return;
+    function off() {
+      doc.classList.remove("mk-cursor");
+    }
+    try {
+      var x = -100,
+        y = -100,
+        rx = x,
+        ry = y,
+        raf = 0,
+        label = ring.querySelector("span");
+      function loop() {
+        rx += (x - rx) * 0.2;
+        ry += (y - ry) * 0.2;
+        ring.style.transform =
+          "translate(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px)";
+        raf =
+          Math.abs(x - rx) + Math.abs(y - ry) > 0.2
+            ? requestAnimationFrame(loop)
+            : 0;
+      }
+      addEventListener(
+        "pointermove",
+        function (e) {
+          if (e.pointerType !== "mouse") return;
+          x = e.clientX;
+          y = e.clientY;
+          dot.style.transform = "translate(" + x + "px," + y + "px)";
+          ring.classList.remove("is-out");
+          raf = raf || requestAnimationFrame(loop);
+        },
+        { passive: true },
+      );
+      document.addEventListener("pointerover", function (e) {
+        var v = e.target.closest && e.target.closest("[data-cursor]");
+        ring.classList.toggle("is-view", !!v);
+        ring.classList.toggle(
+          "is-link",
+          !v && !!e.target.closest("a,button,[data-magnetic],[role=slider]"),
+        );
+        label.textContent = v
+          ? v.getAttribute("data-cursor-label") || "View"
+          : "";
+      });
+      document.addEventListener("mouseout", function (e) {
+        if (!e.relatedTarget) ring.classList.add("is-out");
+      });
+      each(".btn,[data-magnetic]", function (el) {
+        var base = getComputedStyle(el).transition;
+        el.style.transition =
+          (base && base.indexOf("all 0s") !== 0 ? base + "," : "") +
+          "translate .35s cubic-bezier(.16,1,.3,1)";
+        el.addEventListener("pointermove", function (e) {
+          var r = el.getBoundingClientRect();
+          var dx = ((e.clientX - r.left) / r.width) * 2 - 1,
+            dy = ((e.clientY - r.top) / r.height) * 2 - 1;
+          el.style.translate =
+            (dx * 8).toFixed(1) + "px " + (dy * 8).toFixed(1) + "px";
+        });
+        el.addEventListener("pointerleave", function () {
+          el.style.translate = "";
+        });
+      });
+      doc.classList.add("mk-cursor");
+      addEventListener("error", off);
+    } catch (e) {
+      off();
+      console.warn("[MotionKit] cursor", e);
+    }
+  }
+
+  /* A1: one small WebGL signature per category */
+  function hero3d() {
+    var els = document.querySelectorAll(".mk-hero3d[data-3d]");
+    if (!els.length || env.touch || env.mobile || !env.webgl) return;
+    MK.three = MK.three || import(THREE_URL);
+    MK.three.then(
+      function (THREE) {
+        Array.prototype.forEach.call(els, function (el) {
+          safe("hero3d", function () {
+            scene3d(THREE, el);
+          });
+        });
+      },
+      function (e) {
+        console.warn("[MotionKit] three.js failed to load", e);
+      },
+    );
+  }
+
+  var MODES = { halo: 0, steam: 1, pulse: 2, orb: 3 };
+  var VERT = [
+    "uniform float uTime;uniform float uMode;uniform float uPx;attribute float aSeed;varying float vSeed;varying float vFade;",
+    "void main(){vec3 p=position;float t=uTime;vFade=1.0;",
+    "if(uMode<0.5){float a=atan(p.z,p.x)+t*(0.08+0.06*aSeed);float r=length(p.xz)*(1.0+0.04*sin(t*0.8+aSeed*6.28));",
+    "p.x=cos(a)*r;p.z=sin(a)*r;p.y+=0.08*sin(t+aSeed*12.0);}",
+    "else if(uMode<1.5){float h=mod(p.y+t*(0.25+0.35*aSeed),3.2);vFade=sin(h/3.2*3.1416);",
+    "p.y=h-1.2;p.x+=0.35*sin(h*2.2+t*0.7+aSeed*6.28)*h*0.4;p.z+=0.25*cos(h*1.7+aSeed*6.28)*h*0.4;}",
+    "else if(uMode<2.5){float b=mod(t,1.2);float beat=exp(-pow((b-0.1)*18.0,2.0))+0.6*exp(-pow((b-0.32)*18.0,2.0));",
+    "float a=atan(p.y,p.x)+t*0.15*(aSeed-0.5);float r=length(p.xy)*(1.0+0.12*beat*(0.6+aSeed));",
+    "p.x=cos(a)*r;p.y=sin(a)*r;}",
+    "else{p*=1.0+0.05*sin(t*0.9+aSeed*6.28);}",
+    "vSeed=aSeed;vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;",
+    "gl_PointSize=uPx*(0.6+aSeed)*(4.0/-mv.z);}",
+  ].join("\n");
+  var FRAG = [
+    "uniform vec3 uA;uniform vec3 uB;varying float vSeed;varying float vFade;",
+    "void main(){float d=length(gl_PointCoord-0.5);if(d>0.5)discard;",
+    "gl_FragColor=vec4(mix(uA,uB,vSeed),(1.0-d*2.0)*0.85*vFade);}",
+  ].join("\n");
+
+  function cloud(sig, n) {
+    var pos = new Float32Array(n * 3),
+      seed = new Float32Array(n),
+      i,
+      a,
+      r,
+      u;
+    for (i = 0; i < n; i++) {
+      seed[i] = Math.random();
+      a = Math.random() * Math.PI * 2;
+      u = Math.random();
+      if (sig === "halo") {
+        // tilted ring with a soft inner bloom
+        r = 1.6 + (Math.random() - 0.5) * (u < 0.8 ? 0.35 : 1.6);
+        pos.set(
+          [Math.cos(a) * r, (Math.random() - 0.5) * 0.25, Math.sin(a) * r],
+          i * 3,
+        );
+      } else if (sig === "steam") {
+        // rising column above a plate rim
+        r = Math.sqrt(u) * 0.7;
+        pos.set(
+          [Math.cos(a) * r, Math.random() * 3.2, Math.sin(a) * r * 0.5],
+          i * 3,
+        );
+      } else if (sig === "pulse") {
+        // energy ring in the view plane
+        r = 1.5 + (Math.random() - 0.5) * (u < 0.85 ? 0.18 : 0.9);
+        pos.set(
+          [Math.cos(a) * r, Math.sin(a) * r, (Math.random() - 0.5) * 0.3],
+          i * 3,
+        );
+      } else {
+        // orb: fibonacci sphere
+        var y = 1 - (i / (n - 1)) * 2,
+          rr = Math.sqrt(1 - y * y) * 1.5,
+          th = i * 2.39996;
+        pos.set([Math.cos(th) * rr, y * 1.5, Math.sin(th) * rr], i * 3);
+      }
+    }
+    return { pos: pos, seed: seed };
+  }
+
+  function houseFrame(THREE) {
+    // trades: studded wall frame + gable roof, as line segments
+    var v = [],
+      W = 1.6,
+      D = 1.1,
+      H = 1.1,
+      R = 1.9,
+      x,
+      z;
+    function L(a, b) {
+      v.push(a[0], a[1], a[2], b[0], b[1], b[2]);
+    }
+    [
+      [-W, -D],
+      [W, -D],
+      [W, D],
+      [-W, D],
+    ].forEach(function (c, k, arr) {
+      var n = arr[(k + 1) % 4];
+      L([c[0], 0, c[1]], [n[0], 0, n[1]]);
+      L([c[0], H, c[1]], [n[0], H, n[1]]);
+      L([c[0], 0, c[1]], [c[0], H, c[1]]);
+    });
+    for (x = -W + 0.4; x < W; x += 0.4) {
+      L([x, 0, -D], [x, H, -D]);
+      L([x, 0, D], [x, H, D]);
+    }
+    for (z = -D + 0.367; z < D; z += 0.367) {
+      L([-W, 0, z], [-W, H, z]);
+      L([W, 0, z], [W, H, z]);
+    }
+    L([-W, R, 0], [W, R, 0]);
+    for (x = -W; x <= W + 0.01; x += 0.4) {
+      L([x, H, -D], [x, R, 0]);
+      L([x, R, 0], [x, H, D]);
+    }
+    var pos = new Float32Array(v),
+      n = pos.length / 3,
+      off = new Float32Array(n * 3);
+    for (var s = 0; s < n; s += 2) {
+      // both ends of a segment fly in together
+      var o = [
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 6,
+      ];
+      off.set(o, s * 3);
+      off.set(o, s * 3 + 3);
+    }
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("aOff", new THREE.BufferAttribute(off, 3));
+    g.translate(0, -0.9, 0);
+    return g;
+  }
+
+  function scene3d(THREE, el) {
+    var sig = el.getAttribute("data-signature") || "orb";
+    var css = getComputedStyle(el);
+    // raw ShaderMaterial skips output color conversion, so feed sRGB values
+    var colA = new THREE.Color(
+      (css.getPropertyValue("--accent") || "#e8622c").trim(),
+    ).convertLinearToSRGB();
+    var colB = new THREE.Color(
+      (css.getPropertyValue("--ink") || "#ffffff").trim(),
+    ).convertLinearToSRGB();
+    var dpr = Math.min(devicePixelRatio || 1, 1.5);
+    var renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: false, // AA is the slowest path in software GL; DPR 1.5 keeps lines clean
+      powerPreference: "low-power",
+    });
+    renderer.setPixelRatio(dpr);
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(40, 1, 0.1, 50);
+    cam.position.set(0, 0, 7);
+    var uni = { uTime: { value: 0 }, uA: { value: colA }, uB: { value: colB } },
+      obj,
+      mat;
+    if (sig === "frame") {
+      uni.uK = { value: 0 };
+      mat = new THREE.ShaderMaterial({
+        uniforms: uni,
+        transparent: true,
+        depthWrite: false,
+        vertexShader:
+          "uniform float uK;attribute vec3 aOff;void main(){vec3 p=position+aOff*(1.0-uK);" +
+          "gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}",
+        fragmentShader:
+          "uniform vec3 uA;uniform float uK;void main(){gl_FragColor=vec4(uA,0.35+0.6*uK);}",
+      });
+      obj = new THREE.LineSegments(houseFrame(THREE), mat);
+      obj.rotation.x = 0.32;
+    } else {
+      var n = { halo: 1600, steam: 1200, pulse: 1500 }[sig] || 1400;
+      if ((devicePixelRatio || 1) > 2) n = n >> 1;
+      var c = cloud(sig, n),
+        g = new THREE.BufferGeometry();
+      g.setAttribute("position", new THREE.BufferAttribute(c.pos, 3));
+      g.setAttribute("aSeed", new THREE.BufferAttribute(c.seed, 1));
+      uni.uMode = { value: MODES[sig] || 3 };
+      uni.uPx = { value: 5 * dpr };
+      mat = new THREE.ShaderMaterial({
+        uniforms: uni,
+        vertexShader: VERT,
+        fragmentShader: FRAG,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      obj = new THREE.Points(g, mat);
+      if (sig === "halo") obj.rotation.x = 0.5;
+      if (sig === "steam") obj.position.y = -1.3;
+    }
+    scene.add(obj);
+    el.appendChild(renderer.domElement);
+    renderer.domElement.setAttribute("aria-hidden", "true");
+
+    function size() {
+      var w = el.clientWidth,
+        h = el.clientHeight;
+      renderer.setSize(w, h, false);
+      cam.aspect = w / h;
+      // keep the object right of the copy on wide screens
+      cam.setViewOffset(w, h, w > 900 ? -w * 0.2 : 0, 0, w, h);
+      cam.updateProjectionMatrix();
+    }
+    size();
+    var ro = new ResizeObserver(size);
+    ro.observe(el);
+
+    var visible = false,
+      raf = 0,
+      t0 = performance.now(),
+      mx = 0,
+      my = 0;
+    addEventListener(
+      "pointermove",
+      function (e) {
+        mx = e.clientX / innerWidth - 0.5;
+        my = e.clientY / innerHeight - 0.5;
+      },
+      { passive: true },
+    );
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      uni.uTime.value = t;
+      if (uni.uK)
+        uni.uK.value = Math.min(1, 1 - Math.pow(1 - Math.min(t / 2.4, 1), 3));
+      obj.rotation.y +=
+        ((sig === "frame" ? t * 0.25 : t * 0.05) + mx * 0.6 - obj.rotation.y) *
+        0.05;
+      cam.position.y += (-my * 0.8 - cam.position.y) * 0.05;
+      cam.lookAt(0, 0, 0);
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(frame);
+    }
+    function run() {
+      var go = visible && !document.hidden;
+      if (go && !raf) raf = requestAnimationFrame(frame);
+      if (!go && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    }
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      run();
+    }).observe(el);
+    document.addEventListener("visibilitychange", run);
+    addEventListener("pagehide", function () {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      obj.geometry.dispose();
+      mat.dispose();
+      renderer.dispose();
+    });
+    el.classList.add("is-live");
+  }
+})();
+</script><script>document.addEventListener('DOMContentLoaded',function(){MotionKit.init({"category": "restaurant", "signature": "steam"})})</script>
 </body>
 </html>
