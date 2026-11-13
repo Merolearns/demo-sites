@@ -623,10 +623,15 @@ body.v-any-time-plumbing{--bg:#F4F1E9;--bg2:#EAE4D6;--ink:#0C1B2E;--muted:#46586
 body.v-any-time-plumbing .site-head{background:rgba(244,241,233,.92)}
 body.v-any-time-plumbing .hero{background:radial-gradient(1100px 600px at 85% 10%,#DCE8F5 0%,transparent 60%),radial-gradient(900px 500px at 10% 90%,#E4EBF3 0%,transparent 55%),var(--bg)}
 body.v-any-time-plumbing .hero h1{text-transform:none}
-/* ---- scroll reveals, tuned for the samples: shorter, no blur ---- */
-body[class*="v-"] .reveal{transform:translateY(24px);filter:none;transition:opacity .6s ease-out,transform .6s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+/* ---- scroll reveals, Oasel-style: slow (~1s) fade + rise ---- */
+/* NOTE: an animated blur(2px) on .reveal regressed scroll fps (M24: 59→29
+   on kendall, 59→52 studio-61) — blur on large section wrappers during
+   scroll is too expensive on this VM. The Oasel blur lives in the static
+   frosted glass (below) instead, which keeps the blurred-depth look
+   without the scroll cost. Fade + rise only here. */
+body[class*="v-"] .reveal{transform:translateY(20px);filter:none;transition:opacity 1s ease-out,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
 body[class*="v-"] .reveal.in{transform:none}
-@media(prefers-reduced-motion:reduce){body[class*="v-"] .reveal{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){body[class*="v-"] .reveal{opacity:1;transform:none;filter:none;transition:none}}
 /* ---- M27: footer "Booking terms" is a real 44px tap target ---- */
 body[class*="v-"] .foot-terms a{display:inline-block;min-height:44px;line-height:44px;padding:0 .3rem}
 /* ---- 3D hero (pre-rendered frames + live swatch, render3d/) ---- */
@@ -699,14 +704,25 @@ body[class*="v-"] .hero.hero-apple{--band:auto;--top:4rem}
 .hero-apple .hero-cta{order:-1;margin:0 0 1rem}
 .hero-apple .h3d-roof .h3d-media,.hero-apple .h3d-tap .h3d-media{aspect-ratio:1/1}
 body[class*="v-"] .hero-apple h1{font-size:clamp(2rem,8.6vw,2.6rem)}}
-/* Entrance: product then headline, once, transform/opacity only. The
-   poster starts at .01 opacity (not 0) so it stays the LCP candidate. */
+/* Entrance (Oasel-style): product, then eyebrow, H1, sub, CTA — one after
+   another, each ~0.12s after the last, slow and spacious (~1s each).
+   Transform/opacity only. The poster starts at .01 opacity (not 0) so it
+   stays the LCP candidate. */
 @media(prefers-reduced-motion:no-preference){
-.hero-apple .h3d-media{animation:h3d-in .8s cubic-bezier(.16,1,.3,1) both}
-.hero-apple-copy>*{animation:h3d-copy .7s cubic-bezier(.16,1,.3,1) both;animation-delay:.25s}
-.hero-apple-copy>*+*{animation-delay:.38s}}
+.hero-apple .h3d-media{animation:h3d-in 1s cubic-bezier(.16,1,.3,1) both}
+.hero-apple .eyebrow{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.15s}
+.hero-apple h1{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.27s}
+.hero-apple .hero-sub{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.39s}
+.hero-apple .hero-cta{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.51s}}
 @keyframes h3d-in{from{opacity:.01;transform:translateY(24px) scale(.985)}to{opacity:1;transform:none}}
 @keyframes h3d-copy{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* ---- Oasel glass: frosted cards over the backdrop (the "3D" feel, no WebGL) ---- */
+/* The A1 card and the stat pills float as translucent glass layers: a
+   semi-transparent fill, a backdrop blur, a hairline border and a soft
+   shadow, so they separate in depth from the page behind them. Static
+   styling (not motion), so it stays under prefers-reduced-motion. */
+body[class*="v-"] .hero-below .hero-a1-card{background:color-mix(in srgb,var(--card) 78%,transparent);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);border:1px solid color-mix(in srgb,var(--line) 55%,transparent);box-shadow:0 16px 40px rgba(0,0,0,.14)}
+body[class*="v-"] .hero-below .stat{background:color-mix(in srgb,var(--card) 68%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:14px;padding:.7rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.10)}
 
 body.v-any-time-plumbing{--bg:#F4F1E9;--bg2:#EAE4D6;--ink:#0C1B2E;--muted:#46586E;--accent:#A63F00;--accent-ink:#FFFFFF;--card:#FFFFFF;--line:rgba(12,27,46,.16);--font-display:'Space Grotesk',serif;--font-body:'Inter',sans-serif;--radius:4px}</style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
@@ -3129,6 +3145,7 @@ each('[data-a1="symptom"]',function(box){
       safe("smooth", smooth);
       safe("kinetic", kinetic);
       safe("reveals", reveals);
+      safe("countUp", countUp);
       safe("stories", stories);
     }
     ready();
@@ -3223,10 +3240,10 @@ each('[data-a1="symptom"]',function(box){
       var t = el.hasAttribute("data-mk-stagger") ? el.children : el;
       gsap.from(t, {
         autoAlpha: 0,
-        y: 28,
-        duration: 0.7,
+        y: 20,
+        duration: 1.0,
         ease: "power3.out",
-        stagger: 0.08,
+        stagger: 0.12,
         scrollTrigger: { trigger: el, start: "top 88%", once: true },
       });
     });
@@ -3246,6 +3263,43 @@ each('[data-a1="symptom"]',function(box){
         },
       });
     }, 400);
+  }
+
+  /* Oasel: count-up hero numbers (Apple-hero pages only). .stat numbers
+     roll from 0 to their real value with an eased tween on enter. The
+     number is the star — it rolls to its value. Skipped under reduced
+     motion (init returns early) and on non-Apple pages. The final value
+     is set back to the exact source text, so no float drift. */
+  function countUp() {
+    if (!document.querySelector(".hero-apple")) return;
+    each(".hero-below .stat", function (el) {
+      var node = null;
+      for (var i = 0; i < el.childNodes.length; i++) {
+        if (el.childNodes[i].nodeType === 3) {
+          node = el.childNodes[i];
+          break;
+        }
+      }
+      if (!node) return;
+      var raw = node.textContent.trim();
+      var target = parseFloat(raw);
+      if (isNaN(target)) return;
+      var dec = (raw.split(".")[1] || "").length;
+      var obj = { v: 0 };
+      node.textContent = (0).toFixed(dec);
+      gsap.to(obj, {
+        v: target,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 92%", once: true },
+        onUpdate: function () {
+          node.textContent = obj.v.toFixed(dec);
+        },
+        onComplete: function () {
+          node.textContent = raw;
+        },
+      });
+    });
   }
 
   /* A3: pinned story; progress follows the scrollbar 1:1 and reverses */
