@@ -65,6 +65,7 @@ html{scroll-behavior:auto}
 section:not(.hero):not(.booking):not(.booking-sec):not(.followup):not(#booking):not(#offer){padding-block:clamp(3rem,8vw,7rem)}
 /* ---- M27 44px tap floor ---- */
 .brand,.nav-links a{display:inline-flex;align-items:center;min-height:44px}
+.brand{white-space:nowrap}
 .nav-links a{min-width:44px;justify-content:center}
 a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}
 .tel,.hours-call{display:inline-flex;align-items:center;min-height:44px}
@@ -238,33 +239,44 @@ margin-bottom:.5rem}
 }
 
 
-.demo-badge{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;
-align-items:center;gap:.75rem;max-width:min(24rem,calc(100vw - 2rem));
-background:var(--card);border:1px solid var(--line);color:var(--ink);
-border-radius:999px;padding:.55rem .6rem .55rem 1.1rem;font-size:.78rem;
-box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+/* Demo notice: a STATIC line at the very bottom of the page, in normal
+   flow after the footer. It NEVER floats over content — the old
+   position:fixed pill covered filter pills, addresses and section text
+   on mobile (it read as a bug, not a design choice). Dismiss removes it;
+   the page reflows, nothing is ever covered. */
+.demo-badge{position:static;display:flex;align-items:center;justify-content:center;
+gap:.75rem;max-width:none;margin:0;background:var(--card);
+border-top:1px solid var(--line);color:var(--muted);
+padding:.7rem 1rem;font-size:.78rem;text-align:center}
 .demo-badge button{flex:0 0 auto;width:44px;height:44px;border-radius:50%;
 border:1px solid var(--line);background:transparent;color:var(--muted);
 cursor:pointer;display:flex;align-items:center;justify-content:center}
 .demo-badge button:hover{color:var(--ink);border-color:var(--ink)}
 .demo-badge button svg{width:.8rem;height:.8rem}
-/* Desktop: badge sits bottom-RIGHT — bottom-left covered the hero's
-   primary CTA at 1440px (studio-61 "Book my cut"). Mobile keeps
-   bottom-left above the sticky bar (see the max-width:767px rule). */
-@media(min-width:768px){.demo-badge{left:auto;right:1rem}}
+/* Rating text never breaks mid-phrase (see lead_ctx rating_chip). */
+.rating-text{white-space:nowrap}
 .sticky-cta{display:none}
 @media(max-width:767px){
 body{padding-bottom:4.5rem}
-.demo-badge{bottom:5.25rem}
 .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;
 background:var(--card);border-top:1px solid var(--line);padding:.6rem .8rem;
 gap:.6rem;box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
+/* One primary + one secondary, clean spacing, no wrap: the labels stay
+   on one line (a wrapping sticky button reads as cluttered). */
 .sticky-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;
-gap:.5rem;padding:.85rem 1rem;border-radius:var(--radius,999px);font-weight:700;
-text-decoration:none;font-size:.95rem}
-.sticky-cta a svg{width:1.05rem;height:1.05rem}
+gap:.5rem;padding:.85rem .6rem;border-radius:var(--radius,999px);font-weight:700;
+text-decoration:none;font-size:.95rem;white-space:nowrap;min-width:0}
+.sticky-cta a svg{width:1.05rem;height:1.05rem;flex:0 0 auto}
 .sc-call{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .sc-book{background:var(--accent);color:var(--accent-ink)}
+/* The brand never wraps to two lines on mobile (it did for
+   "Any Time Plumbing"). Shrink it so it fits on one line. */
+.brand{white-space:nowrap;font-size:.98rem}
+/* The header phone button does not fit next to a long brand on a
+   390px phone (Kendall Roof Masters' was clipped at the right edge).
+   The sticky bar already has a Call button, so the header one is
+   redundant on mobile — hide it rather than let it clip. */
+.head-cta,.nav a[href^="tel:"],header a[href^="tel:"]{display:none}
 }
 .emergency-banner{display:flex;align-items:center;gap:.75rem;
 flex-wrap:wrap;background:var(--card);border:1px solid var(--line);
@@ -664,14 +676,10 @@ background:linear-gradient(180deg,var(--f0) 0,var(--f0) var(--top),var(--f1) cal
 body[class*="v-"] .hero-apple h1{font-size:clamp(2.2rem,5.8vw,5.5rem);line-height:1.02;margin:.5rem 0 0;max-width:22ch}
 .hero-apple .hero-sub{font-size:clamp(1rem,1.2vw,1.12rem);margin:0 0 1.2rem;max-width:46ch}
 .hero-apple .hero-cta{margin:0}
-/* Badge (defect 1 fix): on Apple-hero pages the fixed badge must never cover
-   the hero CTA. Desktop: pin it top-right just under the nav, over a corner
-   of the product image — clear of the H1, paragraph and CTA however tall the
-   H1 gets. Mobile: nudge it down so it clears the CTA (probe-verified). */
-@media(min-width:768px){
-body:has(.hero-apple) .demo-badge{left:auto;right:1rem;top:5.5rem;bottom:auto}}
+/* The demo badge is a STATIC line at the bottom of the page now
+   (see _core.py) — it never floats, so there is no position to pin
+   here. The button sizing stays (44px tap target). */
 @media(max-width:767px){
-body:has(.hero-apple) .demo-badge{bottom:4.9rem}
 body:has(.hero-apple) .demo-badge button{width:44px;height:44px;min-width:44px;min-height:44px}}
 .hero-below{padding:clamp(2rem,5vw,3.5rem) 0}
 .hero-below-in{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;justify-content:space-between}
@@ -719,7 +727,7 @@ body[class*="v-"] .hero-below .hero-a1-card{background:color-mix(in srgb,var(--c
 body[class*="v-"] .hero-below .stat{background:color-mix(in srgb,var(--card) 68%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:14px;padding:.7rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.10)}
 
 body.v-golden-cafe{--bg:#16110C;--bg2:#1E1710;--ink:#F5EBDD;--muted:#A89880;--accent:#E8A33D;--accent-ink:#1A120A;--card:#211A12;--line:rgba(245,235,221,.14);--font-display:'Playfair Display',serif;--font-body:'Inter',sans-serif;--radius:6px}
-body[data-layout="hero-landing"] section.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;text-align:center}body[data-layout="hero-landing"] .hero-apple-head{max-width:900px;margin-inline:auto;text-align:center}body[data-layout="hero-landing"] .h3d-media{max-width:640px;margin-inline:auto}body[data-layout="hero-landing"] .hero-cta{justify-content:center}
+body[data-layout="hero-landing"] section.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;text-align:center}body[data-layout="hero-landing"] .hero-apple-head{max-width:900px;margin-inline:auto;text-align:center}body[data-layout="hero-landing"] .h3d-media{max-width:640px;margin-inline:auto}body[data-layout="hero-landing"] .hero-cta{justify-content:center}@media(max-width:767px){body[class*="v-"][data-layout="hero-landing"] section.hero{position:relative;min-height:100svh;overflow:clip}body[data-layout="hero-landing"] .hero-product{position:absolute;inset:0;height:100%;padding-top:0}body[data-layout="hero-landing"] .h3d-media{height:100%;max-height:none}body[data-layout="hero-landing"] .hero-apple-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:5.5rem;background:linear-gradient(to top,var(--bg) 12%,transparent 85%)}body[data-layout="hero-landing"] .hero-apple-head,body[data-layout="hero-landing"] .hero-apple-side{text-align:center}body[data-layout="hero-landing"] .hero-cta{justify-content:center}}
 </style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
 <style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
@@ -3868,7 +3876,7 @@ transition:none!important;animation:none!important}}
     if (b) pick(Array.prototype.indexOf.call(swatches(), b));
   });
 })();
-</script></div></div><div class="wrap hero-apple-copy"><div class="hero-apple-head"><span class="eyebrow">Cafe · Miami</span><h1 class="font-display">Proper coffee <em>in Miami</em></h1></div><div class="hero-apple-side"><p class="hero-sub">Golden Cafe serves proper coffee in Miami — made fresh, never from the freezer. Find us at 1200 Brickell Ave, Miami — Open Mon–Fri 7:30 AM–10:00 PM.</p><div class="hero-cta"><a class="btn tilt" href="tel:+17866220899"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Golden Cafe · +1 786-622-0899</a></div></div></div></section><section class="hero-below"><div class="wrap hero-below-in reveal"><div class="h3d-swatches" role="group" aria-label="Preview the look"><button type="button" data-h3d-swatch aria-pressed="true">Free pour</button><button type="button" data-h3d-swatch aria-pressed="false">Heart · sage</button><button type="button" data-h3d-swatch aria-pressed="false">Cocoa · charcoal</button></div><div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span><span class="open-pill" data-open-now>Call for hours</span><a class="btn btn-ghost tilt" href="#menu">See the café menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div><div class="a1-wide"><div class="hero-faves reveal" style="--d:.5s"><p class="hero-faves-title">House favourites</p><ul><li><b>Argentine coffee</b><span>Espresso, cortadito, café con leche</span></li><li><b>Empanadas</b><span>Warm from the bakery case</span></li><li><b>Flan &amp; chocotorta</b><span>The classic Argentine desserts</span></li></ul></div><div class="a1-ritual" data-a1="ritual"><p class="a1-label">Your morning, hour by hour</p><div class="a1-ritual-btns" role="tablist"><button type="button" data-ritual="0" aria-selected="true" data-desc="Argentine coffee, brewed to order. Espresso, cortadito, café con leche — the cup Brickell starts its working day with.">First coffee</button><button type="button" data-ritual="1" aria-selected="false" data-desc="Empanadas from the bakery case, warm when they come out. Ask what&#x27;s in the case today — the selection changes through the day.">Mid-morning empanada</button><button type="button" data-ritual="2" aria-selected="false" data-desc="Flan and chocotorta to finish — the classic Argentine desserts, made for the slow hour of the afternoon.">Afternoon flan</button></div><div class="a1-ritual-panel"><p class="a1-ritual-desc">Argentine coffee, brewed to order. Espresso, cortadito, café con leche — the cup Brickell starts its working day with.</p></div></div></div></div></section>
+</script></div></div><div class="wrap hero-apple-copy"><div class="hero-apple-head"><span class="eyebrow">Cafe · Miami</span><h1 class="font-display">Proper coffee <em>in Miami</em></h1></div><div class="hero-apple-side"><p class="hero-sub">Golden Cafe serves proper coffee in Miami — made fresh, never from the freezer. Find us at 1200 Brickell Ave, Miami — Open Mon–Fri 7:30 AM–10:00 PM.</p><div class="hero-cta"><a class="btn tilt" href="tel:+17866220899"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Golden Cafe · +1 786‑622‑0899</a></div></div></div></section><section class="hero-below"><div class="wrap hero-below-in reveal"><div class="h3d-swatches" role="group" aria-label="Preview the look"><button type="button" data-h3d-swatch aria-pressed="true">Free pour</button><button type="button" data-h3d-swatch aria-pressed="false">Heart · sage</button><button type="button" data-h3d-swatch aria-pressed="false">Cocoa · charcoal</button></div><div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</span><span class="open-pill" data-open-now>Call for hours</span><a class="btn btn-ghost tilt" href="#menu">See the café menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div><div class="a1-wide"><div class="hero-faves reveal" style="--d:.5s"><p class="hero-faves-title">House favourites</p><ul><li><b>Argentine coffee</b><span>Espresso, cortadito, café con leche</span></li><li><b>Empanadas</b><span>Warm from the bakery case</span></li><li><b>Flan &amp; chocotorta</b><span>The classic Argentine desserts</span></li></ul></div><div class="a1-ritual" data-a1="ritual"><p class="a1-label">Your morning, hour by hour</p><div class="a1-ritual-btns" role="tablist"><button type="button" data-ritual="0" aria-selected="true" data-desc="Argentine coffee, brewed to order. Espresso, cortadito, café con leche — the cup Brickell starts its working day with.">First coffee</button><button type="button" data-ritual="1" aria-selected="false" data-desc="Empanadas from the bakery case, warm when they come out. Ask what&#x27;s in the case today — the selection changes through the day.">Mid-morning empanada</button><button type="button" data-ritual="2" aria-selected="false" data-desc="Flan and chocotorta to finish — the classic Argentine desserts, made for the slow hour of the afternoon.">Afternoon flan</button></div><div class="a1-ritual-panel"><p class="a1-ritual-desc">Argentine coffee, brewed to order. Espresso, cortadito, café con leche — the cup Brickell starts its working day with.</p></div></div></div></div></section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Miami</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Miami</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span><span><b>✦</b> Fresh Daily</span><span><b>✦</b> Made In-House</span><span><b>✦</b> Order Ahead</span><span><b>✦</b> Miami</span><span><b>✦</b> Local Favorite</span><span><b>✦</b> Pickup &amp; Catering</span></div></div><section class="mk-story mk-cat-restaurant" aria-label="From bean to table"><div class="mk-story-pin"><div class="mk-story-head"><span class="eyebrow">The ritual</span><h2 class="font-display">From bean to table</h2></div><div class="mk-story-progress" aria-hidden="true"><i></i></div><ol class="mk-story-steps"><li class="mk-story-step"><div class="mk-story-art"><div class="story-art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 8-3.6 8-8 0-5-4-8-6-10-.5 2-1.5 3.5-3 4.5C10 7 9 5 9 2 6 4.5 4 8 4 14c0 4.4 3.6 8 8 8z"/></svg></div></div><div class="mk-story-copy"><span class="mk-story-num">01</span><h3>Bean</h3><p>Argentine coffee, ground fresh every morning. The first cup is the reason Brickell regulars plan their route past our door.</p></div></li><li class="mk-story-step"><div class="mk-story-art"><div class="story-art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8 5.8 1.9-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9z"/><path d="M19 3l.9 2.6 2.6.9-2.6.9L19 10l-.9-2.6-2.6-.9 2.6-.9z"/></svg></div></div><div class="mk-story-copy"><span class="mk-story-num">02</span><h3>Brew</h3><p>Pulled slow and served hot — espresso, cortadito, café con leche. No rush, no shortcuts, just coffee made the way it should be.</p></div></li><li class="mk-story-step"><div class="mk-story-art"><div class="story-art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 9-9 4.5-.8 7-.5 7-.5s-.3 4.5-2 8c-2 4-4.5 8.5-7 8.5z"/><path d="M4 21c4-6 8-9 12-11"/></svg></div></div><div class="mk-story-copy"><span class="mk-story-num">03</span><h3>Pour</h3><p>Empanadas warm from the oven, flan and chocotorta to finish. The case changes through the day — ask what came out most recently.</p></div></li><li class="mk-story-step"><div class="mk-story-art"><div class="story-art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><div class="mk-story-copy"><span class="mk-story-num">04</span><h3>Table</h3><p>A table in Brickell, in the middle of the working day. Walk in hungry, walk out already planning your next visit.</p></div></li></ol></div></section><section class="section" id="menu"><div class="wrap">
 <div class="sec-head">
 <div><span class="eyebrow reveal">The Café Menu</span>
