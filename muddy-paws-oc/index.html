@@ -103,13 +103,24 @@ letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .marquee-track span b{color:var(--accent);font-weight:600}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;
-border-radius:var(--radius,999px);background:var(--accent);color:var(--accent-ink);
+/* §18 CTA button spec (reel DecIv1lIpnU, training/design-skill.md §18):
+   min-height 52px, full pill, near-black #121214, white text, ONE red dot
+   #ff3e3e at the leading edge (::before flex item), arrow turns on hover
+   over 350ms, press scales to .97. .btn-ghost (secondary) keeps its own
+   look (transparent bg, ink text, hairline border) — no dot, no turn. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
+min-height:52px;padding:1rem 2rem;
+border-radius:999px;background:#121214;color:#fff;
 font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
-box-shadow:0 12px 32px -10px var(--accent);
+box-shadow:0 12px 32px -10px rgba(18,18,20,.55);
 transition:transform .25s ease,box-shadow .25s ease}
-.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px var(--accent)}
-.btn svg{width:1.15rem;height:1.15rem}
+.btn:not(.btn-ghost)::before{content:"";width:8px;height:8px;flex:0 0 auto;
+border-radius:50%;background:#ff3e3e}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(18,18,20,.55)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:1.15rem;height:1.15rem;transition:transform .35s ease}
+.btn:not(.btn-ghost):hover svg{transform:rotate(-45deg)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);
 box-shadow:none}
 .btn-ghost:hover{border-color:var(--accent);box-shadow:none}
@@ -495,7 +506,7 @@ font-weight:700;box-shadow:0 10px 30px -10px rgba(0,0,0,.45);cursor:pointer}
 .bk-field input,.bk-field select,.btn{min-height:44px}
 }
 
-body.v-muddy-paws-oc{--bg:#FAF7F0;--bg2:#F3ECDF;--ink:#141310;--muted:#6E675C;--accent:#B93A18;--accent-ink:#FFFFFF;--card:#FFFFFF;--line:#E4D9C6;--font-display:'Space Grotesk',serif;--font-body:'Inter',sans-serif;--radius:999px}/* ---- 3D hero (pre-rendered frames + live swatch, render3d/) ---- */
+body.v-muddy-paws-oc{--bg:#FAF7F0;--bg2:#F3ECDF;--ink:#141310;--muted:#6E675C;--accent:#B93A18;--accent-ink:#FFFFFF;--card:#FFFFFF;--line:#E4D9C6;--hero-bg:#FDFAF3;--hero-bg2:#F6EDDB;--hero-ink:#141009;--hero-muted:#6B5D4A;--font-display:'Space Grotesk',serif;--font-body:'Inter',sans-serif;--radius:999px}/* ---- 3D hero (pre-rendered frames + live swatch, render3d/) ---- */
 /* The media box reserves its aspect ratio before paint (no CLS). The poster
    (frame 0) shows everywhere; .is-seq swaps in the scrubbed frame canvas,
    .is-live the desktop WebGL canvas. Swatches sit below, never over, the
@@ -512,7 +523,7 @@ body.v-muddy-paws-oc{--bg:#FAF7F0;--bg2:#F3ECDF;--ink:#141310;--muted:#6E675C;--
 .h3d-swatches button{min-height:44px;padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
 .h3d-swatches button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .h3d-swatches button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
-.hero-product-band{padding-top:3rem}.hero-product-band .h3d-media{max-height:30svh;width:auto;max-width:100%;margin-inline:auto}
+.hero-product-band{padding-top:3rem;background:linear-gradient(180deg,#FDFAF3,#F6EDDB)}.hero-product-band .h3d-media{max-height:42svh;width:auto;max-width:100%;margin-inline:auto}
 </style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
 <style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
@@ -875,7 +886,10 @@ animation:vs-trace .4s cubic-bezier(.22,1,.36,1) both}
    added in _core.py). Motion 200–400ms; no circular digit animation, no
    heavy choreography on a verification step. */
 .bk-done-icon,.form-confirm-icon{background:#1e7b34;color:#fff}
-.bk-verified{color:#1e7b34;font-weight:700;font-size:.95rem}
+/* M4 (Nov 14, 2026): the green CHECK CIRCLE above carries the success
+   signal — the wording stays ink (inherit) so the palette does not gain
+   a 5th chromatic text colour. */
+.bk-verified{color:inherit;font-weight:700;font-size:.95rem}
 
 /* §14/§15 reduced-motion rule (WCAG 2.3.3, hard): under reduced motion
    every view-switch and success state degrades to an instant state change —
@@ -885,6 +899,16 @@ animation:vs-trace .4s cubic-bezier(.22,1,.36,1) both}
 .mk-gallery.vs-in .mk-gallery-item,.bk-flip,
 .bk-date.sel::after,.bk-time.sel::after{
 transition:none!important;animation:none!important}}
+
+
+@media (hover:hover) and (pointer:fine){
+.btn:not(.btn-ghost){position:relative;overflow:hidden}
+.btn:not(.btn-ghost)::after{content:"";position:absolute;inset:0;pointer-events:none;
+background:radial-gradient(120px circle at var(--mx,50%) var(--my,50%),
+rgba(255,255,255,.22),transparent 70%);opacity:0;transition:opacity .25s ease}
+.btn:not(.btn-ghost):hover::after,.btn:not(.btn-ghost):focus-visible::after{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+.btn:not(.btn-ghost)::after{display:none}}
 </style>
 <script>(function(d){var r=/[?&]force-reduced/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(r?'mk-reduced':'mk-pending');setTimeout(function(){d.classList.remove('mk-pending')},2500)})(document.documentElement)</script>
 </head>
@@ -2420,6 +2444,7 @@ transition:none!important;animation:none!important}}
     { label: "Midnight", liquid: "#2C3E75" },
   ];
   function bottle(THREE, o) {
+    var dark = o.tone !== "light";
     var grp = new THREE.Group();
     function lathe(pts, mat, seg) {
       var g2 = new THREE.LatheGeometry(
@@ -2565,11 +2590,11 @@ transition:none!important;animation:none!important}}
       swatch: look,
       fov: 32,
       exposure: 1.05,
-      bg: ["#241A16", "#120D0B"],
+      bg: dark ? ["#241A16", "#120D0B"] : ["#F7F0E4", "#E6DAC4"],
       env: {
-        top: "#4A3428",
-        horizon: "#241812",
-        bottom: "#0A0705",
+        top: dark ? "#4A3428" : "#FFF6EA",
+        horizon: dark ? "#241812" : "#BDAE98",
+        bottom: dark ? "#0A0705" : "#5E5242",
         panels: [
           [-6, 4, 6, 5, 8, "#FFE7CF", 2.4], // key softbox front-left
           [5, 7, -6, 9, 4, "#FFD2A0", 6], // rim behind and above
@@ -2577,8 +2602,8 @@ transition:none!important;animation:none!important}}
         ],
       },
       lights: function (scene) {
-        scene.add(sun(THREE, "#FFEBD6", 2.2, [-5, 5, 6], 4, 2048));
-        var rim = new THREE.DirectionalLight("#FFC690", 5);
+        scene.add(sun(THREE, "#FFEBD6", dark ? 2.2 : 1.8, [-5, 5, 6], 4, 2048));
+        var rim = new THREE.DirectionalLight("#FFC690", dark ? 5 : 3);
         rim.position.set(4, 6, -6);
         scene.add(rim);
       },
@@ -2797,6 +2822,7 @@ transition:none!important;animation:none!important}}
     return s;
   }
   function clippers(THREE, o) {
+    var dark = o.tone !== "light";
     var grp = new THREE.Group();
     var bodyMat = new THREE.MeshPhysicalMaterial({
       color: "#6A6E75",
@@ -2912,11 +2938,11 @@ transition:none!important;animation:none!important}}
       swatch: look,
       fov: 36,
       exposure: 1.0,
-      bg: ["#1E1B18", "#0F0D0B"],
+      bg: dark ? ["#1E1B18", "#0F0D0B"] : ["#F7F0E4", "#E6DAC4"],
       env: {
-        top: "#6A5E52",
-        horizon: "#3A2E24",
-        bottom: "#0A0806",
+        top: dark ? "#6A5E52" : "#FFF6EA",
+        horizon: dark ? "#3A2E24" : "#BDAE98",
+        bottom: dark ? "#0A0806" : "#5E5242",
         panels: [
           [-6, 5, 6, 6, 6, "#FFE7CF", 4], // key softbox front-left
           [5, 7, -6, 9, 4, "#FFD2A0", 8], // rim behind and above
@@ -2925,8 +2951,8 @@ transition:none!important;animation:none!important}}
         ],
       },
       lights: function (scene) {
-        scene.add(sun(THREE, "#FFEBD6", 2.2, [-5, 5, 6], 4, 2048));
-        var rim = new THREE.DirectionalLight("#FFC690", 4);
+        scene.add(sun(THREE, "#FFEBD6", dark ? 2.2 : 1.8, [-5, 5, 6], 4, 2048));
+        var rim = new THREE.DirectionalLight("#FFC690", dark ? 4 : 3);
         rim.position.set(4, 6, -6);
         scene.add(rim);
       },
@@ -7504,6 +7530,14 @@ var THREE_PATTERNS = {
     momentControl(el, cfg.control || null, api);
   }
 })();
+</script>
+<script>
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+document.querySelectorAll('.btn:not(.btn-ghost)').forEach(function(el){
+el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();
+el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+el.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true})})})();
 </script><script>document.addEventListener('DOMContentLoaded',function(){MotionKit.init({"category": "default", "signature": "orb"})})</script>
 </body>
 </html>
