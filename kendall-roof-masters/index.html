@@ -65,6 +65,7 @@ html{scroll-behavior:auto}
 section:not(.hero):not(.booking):not(.booking-sec):not(.followup):not(#booking):not(#offer){padding-block:clamp(3rem,8vw,7rem)}
 /* ---- M27 44px tap floor ---- */
 .brand,.nav-links a{display:inline-flex;align-items:center;min-height:44px}
+.brand{white-space:nowrap}
 .nav-links a{min-width:44px;justify-content:center}
 a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}
 .tel,.hours-call{display:inline-flex;align-items:center;min-height:44px}
@@ -231,33 +232,44 @@ margin-bottom:.5rem}
 .bk-steps li::before{width:1.25rem;height:1.25rem;font-size:.6rem}
 }
 
-.demo-badge{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;
-align-items:center;gap:.75rem;max-width:min(24rem,calc(100vw - 2rem));
-background:var(--card);border:1px solid var(--line);color:var(--ink);
-border-radius:999px;padding:.55rem .6rem .55rem 1.1rem;font-size:.78rem;
-box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+/* Demo notice: a STATIC line at the very bottom of the page, in normal
+   flow after the footer. It NEVER floats over content — the old
+   position:fixed pill covered filter pills, addresses and section text
+   on mobile (it read as a bug, not a design choice). Dismiss removes it;
+   the page reflows, nothing is ever covered. */
+.demo-badge{position:static;display:flex;align-items:center;justify-content:center;
+gap:.75rem;max-width:none;margin:0;background:var(--card);
+border-top:1px solid var(--line);color:var(--muted);
+padding:.7rem 1rem;font-size:.78rem;text-align:center}
 .demo-badge button{flex:0 0 auto;width:44px;height:44px;border-radius:50%;
 border:1px solid var(--line);background:transparent;color:var(--muted);
 cursor:pointer;display:flex;align-items:center;justify-content:center}
 .demo-badge button:hover{color:var(--ink);border-color:var(--ink)}
 .demo-badge button svg{width:.8rem;height:.8rem}
-/* Desktop: badge sits bottom-RIGHT — bottom-left covered the hero's
-   primary CTA at 1440px (studio-61 "Book my cut"). Mobile keeps
-   bottom-left above the sticky bar (see the max-width:767px rule). */
-@media(min-width:768px){.demo-badge{left:auto;right:1rem}}
+/* Rating text never breaks mid-phrase (see lead_ctx rating_chip). */
+.rating-text{white-space:nowrap}
 .sticky-cta{display:none}
 @media(max-width:767px){
 body{padding-bottom:4.5rem}
-.demo-badge{bottom:5.25rem}
 .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;
 background:var(--card);border-top:1px solid var(--line);padding:.6rem .8rem;
 gap:.6rem;box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
+/* One primary + one secondary, clean spacing, no wrap: the labels stay
+   on one line (a wrapping sticky button reads as cluttered). */
 .sticky-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;
-gap:.5rem;padding:.85rem 1rem;border-radius:var(--radius,999px);font-weight:700;
-text-decoration:none;font-size:.95rem}
-.sticky-cta a svg{width:1.05rem;height:1.05rem}
+gap:.5rem;padding:.85rem .6rem;border-radius:var(--radius,999px);font-weight:700;
+text-decoration:none;font-size:.95rem;white-space:nowrap;min-width:0}
+.sticky-cta a svg{width:1.05rem;height:1.05rem;flex:0 0 auto}
 .sc-call{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .sc-book{background:var(--accent);color:var(--accent-ink)}
+/* The brand never wraps to two lines on mobile (it did for
+   "Any Time Plumbing"). Shrink it so it fits on one line. */
+.brand{white-space:nowrap;font-size:.98rem}
+/* The header phone button does not fit next to a long brand on a
+   390px phone (Kendall Roof Masters' was clipped at the right edge).
+   The sticky bar already has a Call button, so the header one is
+   redundant on mobile — hide it rather than let it clip. */
+.head-cta,.nav a[href^="tel:"],header a[href^="tel:"]{display:none}
 }
 .emergency-banner{display:flex;align-items:center;gap:.75rem;
 flex-wrap:wrap;background:var(--card);border:1px solid var(--line);
@@ -684,14 +696,10 @@ background:linear-gradient(180deg,var(--f0) 0,var(--f0) var(--top),var(--f1) cal
 body[class*="v-"] .hero-apple h1{font-size:clamp(2.2rem,5.8vw,5.5rem);line-height:1.02;margin:.5rem 0 0;max-width:22ch}
 .hero-apple .hero-sub{font-size:clamp(1rem,1.2vw,1.12rem);margin:0 0 1.2rem;max-width:46ch}
 .hero-apple .hero-cta{margin:0}
-/* Badge (defect 1 fix): on Apple-hero pages the fixed badge must never cover
-   the hero CTA. Desktop: pin it top-right just under the nav, over a corner
-   of the product image — clear of the H1, paragraph and CTA however tall the
-   H1 gets. Mobile: nudge it down so it clears the CTA (probe-verified). */
-@media(min-width:768px){
-body:has(.hero-apple) .demo-badge{left:auto;right:1rem;top:5.5rem;bottom:auto}}
+/* The demo badge is a STATIC line at the bottom of the page now
+   (see _core.py) — it never floats, so there is no position to pin
+   here. The button sizing stays (44px tap target). */
 @media(max-width:767px){
-body:has(.hero-apple) .demo-badge{bottom:4.9rem}
 body:has(.hero-apple) .demo-badge button{width:44px;height:44px;min-width:44px;min-height:44px}}
 .hero-below{padding:clamp(2rem,5vw,3.5rem) 0}
 .hero-below-in{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;justify-content:space-between}
@@ -739,7 +747,7 @@ body[class*="v-"] .hero-below .hero-a1-card{background:color-mix(in srgb,var(--c
 body[class*="v-"] .hero-below .stat{background:color-mix(in srgb,var(--card) 68%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:14px;padding:.7rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.10)}
 
 body.v-kendall-roof-masters{--bg:#0C1B2E;--bg2:#0A1626;--ink:#F4F1E9;--muted:#9DB0C6;--accent:#FF6B1A;--accent-ink:#0C1B2E;--card:#12253D;--line:rgba(244,241,233,.14);--font-display:'Space Grotesk',serif;--font-body:'Inter',sans-serif;--radius:4px}
-body[data-layout="z-pattern"] .hero-cta{justify-content:flex-end;text-align:right}body[data-layout="z-pattern"] section:nth-of-type(even){text-align:left}body[data-layout="z-pattern"] section:nth-of-type(odd) .hero-cta,body[data-layout="z-pattern"] .foot-cta{text-align:right}</style>
+body[data-layout="z-pattern"] .hero-cta{justify-content:flex-end;text-align:right}body[data-layout="z-pattern"] section:nth-of-type(even){text-align:left}body[data-layout="z-pattern"] section:nth-of-type(odd) .hero-cta,body[data-layout="z-pattern"] .foot-cta{text-align:right}@media(max-width:767px){body[class*="v-"][data-layout="z-pattern"] section.hero{display:flex;flex-direction:column;padding-top:4.5rem}body[data-layout="z-pattern"] .hero-apple-copy{order:1}body[data-layout="z-pattern"] .hero-product{order:2}body[data-layout="z-pattern"] .hero-apple-head{text-align:left;margin-left:0}body[data-layout="z-pattern"] .hero-cta{display:flex;justify-content:flex-end}body[data-layout="z-pattern"] .hero-cta .btn{width:auto;flex:none;margin-left:auto}body[data-layout="z-pattern"] section:nth-of-type(odd) h2{text-align:right}body[data-layout="z-pattern"] section:nth-of-type(even) h2{text-align:left}}</style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
 <style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
    attributes, plus .btn / .reveal hooks it never restyles. Every component is
