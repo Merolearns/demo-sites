@@ -65,6 +65,7 @@ html{scroll-behavior:auto}
 section:not(.hero):not(.booking):not(.booking-sec):not(.followup):not(#booking):not(#offer){padding-block:clamp(3rem,8vw,7rem)}
 /* ---- M27 44px tap floor ---- */
 .brand,.nav-links a{display:inline-flex;align-items:center;min-height:44px}
+.brand{white-space:nowrap}
 .nav-links a{min-width:44px;justify-content:center}
 a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}
 .tel,.hours-call{display:inline-flex;align-items:center;min-height:44px}
@@ -231,33 +232,44 @@ margin-bottom:.5rem}
 .bk-steps li::before{width:1.25rem;height:1.25rem;font-size:.6rem}
 }
 
-.demo-badge{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;
-align-items:center;gap:.75rem;max-width:min(24rem,calc(100vw - 2rem));
-background:var(--card);border:1px solid var(--line);color:var(--ink);
-border-radius:999px;padding:.55rem .6rem .55rem 1.1rem;font-size:.78rem;
-box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+/* Demo notice: a STATIC line at the very bottom of the page, in normal
+   flow after the footer. It NEVER floats over content — the old
+   position:fixed pill covered filter pills, addresses and section text
+   on mobile (it read as a bug, not a design choice). Dismiss removes it;
+   the page reflows, nothing is ever covered. */
+.demo-badge{position:static;display:flex;align-items:center;justify-content:center;
+gap:.75rem;max-width:none;margin:0;background:var(--card);
+border-top:1px solid var(--line);color:var(--muted);
+padding:.7rem 1rem;font-size:.78rem;text-align:center}
 .demo-badge button{flex:0 0 auto;width:44px;height:44px;border-radius:50%;
 border:1px solid var(--line);background:transparent;color:var(--muted);
 cursor:pointer;display:flex;align-items:center;justify-content:center}
 .demo-badge button:hover{color:var(--ink);border-color:var(--ink)}
 .demo-badge button svg{width:.8rem;height:.8rem}
-/* Desktop: badge sits bottom-RIGHT — bottom-left covered the hero's
-   primary CTA at 1440px (studio-61 "Book my cut"). Mobile keeps
-   bottom-left above the sticky bar (see the max-width:767px rule). */
-@media(min-width:768px){.demo-badge{left:auto;right:1rem}}
+/* Rating text never breaks mid-phrase (see lead_ctx rating_chip). */
+.rating-text{white-space:nowrap}
 .sticky-cta{display:none}
 @media(max-width:767px){
 body{padding-bottom:4.5rem}
-.demo-badge{bottom:5.25rem}
 .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;
 background:var(--card);border-top:1px solid var(--line);padding:.6rem .8rem;
 gap:.6rem;box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
+/* One primary + one secondary, clean spacing, no wrap: the labels stay
+   on one line (a wrapping sticky button reads as cluttered). */
 .sticky-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;
-gap:.5rem;padding:.85rem 1rem;border-radius:var(--radius,999px);font-weight:700;
-text-decoration:none;font-size:.95rem}
-.sticky-cta a svg{width:1.05rem;height:1.05rem}
+gap:.5rem;padding:.85rem .6rem;border-radius:var(--radius,999px);font-weight:700;
+text-decoration:none;font-size:.95rem;white-space:nowrap;min-width:0}
+.sticky-cta a svg{width:1.05rem;height:1.05rem;flex:0 0 auto}
 .sc-call{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .sc-book{background:var(--accent);color:var(--accent-ink)}
+/* The brand never wraps to two lines on mobile (it did for
+   "Any Time Plumbing"). Shrink it so it fits on one line. */
+.brand{white-space:nowrap;font-size:.98rem}
+/* The header phone button does not fit next to a long brand on a
+   390px phone (Kendall Roof Masters' was clipped at the right edge).
+   The sticky bar already has a Call button, so the header one is
+   redundant on mobile — hide it rather than let it clip. */
+.head-cta,.nav a[href^="tel:"],header a[href^="tel:"]{display:none}
 }
 .emergency-banner{display:flex;align-items:center;gap:.75rem;
 flex-wrap:wrap;background:var(--card);border:1px solid var(--line);
@@ -684,14 +696,10 @@ background:linear-gradient(180deg,var(--f0) 0,var(--f0) var(--top),var(--f1) cal
 body[class*="v-"] .hero-apple h1{font-size:clamp(2.2rem,5.8vw,5.5rem);line-height:1.02;margin:.5rem 0 0;max-width:22ch}
 .hero-apple .hero-sub{font-size:clamp(1rem,1.2vw,1.12rem);margin:0 0 1.2rem;max-width:46ch}
 .hero-apple .hero-cta{margin:0}
-/* Badge (defect 1 fix): on Apple-hero pages the fixed badge must never cover
-   the hero CTA. Desktop: pin it top-right just under the nav, over a corner
-   of the product image — clear of the H1, paragraph and CTA however tall the
-   H1 gets. Mobile: nudge it down so it clears the CTA (probe-verified). */
-@media(min-width:768px){
-body:has(.hero-apple) .demo-badge{left:auto;right:1rem;top:5.5rem;bottom:auto}}
+/* The demo badge is a STATIC line at the bottom of the page now
+   (see _core.py) — it never floats, so there is no position to pin
+   here. The button sizing stays (44px tap target). */
 @media(max-width:767px){
-body:has(.hero-apple) .demo-badge{bottom:4.9rem}
 body:has(.hero-apple) .demo-badge button{width:44px;height:44px;min-width:44px;min-height:44px}}
 .hero-below{padding:clamp(2rem,5vw,3.5rem) 0}
 .hero-below-in{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;justify-content:space-between}
@@ -739,7 +747,7 @@ body[class*="v-"] .hero-below .hero-a1-card{background:color-mix(in srgb,var(--c
 body[class*="v-"] .hero-below .stat{background:color-mix(in srgb,var(--card) 68%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:14px;padding:.7rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.10)}
 
 body.v-any-time-plumbing{--bg:#F4F1E9;--bg2:#EAE4D6;--ink:#0C1B2E;--muted:#46586E;--accent:#A63F00;--accent-ink:#FFFFFF;--card:#FFFFFF;--line:rgba(12,27,46,.16);--font-display:'Space Grotesk',serif;--font-body:'Inter',sans-serif;--radius:4px}
-body[data-layout="single-column"] section:not(.hero){max-width:680px;margin-inline:auto}body[data-layout="single-column"] .hero-apple-head{text-align:center}body[data-layout="single-column"] .bk-svc-grid{grid-template-columns:1fr}</style>
+body[data-layout="single-column"] section:not(.hero){max-width:680px;margin-inline:auto}body[data-layout="single-column"] .hero-apple-head{text-align:center}body[data-layout="single-column"] .bk-svc-grid{grid-template-columns:1fr}@media(max-width:767px){body[data-layout="single-column"] .hero-apple-copy{text-align:center}body[data-layout="single-column"] .hero-apple-head{margin-inline:auto;text-align:center}body[data-layout="single-column"] .hero-apple-side{margin-inline:auto;text-align:center}body[data-layout="single-column"] .hero-cta{justify-content:center}body[data-layout="single-column"] .hero-product{max-width:420px;margin-inline:auto}}</style>
 <script>window.__bkQ=[];window.initBooking=function(w,c){window.__bkQ.push([w,c])};</script>
 <style>/* Motion kit. Additive to _core.py: uses only .mk-* classes and data-mk-*
    attributes, plus .btn / .reveal hooks it never restyles. Every component is
@@ -3888,7 +3896,7 @@ transition:none!important;animation:none!important}}
     if (b) pick(Array.prototype.indexOf.call(swatches(), b));
   });
 })();
-</script></div></div><div class="wrap hero-apple-copy"><div class="hero-apple-head"><span class="eyebrow">Plumbing Service · Hialeah</span><h1 class="font-display">Leaks fixed right <em>the first time</em></h1></div><div class="hero-apple-side"><p class="hero-sub">Any Time Plumbing is Hialeah's plumbing service — a service call from $69: we find the problem and quote the fix before work starts. Most repairs are done in one visit. Reach us at 2650 E 11th Ave, Hialeah, FL 33013 — Mon–Fri 7:00 AM–3:00 PM.</p><div class="hero-cta"><a class="btn tilt" href="tel:+13056343083"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Any Time Plumbing · +1 305-634-3083</a></div></div></div></section><section class="hero-below"><div class="wrap hero-below-in reveal"><div class="emg-slot"><div class="emergency-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Emergency callouts</span><a href="tel:+13056343083">Call now: +1 305-634-3083</a></div></div><div class="chip-row chips"><p class="rating-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p><p class="open-now" data-open-now>Call for hours</p><a class="btn btn-outline tilt" href="#quote">Get my fixed quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div><div class="hero-a1-card"><div class="a1-symptom" data-a1="symptom"><div class="h3d-swatches" role="group" aria-label="Preview the look"><button type="button" data-h3d-swatch aria-pressed="true">Polished chrome</button><button type="button" data-h3d-swatch aria-pressed="false">Brushed nickel</button><button type="button" data-h3d-swatch aria-pressed="false">Matte black</button></div><p class="a1-label">What&rsquo;s wrong?</p><div class="a1-symptom-btns"><button type="button" data-symptom data-service="Drain cleaning" data-desc="A leak needs eyes on it fast. Book a service call — we find the problem and quote the fix before any work starts.">Leak</button><button type="button" data-symptom data-service="Drain cleaning" data-desc="Sink, tub or main-line clogs, cleared on the spot. Pick a time below — most drain calls take 45–60 minutes.">Clogged drain</button><button type="button" data-symptom data-service="Water heater flush" data-desc="No hot water is usually the heater, not the pipes. A flush and inspection finds out — and extends the heater&#x27;s life.">No hot water</button><button type="button" data-symptom data-service="Service call &amp; diagnostics" data-desc="Low pressure has a few causes, and guessing wastes a visit. A diagnostics call finds the real one, then quotes the fix.">Low pressure</button></div><p class="a1-symptom-readout" aria-live="polite">Pick what&rsquo;s wrong and we&rsquo;ll point you at the right service — then you pick a time.</p></div></div></div></section>
+</script></div></div><div class="wrap hero-apple-copy"><div class="hero-apple-head"><span class="eyebrow">Plumbing Service · Hialeah</span><h1 class="font-display">Leaks fixed right <em>the first time</em></h1></div><div class="hero-apple-side"><p class="hero-sub">Any Time Plumbing is Hialeah's plumbing service — a service call from $69: we find the problem and quote the fix before work starts. Most repairs are done in one visit. Reach us at 2650 E 11th Ave, Hialeah, FL 33013 — Mon–Fri 7:00 AM–3:00 PM.</p><div class="hero-cta"><a class="btn tilt" href="tel:+13056343083"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Any Time Plumbing · +1 305‑634‑3083</a></div></div></div></section><section class="hero-below"><div class="wrap hero-below-in reveal"><div class="emg-slot"><div class="emergency-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Emergency callouts</span><a href="tel:+13056343083">Call now: +1 305-634-3083</a></div></div><div class="chip-row chips"><p class="rating-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Neighborhood favorite</p><p class="open-now" data-open-now>Call for hours</p><a class="btn btn-outline tilt" href="#quote">Get my fixed quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div><div class="hero-a1-card"><div class="a1-symptom" data-a1="symptom"><div class="h3d-swatches" role="group" aria-label="Preview the look"><button type="button" data-h3d-swatch aria-pressed="true">Polished chrome</button><button type="button" data-h3d-swatch aria-pressed="false">Brushed nickel</button><button type="button" data-h3d-swatch aria-pressed="false">Matte black</button></div><p class="a1-label">What&rsquo;s wrong?</p><div class="a1-symptom-btns"><button type="button" data-symptom data-service="Drain cleaning" data-desc="A leak needs eyes on it fast. Book a service call — we find the problem and quote the fix before any work starts.">Leak</button><button type="button" data-symptom data-service="Drain cleaning" data-desc="Sink, tub or main-line clogs, cleared on the spot. Pick a time below — most drain calls take 45–60 minutes.">Clogged drain</button><button type="button" data-symptom data-service="Water heater flush" data-desc="No hot water is usually the heater, not the pipes. A flush and inspection finds out — and extends the heater&#x27;s life.">No hot water</button><button type="button" data-symptom data-service="Service call &amp; diagnostics" data-desc="Low pressure has a few causes, and guessing wastes a visit. A diagnostics call finds the real one, then quotes the fix.">Low pressure</button></div><p class="a1-symptom-readout" aria-live="polite">Pick what&rsquo;s wrong and we&rsquo;ll point you at the right service — then you pick a time.</p></div></div></div></section>
 
 <div class="band marquee" aria-hidden="true">
   <div class="marquee-track"><span><b>//</b> Plumbing, done right the first time</span><span><b>//</b> Leak detection &amp; pipe repair</span><span><b>//</b> Water heater installation</span><span><b>//</b> Drain cleaning &amp; unclogging</span><span><b>//</b> Fixture replacement</span><span><b>//</b> Sewer line inspection</span><span><b>//</b> Plumbing, done right the first time</span><span><b>//</b> Leak detection &amp; pipe repair</span><span><b>//</b> Water heater installation</span><span><b>//</b> Drain cleaning &amp; unclogging</span><span><b>//</b> Fixture replacement</span><span><b>//</b> Sewer line inspection</span></div>
