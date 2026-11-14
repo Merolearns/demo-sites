@@ -22,6 +22,11 @@ a{color:inherit}
 section{position:relative}
 .font-display{font-family:var(--font-display);font-weight:600;line-height:1.02;
 letter-spacing:-.01em}
+/* A — elaya discipline (2026-11-14): no orphaned words. Headings balance
+   (even line lengths), body copy is pretty (no lone word on the last line).
+   Progressive enhancement — unsupported browsers ignore it. */
+h1,h2,h3,.font-display{text-wrap:balance}
+p,li,blockquote{text-wrap:pretty}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;
 font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 .eyebrow::before{content:"";width:2.2rem;height:2px;background:var(--accent)}
@@ -29,7 +34,7 @@ font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent
 /* design system: M6 tokens/components, M10 micro-interactions,
    M26 no layout shift, M31 focus-visible, M30 reduced motion */
 :root{--ds-duration-fast:150ms;--ds-duration-med:350ms;--ds-duration-slow:900ms;
---ds-ease:cubic-bezier(.16,1,.3,1)}
+--ds-ease:cubic-bezier(.22,1,.36,1)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .btn:active,.btn:hover:active{transform:scale(.98) translateY(0)}
 a,button,.bk-svc,.bk-date,.bk-time,.tilt{transition-duration:var(--ds-duration-fast)}
@@ -76,7 +81,7 @@ a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}
 input[type="radio"],input[type="checkbox"],.qf-field input[type="radio"],.qf-field input[type="checkbox"]{width:44px;height:44px;flex:0 0 auto;accent-color:var(--accent)}
 
 .reveal{opacity:0;transform:translateY(30px);filter:blur(6px);
-transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .9s ease;
+transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1),filter .9s ease;
 transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){
@@ -654,7 +659,7 @@ body.v-any-time-plumbing .hero h1{text-transform:none}
    scroll is too expensive on this VM. The Oasel blur lives in the static
    frosted glass (below) instead, which keeps the blurred-depth look
    without the scroll cost. Fade + rise only here. */
-body[class*="v-"] .reveal{transform:translateY(20px);filter:none;transition:opacity 1s ease-out,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+body[class*="v-"] .reveal{transform:translateY(20px);filter:none;transition:opacity 1s ease-out,transform 1s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
 body[class*="v-"] .reveal.in{transform:none}
 @media(prefers-reduced-motion:reduce){body[class*="v-"] .reveal{opacity:1;transform:none;filter:none;transition:none}}
 /* ---- M27: footer "Booking terms" is a real 44px tap target ---- */
@@ -731,11 +736,11 @@ body[class*="v-"] .hero-apple h1{font-size:clamp(2rem,8.6vw,2.6rem)}}
    Transform/opacity only. The poster starts at .01 opacity (not 0) so it
    stays the LCP candidate. */
 @media(prefers-reduced-motion:no-preference){
-.hero-apple .h3d-media{animation:h3d-in 1s cubic-bezier(.16,1,.3,1) both}
-.hero-apple .eyebrow{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.15s}
-.hero-apple h1{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.27s}
-.hero-apple .hero-sub{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.39s}
-.hero-apple .hero-cta{animation:h3d-copy 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.51s}}
+.hero-apple .h3d-media{animation:h3d-in 1s cubic-bezier(.22,1,.36,1) both}
+.hero-apple .eyebrow{animation:h3d-copy 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.15s}
+.hero-apple h1{animation:h3d-copy 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.27s}
+.hero-apple .hero-sub{animation:h3d-copy 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.39s}
+.hero-apple .hero-cta{animation:h3d-copy 1s cubic-bezier(.22,1,.36,1) both;animation-delay:.51s}}
 @keyframes h3d-in{from{opacity:.01;transform:translateY(24px) scale(.985)}to{opacity:1;transform:none}}
 @keyframes h3d-copy{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 /* ---- Oasel glass: frosted cards over the backdrop (the "3D" feel, no WebGL) ---- */
@@ -787,7 +792,7 @@ line-height:1.05;margin:.6rem 0 1rem}
 .mk-story.is-pinned .mk-story-pin{height:100vh;padding:clamp(5rem,12vh,7rem) 0 3rem}
 .mk-story.is-pinned .mk-story-steps{grid-template-areas:"s";min-height:0}
 .mk-story.is-pinned .mk-story-step{grid-area:s;opacity:0;transform:translateY(24px);
-pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .mk-story.is-pinned .mk-story-step.is-active{opacity:1;transform:none;pointer-events:auto}
 .mk-story.is-pinned .mk-story-art{max-height:52vh;width:100%}
 @media (max-width:767px){.mk-story-step{grid-template-columns:1fr;gap:1.4rem}
@@ -801,6 +806,20 @@ pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.16,1
 .mk-hero3d canvas{z-index:1;opacity:0;transition:opacity .8s ease}
 .mk-hero3d.is-live canvas{opacity:1}
 .mk-hero3d.is-live .mk-hero3d-art{opacity:.25}
+
+/* E — cinematic-scroll hero narrative line (golden-cafe). Positioned at the
+   bottom of the pinned hero; GSAP fades it in mid-pin (fromTo sets opacity 0
+   on init). Visible without JS (no CSS opacity here). Centred via left/right
+   (no transform) so GSAP's y animation cannot fight a translateX. */
+.mk-scroll-narrative{position:absolute;left:0;right:0;bottom:2.5rem;z-index:3;margin:0;font-family:var(--font-display);font-size:clamp(1.15rem,2vw,1.5rem);font-style:italic;color:var(--ink);text-align:center;pointer-events:none}
+@media (max-width:767px){.mk-scroll-narrative{bottom:1.5rem;padding:0 4vw}}
+
+/* D — Hacktemplates shader hero backdrop (fold / furnace). The canvas is
+   the deepest hero layer (z-index 0); the 3D scene / art / copy sit above.
+   Static gradient fallback so the canvas never renders blank on mobile
+   (shader is desktop-gated) or without WebGL. Specificity beats the
+   .mk-hero3d canvas rule (opacity 0) above. */
+.mk-shader,section.hero canvas.mk-shader,.mk-hero3d canvas.mk-shader{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:1;pointer-events:none;background:radial-gradient(60% 50% at 70% 40%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%)}
 .mk-hero3d-art svg{position:absolute;right:4%;top:50%;width:min(46vw,640px);height:auto;
 transform:translateY(-50%);color:var(--accent)}
 .mk-art-halo{background:radial-gradient(circle at 70% 50%,transparent 21%,
@@ -825,8 +844,8 @@ background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 margin:-24px 0 0 -24px;border-radius:50%;background:#fff;color:#111;display:grid;
 place-items:center;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .mk-ba-handle:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
-.mk-ba.is-anim .mk-ba-after{transition:clip-path .3s cubic-bezier(.16,1,.3,1)}
-.mk-ba.is-anim .mk-ba-handle{transition:left .3s cubic-bezier(.16,1,.3,1)}
+.mk-ba.is-anim .mk-ba-after{transition:clip-path .3s cubic-bezier(.22,1,.36,1)}
+.mk-ba.is-anim .mk-ba-handle{transition:left .3s cubic-bezier(.22,1,.36,1)}
 .mk-ba-label{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:999px;
 background:rgba(0,0,0,.55);color:#fff;font-size:.78rem;font-weight:600;
 letter-spacing:.12em;text-transform:uppercase}
@@ -835,7 +854,7 @@ letter-spacing:.12em;text-transform:uppercase}
 /* tilt cards */
 .mk-tilt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
 .mk-tilt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;
-transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s ease}
+transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s ease}
 .mk-tilt.is-tilting{transition:transform .12s linear;will-change:transform;border-color:var(--accent)}
 .mk-tilt h3{font-family:var(--font-display);font-size:1.5rem;margin:.6rem 0}
 .mk-tilt p{color:var(--muted)}
@@ -863,7 +882,7 @@ html.mk-cursor input,html.mk-cursor textarea,html.mk-cursor select{cursor:auto}
 .mk-cursor-dot{width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--accent)}
 .mk-cursor-ring{width:32px;height:32px;margin:-16px 0 0 -16px}
 .mk-cursor-ring i{position:absolute;inset:0;border:1.5px solid var(--accent);border-radius:50%;
-transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .35s ease}
+transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .35s ease}
 .mk-cursor-ring span{position:absolute;inset:0;display:grid;place-items:center;
 font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
 color:var(--accent-ink);opacity:0;transition:opacity .3s ease}
@@ -873,8 +892,8 @@ color:var(--accent-ink);opacity:0;transition:opacity .3s ease}
 .mk-cursor-ring.is-out{opacity:0}
 
 /* M12 transitions, CSS only */
-.mk-fade{animation:mk-fade .45s cubic-bezier(.16,1,.3,1) both}
-details[open]>:not(summary){animation:mk-fade .4s cubic-bezier(.16,1,.3,1) both}
+.mk-fade{animation:mk-fade .45s cubic-bezier(.22,1,.36,1) both}
+details[open]>:not(summary){animation:mk-fade .4s cubic-bezier(.22,1,.36,1) both}
 @keyframes mk-fade{from{opacity:0;transform:translateY(8px)}}
 
 /* M30: reduced motion, by media query or ?force-reduced=1 (html.mk-reduced) */
@@ -969,7 +988,7 @@ align-items:center;justify-content:center;flex:0 0 auto}
 @media(max-width:767px){.mn-nav-btn{display:inline-flex}}
 .mn-menu{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);z-index:95;
 background:var(--bg);border-right:1px solid var(--line);padding:1.2rem;
-transform:translateX(-102%);transition:transform .3s cubic-bezier(.16,1,.3,1);
+transform:translateX(-102%);transition:transform .3s cubic-bezier(.22,1,.36,1);
 display:flex;flex-direction:column;gap:.25rem;overflow-y:auto}
 .mn-menu.is-open{transform:translateX(0)}
 .mn-menu a{display:flex;align-items:center;min-height:44px;padding:.6rem .8rem;
@@ -985,7 +1004,7 @@ opacity:0;pointer-events:none;transition:opacity .3s ease}
    The sticky Book/Call bar stays put (it is not transformed). The
    transition lives on the base state so the return animates too. */
 body>header,body>nav,body>section,body>footer,body>main{
-transition:transform .3s cubic-bezier(.16,1,.3,1)}
+transition:transform .3s cubic-bezier(.22,1,.36,1)}
 html.mn-push body>header,html.mn-push body>nav,html.mn-push body>section,
 html.mn-push body>footer,html.mn-push body>main{
 transform:translateX(min(280px,80vw)) scale(.96);transform-origin:left center}
@@ -1018,14 +1037,14 @@ text-align:left;border-radius:9px;cursor:pointer}
    the booking "See all services" extras. */
 details.faq-item[open]>*:not(summary),
 details.qf-more[open]>*:not(summary){
-animation:mn-fold-row .3s cubic-bezier(.16,1,.3,1) both}
+animation:mn-fold-row .3s cubic-bezier(.22,1,.36,1) both}
 details.faq-item[open]>*:not(summary):nth-child(3),
 details.qf-more[open]>*:not(summary):nth-child(3){animation-delay:.05s}
 details.faq-item[open]>*:not(summary):nth-child(4),
 details.qf-more[open]>*:not(summary):nth-child(4){animation-delay:.1s}
 @keyframes mn-fold-row{from{opacity:0;transform:translateY(-8px)}}
 .bk-svc-grid.mn-fold-open .bk-svc-wrap:nth-child(n+4){
-animation:mn-fold-row .3s cubic-bezier(.16,1,.3,1) both}
+animation:mn-fold-row .3s cubic-bezier(.22,1,.36,1) both}
 .bk-svc-grid.mn-fold-open .bk-svc-wrap:nth-child(5){animation-delay:.05s}
 .bk-svc-grid.mn-fold-open .bk-svc-wrap:nth-child(6){animation-delay:.1s}
 .bk-svc-grid.mn-fold-open .bk-svc-wrap:nth-child(7){animation-delay:.15s}
@@ -1033,7 +1052,7 @@ animation:mn-fold-row .3s cubic-bezier(.16,1,.3,1) both}
 
 /* K04: button-to-panel — the booking card grows from the Book button
    (scale + fade, 300ms). The JS sets transform-origin toward the button. */
-.bk-card.mn-morph-in{animation:mn-morph .3s cubic-bezier(.16,1,.3,1) both}
+.bk-card.mn-morph-in{animation:mn-morph .3s cubic-bezier(.22,1,.36,1) both}
 @keyframes mn-morph{from{opacity:0;transform:scale(.96) translateY(12px)}}
 
 /* §12 reduced-motion rule (WCAG 2.3.3, hard): under reduced motion every
@@ -1056,7 +1075,7 @@ transition:none!important;animation:none!important}}
    one before it (stagger via --i, set by drag_gallery in _motion.py). The
    wave plays only once the gallery scrolls into view (.vs-in, added by the
    gallery() JS), so it is seen, not played off-screen. */
-.mk-gallery.vs-in .mk-gallery-item{animation:vs-tile .4s cubic-bezier(.16,1,.3,1) both;
+.mk-gallery.vs-in .mk-gallery-item{animation:vs-tile .4s cubic-bezier(.22,1,.36,1) both;
 animation-delay:calc(var(--i,0)*50ms)}
 @keyframes vs-tile{from{opacity:0;transform:translateY(16px) scale(.96)}}
 
@@ -1068,7 +1087,7 @@ animation-delay:calc(var(--i,0)*50ms)}
    first card back. The kebab sits outside the flipper, so it never flips. */
 .bk-svc-wrap{perspective:1200px}
 .bk-flip{position:relative;transform-style:preserve-3d;
-transition:transform .4s cubic-bezier(.16,1,.3,1)}
+transition:transform .4s cubic-bezier(.22,1,.36,1)}
 .bk-svc-wrap:has(.bk-svc.sel) .bk-flip{transform:rotateY(180deg)}
 .bk-svc,.bk-svc-back{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .bk-svc-back{position:absolute;inset:0;transform:rotateY(180deg);
@@ -1086,7 +1105,7 @@ padding:.9rem 1rem;pointer-events:none}
 .bk-date,.bk-time{position:relative}
 .bk-date.sel::after,.bk-time.sel::after{content:"";position:absolute;inset:-2px;
 border:2px solid var(--accent);border-radius:10px;pointer-events:none;
-animation:vs-trace .4s cubic-bezier(.16,1,.3,1) both}
+animation:vs-trace .4s cubic-bezier(.22,1,.36,1) both}
 @keyframes vs-trace{from{clip-path:inset(0 100% 100% 0)}to{clip-path:inset(0 0 0 0)}}
 
 /* §15 OTP + confirmation mechanics — the success state. The booking Done
@@ -4094,7 +4113,7 @@ var y=(ev.clientY-r.top)/r.height-0.5;
 el.style.transform='perspective(900px) rotateX('+(-y*9).toFixed(2)+'deg) rotateY('+(x*11).toFixed(2)+'deg) translateY(-3px)';
 });
 el.addEventListener('mouseleave',function(){
-el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+el.style.transition='transform .6s cubic-bezier(.22,1,.36,1)';
 el.style.transform='';
 setTimeout(function(){el.style.transition=''},600);
 });
@@ -4578,6 +4597,7 @@ each('[data-a1="symptom"]',function(box){
       safe("reveals", reveals);
       safe("countUp", countUp);
       safe("stories", stories);
+      safe("scrollHero", scrollHero);
     }
     ready();
     safe("tilt", tilt);
@@ -4761,6 +4781,31 @@ each('[data-a1="symptom"]',function(box){
           set(Math.min(n - 1, Math.floor(self.progress * n)));
         },
       });
+    });
+  }
+
+  /* E — cinematic-scroll hero (golden-cafe): pinned product reveal.
+     Desktop only. The cup pushes in, the headline lifts away (foreground
+     separation), and one honest narrative line fades in mid-pin. The pin
+     is +100% (one extra viewport), so the hero is a 2-viewport story. */
+  function scrollHero() {
+    if (env.mobile) return; // phones get the plain hero + native scroll
+    each("[data-scroll-hero]", function (hero) {
+      var product = hero.querySelector(".hero-product");
+      var copy = hero.querySelector(".hero-apple-copy");
+      var narr = hero.querySelector(".mk-scroll-narrative");
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "+=100%",
+          pin: true,
+          scrub: 0.6,
+        },
+      });
+      if (product) tl.to(product, { scale: 1.12, yPercent: -4, ease: "none" }, 0);
+      if (copy) tl.to(copy, { yPercent: -18, opacity: 0.25, ease: "none" }, 0);
+      if (narr) tl.fromTo(narr, { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: "none" }, 0.35);
     });
   }
 
@@ -5315,7 +5360,7 @@ each('[data-a1="symptom"]',function(box){
         var base = getComputedStyle(el).transition;
         el.style.transition =
           (base && base.indexOf("all 0s") !== 0 ? base + "," : "") +
-          "translate .35s cubic-bezier(.16,1,.3,1)";
+          "translate .35s cubic-bezier(.22,1,.36,1)";
         el.addEventListener("pointermove", function (e) {
           var r = el.getBoundingClientRect();
           var dx = ((e.clientX - r.left) / r.width) * 2 - 1,
