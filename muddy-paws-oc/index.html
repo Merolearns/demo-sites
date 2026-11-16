@@ -1031,6 +1031,220 @@ rgba(255,255,255,.22),transparent 70%);opacity:0;transition:opacity .25s ease}
 .btn:not(.btn-ghost)::after{display:none}}
 </style>
 <script>(function(d){var r=/[?&]force-reduced/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(r?'mk-reduced':'mk-pending');setTimeout(function(){d.classList.remove('mk-pending')},2500)})(document.documentElement)</script>
+<style>
+/* V4 whole-page life (Group A shared module) */
+/* _life.css — WHOLE-PAGE LIFE (V4, Group A, Nov 16, 2026).
+ *
+ * One shared file for all five demos. Additive only: it never restyles
+ * .btn / .reveal / .mk-* — it adds the `lf-` layer on top of them.
+ * The §18 CTA spec (44px+, full pill, #121214, red dot, arrow turns
+ * 350ms, press .97) is the FLOOR; this file adds the depth, the alive
+ * fields, the breathing sections and the hooks Mero asked for on the
+ * Nov 16 ~01:14 voice call (all four points — see
+ * training/v4-mero-direction-2026-11-16.md).
+ *
+ * Timing rule (UX brief rule 5 + §10): every feedback lands within
+ * 400ms. Motion is transform + opacity only, EXCEPT the button shadow
+ * (one element at a time, hover/press only, never scroll-linked).
+ * Reduced motion: everything below degrades to an instant, readable,
+ * functional state — see the single media query at the end.
+ *
+ * Wiring (Groups B/C): inline this file in <head> after the motion
+ * kit CSS, and _life.js before </body>. In the generator, add
+ * LIFE_CSS / LIFE_JS reads in _motion.py (same pattern as MOTION_CSS /
+ * MOTION_JS) and append them in motion_css() / motion_body_end().
+ * Without JS the page is fully visible: .lf-reveal hides ONLY under
+ * html.lf-js, which _life.js adds itself on load.
+ */
+
+/* ---------- (a) 3D BUTTONS — real depth, hover lift, press ---------- */
+/* Apply alongside .btn on every primary CTA: class="btn lf-btn3d". */
+.lf-btn3d{
+  /* Layered depth: top highlight, hard edge, soft drop shadow. */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -2px 0 rgba(0,0,0,.28),
+    0 2px 0 rgba(0,0,0,.20),
+    0 10px 24px rgba(0,0,0,.28),
+    0 2px 6px rgba(0,0,0,.18);
+  transition:transform .2s cubic-bezier(.22,1,.36,1),
+    box-shadow .2s cubic-bezier(.22,1,.36,1);
+  will-change:transform;
+}
+@media (hover:hover) and (pointer:fine){
+  .lf-btn3d:hover{
+    transform:translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.16),
+      inset 0 -2px 0 rgba(0,0,0,.28),
+      0 4px 0 rgba(0,0,0,.20),
+      0 16px 32px rgba(0,0,0,.32),
+      0 4px 10px rgba(0,0,0,.20);
+  }
+  /* Arrow turns on hover — §18 detail 6 (350ms, fast end). */
+  .lf-btn3d .lf-arrow{transition:transform .35s cubic-bezier(.22,1,.36,1)}
+  .lf-btn3d:hover .lf-arrow{transform:translateX(3px) rotate(-45deg)}
+}
+.lf-btn3d:active{
+  transform:translateY(1px) scale(.97); /* §18 detail 9: press gives */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.28),
+    0 1px 0 rgba(0,0,0,.20),
+    0 4px 10px rgba(0,0,0,.22);
+}
+.lf-btn3d:focus-visible{
+  outline:3px solid #121214;
+  outline-offset:3px;
+}
+/* One-time arrival pulse on the hero primary CTA only: catches the eye
+   on landing, then stops (never loops). JS adds .lf-pulse-once. */
+@keyframes lf-pulse-once{
+  0%{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 0 rgba(0,0,0,.28),0 2px 0 rgba(0,0,0,.20),0 10px 24px rgba(0,0,0,.28),0 0 0 0 rgba(18,18,20,.35)}
+  70%{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 0 rgba(0,0,0,.28),0 2px 0 rgba(0,0,0,.20),0 10px 24px rgba(0,0,0,.28),0 0 0 14px rgba(18,18,20,0)}
+  100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -2px 0 rgba(0,0,0,.28),0 2px 0 rgba(0,0,0,.20),0 10px 24px rgba(0,0,0,.28),0 0 0 0 rgba(18,18,20,0)}
+}
+.lf-btn3d.lf-pulse-once{animation:lf-pulse-once 1.2s ease-out .6s 2}
+
+/* ---------- (b) ALIVE FORM FIELDS ---------- */
+/* Wrap each field: <div class="lf-field"><input placeholder=" ">
+   <label>…</label><span class="lf-underline"></span>
+   <span class="lf-err" hidden>…</span></div>
+   Mirrors the M02 .mx-float pattern (label after the input,
+   placeholder=" " so :placeholder-shown works). Pre-filled values get
+   .lf-filled from _life.js so the label never sits on typed text. */
+.lf-field{position:relative;margin-bottom:1rem}
+.lf-field input,.lf-field select,.lf-field textarea{
+  width:100%;
+  font-size:16px; /* 16px+ stops iOS zoom-on-focus */
+  padding:1.35rem .9rem .55rem;
+  border:1.5px solid rgba(0,0,0,.22);
+  border-radius:14px;
+  background:#fff;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.lf-field textarea{padding-top:1.5rem;min-height:5.5rem;resize:vertical}
+.lf-field label{
+  position:absolute;left:.9rem;top:1rem;
+  font-size:16px;color:rgba(0,0,0,.55);pointer-events:none;
+  transition:transform .2s cubic-bezier(.22,1,.36,1),font-size .2s ease,color .2s ease;
+  transform-origin:left top;
+}
+.lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{
+  outline:none;border-color:#121214;
+  /* Focus glow animates in (200ms) — the field lights up. */
+  box-shadow:0 0 0 4px rgba(18,18,20,.14),0 6px 18px rgba(18,18,20,.12);
+}
+/* Label floats up when focused or filled; underline grows from centre. */
+.lf-field input:focus + label,
+.lf-field input:not(:placeholder-shown) + label,
+.lf-field textarea:focus + label,
+.lf-field textarea:not(:placeholder-shown) + label,
+.lf-field.lf-filled label,
+.lf-field select + label{transform:translateY(-.62rem) scale(.82);color:rgba(0,0,0,.72)}
+.lf-field .lf-underline{
+  position:absolute;left:50%;bottom:0;height:2px;width:0;
+  background:#121214;transform:translateX(-50%);
+  transition:width .25s cubic-bezier(.22,1,.36,1);pointer-events:none;
+}
+.lf-field input:focus ~ .lf-underline,
+.lf-field textarea:focus ~ .lf-underline{width:calc(100% - 1.2rem)}
+/* Inline validation — immediate feedback, never only on submit. */
+.lf-field.is-valid input,.lf-field.is-valid textarea{border-color:#1e7b34}
+.lf-field.is-valid::after{ /* green check, drawn by _life.js state */
+  content:"✓";position:absolute;right:.8rem;top:1rem;
+  color:#1e7b34;font-weight:600;
+}
+.lf-field.is-invalid input,.lf-field.is-invalid textarea,
+.lf-field.is-invalid select{border-color:#c81e1e}
+.lf-field .lf-err{
+  display:block;margin-top:.35rem;font-size:.85rem;color:#c81e1e;
+}
+.lf-field.is-invalid input:focus,.lf-field.is-invalid textarea:focus{
+  box-shadow:0 0 0 4px rgba(200,30,30,.14);
+}
+/* Submit button states — spinner → check → honest "Request sent".
+   JS toggles .is-sending / .is-sent on the button (class lf-submit). */
+.lf-submit{position:relative}
+.lf-submit .lf-spin,.lf-submit .lf-check{display:none}
+.lf-submit.is-sending{pointer-events:none;opacity:.85}
+.lf-submit.is-sending .lf-spin{
+  display:inline-block;width:1em;height:1em;vertical-align:-.15em;
+  border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
+  border-radius:50%;animation:lf-spin .7s linear infinite;
+}
+@keyframes lf-spin{to{transform:rotate(360deg)}}
+.lf-submit.is-sent{background:#1e7b34}
+.lf-submit.is-sent .lf-check{display:inline}
+.lf-submit.is-sent .lf-label-sent{display:inline}
+.lf-submit .lf-label-sent{display:none}
+
+/* ---------- (c) SECTIONS BELOW THE HERO BREATHE ---------- */
+/* Scroll-reveal: hidden ONLY when JS is on (html.lf-js). Stagger with
+   style="--lf-d:.12s" (steps of .12s, top-to-bottom, left-to-right). */
+html.lf-js .lf-reveal{opacity:0;transform:translateY(20px)}
+html.lf-js .lf-reveal.lf-in{
+  opacity:1;transform:none;
+  transition:opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--lf-d,0s);
+}
+/* Animated counters: <span class="lf-count" data-count="326">326</span>
+   — JS counts 0 → value over ~1.2s; reduced motion shows the final. */
+.lf-count{font-variant-numeric:tabular-nums}
+/* Card hover: lift + shadow, 250ms, transform only. */
+.lf-card{transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease}
+@media (hover:hover) and (pointer:fine){
+  .lf-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.14)}
+}
+
+/* ---------- (d) HOOKS — catch the eye, pull the visitor down ---------- */
+/* Scroll cue under the hero: one gentle bounce, fades once you scroll. */
+.lf-scroll-cue{
+  display:inline-flex;flex-direction:column;align-items:center;gap:.15rem;
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(0,0,0,.55);text-decoration:none;
+}
+.lf-scroll-cue .lf-cue-arrow{font-size:1.1rem;line-height:1;animation:lf-cue-bob 1.6s ease-in-out infinite}
+@keyframes lf-cue-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.form-alt a{display:inline-flex;align-items:center;min-height:44px}
+.lf-scroll-cue.lf-gone{opacity:0;transition:opacity .4s ease;pointer-events:none}
+
+/* ---------- REDUCED MOTION — one query, everything instant ---------- */
+@media (prefers-reduced-motion:reduce){
+  html.lf-js .lf-reveal{opacity:1;transform:none;transition:none}
+  .lf-btn3d,.lf-btn3d:hover,.lf-btn3d:active{transform:none;transition:none}
+  .lf-btn3d.lf-pulse-once{animation:none}
+  .lf-btn3d .lf-arrow{transition:none}
+  .lf-field input,.lf-field select,.lf-field textarea,
+  .lf-field label,.lf-field .lf-underline,.lf-card{transition:none}
+  .lf-submit.is-sending .lf-spin{animation:none}
+  .lf-scroll-cue .lf-cue-arrow{animation:none}
+}
+
+</style>
+<style id="v4-overrides">
+
+/* V4 overrides — muddy-paws-oc (Nov 16, 2026) */
+/* Root cause of the giant ovals (screenshots 80766/80768): --radius:999px leaked
+   into .bk-card/.qf-panel. Cards go back to a composed 1.25rem radius. */
+.bk-card,.qf-panel{border-radius:1.25rem}
+.lf-submit.is-sent .lf-label{display:none}
+.lf-submit.is-sent .lf-arrow{display:none}
+/* Hours table: the two columns touched ("Wednesday9:00 AM") — give them air.
+   (Must beat the base `table.hours td` rule — a bare `.hours td` loses on
+   specificity, which is why Wednesday still touched after the first fix.) */
+table.hours td{padding:.45rem .75rem .45rem 0}
+table.hours td:last-child{padding-right:0}
+/* Map: warm fallback behind the iframe so the area can never render dead grey. */
+.map-card{position:relative;background:#EDE6D6}
+.map-card iframe{position:relative;z-index:1;background:transparent}
+.map-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;padding:1rem;color:#6E675C}
+.area-form .lf-field{flex:1 1 14rem;margin-bottom:0}
+
+.lf-scroll-cue{min-height:44px;padding:.45rem .9rem;color:rgba(20,16,9,.8)}
+.rev-src + p a{display:inline-block;padding:.75rem .3rem}
+</style>
 </head>
 <body class="v-muddy-paws-oc" data-layout="grid">
 <div class="mk-cursor-dot" aria-hidden="true"></div><div class="mk-cursor-ring" aria-hidden="true"><i></i><span></span></div>
@@ -1045,7 +1259,7 @@ rgba(255,255,255,.22),transparent 70%);opacity:0;transition:opacity .25s ease}
       <a href="#quote">Contact</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+1 714-602-7319</a>
+      <a class="btn btn-ghost tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+1 714-602-7319</a>
     </div>
   </div>
 </header>
@@ -5386,7 +5600,7 @@ rgba(255,255,255,.22),transparent 70%);opacity:0;transition:opacity .25s ease}
   var el = document.querySelector(".h3d");
   if (!el) return;
   var THREE_URL =
-    "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js";
+    "./three.module.min.js";
   var media = el.querySelector(".h3d-media"),
     poster = el.querySelector(".h3d-poster"),
     seq = el.querySelector(".h3d-seq"),
@@ -6729,14 +6943,15 @@ void main(){
     <h1 class="font-display h1">Honest pet groomer, <em>done right</em> in Orange</h1>
     <p class="hero-sub reveal">Muddy Paws OC is Orange&#x27;s pet groomer — done right the first time. You approve the price before any work begins: no surprises, no upsells. Find us at 1330 N Glassell St #L, Orange — Open Mon–Sat 9:00 AM–5:00 PM.</p>
     <div class="hero-ctas reveal">
-      <a class="btn tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 714-602-7319</a>
-      <a class="btn btn-ghost tilt" href="#booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book my consultation — Mon 9:00 AM</a>
+      <a class="btn btn-ghost tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 714-602-7319</a>
+      <a class="btn lf-btn3d tilt" href="#booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book my consultation — Mon 9:00 AM</a>
       <a class="btn btn-ghost tilt" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Visit us</a>
     </div>
     <div class="rating reveal"><span class="stars" aria-hidden="true"><span class="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="rating-text">&nbsp;<strong>4.7</strong> on Google · 154 reviews</span></span>
     <span class="open-now" data-open-now>Call for hours</span></div>
   </div>
-</section></div></section></div>
+</section>
+<div style="text-align:center;padding:1.25rem 0 0"><a class="lf-scroll-cue" href="#services">Scroll<span class="lf-cue-arrow" aria-hidden="true">↓</span></a></div></div></section></div>
 
 <hr class="rule">
 
@@ -6751,13 +6966,13 @@ void main(){
       <h2 class="font-display sec-title">Before you book</h2>
       <p class="sec-sub">Straight answers to the questions every customer asks before booking.</p>
     </div>
-    <div class="svc-grid" data-stagger><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.42 0l8.58-8.58a1 1 0 0 0 0-1.42z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>How much will it cost?</h3><p>Every visit is quoted before work starts. You approve the price first; what you approve is what you pay.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>How long will it take?</h3><p>Most visits run 30–60 minutes; bigger jobs take longer and get a written time estimate up front. Every service lists its time on this page.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><h3>What if I&#x27;m not happy with the result?</h3><p>Tell us straight away and we&#x27;ll make it right — re-do, adjust, or talk it through until you&#x27;re satisfied. If we can&#x27;t fix it, we&#x27;ll say so honestly.</p></article><article class="svc reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>What happens at my first visit?</h3><p>We listen first: what you need, what you&#x27;ve tried, what matters most. Then we agree a plan and a price with you before anything starts.</p></article></div>
+    <div class="svc-grid" data-stagger><article class="svc lf-card reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.42 0l8.58-8.58a1 1 0 0 0 0-1.42z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>How much will it cost?</h3><p>Every visit is quoted before work starts. You approve the price first; what you approve is what you pay.</p></article><article class="svc lf-card reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>How long will it take?</h3><p>Most visits run 30–60 minutes; bigger jobs take longer and get a written time estimate up front. Every service lists its time on this page.</p></article><article class="svc lf-card reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><h3>What if I&#x27;m not happy with the result?</h3><p>Tell us straight away and we&#x27;ll make it right — re-do, adjust, or talk it through until you&#x27;re satisfied. If we can&#x27;t fix it, we&#x27;ll say so honestly.</p></article><article class="svc lf-card reveal"><div aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>What happens at my first visit?</h3><p>We listen first: what you need, what you&#x27;ve tried, what matters most. Then we agree a plan and a price with you before anything starts.</p></article></div>
   </div>
 </section>
 
 <section class="section" id="services" aria-label="Services and pricing">
   <div class="wrap">
-    <section class="service-menu"><div class="wrap"><h2>Services &amp; starting prices.</h2><div class="smenu-row"><div class="smenu-info"><h3>Full Groom</h3><p>Bath, haircut, nail trim, and ear cleaning — the complete refresh.</p></div><span class="smenu-dur">2 hrs</span><span class="smenu-price">from $65</span></div><div class="smenu-row"><div class="smenu-info"><h3>Bath &amp; Brush</h3><p>Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</p></div><span class="smenu-dur">1 hr</span><span class="smenu-price">from $40</span></div><div class="smenu-row"><div class="smenu-info"><h3>Nail Trim</h3><p>Quick, careful nail trim — in and out with no stress.</p></div><span class="smenu-dur">20 min</span><span class="smenu-price">from $20</span></div><div class="smenu-row"><div class="smenu-info"><h3>De-shedding Treatment</h3><p>Undercoat removal that cuts shedding at home for weeks.</p></div><span class="smenu-dur">1.5 hrs</span><span class="smenu-price">from $55</span></div><p class="smenu-note">Sample pricing shown for illustration — your exact quote is confirmed before any work begins.</p></div></section>
+    <section class="service-menu"><div class="wrap"><h2>Services &amp; starting prices.</h2><div class="smenu-row lf-card"><div class="smenu-info"><h3>Full Groom</h3><p>Bath, haircut, nail trim, and ear cleaning — the complete refresh.</p></div><span class="smenu-dur">2 hrs</span><span class="smenu-price">from $65</span></div><div class="smenu-row lf-card"><div class="smenu-info"><h3>Bath &amp; Brush</h3><p>Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</p></div><span class="smenu-dur">1 hr</span><span class="smenu-price">from $40</span></div><div class="smenu-row lf-card"><div class="smenu-info"><h3>Nail Trim</h3><p>Quick, careful nail trim — in and out with no stress.</p></div><span class="smenu-dur">20 min</span><span class="smenu-price">from $20</span></div><div class="smenu-row lf-card"><div class="smenu-info"><h3>De-shedding Treatment</h3><p>Undercoat removal that cuts shedding at home for weeks.</p></div><span class="smenu-dur">1.5 hrs</span><span class="smenu-price">from $55</span></div><p class="smenu-note">Sample pricing shown for illustration — your exact quote is confirmed before any work begins.</p></div></section>
   </div>
 </section>
 
@@ -6767,12 +6982,11 @@ void main(){
       <span class="eyebrow">Service area</span>
       <h2 class="font-display sec-title">Do we serve your area?</h2>
     </div>
-    <div class="area-card">
+    <div class="area-card lf-reveal">
       <form class="area-form" novalidate data-zip="92867" data-city="Orange"
       data-name="Muddy Paws OC" data-phone="+1 714-602-7319">
-        <label class="sr-only" for="area-place">ZIP or town</label>
-        <input id="area-place" name="place" type="text" autocomplete="postal-code" placeholder="Enter your ZIP or town">
-        <button class="btn" type="submit">Check</button>
+        <div class="lf-field"><input id="area-place" name="place" type="text" autocomplete="postal-code" placeholder=" "><label for="area-place">ZIP or town</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div>
+        <button class="btn lf-btn3d" type="submit">Check</button>
       </form>
       <p class="area-result" role="status" aria-live="polite"></p>
       <p class="area-note">Serving Orange (92867) and surrounding areas.</p>
@@ -6782,7 +6996,7 @@ void main(){
 
 <section class="section" aria-label="Book an appointment">
   <div class="wrap">
-    <section class="booking" id="booking"><div class="wrap"><h2>Book an appointment</h2><p class="bk-sub">Pick a service and a time that works for you — we&#x27;ll confirm by call or text.</p><div class="bk-card"><ol class="bk-steps"><span class="mx-fill" aria-hidden="true"></span><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Service</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Date</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Time</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Details</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Full Groom" data-dur="2 hrs"><span class="bk-svc-name">Full Groom</span><span class="bk-svc-meta">2 hrs · from $65</span><span class="bk-svc-blurb">Bath, haircut, nail trim, and ear cleaning — the complete refresh.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">2 hrs · from $65 — Bath, haircut, nail trim, and ear cleaning — the complete refresh.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Full Groom">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Bath &amp; Brush" data-dur="1 hr"><span class="bk-svc-name">Bath &amp; Brush</span><span class="bk-svc-meta">1 hr · from $40</span><span class="bk-svc-blurb">Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">1 hr · from $40 — Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Bath &amp; Brush">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Nail Trim" data-dur="20 min"><span class="bk-svc-name">Nail Trim</span><span class="bk-svc-meta">20 min · from $20</span><span class="bk-svc-blurb">Quick, careful nail trim — in and out with no stress.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">20 min · from $20 — Quick, careful nail trim — in and out with no stress.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Nail Trim">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap svc-extra" hidden><div class="bk-flip"><button type="button" class="bk-svc" data-name="De-shedding Treatment" data-dur="1.5 hrs"><span class="bk-svc-name">De-shedding Treatment</span><span class="bk-svc-meta">1.5 hrs · from $55</span><span class="bk-svc-blurb">Undercoat removal that cuts shedding at home for weeks.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">1.5 hrs · from $55 — Undercoat removal that cuts shedding at home for weeks.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for De-shedding Treatment">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div></div><button type="button" class="svc-more-btn" onclick="this.parentElement.querySelectorAll('.svc-extra').forEach(function(e){e.hidden=false});this.previousElementSibling.classList.add('mn-fold-open');this.remove()">See all services (1 more)</button><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><label class="bk-field mx-float"><input type="text" id="booking-name" placeholder=" " autocomplete="name"><span>Your name *</span><i class="mx-underline" aria-hidden="true"></i></label><label class="bk-field mx-float"><input type="tel" id="booking-phone" placeholder=" " autocomplete="tel"><span>Phone *</span><i class="mx-underline" aria-hidden="true"></i></label><label class="bk-field mx-float"><textarea id="booking-notes" placeholder=" "></textarea><span>Notes <em>(optional)</em></span><i class="mx-underline" aria-hidden="true"></i></label><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're booked!</h3><p class="bk-verified">Booking confirmed — Verified &amp; Secured</p><p class="bk-summary"></p><p class="bk-ref">Reference <strong class="bk-refcode"></strong></p><button type="button" class="mx-copy" data-copy-target=".bk-refcode"><span class="mx-copy-ic"><svg class="mx-ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="mx-ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span class="mx-copy-tx">Copy reference</span></button><p class="bk-note">We'll call or text to confirm shortly.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking", {"closedDays": [0], "hoursByDay": {"1": [9, 17], "2": [9, 17], "3": [9, 17], "4": [9, 17], "5": [9, 17], "6": [9, 17]}})</script>
+    <section class="booking" id="booking"><div class="wrap"><h2>Book an appointment</h2><p class="bk-sub">Pick a service and a time that works for you — we&#x27;ll confirm by call or text.</p><div class="bk-card lf-reveal"><ol class="bk-steps"><span class="mx-fill" aria-hidden="true"></span><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Service</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Date</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Time</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Details</li><li><svg class="mx-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done</li></ol><div class="bk-panel" data-panel="1" hidden><div class="bk-svc-grid"><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Full Groom" data-dur="2 hrs"><span class="bk-svc-name">Full Groom</span><span class="bk-svc-meta">2 hrs · from $65</span><span class="bk-svc-blurb">Bath, haircut, nail trim, and ear cleaning — the complete refresh.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">2 hrs · from $65 — Bath, haircut, nail trim, and ear cleaning — the complete refresh.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Full Groom">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Bath &amp; Brush" data-dur="1 hr"><span class="bk-svc-name">Bath &amp; Brush</span><span class="bk-svc-meta">1 hr · from $40</span><span class="bk-svc-blurb">Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">1 hr · from $40 — Warm bath, blow-dry, and thorough brush-out for a soft, clean coat.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Bath &amp; Brush">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap"><div class="bk-flip"><button type="button" class="bk-svc" data-name="Nail Trim" data-dur="20 min"><span class="bk-svc-name">Nail Trim</span><span class="bk-svc-meta">20 min · from $20</span><span class="bk-svc-blurb">Quick, careful nail trim — in and out with no stress.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">20 min · from $20 — Quick, careful nail trim — in and out with no stress.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for Nail Trim">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div><div class="bk-svc-wrap svc-extra" hidden><div class="bk-flip"><button type="button" class="bk-svc" data-name="De-shedding Treatment" data-dur="1.5 hrs"><span class="bk-svc-name">De-shedding Treatment</span><span class="bk-svc-meta">1.5 hrs · from $55</span><span class="bk-svc-blurb">Undercoat removal that cuts shedding at home for weeks.</span></button><div class="bk-svc-back" aria-hidden="true"><span class="bk-svc-back-title">Selected ✓</span><span class="bk-svc-back-detail">1.5 hrs · from $55 — Undercoat removal that cuts shedding at home for weeks.</span><span class="bk-svc-back-hint">Tap another service to change</span></div></div><button type="button" class="mn-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="Actions for De-shedding Treatment">&#8942;</button><div class="mn-pop" role="menu"><button type="button" role="menuitem" data-mn-act="book">Book this service</button><button type="button" role="menuitem" data-mn-act="share">Share</button><button type="button" role="menuitem" data-mn-act="copy">Copy link</button></div></div></div><button type="button" class="svc-more-btn" onclick="this.parentElement.querySelectorAll('.svc-extra').forEach(function(e){e.hidden=false});this.previousElementSibling.classList.add('mn-fold-open');this.remove()">See all services (1 more)</button><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn lf-btn3d bk-next">Continue</button></div></div><div class="bk-panel" data-panel="2" hidden><div class="bk-date-strip"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn lf-btn3d bk-next">Continue</button></div></div><div class="bk-panel" data-panel="3" hidden><div class="bk-time-grid"></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn lf-btn3d bk-next">Continue</button></div></div><div class="bk-panel" data-panel="4" hidden><div class="lf-field"><input type="text" id="booking-name" name="name" placeholder=" " autocomplete="name"><label>Your name *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><input type="tel" id="booking-phone" name="phone" placeholder=" " autocomplete="tel"><label>Phone *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><textarea id="booking-notes" name="notes" placeholder=" "></textarea><label>Notes <em>(optional)</em></label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><p class="bk-err" role="alert"></p><div class="bk-nav"><button type="button" class="btn btn-ghost bk-back">Back</button><button type="button" class="btn lf-btn3d bk-next">Continue</button></div></div><div class="bk-panel" data-panel="5" hidden><div class="bk-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Request noted</h3><p class="bk-verified">We’ll confirm by phone or text — nothing is booked until we reply.</p><p class="bk-summary"></p><p class="bk-ref">Request reference <strong class="bk-refcode"></strong></p><button type="button" class="mx-copy" data-copy-target=".bk-refcode"><span class="mx-copy-ic"><svg class="mx-ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="mx-ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span class="mx-copy-tx">Copy reference</span></button><p class="bk-note">Nothing is booked yet — <a href="#quote">send a grooming request</a> or <a href="tel:+17146027319">call (714) 602-7319</a>.</p><div class="bk-nav" style="justify-content:center"><button type="button" class="btn btn-ghost bk-back" data-goto="1">Book another</button></div></div></div></div></section><script>initBooking("booking", {"closedDays": [0], "hoursByDay": {"1": [9, 17], "2": [9, 17], "3": [9, 17], "4": [9, 17], "5": [9, 17], "6": [9, 17]}})</script>
     <details class="bk-terms"><summary>Booking terms &amp; cancellation</summary>
     <p>Demo booking — no payment is taken on this page. Free cancellation up to
     24 hours before your appointment; please call +1 714-602-7319 to change or cancel.
@@ -6821,19 +7035,25 @@ void main(){
 
 <section class="section" id="reviews" aria-label="Reviews">
   <div class="wrap">
-    <section class="reviews"><div class="wrap"><span class="stars" aria-label="Client reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:clamp(1.75rem,4vw,2.5rem)">What clients say</h2><p class="rev-summary"><strong>4.7★ from 154 Google reviews</strong></p><div class="review-grid"><blockquote class="review reveal"><p>“It was my first visit and they did such a great job with both my dogs, they were super welcoming and kind and were super patient, will definitely become a regular customer”</p><cite>— Karen Raad · 2 months ago · via Google</cite></blockquote><blockquote class="review reveal"><p>“Love this place! Honey&#x27;s always looking fresh and clean after visiting Muddy Paws.”</p><cite>— Rani Lou Arce · 3 weeks ago · via Google</cite></blockquote><blockquote class="review reveal"><p>“We took our golden retriever here for the first time. Very reasonable prices and excellent service! She looks so pretty. They did a great job trimming her too. Will definitely return. Easy parking, easy to book, very friendly people.”</p><cite>— K Le · a year ago · via Google</cite></blockquote><blockquote class="review reveal"><p>“My dogs are so soft and adorable after they get groomed here ❤️”</p><cite>— Joy J. · 2 years ago · via Google</cite></blockquote></div><p class="rev-src" style="margin-top:1.75rem">Real client reviews — not written by the salon.</p></div></section>
+    <section class="reviews"><div class="wrap"><span class="stars" aria-label="Client reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h2 class="rev-big" style="font-size:clamp(1.75rem,4vw,2.5rem)">What clients say</h2><p class="rev-summary"><strong>4.7★ from <span class="lf-count" data-count="154">154</span> Google reviews</strong></p><div class="review-grid"><blockquote class="review lf-card reveal"><p>“It was my first visit and they did such a great job with both my dogs, they were super welcoming and kind and were super patient, will definitely become a regular customer”</p><cite>— Karen Raad · 2 months ago · via Google</cite></blockquote><blockquote class="review lf-card reveal"><p>“Love this place! Honey&#x27;s always looking fresh and clean after visiting Muddy Paws.”</p><cite>— Rani Lou Arce · 3 weeks ago · via Google</cite></blockquote><blockquote class="review lf-card reveal"><p>“We took our golden retriever here for the first time. Very reasonable prices and excellent service! She looks so pretty. They did a great job trimming her too. Will definitely return. Easy parking, easy to book, very friendly people.”</p><cite>— K Le · a year ago · via Google</cite></blockquote><blockquote class="review lf-card reveal"><p>“My dogs are so soft and adorable after they get groomed here ❤️”</p><cite>— Joy J. · 2 years ago · via Google</cite></blockquote></div><p class="rev-src" style="margin-top:1.75rem">Real client reviews — not written by the salon.</p><p style="margin-top:1rem"><a href="https://www.google.com/maps/place/Muddy+Paws+Pet+Grooming/@33.8101484,-117.8534881,17z/data=!4m8!3m7!1s0x80dcd741f6249741:0xf6accdfba608b227!8m2!3d33.8101484!4d-117.8534881!9m1!1b1!16s%2Fg%2F11cr_0c0lb" target="_blank" rel="noopener">Read all reviews on Google →</a></p></div></section>
   </div>
 </section>
 
 <section class="section" aria-label="New visitor offer">
   <div class="wrap">
-    <section class="followup" id="offer"><div class="wrap"><div class="qf-panel"><h3>First consultation, straight answers</h3><p class="qf-sub">Book a consultation and get straight answers about your options — honest advice, zero pressure.</p><form class="qf-form" data-form data-ref="O" novalidate><div class="form-fields"><label class="qf-field"><span>Email *</span><input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label class="qf-field"><span>Phone <em>(optional)</em></span><input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel"></label><button type="submit" class="btn">Book my consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="qf-fine">Offer shown as a sample — Muddy Paws OC confirms it before it goes live.</p><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>You're in!</h3><p>Watch for your first consultation, straight answers.</p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><p class="qf-name"></p></div></form></div></div></section>
+    <section class="followup" id="offer"><div class="wrap"><div class="qf-panel lf-reveal"><h3>First consultation, straight answers</h3><p class="qf-sub">Book a consultation and get straight answers about your options — honest advice, zero pressure.</p><form class="qf-form" data-lf-form="formspree" data-ref="O" novalidate action="https://formspree.io/f/<FORM_ID>" method="POST"><div class="form-fields">
+<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:44px;height:44px" aria-hidden="true">
+<input type="hidden" name="subject" value="Muddy Paws grooming request">
+<div class="lf-field"><input type="email" name="email" placeholder=" " required autocomplete="email"><label>Email *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><input type="text" name="name" placeholder=" " required autocomplete="name"><label>Your name *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><input type="tel" name="phone" placeholder=" " autocomplete="tel"><label>Phone (optional)</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><button type="submit" class="btn lf-btn3d lf-submit"><span class="lf-spin" aria-hidden="true"></span><span class="lf-label">Send request</span><span class="lf-label-sent" aria-hidden="true">✓ Request sent</span><span class="lf-arrow" aria-hidden="true">→</span></button><p><a href="tel:+17146027319">Or call us now: (714) 602-7319</a></p><p class="form-alt"><a href="sms:+17146027319">Text us instead</a></p><p class="qf-fine">Offer shown as a sample — Muddy Paws OC confirms it before it goes live.</p><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Request sent</h3><p><span data-lf-confirm-text>Request sent. We'll confirm by phone or text.</span></p><p class="qf-name"></p></div></form></div></div></section>
   </div>
 </section>
 
 <section class="section" aria-label="Get a free quote">
   <div class="wrap">
-    <section class="quote-sect" id="quote"><div class="wrap"><div class="qf-panel"><div class="qf-head"><h2>Get my exact price</h2><p class="qf-sub">Tell us what you need and we&#x27;ll get back to you with a fast, free quote.</p></div><form class="qf-form" data-form data-ref="Q" novalidate><div class="form-fields"><label class="qf-field"><span>Service needed</span><select name="service"><option value="">Select a service…</option><option>Full Groom</option><option>Bath &amp; Brush</option><option>Nail Trim</option><option>De-shedding Treatment</option></select></label><label class="qf-field mx-float"><input type="text" name="name" placeholder=" " required autocomplete="name"><span>Your name *</span><i class="mx-underline" aria-hidden="true"></i></label><label class="qf-field mx-float"><input type="tel" name="phone" placeholder=" " required autocomplete="tel"><span>Phone *</span><i class="mx-underline" aria-hidden="true"></i></label><button type="submit" class="btn">Request quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Quote requested</h3><p class="bk-verified">Verified &amp; Secured</p><p class="qf-name"></p><p class="qf-refline">Reference <strong class="qf-ref"></strong></p><button type="button" class="mx-copy" data-copy-target=".qf-ref"><span class="mx-copy-ic"><svg class="mx-ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="mx-ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span class="mx-copy-tx">Copy reference</span></button><p>Thanks — we typically respond within one business day.</p></div></form></div></div></section>
+    <section class="quote-sect" id="quote"><div class="wrap"><div class="qf-panel lf-reveal"><div class="qf-head"><h2>Get my exact price</h2><p class="qf-sub">Tell us what you need and we&#x27;ll get back to you with a fast, free quote.</p></div><form class="qf-form" data-lf-form="formspree" data-ref="Q" novalidate action="https://formspree.io/f/<FORM_ID>" method="POST"><div class="form-fields">
+<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:44px;height:44px" aria-hidden="true">
+<input type="hidden" name="subject" value="Muddy Paws grooming request">
+<div class="lf-field"><select name="service"><option value="">Select a service…</option><option>Full Groom</option><option>Bath &amp; Brush</option><option>Nail Trim</option><option>De-shedding Treatment</option></select><label>Service needed</label></div><div class="lf-field"><input type="text" name="name" placeholder=" " required autocomplete="name"><label>Your name *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><input type="tel" name="phone" placeholder=" " required autocomplete="tel"><label>Phone *</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><div class="lf-field"><input type="email" name="email" placeholder=" " autocomplete="email"><label>Email (for our reply)</label><span class="lf-underline"></span><span class="lf-err" hidden></span></div><button type="submit" class="btn lf-btn3d lf-submit"><span class="lf-spin" aria-hidden="true"></span><span class="lf-label">Send request</span><span class="lf-label-sent" aria-hidden="true">✓ Request sent</span><span class="lf-arrow" aria-hidden="true">→</span></button><p><a href="tel:+17146027319">Or call us now: (714) 602-7319</a></p><p class="form-alt"><a href="sms:+17146027319">Text us instead</a></p><p class="form-err" role="alert" hidden></p></div><div class="form-confirm" hidden><div class="form-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Quote requested</h3><p class="qf-name"></p><p><span data-lf-confirm-text>Request sent. We'll confirm by phone or text.</span> We typically respond within one business day.</p></div></form></div></div></section>
   </div>
 </section>
 
@@ -6846,7 +7066,8 @@ void main(){
     </div>
     <div class="visit-grid" data-stagger>
       <div class="map-card reveal">
-        <iframe title="Map to Muddy Paws OC" src="https://www.google.com/maps?q=Muddy Paws OC 1330 N Glassell St #L Orange&output=embed" loading="lazy"
+        <div class="map-fallback" aria-hidden="true"><span style="font-size:2rem">📍</span><span>Muddy Paws OC · 1330 N Glassell St #L, Orange, CA 92867</span><span>Map loading…</span></div>
+        <iframe title="Map to Muddy Paws OC" src="https://www.google.com/maps?q=33.8101484,-117.8534881&amp;z=16&amp;output=embed" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
       <div class="info-card reveal">
@@ -6857,7 +7078,7 @@ void main(){
         <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><h3>Hours</h3>
         <span class="open-now" data-open-now>Call for hours</span>
         <table class="hours"><tbody><tr data-dow="1"><td>Monday</td><td>9:00 AM – 5:00 PM</td></tr><tr data-dow="2"><td>Tuesday</td><td>9:00 AM – 5:00 PM</td></tr><tr data-dow="3"><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr><tr data-dow="4"><td>Thursday</td><td>9:00 AM – 5:00 PM</td></tr><tr data-dow="5"><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr><tr data-dow="6"><td>Saturday</td><td>9:00 AM – 5:00 PM</td></tr></tbody></table></div></div>
-        <a class="btn tilt" href="https://www.google.com/maps/search/?api=1&query=Muddy Paws OC 1330 N Glassell St #L Orange" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Get directions</a>
+        <a class="btn lf-btn3d tilt" href="https://www.google.com/maps/search/?api=1&query=Muddy+Paws+OC+1330+N+Glassell+St+%23L+Orange" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Get directions</a>
       </div>
     </div>
   </div>
@@ -6869,8 +7090,8 @@ void main(){
       <h2 class="font-display">Need a pet groomer in Orange?</h2>
       <p>Muddy Paws OC is one call away — fast quotes, friendly service.</p>
       <div class="hero-ctas" style="justify-content:center;margin-bottom:0">
-        <a class="btn tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 714-602-7319</a>
-        <a class="btn btn-ghost tilt" href="#booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book my consultation — Mon 9:00 AM</a>
+        <a class="btn btn-ghost tilt" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +1 714-602-7319</a>
+        <a class="btn lf-btn3d tilt" href="#booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book my consultation — Mon 9:00 AM</a>
         <a class="btn btn-ghost tilt" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Back to top</a>
       </div>
     </div>
@@ -6908,7 +7129,7 @@ void main(){
   }
 }
 </script>
-<div class="sticky-cta"><a class="sc-call" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a><a class="sc-book" href="#booking">Book my consultation</a><button type="button" class="sc-dismiss" aria-label="Dismiss booking bar">×</button></div>
+<div class="sticky-cta"><a class="sc-call" href="tel:+17146027319"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a><a class="sc-book lf-btn3d" href="#booking">Book my consultation</a><button type="button" class="sc-dismiss" aria-label="Dismiss booking bar">×</button></div>
 <button type="button" class="sc-reopen">Book</button>
 <script>
 
@@ -7036,8 +7257,7 @@ var ok=(/^\d{5}$/.test(v)&&z.length===5&&v.slice(0,3)===z.slice(0,3))||v.toLower
 out.classList.add(ok?'ok':'maybe');
 out.textContent=ok
 ?'Yes — we cover '+v+'. '+d.name+' serves '+d.city+' and nearby areas. Book or call '+d.phone+'.'
-:'We cover '+d.city+' and nearby areas — '+v+' may still be in range. Call '+d.phone+" and we'll confirm in seconds.";
-});
+:'We cover '+d.city+' and nearby areas — '+v+' may still be in range. Call '+d.phone+" and we'll confirm in seconds."; var _qa=document.createElement("a");_qa.href="#quote";_qa.textContent="Send a grooming request";out.appendChild(document.createTextNode(" "));out.appendChild(_qa); });
 })();
 
 </script>
@@ -7347,7 +7567,7 @@ if(!raf){raf=requestAnimationFrame(loop)}
   var doc = document.documentElement;
   var qs = location.search;
   var THREE_URL =
-    "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js";
+    "./three.module.min.js";
   var env = (MK.env = {});
 
   function each(sel, fn, root) {
@@ -10465,5 +10685,353 @@ el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();
 el.style.setProperty('--mx',(e.clientX-r.left)+'px');
 el.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true})})})();
 </script><script>document.addEventListener('DOMContentLoaded',function(){MotionKit.init({"category": "default", "signature": "orb"})})</script>
+<script>
+/* V4 whole-page life (Group A shared module) */
+/* _life.js — WHOLE-PAGE LIFE runtime (V4, Group A, Nov 16, 2026).
+ *
+ * Vanilla IIFE, no dependencies, no console errors when pieces are
+ * absent. Pairs with _life.css. One shared file for all five demos.
+ *
+ * What it does:
+ *  1. Scroll-reveal (.lf-reveal) via IntersectionObserver, staggered
+ *     with --lf-d; animated counters (.lf-count, 0 -> value, ~1.2s).
+ *  2. Alive fields: .lf-filled on prefilled inputs; inline validation
+ *     (required / email / tel 7+ digits — the same rules as the legacy
+ *     data-form handler) with immediate feedback on input/blur.
+ *  3. Honest form submission for forms marked data-lf-form:
+ *       "formspree" — fetch POST to the form's action with
+ *         Accept: application/json; button spinner -> check -> honest
+ *         "Request sent" state. The legacy ghost handler (data-form)
+ *         is suppressed for these forms via a capture-phase intercept,
+ *         so a request is never "confirmed" without leaving the page.
+ *       "sms" — builds a prefilled sms: to the BUSINESS phone from the
+ *         visitor's own entries and opens the visitor's text app. The
+ *         button shows "Opening your text app…" and resets — we never
+ *         claim the text was sent, because we cannot know.
+ *     In both cases the visitor's entries are preserved on failure
+ *     (UX rule 7: preserve work) and a local lead-log entry is written
+ *     (see below).
+ *  4. Local lead log (localStorage "lf-leads", max 50 entries): a
+ *     per-device record the VISITOR owns — they can copy/re-send their
+ *     request, and on Mero's own phone during the sales walkthrough it
+ *     is the visible log. It is NOT analytics and NOT a server record:
+ *     the monthly proof numbers come from the Cloudflare dashboard
+ *     (pageviews) + the Formspree dashboard (submission counts).
+ *  5. Hooks: one-time pulse on the hero primary CTA; scroll cue fades
+ *     on first scroll.
+ *
+ * Reduced motion: reveals show instantly, counters jump to final,
+ * no pulse, no cue animation. Everything still works.
+ * No JS: html.lf-js is never added, so .lf-reveal content stays
+ * visible and native form POST still works (Formspree) / sms: links
+ * still work (the fallback <a> beside every form).
+ */
+(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("lf-js"); /* gates .lf-reveal hiding in _life.css */
+  var REDUCED = false;
+  try {
+    REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch (e) { REDUCED = false; }
+  var IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent || "");
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  /* ---------- reveals + counters ---------- */
+  function initReveals() {
+    var items = $$(".lf-reveal");
+    if (!items.length) return;
+    if (REDUCED || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("lf-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("lf-in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  function initCounters() {
+    var nums = $$(".lf-count[data-count]");
+    nums.forEach(function (el) {
+      var target = parseFloat(el.getAttribute("data-count"));
+      if (isNaN(target)) return;
+      var decimals = parseInt(el.getAttribute("data-count-decimals") || "0", 10);
+      var finalText = el.textContent; /* exact source text wins on completion */
+      if (REDUCED) { el.textContent = finalText; return; }
+      var start = null, dur = 1200;
+      function tick(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3); /* power3.out */
+        el.textContent = (target * eased).toFixed(decimals);
+        if (p < 1) { requestAnimationFrame(tick); }
+        else { el.textContent = finalText; }
+      }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { io.disconnect(); requestAnimationFrame(tick); }
+          });
+        }, { threshold: 0.4 });
+        io.observe(el);
+      } else { requestAnimationFrame(tick); }
+    });
+  }
+
+  /* ---------- alive fields ---------- */
+  function fieldLabel(el) {
+    var wrap = el.closest(".lf-field");
+    var lab = wrap && wrap.querySelector("label");
+    return (lab && lab.textContent.trim()) || el.name || "This field";
+  }
+  function validateField(el) {
+    var wrap = el.closest(".lf-field");
+    if (!wrap) return true;
+    var v = (el.value || "").trim();
+    var msg = "";
+    if (el.hasAttribute("required") && !v) msg = "Please fill in: " + fieldLabel(el) + ".";
+    else if (el.type === "email" && v && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v))
+      msg = "Please enter a valid email address.";
+    else if (el.type === "tel" && v && v.replace(/\D/g, "").length < 7)
+      msg = "Please enter a valid phone number (7+ digits).";
+    var err = wrap.querySelector(".lf-err");
+    if (msg) {
+      wrap.classList.add("is-invalid"); wrap.classList.remove("is-valid");
+      el.setAttribute("aria-invalid", "true");
+      if (err) { err.textContent = msg; err.hidden = false; }
+      return false;
+    }
+    wrap.classList.remove("is-invalid");
+    if (v) wrap.classList.add("is-valid"); else wrap.classList.remove("is-valid");
+    el.removeAttribute("aria-invalid");
+    if (err) { err.textContent = ""; err.hidden = true; }
+    return true;
+  }
+  function initFields() {
+    $$(".lf-field input, .lf-field textarea, .lf-field select").forEach(function (el) {
+      if ((el.value || "").trim()) el.closest(".lf-field").classList.add("lf-filled");
+      el.addEventListener("input", function () {
+        el.closest(".lf-field").classList.toggle("lf-filled", !!(el.value || "").trim());
+        validateField(el); /* immediate feedback while typing */
+      });
+      el.addEventListener("blur", function () { validateField(el); });
+    });
+  }
+
+  /* ---------- local lead log (per-device, visitor-owned) ---------- */
+  function logLead(entry) {
+    try {
+      var key = "lf-leads";
+      var log = JSON.parse(localStorage.getItem(key) || "[]");
+      if (!Array.isArray(log)) log = [];
+      entry.ts = new Date().toISOString();
+      log.unshift(entry);
+      localStorage.setItem(key, JSON.stringify(log.slice(0, 50)));
+    } catch (e) { /* private mode / no storage: the lead still sends */ }
+  }
+  function formSummary(form) {
+    var out = [];
+    ["service", "name", "phone", "email"].forEach(function (n) {
+      var el = form.querySelector('[name="' + n + '"]');
+      if (el && (el.value || "").trim()) out.push(el.value.trim());
+    });
+    return out.join(" · ");
+  }
+
+  /* ---------- honest submission ---------- */
+  function showConfirm(form, text) {
+    var fieldsBox = form.querySelector(".form-fields") || form;
+    var confirmBox = form.querySelector(".form-confirm");
+    var nameEl = form.querySelector(".qf-name");
+    if (nameEl) { var s = formSummary(form); if (s) nameEl.textContent = s; }
+    var txtEl = confirmBox && confirmBox.querySelector("[data-lf-confirm-text]");
+    if (txtEl) txtEl.textContent = text;
+    if (fieldsBox && fieldsBox !== form) fieldsBox.hidden = true;
+    if (confirmBox) confirmBox.hidden = false;
+  }
+  function showError(form, text) {
+    var errBox = form.querySelector(".form-err");
+    if (errBox) { errBox.textContent = text; errBox.hidden = false; }
+  }
+  function validateForm(form) {
+    var ok = true, firstBad = null;
+    $$("[required], input[type=email], input[type=tel]", form).forEach(function (el) {
+      if (!validateField(el)) { ok = false; firstBad = firstBad || el; }
+    });
+    if (!ok && firstBad && firstBad.focus) firstBad.focus();
+    return ok;
+  }
+  function setSending(btn, sending) {
+    if (!btn) return;
+    btn.classList.toggle("is-sending", sending);
+    if (sending) btn.setAttribute("aria-busy", "true");
+    else btn.removeAttribute("aria-busy");
+    btn.disabled = sending;
+  }
+
+  function submitFormspree(form, btn) {
+    if (!validateForm(form)) return;
+    setSending(btn, true);
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: "POST", body: data, headers: { "Accept": "application/json" }
+    }).then(function (resp) {
+      setSending(btn, false);
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      return resp.json();
+    }).then(function () {
+      btn.classList.add("is-sent");
+      var lbl = btn.querySelector(".lf-label-sent");
+      if (lbl) lbl.textContent = "✓ Request sent";
+      showConfirm(form, "Request sent. We'll confirm by phone or text.");
+      logLead({ channel: "formspree", form: form.dataset.ref || "", summary: formSummary(form), status: "delivered-to-owner-inbox" });
+    }).catch(function () {
+      /* Never fake success: restore the form, keep the entries, say so. */
+      showError(form, "Couldn't send just now — please call or text us instead, your details are still here.");
+    });
+  }
+
+  function submitSms(form, btn) {
+    if (!validateForm(form)) return;
+    var phone = form.getAttribute("data-lf-sms-to") || "";
+    var business = form.getAttribute("data-lf-business") || "us";
+    if (!phone) { showError(form, "Please call us — texting isn't set up on this form yet."); return; }
+    var lines = ["Hi " + business + ", I'd like to request:"];
+    var map = [["service", "Service"], ["name", "Name"], ["phone", "My phone"], ["email", "My email"]];
+    map.forEach(function (pair) {
+      var el = form.querySelector('[name="' + pair[0] + '"]');
+      if (el && (el.value || "").trim()) lines.push(pair[1] + ": " + el.value.trim());
+    });
+    ["notes", "message", "details"].forEach(function (n) {
+      var el = form.querySelector('[name="' + n + '"]');
+      if (el && (el.value || "").trim()) lines.push("Details: " + el.value.trim());
+    });
+    var body = lines.join("\n").slice(0, 1000); /* long prefilled bodies truncate on some phones */
+    var sep = IS_IOS ? "&" : "?"; /* iOS takes &body=, Android takes ?body= */
+    var url = "sms:" + phone + sep + "body=" + encodeURIComponent(body);
+    logLead({ channel: "sms", form: form.dataset.ref || "", summary: formSummary(form), status: "sms-composed-not-confirmed-sent" });
+    if (btn) {
+      /* Transient label swap ONLY if the button carries a .lf-label span;
+         never rewrite a button's whole textContent (that would destroy
+         child spans like the arrow). No .lf-label = no swap. */
+      var lab = btn.querySelector(".lf-label");
+      if (lab) {
+        var keep = lab.textContent;
+        lab.textContent = "Opening your text app…";
+        setTimeout(function () { lab.textContent = keep; }, 4000);
+      }
+    }
+    window.location.href = url; /* visitor sends from their own phone */
+  }
+
+  function initForms() {
+    /* Capture-phase intercept: runs BEFORE the legacy data-form ghost
+       handler, and stopPropagation keeps the ghost confirmation from
+       ever firing for forms we own. Forms without data-lf-form pass
+       through untouched. */
+    document.addEventListener("submit", function (e) {
+      var form = e.target;
+      if (!form || !form.getAttribute || !form.getAttribute("data-lf-form")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var kind = form.getAttribute("data-lf-form");
+      var btn = form.querySelector('button[type="submit"], input[type="submit"]');
+      if (kind === "formspree") submitFormspree(form, btn);
+      else if (kind === "sms") submitSms(form, btn);
+    }, true);
+  }
+
+  /* ---------- hooks ---------- */
+  function initHooks() {
+    if (!REDUCED) {
+      var heroCta = $(".hero .btn.lf-btn3d, .mk-hero .btn.lf-btn3d");
+      if (heroCta) heroCta.classList.add("lf-pulse-once");
+    }
+    var cue = $(".lf-scroll-cue");
+    if (cue) {
+      var gone = function () { cue.classList.add("lf-gone"); window.removeEventListener("scroll", gone); };
+      window.addEventListener("scroll", gone, { passive: true });
+      cue.addEventListener("click", function () { cue.classList.add("lf-gone"); });
+    }
+  }
+
+  function init() {
+    try { initReveals(); } catch (e) {}
+    try { initCounters(); } catch (e) {}
+    try { initFields(); } catch (e) {}
+    try { initForms(); } catch (e) {}
+    try { initHooks(); } catch (e) {}
+  }
+  window.Life = { init: init };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else { init(); }
+})();
+
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "<SITE_TOKEN>"}'></script>
+<script>
+/* V4 showpiece: the switch blurs .h3d-media (filter: blur up to 12px) and the
+   label lives inside it, so the label blurs too and stays unreadable for its
+   whole 2.1s display. Move it to .h3d (position:relative, same box) so the
+   label stays sharp while the scene blurs. The hero script keeps its
+   reference; only the parent changes. (Same fix as nina/kendall.) */
+(function () {
+  function unblurShowpiece() {
+    var l = document.querySelector('.h3d-showpiece');
+    if (l && l.parentElement && l.parentElement.classList.contains('h3d-media')) {
+      l.parentElement.parentElement.appendChild(l);
+    }
+  }
+  unblurShowpiece();
+  document.addEventListener('DOMContentLoaded', unblurShowpiece);
+})();
+</script>
+<script>
+/* V4 map fallback: the iframe load event fires even for Chrome's error page,
+   so it cannot tell a dead embed from a live one. Probe reachability instead:
+   a no-cors fetch of the embed URL resolves when the network reaches Google
+   and rejects when it does not. On reject, hide the dead iframe and show the
+   address card with directions — the map area must never render as a dead
+   grey box. On a real phone with network the fetch resolves and nothing
+   changes. */
+(function () {
+  var card = document.querySelector('.map-card');
+  if (!card) return;
+  var frame = card.querySelector('iframe');
+  var fb = card.querySelector('.map-fallback');
+  if (!frame || !fb) return;
+  var checked = false;
+  function check() {
+    if (checked) return;
+    checked = true;
+    var src = frame.getAttribute('src');
+    if (!src) return;
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    var opts = { mode: 'no-cors', cache: 'no-store' };
+    if (ctl) opts.signal = ctl.signal;
+    fetch(src, opts).then(function () { clearTimeout(to); }).catch(function () {
+      clearTimeout(to);
+      frame.style.display = 'none';
+      card.style.minHeight = '16rem';
+      fb.removeAttribute('aria-hidden');
+      fb.innerHTML = '<span style="font-size:2rem">📍</span><span>Muddy Paws OC · 1330 N Glassell St #L, Orange, CA 92867</span><span>Map could not load here — <a href="https://www.google.com/maps/search/?api=1&amp;query=Muddy+Paws+OC+1330+N+Glassell+St+%23L+Orange" target="_blank" rel="noopener">Get directions</a></span>';
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { check(); io.disconnect(); }
+    }, { rootMargin: '200px' });
+    io.observe(card);
+  } else { check(); }
+})();
+</script>
 </body>
 </html>
