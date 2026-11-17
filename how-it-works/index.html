@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Merolearns Studio</title>
+<meta name="description" content="A website that brings your business new customers. Three plain prices, a deposit on the call, and a care plan that keeps the site working.">
+<style>
+  :root{
+    --bg:#FFF9F0; --card:#FFFFFF; --ink:#1C1917; --muted:#57534E;
+    --line:#E7DDCF; --accent:#B45309; --accent-soft:#FEF3C7; --accent-ink:#451A03;
+    --green:#166534; --green-soft:#DCFCE7; --dark:#1C1917;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header.top{padding:18px 0 0}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-weight:800;font-size:1.05rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .brand span{color:var(--accent)}
+  nav.topnav a{color:var(--muted);text-decoration:none;font-size:.95rem;margin-left:18px}
+  nav.topnav a:hover{color:var(--ink);text-decoration:underline}
+
+  /* Compact hero so headline + tiers + CTA fit the first screen on desktop */
+  .hero{padding:34px 0 8px;text-align:center}
+  .eyebrow{display:inline-block;background:var(--accent-soft);color:var(--accent-ink);
+    font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;margin:0 0 14px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4.6vw,3.1rem);
+    line-height:1.12;letter-spacing:-.02em;margin:0 0 12px}
+  .hero p.lede{max-width:640px;margin:0 auto 20px;color:var(--muted);font-size:1.12rem}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:1.05rem;
+    text-decoration:none;padding:13px 28px;border-radius:12px;box-shadow:0 2px 10px rgba(180,83,9,.28)}
+  .btn:hover{background:#92400E}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none;font-weight:600}
+  .btn.ghost:hover{border-color:var(--accent)}
+  .fine{font-size:.88rem;color:var(--muted)}
+
+  section{padding:34px 0 8px}
+  h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,3vw,2rem);
+    letter-spacing:-.01em;margin:0 0 6px;text-align:center}
+  .sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 22px}
+
+  /* Tiers */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  .tier{background:var(--card);border:1.5px solid var(--line);border-radius:16px;
+    padding:22px 20px;display:flex;flex-direction:column}
+  .tier.featured{border-color:var(--accent);box-shadow:0 8px 28px rgba(180,83,9,.14);position:relative}
+  .tier .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;
+    padding:4px 12px;border-radius:999px;white-space:nowrap}
+  .tier h3{margin:0;font-size:1.15rem}
+  .price{font-family:Georgia,serif;font-size:2.3rem;font-weight:700;line-height:1.1;margin:8px 0 2px}
+  .price-note{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+  .tier ul{list-style:none;margin:0 0 18px;padding:0;flex:1}
+  .tier li{padding:7px 0 7px 28px;position:relative;border-top:1px solid #F5EFE6;font-size:.98rem}
+  .tier li::before{content:"✓";position:absolute;left:4px;top:7px;color:var(--green);font-weight:800}
+  .tier li strong{font-weight:700}
+  .tier .btn{width:100%;text-align:center;padding:12px 16px;font-size:1rem}
+  .tier .btn.ghost{width:100%}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step}
+  .step{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center}
+  .step .num{display:inline-flex;width:44px;height:44px;border-radius:50%;background:var(--dark);
+    color:#fff;font-weight:800;font-size:1.25rem;align-items:center;justify-content:center;margin-bottom:10px}
+  .step h3{margin:0 0 6px;font-size:1.1rem}
+  .step p{margin:0;color:var(--muted);font-size:.98rem}
+  .step p strong{color:var(--ink)}
+
+  /* Payment + care */
+  .panel{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:26px 26px}
+  .panel h3{margin-top:0;font-size:1.25rem}
+  .panel ul{margin:0;padding-left:20px}
+  .panel li{margin:6px 0}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .care-price{font-family:Georgia,serif;font-size:2rem;font-weight:700}
+  .care-price small{font-size:1rem;font-family:system-ui,sans-serif;font-weight:400;color:var(--muted)}
+  .pill{display:inline-block;background:var(--green-soft);color:var(--green);font-weight:700;
+    font-size:.85rem;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+  .excludes{color:var(--muted);font-size:.95rem}
+  .excludes strong{color:var(--ink)}
+
+  /* Guarantee */
+  .guarantee{border:2px dashed var(--accent);background:#FFFBEB;border-radius:16px;
+    padding:24px 26px;text-align:center}
+  .guarantee h2{margin-bottom:8px}
+  .guarantee p{margin:0 auto;max-width:640px}
+  .guarantee .draft-line{font-weight:700;font-size:1.08rem}
+
+  /* Honest notes + FAQ */
+  .notes{max-width:720px;margin:0 auto}
+  .notes p{color:var(--muted)}
+  .notes p strong{color:var(--ink)}
+  details{background:var(--card);border:1.5px solid var(--line);border-radius:12px;
+    padding:14px 18px;margin:10px 0}
+  details summary{font-weight:700;cursor:pointer}
+  details p{margin:8px 0 0;color:var(--muted)}
+
+  .demo-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:6px 0 0}
+  .demo-links a{display:inline-block;background:#fff;border:1.5px solid var(--line);border-radius:999px;
+    padding:8px 16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem}
+  .demo-links a:hover{border-color:var(--accent);color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0 40px;
+    color:var(--muted);font-size:.92rem;text-align:center}
+  footer p{margin:6px 0}
+  .final-cta{text-align:center;padding:20px 0 4px}
+  .final-cta h2{margin-bottom:10px}
+
+  @media (max-width:860px){
+    .tiers{grid-template-columns:1fr}
+    .tier.featured{margin-top:14px}
+    .steps{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    .hero{padding-top:26px}
+    section{padding-top:26px}
+    nav.topnav a{margin-left:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">Merolearns <span>Studio</span></a>
+    <nav class="topnav" aria-label="Page">
+      <a href="#prices">Prices</a>
+      <a href="#how">How it works</a>
+      <a href="#care">Care plan</a>
+      <a href="#guarantee">Guarantee</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <p class="eyebrow">For local businesses with no website of their own</p>
+      <h1>A website that brings you new customers.</h1>
+      <p class="lede">We already built a demo for your business — your photos, your reviews, your prices,
+        with a way for customers to reach you. Here is exactly what it costs, how it works,
+        and what happens after it goes live.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://cal.com/merolearns/15-minute-intro-call">Book a 15-minute call</a>
+        <a class="btn ghost" href="#prices">See the prices</a>
+      </div>
+      <p class="fine">No forms on this page. The call is 15 minutes, and the demo does the talking.</p>
+    </div>
+
+    <section id="prices" aria-label="Prices">
+      <h2>Three prices. Nothing hidden.</h2>
+      <p class="sub">Pick the one that fits. Every tier is a one-off price — the care plan below is separate,
+        month to month, and you can cancel it any time.</p>
+      <div class="tiers">
+
+        <article class="tier">
+          <h3>Launch</h3>
+          <p class="price">$1,000</p>
+          <p class="price-note">One-off. The demo, made yours.</p>
+          <ul>
+            <li><strong>Your demo, made yours</strong> — one-page site, ready for phones</li>
+            <li><strong>Booking / quote forms that reach you</strong> — enquiries land with you, not with us</li>
+            <li><strong>Your photos, reviews and prices</strong> on the page</li>
+            <li><strong>Your own domain, in your name</strong></li>
+            <li><strong>Live in 7 days</strong> once you approve it</li>
+            <li><strong>You own everything from day 1</strong> — domain, site, accounts</li>
+          </ul>
+          <a class="btn ghost" href="https://cal.com/merolearns/15-minute-intro-call">Book a call — Launch</a>
+        </article>
+
+        <article class="tier">
+          <h3>Grow</h3>
+          <p class="price">$2,000</p>
+          <p class="price-note">One-off. Everything in Launch, plus:</p>
+          <ul>
+            <li><strong>Extra pages / sections</strong> for your services</li>
+            <li><strong>Booking flow tuned</strong> to how you actually take bookings</li>
+            <li><strong>Real-photo gallery</strong> — your work, your photos</li>
+            <li><strong>Reviews section</strong> with your real reviews</li>
+            <li><strong>Google Business Profile polished</strong></li>
+            <li><strong>Review-request kit</strong> — so new reviews keep coming</li>
+          </ul>
+          <a class="btn ghost" href="https://cal.com/merolearns/15-minute-intro-call">Book a call — Grow</a>
+        </article>
+
+        <article class="tier featured">
+          <span class="tag">Most complete</span>
+          <h3>Full</h3>
+          <p class="price">$3,000</p>
+          <p class="price-note">One-off. Everything in Grow, plus:</p>
+          <ul>
+            <li><strong>Domain and launch setup fully handled</strong> — nothing for you to configure</li>
+            <li><strong>First 3 months of the care plan included</strong></li>
+            <li><strong>Launch guarantee</strong> — terms DRAFT, see below</li>
+            <li><strong>Handover meeting</strong> — we walk through it together, live</li>
+            <li><strong>30-day defect warranty</strong> — if something we built breaks, we fix it</li>
+          </ul>
+          <a class="btn" href="https://cal.com/merolearns/15-minute-intro-call">Book a call — Full</a>
+        </article>
+
+      </div>
+      <p class="fine" style="text-align:center;margin-top:16px">$1,000 is our lowest price — we never go below it.
+        If a smaller budget is all you have, we can talk about a reduced-scope care plan instead (from $49/month, see below) —
+        never a cut-price website.</p>
+    </section>
+
+    <section id="how" aria-label="How it works">
+      <h2>How it works — three steps</h2>
+      <p class="sub">You do almost nothing. We do the work, you approve it once, and it goes live.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <h3>See your demo</h3>
+          <p>We send you a demo we already built for <strong>your</strong> business — your photos, your reviews,
+            your prices. Look at it on your own phone, in your own time.</p>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <h3>15-minute call</h3>
+          <p>We walk through the demo together, you tell us what one new customer is worth to you,
+            and we agree the tier and the deposit — <strong>40–50% on the call</strong>.</p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <h3>Your site goes live</h3>
+          <p>Once you approve it, you are <strong>live in 7 days</strong>. Your domain, in your name.
+            The balance is due only after a test lead lands on your phone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Payment">
+      <div class="panel">
+        <h3>Payment — plain and simple</h3>
+        <ul>
+          <li><strong>Deposit: 40–50% on the call</strong>, while you are still looking at the demo. No work starts before the deposit lands.</li>
+          <li><strong>Balance: only after a test lead lands on your phone.</strong> You see the site working — a real enquiry reaching you — before you pay the rest.</li>
+          <li><strong>Exact payment terms are agreed on the call</strong> and written into the agreement before anything is invoiced.</li>
+          <li><strong>A verbal “yes” with no deposit is not a sale</strong> — it is a follow-up, with a date.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="care" aria-label="Care plan">
+      <h2>The care plan — $79 a month</h2>
+      <p class="sub">For less than one missed haircut / one missed call-out fee a month, the form that brings you
+        enquiries is tested every month, the site is backed up and watched, and once a month you get one page
+        telling you how many enquiries came in and where they came from.</p>
+      <div class="two-col">
+        <div class="panel">
+          <span class="pill">Month to month — cancel any time</span>
+          <p><span class="care-price">$79 <small>/ month</small></span><br>
+          <strong>First month free.</strong> A smaller, reduced-scope plan is available from $49/month — ask on the call.</p>
+          <h3>What is included</h3>
+          <ul>
+            <li>Uptime and SSL monitoring — we watch the site for you</li>
+            <li>Backups, restore-tested</li>
+            <li>Monthly form + booking test, logged with date, destination and result</li>
+            <li>Security and dependency maintenance</li>
+            <li>30 minutes of small edits a month (unused minutes do not roll over)</li>
+            <li>One-page monthly leads report, emailed to you</li>
+            <li>Next-business-day email support (a reply, not a fix on the spot)</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>What it does not include</h3>
+          <p class="excludes">So there are no surprises later, the plan does <strong>not</strong> cover:
+            redesigns, new pages or sections, new features or integrations, copywriting projects,
+            advertising, guaranteed rankings, guaranteed leads, or unlimited incident cleanup.
+            Third-party subscriptions are billed separately.</p>
+          <h3>What it costs without the plan</h3>
+          <p class="excludes">Honestly, very little: domain about $10–15 a year, hosting $0, SSL $0, DNS $0.
+            The plan is labour, edits and monitoring — <strong>never hosting</strong>, because hosting costs us $0
+            and charging for it would be lock-in. You own everything either way.</p>
+          <h3>The monthly report</h3>
+          <p class="excludes">One page, every month: what was checked, confirmed enquiries and bookings,
+            comparison with last month, edits used, and one suggested next step. Phone and booking clicks
+            are listed separately as interest — never counted as confirmed leads. It is built from data
+            already collected free — Cloudflare visits and form submissions — so there is no dashboard to
+            learn and nothing extra to buy. Each month also covers two small edits (inside your 30 minutes)
+            and your review-request link and QR card, so new reviews keep coming.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="guarantee" aria-label="Launch guarantee">
+      <div class="guarantee">
+        <h2>Launch guarantee</h2>
+        <p class="draft-line">Launch guarantee — DRAFT. Terms to be confirmed by Mero before any sale is made. No promise is made here until Mero approves the exact terms.</p>
+        <p style="margin-top:12px;color:var(--muted)">What we can say today: the balance is due only after a test lead
+          lands on your phone, and the first 30 days after launch carry a defect warranty — if something we built
+          breaks, we fix it. The full guarantee terms will be written down and agreed before any sale.</p>
+      </div>
+    </section>
+
+    <section aria-label="Honest notes">
+      <h2>What we will not promise</h2>
+      <div class="notes">
+        <p><strong>We never promise a number of customers.</strong> Nobody honest can. What we promise is the site,
+          your domain, a test lead on your phone before the balance is due, and a monthly report that shows
+          what actually came in.</p>
+        <p><strong>We never invent a review, a price, or a result.</strong> Real reviews only, with the reviewer’s
+          name and source. Real prices only, from your booking page. If a review or price is not real, it is not on the page.</p>
+        <p><strong>The demo is a concept until you buy it.</strong> Every demo carries “Demo concept — not affiliated.”
+          We never tell anyone the site is yours, live, or already working for you before you pay.</p>
+      </div>
+      <div class="notes" style="margin-top:18px">
+        <details>
+          <summary>What if I already have a Facebook page / Google listing?</summary>
+          <p>Keep them. A website does not replace them — it gives you something you own that shows up in Google
+            and needs no login to view. We link the two together.</p>
+        </details>
+        <details>
+          <summary>What if my nephew / cousin can build one?</summary>
+          <p>If they have the time, that is a real option. The difference: this demo is already built — your photos,
+            your reviews, your prices — and we can make it yours this week, with the booking flow working and the
+            domain in your name.</p>
+        </details>
+        <details>
+          <summary>What happens at handover?</summary>
+          <p>A live 45–60 minute meeting, 48 hours after you receive the handover pack. You log in yourself and
+            request a change. We confirm you own everything — domain, site, accounts — and our access is cut back
+            to only what the care plan needs.</p>
+        </details>
+      </div>
+    </section>
+
+    <section aria-label="Demo sites">
+      <h2>See the demos</h2>
+      <p class="sub">Five live demos, built for real local businesses. Each one is a concept — not affiliated with the business.</p>
+      <div class="demo-links">
+        <a href="../golden-cafe/">Golden Cafe — Miami</a>
+        <a href="../studio-61/">Studio 61 — Coral Gables</a>
+        <a href="../muddy-paws-oc/">Muddy Paws OC — Orange</a>
+        <a href="../nina-nails/">Nina Nails — Corona</a>
+        <a href="../kendall-roof-masters/">Kendall Roof Masters — Miami</a>
+      </div>
+    </section>
+
+    <div class="final-cta">
+      <h2>Want to see yours?</h2>
+      <p class="sub" style="margin-bottom:18px">Fifteen minutes. Your demo on screen. No obligation.</p>
+      <a class="btn" href="https://cal.com/merolearns/15-minute-intro-call">Book a 15-minute call</a>
+      <p class="fine" style="margin-top:14px">Merolearns Studio — websites for local businesses.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Merolearns Studio — demo websites are concepts, not affiliated with the businesses shown.</p>
+    <p>Prices: Launch $1,000 · Grow $2,000 · Full $3,000 · Care plan $79/month, first month free.
+      Launch guarantee terms are DRAFT until approved.</p>
+    <p><a href="https://cal.com/merolearns/15-minute-intro-call">Book a 15-minute call</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
